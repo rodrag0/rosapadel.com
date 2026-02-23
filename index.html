@@ -25,19 +25,19 @@
       href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700;800&family=Inter:wght@400;500;600&display=swap"
       rel="stylesheet"
     />
+    <link rel="icon" type="image/svg+xml" href="assets/branding/nav logo.svg" />
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
     <header class="hero" id="top">
       <nav class="top-nav" aria-label="Main navigation">
         <a class="logo" href="#top" aria-label="Rosa Padel Home">
-          <img src="assets/branding/nav logo.svg" alt="Rosa Padel logo" />
+          <img src="assets/branding/hero logo.svg" alt="Rosa Padel logo" />
         </a>
         <a class="nav-cta" href="#signup">Sign Up for Early Access</a>
       </nav>
 
       <div class="hero-content">
-        <img class="hero-logo" src="assets/branding/hero logo.svg" alt="Rosa Padel hero logo" />
         <p class="eyebrow">Coming Soon</p>
         <h1>Rosa Padel: The Ultimate Smart Scoreboard for Padel – Coming Soon!</h1>
         <p class="subheadline">
@@ -123,6 +123,14 @@
             Email
             <input type="email" name="email" autocomplete="email" required />
           </label>
+          <label>
+            Message
+            <textarea
+              name="message"
+              rows="4"
+              placeholder="Tell us about your court, club, or how you'd like to use Rosa Padel."
+            ></textarea>
+          </label>
           <label class="checkbox-label">
             <input type="checkbox" name="consent" required />
             I agree to receive updates from Rosa Padel.
@@ -132,6 +140,10 @@
         <p class="form-note">Early-access notifications are sent to our team at info@rosapadel.com.</p>
       </section>
     </main>
+
+    <div class="success-toast" id="signup-success" role="status" aria-live="polite" hidden>
+      We have received your email and will be contacting you soon.
+    </div>
 
     <footer class="footer">
       <div class="social-links" aria-label="Social media links">
@@ -145,6 +157,18 @@
 
     <script>
       document.getElementById('year').textContent = new Date().getFullYear();
+
+      const params = new URLSearchParams(window.location.search);
+      if (params.get('signup') === 'success') {
+        const successToast = document.getElementById('signup-success');
+        successToast.hidden = false;
+
+        setTimeout(() => {
+          successToast.classList.add('hide');
+        }, 4200);
+
+        window.history.replaceState({}, document.title, window.location.pathname);
+      }
     </script>
   </body>
 </html>

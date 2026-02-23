@@ -41,15 +41,8 @@ body {
 }
 
 .logo img {
-  width: clamp(120px, 18vw, 210px);
-  height: auto;
-}
-
-.hero-logo {
-  width: min(100%, 520px);
-  height: auto;
-  display: block;
-  margin-bottom: 1.2rem;
+  height: 100px;
+  width: auto;
 }
 
 .nav-cta,
@@ -217,13 +210,20 @@ h1 {
 }
 
 input[type='text'],
-input[type='email'] {
+input[type='email'],
+textarea {
   width: 100%;
   border-radius: 0.5rem;
   border: 1px solid #34343a;
   background: #111214;
   color: var(--white);
   padding: 0.7rem;
+}
+
+textarea {
+  resize: vertical;
+  min-height: 110px;
+  font-family: inherit;
 }
 
 .checkbox-label {
@@ -245,6 +245,26 @@ input[type='email'] {
   margin-top: 0.8rem;
   color: #d4d4d8;
   font-size: 0.92rem;
+}
+
+.success-toast {
+  position: fixed;
+  right: 1rem;
+  bottom: 1rem;
+  z-index: 1000;
+  max-width: min(92vw, 420px);
+  background: rgba(15, 15, 16, 0.95);
+  color: var(--white);
+  border: 1px solid rgba(228, 0, 124, 0.5);
+  border-radius: 0.75rem;
+  padding: 0.85rem 1rem;
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.35);
+  transition: opacity 0.35s ease, transform 0.35s ease;
+}
+
+.success-toast.hide {
+  opacity: 0;
+  transform: translateY(8px);
 }
 .footer {
   border-top: 1px solid #27272a;
