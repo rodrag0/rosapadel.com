@@ -36,23 +36,20 @@ body {
 }
 
 .logo {
-  color: var(--white);
-  font-family: 'Montserrat', sans-serif;
-  font-weight: 800;
-  font-size: 1.1rem;
-  text-decoration: none;
   display: inline-flex;
   align-items: center;
-  gap: 0.6rem;
 }
 
-.logo-mark {
-  width: 1.2rem;
-  height: 1.2rem;
-  display: inline-block;
-  border-radius: 50%;
-  background: var(--rosa-mexicano);
-  box-shadow: 0 0 14px rgba(228, 0, 124, 0.8);
+.logo img {
+  width: clamp(120px, 18vw, 210px);
+  height: auto;
+}
+
+.hero-logo {
+  width: min(100%, 520px);
+  height: auto;
+  display: block;
+  margin-bottom: 1.2rem;
 }
 
 .nav-cta,
@@ -236,6 +233,19 @@ input[type='email'] {
   font-weight: 500 !important;
 }
 
+
+.hidden-field {
+  position: absolute;
+  left: -9999px;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.form-note {
+  margin-top: 0.8rem;
+  color: #d4d4d8;
+  font-size: 0.92rem;
+}
 .footer {
   border-top: 1px solid #27272a;
   padding: 2rem 1.25rem 2.6rem;

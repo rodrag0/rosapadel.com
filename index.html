@@ -31,13 +31,13 @@
     <header class="hero" id="top">
       <nav class="top-nav" aria-label="Main navigation">
         <a class="logo" href="#top" aria-label="Rosa Padel Home">
-          <span class="logo-mark" aria-hidden="true"></span>
-          <span class="logo-text">Rosa Padel</span>
+          <img src="assets/branding/logo-nav-placeholder.svg" alt="Rosa Padel logo placeholder" />
         </a>
         <a class="nav-cta" href="#signup">Sign Up for Early Access</a>
       </nav>
 
       <div class="hero-content">
+        <img class="hero-logo" src="assets/branding/logo-hero-placeholder.svg" alt="Rosa Padel hero logo placeholder" />
         <p class="eyebrow">Coming Soon</p>
         <h1>Rosa Padel: The Ultimate Smart Scoreboard for Padel – Coming Soon!</h1>
         <p class="subheadline">
@@ -106,7 +106,15 @@
       <section class="section signup" id="signup" aria-labelledby="signup-heading">
         <h2 id="signup-heading">Sign Up for Updates</h2>
         <p>Be first in line for launch news, demos, and early access.</p>
-        <form class="signup-form" action="#" method="post">
+        <form
+          class="signup-form"
+          action="https://formsubmit.co/info@rosapadel.com"
+          method="POST"
+        >
+          <input type="hidden" name="_subject" value="New Rosa Padel Early Access Signup" />
+          <input type="hidden" name="_captcha" value="false" />
+          <input type="text" name="_honey" class="hidden-field" tabindex="-1" autocomplete="off" />
+          <input type="hidden" name="_next" value="https://rosapadel.com/?signup=success" />
           <label>
             Name
             <input type="text" name="name" autocomplete="name" required />
@@ -121,6 +129,7 @@
           </label>
           <button type="submit">Sign Up for Updates</button>
         </form>
+        <p class="form-note">Early-access notifications are sent to our team at info@rosapadel.com.</p>
       </section>
     </main>
 
