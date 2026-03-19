@@ -1,25 +1,30 @@
 import { motion, useInView } from "framer-motion";
-import { useRef, useState } from "react";
+import { useMemo, useRef, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Checkbox } from "@/components/ui/checkbox";
 import { toast } from "sonner";
 import { z } from "zod";
-
-const formSchema = z.object({
-  name: z.string().trim().min(1, "Name is required").max(100),
-  email: z.string().trim().email("Invalid email address").max(255),
-  organization: z.string().trim().max(200).optional(),
-  objective: z.string().max(100).optional(),
-});
+import { useLanguage } from "./LanguageProvider";
 
 export default function ContactCTA() {
   const ref = useRef(null);
   const inView = useInView(ref, { once: true, margin: "-100px" });
+  const { copy } = useLanguage();
   const [agreed, setAgreed] = useState(false);
   const [submitting, setSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
+  const formSchema = useMemo(
+    () =>
+      z.object({
+        name: z.string().trim().min(1, copy.contact.validation.nameRequired).max(100),
+        email: z.string().trim().email(copy.contact.validation.emailInvalid).max(255),
+        organization: z.string().trim().max(200).optional(),
+        objective: z.string().max(100).optional(),
+      }),
+    [copy.contact.validation.emailInvalid, copy.contact.validation.nameRequired],
+  );
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -69,14 +74,14 @@ export default function ContactCTA() {
     }
 
     if (!success) {
-      toast.error("Something went wrong. Please try again.");
+      toast.error(copy.contact.messages.genericError);
       return;
     }
 
     form.reset();
     setAgreed(false);
     setSubmitted(true);
-    toast.success("Thanks! We'll be in touch soon.");
+    toast.success(copy.contact.messages.success);
   };
 
   return (
@@ -89,11 +94,10 @@ export default function ContactCTA() {
           transition={{ duration: 0.6 }}
         >
           <h2 className="text-4xl md:text-5xl font-bold">
-            Upgrade Your <span className="text-primary text-glow">Facility</span>
+            {copy.contact.title}
+            <span className="text-primary text-glow">{copy.contact.accent}</span>
           </h2>
-          <p className="text-muted-foreground text-lg">
-            Get in touch to see <span className="text-primary font-semibold">rosa</span> in action. We'll walk you through the right tier for your club.
-          </p>
+          <p className="text-muted-foreground text-lg">{copy.contact.body}</p>
         </motion.div>
 
         {submitted ? (
@@ -106,10 +110,8 @@ export default function ContactCTA() {
             <div className="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center mx-auto">
               <span className="text-3xl">{"\u2713"}</span>
             </div>
-            <h3 className="text-2xl font-bold">We'll be in touch!</h3>
-            <p className="text-muted-foreground">
-              Thanks for your interest. Our team will reach out shortly.
-            </p>
+            <h3 className="text-2xl font-bold">{copy.contact.successTitle}</h3>
+            <p className="text-muted-foreground">{copy.contact.successBody}</p>
           </motion.div>
         ) : (
           <motion.form
@@ -121,33 +123,51 @@ export default function ContactCTA() {
           >
             <div className="grid md:grid-cols-2 gap-4">
               <div className="space-y-2">
-                <Label htmlFor="name">Name</Label>
-                <Input id="name" name="name" placeholder="Your name" className="bg-secondary border-border" required />
+                <Label htmlFor="name">{copy.contact.fields.name}</Label>
+                <Input
+                  id="name"
+                  name="name"
+                  placeholder={copy.contact.fields.namePlaceholder}
+                  className="bg-secondary border-border"
+                  required
+                />
               </div>
               <div className="space-y-2">
-                <Label htmlFor="email">Email</Label>
-                <Input id="email" name="email" type="email" placeholder="you@club.com" className="bg-secondary border-border" required />
+                <Label htmlFor="email">{copy.contact.fields.email}</Label>
+                <Input
+                  id="email"
+                  name="email"
+                  type="email"
+                  placeholder={copy.contact.fields.emailPlaceholder}
+                  className="bg-secondary border-border"
+                  required
+                />
               </div>
             </div>
 
             <div className="space-y-2">
-              <Label htmlFor="org">Club / Organization</Label>
-              <Input id="org" name="org" placeholder="Your club or organization name" className="bg-secondary border-border" />
+              <Label htmlFor="org">{copy.contact.fields.organization}</Label>
+              <Input
+                id="org"
+                name="org"
+                placeholder={copy.contact.fields.organizationPlaceholder}
+                className="bg-secondary border-border"
+              />
             </div>
 
             <div className="space-y-2">
-              <Label htmlFor="objective">What are you looking for?</Label>
+              <Label htmlFor="objective">{copy.contact.fields.objective}</Label>
               <select
                 id="objective"
                 name="objective"
                 className="flex h-10 w-full rounded-md border border-border bg-secondary px-3 py-2 text-sm text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
               >
-                <option value="">Select an option</option>
-                <option value="scoring">Automated Scoring</option>
-                <option value="tournaments">Tournament Experience</option>
-                <option value="analytics">Player Analytics & Replay</option>
-                <option value="full">Full Smart Court Setup</option>
-                <option value="other">Other</option>
+                <option value="">{copy.contact.fields.objectivePlaceholder}</option>
+                <option value="scoring">{copy.contact.objectives.scoring}</option>
+                <option value="tournaments">{copy.contact.objectives.tournaments}</option>
+                <option value="analytics">{copy.contact.objectives.analytics}</option>
+                <option value="full">{copy.contact.objectives.full}</option>
+                <option value="other">{copy.contact.objectives.other}</option>
               </select>
             </div>
 
@@ -155,11 +175,15 @@ export default function ContactCTA() {
               <Checkbox
                 id="privacy"
                 checked={agreed}
-                onCheckedChange={(c) => setAgreed(!!c)}
+                onCheckedChange={(checked) => setAgreed(!!checked)}
                 className="mt-0.5"
               />
               <Label htmlFor="privacy" className="text-sm text-muted-foreground leading-relaxed cursor-pointer">
-                I agree to the processing of my data as outlined in the Privacy Policy.
+                {copy.contact.consentPrefix}
+                <a href="/privacy-policy" className="text-primary hover:text-primary/90 underline underline-offset-4">
+                  {copy.contact.consentLink}
+                </a>
+                {copy.contact.consentSuffix}
               </Label>
             </div>
 
@@ -169,7 +193,7 @@ export default function ContactCTA() {
               disabled={!agreed || submitting}
               className="w-full bg-primary text-primary-foreground hover:bg-primary/90 box-glow h-12 text-base"
             >
-              {submitting ? "Submitting..." : "Book a Demo"}
+              {submitting ? copy.contact.submitting : copy.contact.submit}
             </Button>
           </motion.form>
         )}

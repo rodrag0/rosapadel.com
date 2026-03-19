@@ -1,31 +1,13 @@
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
 import { Wrench, Play, BarChart3 } from "lucide-react";
-
-const steps = [
-  {
-    num: "01",
-    icon: Wrench,
-    title: "Deploy on Court",
-    description: "Core LED is plug-and-play — set it up on any padel court in under a minute. HD and Vision tiers are just as easy, no additional infrastructure needed.",
-  },
-  {
-    num: "02",
-    icon: Play,
-    title: "Run Live Matches",
-    description: "Players see real-time scoring. Spectators get clear visibility. Tournaments run without downtime.",
-  },
-  {
-    num: "03",
-    icon: BarChart3,
-    title: "Review & Improve",
-    description: "Access instant replay, heatmaps, shot analytics, and match summaries. Share highlights directly.",
-  },
-];
+import { useLanguage } from "./LanguageProvider";
 
 export default function HowItWorks() {
   const ref = useRef(null);
   const inView = useInView(ref, { once: true, margin: "-100px" });
+  const { copy } = useLanguage();
+  const icons = [Wrench, Play, BarChart3];
 
   return (
     <section ref={ref} className="py-24 md:py-32 bg-card/50">
@@ -36,13 +18,14 @@ export default function HowItWorks() {
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
         >
-          <span className="text-sm font-mono uppercase tracking-widest text-primary">How It Works</span>
-          <h2 className="text-4xl md:text-5xl font-bold">Three Steps to Smart</h2>
+          <span className="text-sm font-mono uppercase tracking-widest text-primary">{copy.howItWorks.label}</span>
+          <h2 className="text-4xl md:text-5xl font-bold">{copy.howItWorks.title}</h2>
         </motion.div>
 
         <div className="grid md:grid-cols-3 gap-8">
-          {steps.map((step, i) => {
-            const Icon = step.icon;
+          {copy.howItWorks.steps.map((step, i) => {
+            const Icon = icons[i] ?? Wrench;
+
             return (
               <motion.div
                 key={step.num}
@@ -60,7 +43,7 @@ export default function HowItWorks() {
                 <h3 className="text-xl font-bold">{step.title}</h3>
                 <p className="text-muted-foreground leading-relaxed">{step.description}</p>
 
-                {i < steps.length - 1 && (
+                {i < copy.howItWorks.steps.length - 1 && (
                   <div className="hidden md:block absolute top-8 -right-4 w-8 h-px bg-border" />
                 )}
               </motion.div>

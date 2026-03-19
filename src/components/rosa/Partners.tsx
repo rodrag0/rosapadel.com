@@ -1,6 +1,7 @@
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
 import { useTheme } from "./ThemeProvider";
+import { useLanguage } from "./LanguageProvider";
 import campusFoundersDark from "@/assets/campusfounders-logo-dark.svg";
 import campusFoundersLight from "@/assets/campusfounders-logo-light.svg";
 
@@ -8,6 +9,7 @@ export default function Partners() {
   const ref = useRef(null);
   const inView = useInView(ref, { once: true, margin: "-100px" });
   const { theme } = useTheme();
+  const { copy } = useLanguage();
 
   const campusLogo = theme === "dark" ? campusFoundersDark : campusFoundersLight;
 
@@ -21,8 +23,8 @@ export default function Partners() {
           transition={{ duration: 0.6 }}
         >
           <div className="space-y-3">
-            <span className="text-sm font-mono uppercase tracking-widest text-primary">Backed By</span>
-            <p className="text-muted-foreground text-lg">Building the future of padel</p>
+            <span className="text-sm font-mono uppercase tracking-widest text-primary">{copy.partners.label}</span>
+            <p className="text-muted-foreground text-lg">{copy.partners.body}</p>
           </div>
 
           <motion.div
