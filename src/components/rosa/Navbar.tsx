@@ -42,8 +42,8 @@ export default function Navbar() {
           >
             {theme === "dark" ? <Sun className="w-4 h-4" /> : <Moon className="w-4 h-4" />}
           </button>
-          <Button size="sm" className="bg-primary text-primary-foreground hover:bg-primary/90 box-glow">
-            Book a Demo
+          <Button asChild size="sm" className="bg-primary text-primary-foreground hover:bg-primary/90 box-glow">
+            <a href="#contact">Book a Demo</a>
           </Button>
         </div>
 
@@ -75,8 +75,8 @@ export default function Navbar() {
               {l.label}
             </a>
           ))}
-          <Button size="sm" className="w-full bg-primary text-primary-foreground hover:bg-primary/90">
-            Book a Demo
+          <Button asChild size="sm" className="w-full bg-primary text-primary-foreground hover:bg-primary/90">
+            <a href="#contact" onClick={() => setOpen(false)}>Book a Demo</a>
           </Button>
         </div>
       )}

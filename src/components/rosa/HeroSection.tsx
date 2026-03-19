@@ -52,11 +52,11 @@ export default function HeroSection() {
           </p>
 
           <div className="flex flex-wrap gap-4 justify-center">
-            <Button size="lg" className="bg-primary text-primary-foreground hover:bg-primary/90 box-glow text-base px-8 h-12">
-              Book a Demo
+            <Button asChild size="lg" className="bg-primary text-primary-foreground hover:bg-primary/90 box-glow text-base px-8 h-12">
+              <a href="#contact">Book a Demo</a>
             </Button>
-            <Button size="lg" variant="outline" className="border-border text-foreground hover:bg-secondary text-base px-8 h-12">
-              See Products
+            <Button asChild size="lg" variant="outline" className="border-border text-foreground hover:bg-secondary text-base px-8 h-12">
+              <a href="#products">See Products</a>
             </Button>
           </div>
 
