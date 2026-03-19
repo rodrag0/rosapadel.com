@@ -205,11 +205,11 @@ function RecordingIndicator() {
   return (
     <group position={[0.105, 0.07, -0.126]}>
       <mesh ref={glowRef}>
-        <sphereGeometry args={[0.024, 16, 16]} />
+        <sphereGeometry args={[0.032, 16, 16]} />
         <meshBasicMaterial color="#ff2b3a" transparent opacity={0.2} depthWrite={false} />
       </mesh>
       <mesh ref={dotRef}>
-        <sphereGeometry args={[0.011, 16, 16]} />
+        <sphereGeometry args={[0.015, 16, 16]} />
         <meshBasicMaterial color="#ff3b4d" transparent opacity={1} />
       </mesh>
     </group>
