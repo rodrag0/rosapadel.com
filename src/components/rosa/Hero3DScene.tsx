@@ -182,6 +182,40 @@ function SignalPulse({ vertical = false, scale: baseScale = 1 }: { vertical?: bo
   );
 }
 
+function RecordingIndicator() {
+  const dotRef = useRef<THREE.Mesh>(null);
+  const glowRef = useRef<THREE.Mesh>(null);
+
+  useFrame((state) => {
+    const pulse = (Math.sin(state.clock.elapsedTime * 4) + 1) * 0.5;
+
+    if (dotRef.current) {
+      const material = dotRef.current.material as THREE.MeshBasicMaterial;
+      material.opacity = 0.6 + pulse * 0.4;
+    }
+
+    if (glowRef.current) {
+      const material = glowRef.current.material as THREE.MeshBasicMaterial;
+      const scale = 1 + pulse * 0.35;
+      glowRef.current.scale.set(scale, scale, scale);
+      material.opacity = 0.12 + pulse * 0.18;
+    }
+  });
+
+  return (
+    <group position={[0.105, 0.07, -0.126]}>
+      <mesh ref={glowRef}>
+        <sphereGeometry args={[0.024, 16, 16]} />
+        <meshBasicMaterial color="#ff2b3a" transparent opacity={0.2} depthWrite={false} />
+      </mesh>
+      <mesh ref={dotRef}>
+        <sphereGeometry args={[0.011, 16, 16]} />
+        <meshBasicMaterial color="#ff3b4d" transparent opacity={1} />
+      </mesh>
+    </group>
+  );
+}
+
 // Pre-compute color LUT for heatmap (256 entries)
 const HEAT_LUT = (() => {
   const lut = new Uint8Array(256 * 4);
@@ -517,10 +551,8 @@ function PadelCourt({ colors }: { colors: ThemeColors }) {
             <boxGeometry args={[0.18, 0.04, 0.15]} />
             <meshStandardMaterial color={new THREE.Color("#444455")} metalness={0.5} roughness={0.4} />
           </mesh>
-          {/* Recording LED */}
-          <mesh position={[-0.1, 0.08, 0.13]} material={pinkMat}>
-            <sphereGeometry args={[0.015, 8, 8]} />
-          </mesh>
+          {/* Recording indicator on the rear top-right corner */}
+          <RecordingIndicator />
           {/* Signal pulse around camera */}
           <group position={[0, 0, 0.15]}>
             <SignalPulse vertical scale={2} />
