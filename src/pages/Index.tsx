@@ -5,6 +5,7 @@ import ProblemSolution from "@/components/rosa/ProblemSolution";
 import ProductLadder from "@/components/rosa/ProductLadder";
 import HowItWorks from "@/components/rosa/HowItWorks";
 import PlayerExperience from "@/components/rosa/PlayerExperience";
+import VisionEcosystem from "@/components/rosa/VisionEcosystem";
 import Tournaments from "@/components/rosa/Tournaments";
 import ClubROI from "@/components/rosa/ClubROI";
 import Partners from "@/components/rosa/Partners";
@@ -40,6 +41,7 @@ const Index = () => {
         <HowItWorks />
       </div>
       <PlayerExperience />
+      <VisionEcosystem />
       <Tournaments />
       <ClubROI />
       <Partners />

@@ -75,9 +75,11 @@ export const siteCopy = {
         {
           tier: "Advanced",
           name: "rosa Vision",
+          status: "Planned ecosystem",
           description:
-            "AI-powered analysis with video replay, heatmaps, and shot classification. Access your full match video and stats online after every game.",
-          features: ["Everything in Core HD", "AI Video Analysis", "Instant Replay", "Heatmaps", "Shot Classification", "Player Stats", "Online Match Access"],
+            "The planned camera-integrated layer for replay, match history, and player insights across the full rosa system.",
+          features: ["Everything in Core HD", "Camera-Integrated Replay", "Match Highlights", "Player History", "Club Screens", "Post-Match Insights", "Vision Roadmap Layer"],
+          note: "Built to extend rosa from live scoring into replay, review, and retention.",
         },
       ],
     },
@@ -110,13 +112,14 @@ export const siteCopy = {
       title: "Every match tells a story.",
       accent: "rosa",
       titleSuffix: " captures it.",
+      status: "Vision roadmap",
       body:
-        "From casual padel rallies to competitive tournaments, replay your best shots, understand your patterns, and share highlights with your team.",
+        "Players move from live match tracking into replay, review, and shareable moments. rosa Vision is designed to turn every match into something you can revisit, learn from, and talk about after leaving the court.",
       features: [
-        { label: "Instant Replay", desc: "Relive every point in HD" },
-        { label: "Shot Breakdown", desc: "Smashes, bandejas, viboras per player" },
-        { label: "Match Summary", desc: "Full stats per set with comparisons" },
-        { label: "Video Output", desc: "Auto-generated match highlights" },
+        { label: "Instant Replay", desc: "Go back to the points that changed the match" },
+        { label: "Match Flow", desc: "Review score context, momentum, and key swings" },
+        { label: "Player Insights", desc: "Track patterns, tendencies, and post-match summaries" },
+        { label: "Shareable Clips", desc: "Save standout points and send match recaps" },
       ],
       mockup: {
         liveMatch: "Live Match",
@@ -131,32 +134,61 @@ export const siteCopy = {
         highlights: "Match Highlights",
       },
     },
+    visionEcosystem: {
+      label: "rosa Vision",
+      title: "From Court to Clubhouse.",
+      body:
+        "rosa Vision is the planned camera-integrated layer that connects live play, replay, player history, and club-facing screens in one system.",
+      status: "Planned ecosystem",
+      playerTitle: "For players",
+      playerBody:
+        "Turn one match into a repeatable loop that keeps players engaged after they leave the court.",
+      playerItems: [
+        { title: "Capture the match", desc: "Record the full session on top of rosa scoring and HD output." },
+        { title: "Replay key moments", desc: "Jump back to the rallies, points, and patterns that mattered most." },
+        { title: "Build match history", desc: "Create a personal archive of videos, clips, and post-match summaries." },
+        { title: "Share the best points", desc: "Send clips and recaps that keep the match alive beyond the court." },
+      ],
+      clubTitle: "For clubs",
+      clubBody:
+        "Use the same match layer to create a premium venue experience and a stronger retention loop.",
+      clubItems: [
+        { title: "Club screens", desc: "Turn live matches and replays into content that keeps the venue active." },
+        { title: "Member retention", desc: "Give players better reasons to return, compare, and book again." },
+        { title: "Content inventory", desc: "Generate clips and recap assets for promotion, sponsors, and events." },
+        { title: "System continuity", desc: "Extend the rosa stack instead of replacing the live scoring workflow." },
+      ],
+      footerTitle: "Built as an extension of the rosa stack",
+      footerBody:
+        "Vision is designed to sit on top of rosa scoring and HD output, so clubs can grow from live operations into replay, content, and insights without changing the rest of their setup.",
+    },
     tournaments: {
       label: "Tournaments & Events",
       title: "Run Events Like the Pros",
+      futureLabel: "Vision expansion",
       body:
-        "From local padel tournaments to premium events, rosa handles the match experience so organizers can focus on the event.",
+        "From local padel tournaments to premium events, rosa handles the live match experience today while rosa Vision expands the system with replay, highlights, and screen-ready content.",
       benefits: [
         {
           title: "Live Court Visibility",
           desc: "Real-time scores visible on court and remotely. Spectators and organizers always know the match status.",
         },
         {
-          title: "Pro Match Experience",
-          desc: "Every match feels premium with live scoring, instant replays, and post-match stats for players and spectators.",
+          title: "Vision-Ready Match Experience",
+          desc: "Every match can grow from live scoring into replay, clip generation, and post-match review for players and spectators.",
         },
         {
           title: "Post-Match Content",
-          desc: "Players get shareable match videos and stats. Organizers get content for social media and event promotion.",
+          desc: "Players get shareable match moments. Organizers get content for social media, venue screens, and event promotion.",
         },
         {
           title: "Multi-Court Ready",
           desc: "Scale from a single court to full-venue events. Each court runs independently with rosa Vision.",
         },
       ],
-      highlightTitle: "TV-Style Video Output",
+      highlightTitle: "Replay and Screen Output",
       highlightBody:
-        "Every match generates a full video with live score overlay throughout the game and complete statistics at the end of each set, just like a professional broadcast. Players can share and relive their matches instantly.",
+        "rosa Vision is planned to add replay-ready output, shareable clips, and venue-screen moments on top of rosa's live scoring layer without replacing tournament management tools.",
     },
     clubRoi: {
       label: "Club ROI",
@@ -410,9 +442,11 @@ export const siteCopy = {
         {
           tier: "Avanzado",
           name: "rosa Vision",
+          status: "Ecosistema planificado",
           description:
-            "Analítica con IA, replay en vídeo, mapas de calor y clasificación de golpes. Accede al vídeo completo y a las estadísticas online después de cada partido.",
-          features: ["Todo lo de Core HD", "Analítica de vídeo con IA", "Repetición instantánea", "Mapas de calor", "Clasificación de golpes", "Estadísticas por jugador", "Acceso online al partido"],
+            "La capa planificada que integra cámaras para replay, historial de partidos e insights de jugador dentro del sistema completo de rosa.",
+          features: ["Todo lo de Core HD", "Replay con cámaras integradas", "Highlights del partido", "Historial del jugador", "Pantallas del club", "Insights postpartido", "Capa roadmap Vision"],
+          note: "Pensado para ampliar rosa desde el marcador en vivo hacia replay, revisión y retención.",
         },
       ],
     },
@@ -445,13 +479,14 @@ export const siteCopy = {
       title: "Cada partido cuenta una historia.",
       accent: "rosa",
       titleSuffix: " la captura.",
+      status: "Roadmap Vision",
       body:
-        "Desde pachangas hasta torneos competitivos, revive tus mejores golpes, entiende tus patrones y comparte highlights con tu equipo.",
+        "Los jugadores pasan del seguimiento en vivo al replay, la revisión y los momentos compartibles. rosa Vision está pensado para convertir cada partido en algo que puedas revisar, entender y comentar después de salir de la pista.",
       features: [
-        { label: "Repetición instantánea", desc: "Revive cada punto en HD" },
-        { label: "Desglose de golpes", desc: "Remates, bandejas y víboras por jugador" },
-        { label: "Resumen del partido", desc: "Estadísticas completas por set con comparaciones" },
-        { label: "Salida de vídeo", desc: "Highlights generados automáticamente" },
+        { label: "Repetición instantánea", desc: "Vuelve a los puntos que cambiaron el partido" },
+        { label: "Flujo del partido", desc: "Revisa contexto de marcador, momentum y momentos clave" },
+        { label: "Insights del jugador", desc: "Sigue patrones, tendencias y resúmenes postpartido" },
+        { label: "Clips compartibles", desc: "Guarda puntos destacados y envía recapitulaciones" },
       ],
       mockup: {
         liveMatch: "Partido en vivo",
@@ -466,32 +501,61 @@ export const siteCopy = {
         highlights: "Highlights del partido",
       },
     },
+    visionEcosystem: {
+      label: "rosa Vision",
+      title: "De la pista al club.",
+      body:
+        "rosa Vision es la capa planificada que integra cámaras para conectar juego en vivo, replay, historial del jugador y pantallas del club en un solo sistema.",
+      status: "Ecosistema planificado",
+      playerTitle: "Para jugadores",
+      playerBody:
+        "Convierte un partido en un bucle repetible que mantiene a los jugadores conectados después de salir de la pista.",
+      playerItems: [
+        { title: "Captura el partido", desc: "Graba la sesión completa sobre el marcador y la salida HD de rosa." },
+        { title: "Revisa momentos clave", desc: "Vuelve a rallies, puntos y patrones que marcaron el partido." },
+        { title: "Crea historial", desc: "Genera un archivo personal de vídeos, clips y resúmenes postpartido." },
+        { title: "Comparte los mejores puntos", desc: "Envía clips y recapitulaciones que alargan la vida del partido." },
+      ],
+      clubTitle: "Para clubes",
+      clubBody:
+        "Usa la misma capa de partido para crear una experiencia premium de sede y un mejor bucle de retención.",
+      clubItems: [
+        { title: "Pantallas del club", desc: "Convierte partidos en vivo y replays en contenido para toda la instalación." },
+        { title: "Retención de socios", desc: "Da más razones para volver, comparar y reservar otra vez." },
+        { title: "Inventario de contenido", desc: "Genera clips y resúmenes para promoción, sponsors y eventos." },
+        { title: "Continuidad del sistema", desc: "Amplía el stack de rosa sin reemplazar el flujo de marcador en vivo." },
+      ],
+      footerTitle: "Construido como extensión del stack de rosa",
+      footerBody:
+        "Vision está pensado para apoyarse sobre el scoring y la salida HD de rosa, de modo que los clubes crezcan desde la operación en vivo hacia replay, contenido e insights sin cambiar el resto de su setup.",
+    },
     tournaments: {
       label: "Torneos y eventos",
       title: "Gestiona eventos como los profesionales",
+      futureLabel: "Expansión Vision",
       body:
-        "Desde torneos locales de pádel hasta eventos premium, rosa se ocupa de la experiencia del partido para que los organizadores se centren en el evento.",
+        "Desde torneos locales de pádel hasta eventos premium, rosa se ocupa hoy de la experiencia en vivo mientras rosa Vision amplía el sistema con replay, highlights y contenido preparado para pantallas.",
       benefits: [
         {
           title: "Visibilidad en pista",
           desc: "Marcadores en tiempo real visibles en pista y en remoto. Espectadores y organizadores siempre saben el estado del partido.",
         },
         {
-          title: "Experiencia pro de partido",
-          desc: "Cada partido se siente premium con marcador en vivo, replays instantáneos y estadísticas postpartido para jugadores y espectadores.",
+          title: "Experiencia preparada para Vision",
+          desc: "Cada partido puede crecer desde el marcador en vivo hacia replay, generación de clips y revisión postpartido para jugadores y espectadores.",
         },
         {
           title: "Contenido postpartido",
-          desc: "Los jugadores reciben vídeos y estadísticas para compartir. Los organizadores consiguen contenido para redes sociales y promoción del evento.",
+          desc: "Los jugadores reciben momentos compartibles. Los organizadores consiguen contenido para redes, pantallas del club y promoción del evento.",
         },
         {
           title: "Preparado para varias pistas",
           desc: "Escala de una sola pista a eventos de todo el recinto. Cada pista funciona de forma independiente con rosa Vision.",
         },
       ],
-      highlightTitle: "Salida de vídeo estilo TV",
+      highlightTitle: "Replay y salida para pantallas",
       highlightBody:
-        "Cada partido genera un vídeo completo con marcador en vivo durante el juego y estadísticas al final de cada set, como una retransmisión profesional. Los jugadores pueden compartir y revivir sus partidos al instante.",
+        "rosa Vision está pensado para añadir replay listo para revisar, clips compartibles y momentos para pantallas del recinto sobre la capa de scoring en vivo de rosa sin sustituir las herramientas de gestión del torneo.",
     },
     clubRoi: {
       label: "ROI para clubes",
@@ -745,9 +809,11 @@ export const siteCopy = {
         {
           tier: "Fortgeschritten",
           name: "rosa Vision",
+          status: "Geplantes Oekosystem",
           description:
-            "KI-gestuetzte Analyse mit Video-Replay, Heatmaps und Schlagklassifizierung. Greife nach jedem Match online auf Video und Statistiken zu.",
-          features: ["Alles aus Core HD", "KI-Videoanalyse", "Instant Replay", "Heatmaps", "Schlagklassifizierung", "Spielerstatistiken", "Online-Matchzugang"],
+            "Die geplante kamera-integrierte Ebene fuer Replay, Match-Historie und Spieler-Insights im gesamten rosa System.",
+          features: ["Alles aus Core HD", "Kamera-integriertes Replay", "Match-Highlights", "Spieler-Historie", "Club-Screens", "Post-Match-Insights", "Vision-Roadmap-Ebene"],
+          note: "Entwickelt, um rosa von Live-Scoring zu Replay, Review und Retention zu erweitern.",
         },
       ],
     },
@@ -780,13 +846,14 @@ export const siteCopy = {
       title: "Jedes Match erzaehlt eine Geschichte.",
       accent: "rosa",
       titleSuffix: " haelt sie fest.",
+      status: "Vision-Roadmap",
       body:
-        "Von lockeren Ballwechseln bis zu kompetitiven Turnieren: Spiele deine besten Punkte erneut ab, erkenne Muster und teile Highlights mit deinem Team.",
+        "Spieler gehen von Live-Tracking zu Replay, Review und teilbaren Momenten ueber. rosa Vision ist darauf ausgelegt, jedes Match zu etwas zu machen, das man spaeter erneut ansehen, verstehen und weitergeben kann.",
       features: [
-        { label: "Instant Replay", desc: "Erlebe jeden Punkt in HD erneut" },
-        { label: "Schlaganalyse", desc: "Smashes, Bandejas und Viboras pro Spieler" },
-        { label: "Match-Zusammenfassung", desc: "Vollstaendige Satzstatistiken mit Vergleichen" },
-        { label: "Video-Ausgabe", desc: "Automatisch erzeugte Match-Highlights" },
+        { label: "Instant Replay", desc: "Gehe zu den Punkten zurueck, die das Match entschieden haben" },
+        { label: "Match-Verlauf", desc: "Pruefe Score-Kontext, Momentum und Schluesselmomente" },
+        { label: "Spieler-Insights", desc: "Verfolge Muster, Tendenzen und Post-Match-Zusammenfassungen" },
+        { label: "Teilbare Clips", desc: "Speichere starke Punkte und teile Match-Recaps" },
       ],
       mockup: {
         liveMatch: "Live-Match",
@@ -801,32 +868,61 @@ export const siteCopy = {
         highlights: "Match-Highlights",
       },
     },
+    visionEcosystem: {
+      label: "rosa Vision",
+      title: "Vom Court ins Clubhaus.",
+      body:
+        "rosa Vision ist die geplante kamera-integrierte Ebene, die Live-Spiel, Replay, Spieler-Historie und Club-Screens in einem System verbindet.",
+      status: "Geplantes Oekosystem",
+      playerTitle: "Fuer Spieler",
+      playerBody:
+        "Verwandle ein Match in einen wiederholbaren Loop, der Spieler auch nach dem Verlassen des Courts bindet.",
+      playerItems: [
+        { title: "Match aufzeichnen", desc: "Erfasse die komplette Session auf Basis von rosa Scoring und HD-Ausgabe." },
+        { title: "Schluesselmomente reviewen", desc: "Springe zu Rallyes, Punkten und Mustern zurueck, die wichtig waren." },
+        { title: "Historie aufbauen", desc: "Erstelle ein persoenliches Archiv aus Videos, Clips und Post-Match-Recaps." },
+        { title: "Highlights teilen", desc: "Sende Clips und Zusammenfassungen, die das Match ueber den Court hinaus weitertragen." },
+      ],
+      clubTitle: "Fuer Clubs",
+      clubBody:
+        "Nutze dieselbe Match-Ebene fuer ein hochwertiges Venue-Erlebnis und einen staerkeren Retention-Loop.",
+      clubItems: [
+        { title: "Club-Screens", desc: "Nutze Live-Matches und Replays als Content fuer die gesamte Anlage." },
+        { title: "Mitgliederbindung", desc: "Gib Spielern mehr Gruende, zurueckzukommen, zu vergleichen und erneut zu buchen." },
+        { title: "Content-Inventar", desc: "Erzeuge Clips und Recaps fuer Promotion, Sponsoren und Events." },
+        { title: "System-Kontinuitaet", desc: "Erweitere den rosa Stack, ohne den Live-Scoring-Workflow zu ersetzen." },
+      ],
+      footerTitle: "Als Erweiterung des rosa Stacks gebaut",
+      footerBody:
+        "Vision ist darauf ausgelegt, auf rosa Scoring und HD-Ausgabe aufzubauen, damit Clubs von Live-Betrieb zu Replay, Content und Insights wachsen koennen, ohne ihr restliches Setup auszutauschen.",
+    },
     tournaments: {
       label: "Turniere & Events",
       title: "Veranstalte Events wie die Profis",
+      futureLabel: "Vision-Erweiterung",
       body:
-        "Von lokalen Padel-Turnieren bis zu Premium-Events uebernimmt rosa das Matcherlebnis, damit sich Veranstalter auf das Event konzentrieren koennen.",
+        "Von lokalen Padel-Turnieren bis zu Premium-Events uebernimmt rosa heute das Live-Matcherlebnis, waehrend rosa Vision das System um Replay, Highlights und Screen-Content erweitert.",
       benefits: [
         {
           title: "Live-Sichtbarkeit auf dem Court",
           desc: "Echtzeit-Scores auf dem Court und remote sichtbar. Zuschauer und Veranstalter kennen jederzeit den Match-Status.",
         },
         {
-          title: "Professionelles Matcherlebnis",
-          desc: "Jedes Match wirkt hochwertig mit Live-Scoring, Instant Replays und Nach-Match-Statistiken fuer Spieler und Zuschauer.",
+          title: "Vision-bereites Matcherlebnis",
+          desc: "Jedes Match kann von Live-Scoring zu Replay, Clip-Erstellung und Post-Match-Review fuer Spieler und Zuschauer wachsen.",
         },
         {
           title: "Content nach dem Match",
-          desc: "Spieler erhalten teilbare Match-Videos und Statistiken. Veranstalter erhalten Content fuer Social Media und Event-Promotion.",
+          desc: "Spieler erhalten teilbare Match-Momente. Veranstalter erhalten Content fuer Social Media, Club-Screens und Event-Promotion.",
         },
         {
           title: "Bereit fuer mehrere Courts",
           desc: "Skaliere von einem einzelnen Court bis zu Events ueber den gesamten Standort. Jeder Court laeuft mit rosa Vision eigenstaendig.",
         },
       ],
-      highlightTitle: "TV-aehnliche Video-Ausgabe",
+      highlightTitle: "Replay- und Screen-Ausgabe",
       highlightBody:
-        "Jedes Match erzeugt ein vollstaendiges Video mit Live-Score-Overlay waehrend des Spiels und kompletten Statistiken am Ende jedes Satzes, ganz wie bei einer professionellen Uebertragung. Spieler koennen ihre Matches sofort teilen und erneut ansehen.",
+        "rosa Vision soll replay-faehige Ausgaben, teilbare Clips und Venue-Screen-Momente ueber die rosa Live-Scoring-Ebene legen, ohne Turnier-Management-Tools zu ersetzen.",
     },
     clubRoi: {
       label: "Club-ROI",

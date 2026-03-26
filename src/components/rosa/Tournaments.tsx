@@ -53,6 +53,11 @@ export default function Tournaments() {
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6, delay: 0.5 }}
         >
+          <div className="flex justify-center">
+            <span className="px-3 py-1 rounded-full bg-primary/10 border border-primary/20 text-primary text-[11px] font-mono uppercase tracking-[0.22em]">
+              {copy.tournaments.futureLabel}
+            </span>
+          </div>
           <div className="w-16 h-16 rounded-2xl bg-secondary flex items-center justify-center mx-auto">
             <Monitor className="w-8 h-8 text-primary" />
           </div>

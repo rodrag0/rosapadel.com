@@ -54,7 +54,19 @@ export default function ProductLadder() {
                   </div>
                 </div>
 
+                {"status" in product && product.status && (
+                  <div className="inline-flex w-fit px-3 py-1 rounded-full bg-primary/10 border border-primary/20 text-primary text-[11px] font-mono uppercase tracking-[0.22em]">
+                    {product.status}
+                  </div>
+                )}
+
                 <p className="text-muted-foreground leading-relaxed">{product.description}</p>
+
+                {"note" in product && product.note && (
+                  <div className="rounded-xl border border-primary/15 bg-secondary/40 px-4 py-3 text-sm leading-relaxed text-muted-foreground">
+                    {product.note}
+                  </div>
+                )}
 
                 <ul className="space-y-2.5">
                   {product.features.map((feature) => (
