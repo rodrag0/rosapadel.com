@@ -113,6 +113,8 @@ export const siteCopy = {
       accent: "rosa",
       titleSuffix: " captures it.",
       status: "Vision roadmap",
+      demoCtaLabel: "Open Vision Coach Demo",
+      demoCtaHint: "Explore the mockup for shot ratings and shot-type filters.",
       body:
         "Players move from live match tracking into replay, review, and shareable moments. rosa Vision is designed to turn every match into something you can revisit, learn from, and talk about after leaving the court.",
       features: [
@@ -480,6 +482,8 @@ export const siteCopy = {
       accent: "rosa",
       titleSuffix: " la captura.",
       status: "Roadmap Vision",
+      demoCtaLabel: "Abrir demo de Vision Coach",
+      demoCtaHint: "Explora el mockup de ratings de golpes y filtros por tipo de golpe.",
       body:
         "Los jugadores pasan del seguimiento en vivo al replay, la revisión y los momentos compartibles. rosa Vision está pensado para convertir cada partido en algo que puedas revisar, entender y comentar después de salir de la pista.",
       features: [
@@ -847,6 +851,8 @@ export const siteCopy = {
       accent: "rosa",
       titleSuffix: " haelt sie fest.",
       status: "Vision-Roadmap",
+      demoCtaLabel: "Vision-Coach-Demo oeffnen",
+      demoCtaHint: "Entdecke das Mockup fuer Schlagratings und Filter nach Schlagtyp.",
       body:
         "Spieler gehen von Live-Tracking zu Replay, Review und teilbaren Momenten ueber. rosa Vision ist darauf ausgelegt, jedes Match zu etwas zu machen, das man spaeter erneut ansehen, verstehen und weitergeben kann.",
       features: [
