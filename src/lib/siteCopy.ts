@@ -78,7 +78,7 @@ export const siteCopy = {
           status: "Planned ecosystem",
           description:
             "The planned camera-integrated layer for replay, match history, and player insights across the full rosa system.",
-          features: ["Everything in Core HD", "Camera-Integrated Replay", "Match Highlights", "Player History", "Club Screens", "Post-Match Insights", "Vision Roadmap Layer"],
+          features: ["Everything in Core HD", "Camera-Integrated Replay", "Match Highlights + Shot Classification", "Player History", "Club Screens", "Post-Match Insights", "Vision Roadmap Layer"],
           note: "Built to extend rosa from live scoring into replay, review, and retention.",
         },
       ],
@@ -103,7 +103,7 @@ export const siteCopy = {
           num: "03",
           title: "Review & Improve",
           description:
-            "Access instant replay, heatmaps, shot analytics, and match summaries. Share highlights directly.",
+            "Access instant replay, heatmaps, shot analytics, and match summaries. Share highlights with shot classification directly.",
         },
       ],
     },
@@ -131,7 +131,7 @@ export const siteCopy = {
         lastRally: "Last",
         longestRally: "Longest",
         lastTenPoints: "Last 10 Points",
-        highlights: "Match Highlights",
+        highlights: "Match Highlights + Shot Classification",
       },
     },
     visionEcosystem: {
@@ -445,7 +445,7 @@ export const siteCopy = {
           status: "Ecosistema planificado",
           description:
             "La capa planificada que integra cámaras para replay, historial de partidos e insights de jugador dentro del sistema completo de rosa.",
-          features: ["Todo lo de Core HD", "Replay con cámaras integradas", "Highlights del partido", "Historial del jugador", "Pantallas del club", "Insights postpartido", "Capa roadmap Vision"],
+          features: ["Todo lo de Core HD", "Replay con cámaras integradas", "Highlights del partido + clasificacion de golpes", "Historial del jugador", "Pantallas del club", "Insights postpartido", "Capa roadmap Vision"],
           note: "Pensado para ampliar rosa desde el marcador en vivo hacia replay, revisión y retención.",
         },
       ],
@@ -470,7 +470,7 @@ export const siteCopy = {
           num: "03",
           title: "Revisa y mejora",
           description:
-            "Accede a replay instantáneo, mapas de calor, analítica de golpes y resúmenes de partido. Comparte highlights al instante.",
+            "Accede a replay instantáneo, mapas de calor, analítica de golpes y resúmenes de partido. Comparte highlights con clasificacion de golpes al instante.",
         },
       ],
     },
@@ -498,7 +498,7 @@ export const siteCopy = {
         lastRally: "Último",
         longestRally: "Más largo",
         lastTenPoints: "Últimos 10 puntos",
-        highlights: "Highlights del partido",
+        highlights: "Highlights del partido + clasificacion de golpes",
       },
     },
     visionEcosystem: {
@@ -812,7 +812,7 @@ export const siteCopy = {
           status: "Geplantes Oekosystem",
           description:
             "Die geplante kamera-integrierte Ebene fuer Replay, Match-Historie und Spieler-Insights im gesamten rosa System.",
-          features: ["Alles aus Core HD", "Kamera-integriertes Replay", "Match-Highlights", "Spieler-Historie", "Club-Screens", "Post-Match-Insights", "Vision-Roadmap-Ebene"],
+          features: ["Alles aus Core HD", "Kamera-integriertes Replay", "Match-Highlights + Schlagklassifizierung", "Spieler-Historie", "Club-Screens", "Post-Match-Insights", "Vision-Roadmap-Ebene"],
           note: "Entwickelt, um rosa von Live-Scoring zu Replay, Review und Retention zu erweitern.",
         },
       ],
@@ -837,7 +837,7 @@ export const siteCopy = {
           num: "03",
           title: "Auswerten und verbessern",
           description:
-            "Greife auf Instant Replay, Heatmaps, Schlaganalysen und Match-Zusammenfassungen zu. Teile Highlights direkt.",
+            "Greife auf Instant Replay, Heatmaps, Schlaganalysen und Match-Zusammenfassungen zu. Teile Highlights mit Schlagklassifizierung direkt.",
         },
       ],
     },
@@ -865,7 +865,7 @@ export const siteCopy = {
         lastRally: "Letzte",
         longestRally: "Laengste",
         lastTenPoints: "Letzte 10 Punkte",
-        highlights: "Match-Highlights",
+        highlights: "Match-Highlights + Schlagklassifizierung",
       },
     },
     visionEcosystem: {
@@ -1109,3 +1109,4 @@ export const siteCopy = {
     },
   },
 } as const;
+
