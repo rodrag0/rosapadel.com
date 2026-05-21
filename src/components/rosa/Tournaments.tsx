@@ -1,13 +1,13 @@
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
-import { Trophy, Users, Monitor, Zap } from "lucide-react";
+import { LayoutGrid, CalendarDays, Clock, Bell, Monitor } from "lucide-react";
 import { useLanguage } from "./LanguageProvider";
 
 export default function Tournaments() {
   const ref = useRef(null);
   const inView = useInView(ref, { once: true, margin: "-100px" });
   const { copy } = useLanguage();
-  const icons = [Monitor, Trophy, Users, Zap];
+  const icons = [LayoutGrid, CalendarDays, Clock, Bell];
 
   return (
     <section ref={ref} className="py-24 md:py-32" id="tournaments">

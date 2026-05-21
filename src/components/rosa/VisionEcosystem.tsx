@@ -96,7 +96,7 @@ export default function VisionEcosystem() {
           initial={{ opacity: 0, y: 20 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6, delay: 0.3 }}
-          className="mt-8 rounded-[2rem] border border-primary/15 bg-gradient-to-r from-primary/10 via-card to-card p-8 md:p-10"
+          className="mt-8 rounded-[2rem] border border-primary/15 bg-card p-8 md:p-10"
         >
           <div className="max-w-4xl space-y-3">
             <p className="text-sm font-mono uppercase tracking-widest text-primary">{section.footerTitle}</p>
