@@ -114,6 +114,9 @@ export default function ROICalculator() {
                   <p className="font-mono text-4xl md:text-5xl font-bold text-primary tabular-nums leading-none">
                     €{monthlyLow.toLocaleString()} – €{monthlyHigh.toLocaleString()}
                   </p>
+                  <p className="text-xs font-semibold uppercase tracking-[0.18em] text-foreground/70">
+                    {section.numberContext}
+                  </p>
                   <p className="text-sm text-muted-foreground font-mono tabular-nums">
                     {section.annualPrefix} €{annualLow.toLocaleString()} – €{annualHigh.toLocaleString()}{" "}
                     {section.annualSuffix}

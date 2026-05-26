@@ -374,6 +374,7 @@ export const siteCopy = {
       label: "The Rosa Ecosystem",
       title: "One system. Every court.",
       subtitle: "Four interconnected products that take any padel court from basic scoring to full AI-powered match intelligence.",
+      carouselHint: "Swipe products",
       viewProduct: "View product",
       items: [
         {
@@ -394,7 +395,7 @@ export const siteCopy = {
           status: "Available now",
           statusType: "available",
           href: "/products/core-hd",
-          features: ["HD Monitor", "QR / Web Setup", "Referee Mode", "Cloud Sync"],
+          features: ["HD Monitor", "QR / Web Setup", "Referee Mode", "Tournament Management", "Cloud Sync"],
         },
         {
           num: "03",
@@ -447,15 +448,16 @@ export const siteCopy = {
     },
     roiCalculator: {
       label: "Club ROI",
-      title: "Estimated Impact",
-      subtitle: "See your potential returns",
+      title: "Estimated Club Upside",
+      subtitle: "Estimate the extra revenue Rosa can help your club create.",
       courtLabel: "Number of courts",
       bookingsLabel: "Average bookings per court / month",
       priceLabel: "Average booking price (€)",
-      monthlyLabel: "Estimated monthly revenue increase",
+      monthlyLabel: "Potential added club revenue per month",
+      numberContext: "This is estimated upside for your club, not Rosa pricing.",
       annualPrefix: "≈",
-      annualSuffix: "per year",
-      streamsTitle: "Unlock new revenue streams",
+      annualSuffix: "additional club revenue per year",
+      streamsTitle: "Where the upside comes from",
       streams: [
         "Sponsorship displays on court screens",
         "Analytics subscription revenue",
@@ -838,6 +840,7 @@ export const siteCopy = {
       label: "El ecosistema Rosa",
       title: "Un sistema. Cada pista.",
       subtitle: "Cuatro productos interconectados que llevan cualquier pista de pádel del marcador básico a la inteligencia de partido completa con IA.",
+      carouselHint: "Desliza productos",
       viewProduct: "Ver producto",
       items: [
         {
@@ -858,7 +861,7 @@ export const siteCopy = {
           status: "Disponible ahora",
           statusType: "available",
           href: "/products/core-hd",
-          features: ["Monitor HD", "Configuración QR/Web", "Modo árbitro", "Sincronización cloud"],
+          features: ["Monitor HD", "Configuración QR/Web", "Modo árbitro", "Gestión de torneos", "Sincronización cloud"],
         },
         {
           num: "03",
@@ -911,15 +914,16 @@ export const siteCopy = {
     },
     roiCalculator: {
       label: "ROI para clubes",
-      title: "Impacto estimado",
-      subtitle: "Ve tus retornos potenciales",
+      title: "Ingresos extra estimados",
+      subtitle: "Estima los ingresos adicionales que Rosa puede ayudar a crear para tu club.",
       courtLabel: "Número de pistas",
       bookingsLabel: "Reservas promedio por pista / mes",
       priceLabel: "Precio promedio de reserva (€)",
-      monthlyLabel: "Incremento estimado de ingresos mensuales",
+      monthlyLabel: "Ingresos adicionales potenciales para el club / mes",
+      numberContext: "Esto es upside estimado para tu club, no el precio de Rosa.",
       annualPrefix: "≈",
-      annualSuffix: "por año",
-      streamsTitle: "Desbloquea nuevas fuentes de ingresos",
+      annualSuffix: "de ingresos adicionales para el club / año",
+      streamsTitle: "De dónde viene el upside",
       streams: [
         "Pantallas de patrocinio en pistas",
         "Ingresos por suscripción de analítica",
@@ -1302,6 +1306,7 @@ export const siteCopy = {
       label: "Das Rosa-Ökosystem",
       title: "Ein System. Jeder Court.",
       subtitle: "Vier verknüpfte Produkte, die jeden Padel-Court von einfachem Scoring zur vollständigen KI-gestützten Match-Intelligenz bringen.",
+      carouselHint: "Produkte wischen",
       viewProduct: "Produkt ansehen",
       items: [
         {
@@ -1322,7 +1327,7 @@ export const siteCopy = {
           status: "Verfügbar",
           statusType: "available",
           href: "/products/core-hd",
-          features: ["HD-Monitor", "QR / Web-Setup", "Schiedsrichtermodus", "Cloud-Sync"],
+          features: ["HD-Monitor", "QR / Web-Setup", "Schiedsrichtermodus", "Turniermanagement", "Cloud-Sync"],
         },
         {
           num: "03",
@@ -1375,15 +1380,16 @@ export const siteCopy = {
     },
     roiCalculator: {
       label: "Club-ROI",
-      title: "Geschätzter Impact",
-      subtitle: "Sieh deine potenziellen Erträge",
+      title: "Geschätzter Club-Upside",
+      subtitle: "Schätze den zusätzlichen Umsatz, den Rosa fuer deinen Club schaffen kann.",
       courtLabel: "Anzahl Courts",
       bookingsLabel: "Durchschnittliche Buchungen pro Court / Monat",
       priceLabel: "Durchschnittlicher Buchungspreis (€)",
-      monthlyLabel: "Geschätzter monatlicher Mehrumsatz",
+      monthlyLabel: "Potenzieller zusätzlicher Club-Umsatz pro Monat",
+      numberContext: "Das ist geschätzter Upside fuer deinen Club, nicht der Rosa-Preis.",
       annualPrefix: "≈",
-      annualSuffix: "pro Jahr",
-      streamsTitle: "Neue Umsatzquellen erschließen",
+      annualSuffix: "zusätzlicher Club-Umsatz pro Jahr",
+      streamsTitle: "Woher der Upside kommt",
       streams: [
         "Sponsoring-Displays auf Court-Screens",
         "Analyse-Abonnements",

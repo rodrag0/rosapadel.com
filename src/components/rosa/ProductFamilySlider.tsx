@@ -1,5 +1,5 @@
 import { motion, useInView } from "framer-motion";
-import { useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { useLanguage } from "@/components/rosa/LanguageProvider";
 
@@ -34,6 +34,7 @@ function StatusBadge({ statusType, label }: { statusType: string; label: string 
 export default function ProductFamilySlider() {
   const ref = useRef(null);
   const scrollRef = useRef<HTMLDivElement>(null);
+  const [activeIndex, setActiveIndex] = useState(0);
   const inView = useInView(ref, { once: true, margin: "-100px" });
   const { copy } = useLanguage();
   const section = copy.productFamily;
@@ -44,6 +45,30 @@ export default function ProductFamilySlider() {
     const cardWidth = 356;
     container.scrollBy({ left: direction === "left" ? -cardWidth : cardWidth, behavior: "smooth" });
   }
+
+  useEffect(() => {
+    const container = scrollRef.current;
+    if (!container) return;
+
+    function updateActiveIndex() {
+      const firstCard = container.querySelector<HTMLElement>("[data-product-card]");
+      if (!firstCard) return;
+
+      const gap = 20;
+      const cardWidth = firstCard.offsetWidth + gap;
+      const nextIndex = Math.round(container.scrollLeft / cardWidth);
+      setActiveIndex(Math.min(Math.max(nextIndex, 0), section.items.length - 1));
+    }
+
+    updateActiveIndex();
+    container.addEventListener("scroll", updateActiveIndex, { passive: true });
+    window.addEventListener("resize", updateActiveIndex);
+
+    return () => {
+      container.removeEventListener("scroll", updateActiveIndex);
+      window.removeEventListener("resize", updateActiveIndex);
+    };
+  }, [section.items.length]);
 
   return (
     <section ref={ref} className="py-24 md:py-32" id="product-family">
@@ -58,6 +83,11 @@ export default function ProductFamilySlider() {
           <span className="text-sm font-mono uppercase tracking-widest text-primary">{section.label}</span>
           <h2 className="text-4xl md:text-5xl font-bold">{section.title}</h2>
           <p className="text-muted-foreground text-lg max-w-2xl">{section.subtitle}</p>
+          <div className="md:hidden inline-flex items-center gap-2 rounded-full border border-primary/30 bg-primary/10 px-3 py-1.5 text-xs font-mono uppercase tracking-[0.18em] text-primary">
+            <ChevronLeft className="h-3.5 w-3.5" />
+            {section.carouselHint}
+            <ChevronRight className="h-3.5 w-3.5" />
+          </div>
         </motion.div>
 
         {/* Slider wrapper */}
@@ -81,16 +111,17 @@ export default function ProductFamilySlider() {
           {/* Scrollable track */}
           <div
             ref={scrollRef}
-            className="flex gap-5 overflow-x-auto scroll-smooth pb-4 cursor-grab active:cursor-grabbing"
+            className="flex snap-x snap-mandatory gap-5 overflow-x-auto scroll-smooth pb-4 pr-10 cursor-grab active:cursor-grabbing md:pr-0"
             style={{ scrollbarWidth: "none" }}
           >
             {section.items.map((item, i) => (
               <motion.div
                 key={item.num}
+                data-product-card
                 initial={{ opacity: 0, y: 30 }}
                 animate={inView ? { opacity: 1, y: 0 } : {}}
                 transition={{ duration: 0.55, delay: i * 0.1 }}
-                className="flex-none w-[320px] md:w-[340px] rounded-2xl border border-border bg-card p-7 space-y-5 hover:border-primary/40 hover:bg-secondary/60 transition-colors duration-200"
+                className="flex-none w-[82vw] max-w-[320px] snap-start rounded-2xl border border-border bg-card p-7 space-y-5 hover:border-primary/40 hover:bg-secondary/60 transition-colors duration-200 md:w-[340px] md:max-w-none"
               >
                 {/* Number + tier */}
                 <div className="flex items-start justify-between">
@@ -130,6 +161,35 @@ export default function ProductFamilySlider() {
                 </a>
               </motion.div>
             ))}
+          </div>
+
+          <div className="mt-3 flex items-center justify-between md:hidden">
+            <button
+              onClick={() => scroll("left")}
+              aria-label="Previous product"
+              className="flex h-10 w-10 items-center justify-center rounded-full border border-border bg-card text-muted-foreground transition-colors hover:border-primary/40 hover:text-foreground"
+            >
+              <ChevronLeft className="h-5 w-5" />
+            </button>
+
+            <div className="flex items-center gap-2" aria-label="Product carousel position">
+              {section.items.map((item, index) => (
+                <span
+                  key={item.num}
+                  className={`h-1.5 rounded-full transition-all ${
+                    activeIndex === index ? "w-7 bg-primary" : "w-1.5 bg-muted-foreground/35"
+                  }`}
+                />
+              ))}
+            </div>
+
+            <button
+              onClick={() => scroll("right")}
+              aria-label="Next product"
+              className="flex h-10 w-10 items-center justify-center rounded-full border border-border bg-card text-muted-foreground transition-colors hover:border-primary/40 hover:text-foreground"
+            >
+              <ChevronRight className="h-5 w-5" />
+            </button>
           </div>
         </div>
       </div>
