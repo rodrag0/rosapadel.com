@@ -4,6 +4,7 @@ import { useTheme } from "./ThemeProvider";
 import { useLanguage } from "./LanguageProvider";
 import campusFoundersDark from "@/assets/campusfounders-logo-dark.svg";
 import campusFoundersLight from "@/assets/campusfounders-logo-light.svg";
+import BrandText from "./BrandText";
 
 export default function Partners() {
   const ref = useRef(null);
@@ -24,7 +25,7 @@ export default function Partners() {
         >
           <div className="space-y-3">
             <span className="text-sm font-mono uppercase tracking-widest text-primary">{copy.partners.label}</span>
-            <p className="text-muted-foreground text-lg">{copy.partners.body}</p>
+            <p className="text-muted-foreground text-lg"><BrandText text={copy.partners.body} /></p>
           </div>
 
           <motion.div

@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/button";
 import Navbar from "./Navbar";
 import Footer from "./Footer";
 import { useLanguage } from "./LanguageProvider";
+import BrandText from "./BrandText";
 
 type LegalPageLayoutProps = {
   title: string;
@@ -50,7 +51,7 @@ export function LegalDataTable({
             <tr key={`${row[0]}-${rowIndex}`} className="align-top">
               {row.map((cell, cellIndex) => (
                 <td key={`${cell}-${cellIndex}`} className="border-b border-border/70 px-4 py-3 last:border-b-0">
-                  {cell}
+                  <BrandText text={cell} />
                 </td>
               ))}
             </tr>
@@ -87,8 +88,8 @@ export default function LegalPageLayout({
                 <a href="/">{copy.legal.backHome}</a>
               </Button>
             </div>
-            <h1 className="text-4xl md:text-6xl font-bold tracking-tight">{title}</h1>
-            <p className="max-w-3xl text-lg text-muted-foreground">{description}</p>
+            <h1 className="text-4xl md:text-6xl font-bold tracking-tight"><BrandText text={title} /></h1>
+            <p className="max-w-3xl text-lg text-muted-foreground"><BrandText text={description} /></p>
             <p className="max-w-3xl text-sm text-muted-foreground">
               {copy.legal.lastUpdatedPrefix}: 2026-03-19. {copy.legal.introNote}
             </p>

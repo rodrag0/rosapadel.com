@@ -1,5 +1,6 @@
 import LegalPageLayout, { LegalDataTable, LegalSection } from "@/components/rosa/LegalPageLayout";
 import { useLanguage } from "@/components/rosa/LanguageProvider";
+import BrandText from "@/components/rosa/BrandText";
 
 export default function ImprintPage() {
   const { copy, language } = useLanguage();
@@ -18,15 +19,15 @@ export default function ImprintPage() {
       </LegalSection>
 
       <LegalSection title={imprint.sections.registerTitle}>
-        <p>{imprint.sections.registerBody}</p>
+        <p><BrandText text={imprint.sections.registerBody} /></p>
       </LegalSection>
 
       <LegalSection title={imprint.sections.contentTitle}>
-        <p>{imprint.sections.contentBody}</p>
+        <p><BrandText text={imprint.sections.contentBody} /></p>
       </LegalSection>
 
       <LegalSection title={imprint.sections.disputeTitle}>
-        <p>{imprint.sections.disputeBody}</p>
+        <p><BrandText text={imprint.sections.disputeBody} /></p>
       </LegalSection>
     </LegalPageLayout>
   );

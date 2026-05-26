@@ -1,13 +1,14 @@
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
-import { Trophy, Users, Monitor, Zap } from "lucide-react";
+import { LayoutGrid, CalendarDays, Clock, Bell, Monitor } from "lucide-react";
 import { useLanguage } from "./LanguageProvider";
+import BrandText from "./BrandText";
 
 export default function Tournaments() {
   const ref = useRef(null);
   const inView = useInView(ref, { once: true, margin: "-100px" });
   const { copy } = useLanguage();
-  const icons = [Monitor, Trophy, Users, Zap];
+  const icons = [LayoutGrid, CalendarDays, Clock, Bell];
 
   return (
     <section ref={ref} className="py-24 md:py-32" id="tournaments">
@@ -20,7 +21,7 @@ export default function Tournaments() {
         >
           <span className="text-sm font-mono uppercase tracking-widest text-primary">{copy.tournaments.label}</span>
           <h2 className="text-4xl md:text-5xl font-bold">{copy.tournaments.title}</h2>
-          <p className="text-muted-foreground text-lg max-w-2xl mx-auto">{copy.tournaments.body}</p>
+          <p className="text-muted-foreground text-lg max-w-2xl mx-auto"><BrandText text={copy.tournaments.body} /></p>
         </motion.div>
 
         <div className="grid md:grid-cols-2 gap-6">
@@ -40,7 +41,7 @@ export default function Tournaments() {
                 </div>
                 <div className="space-y-1.5">
                   <h3 className="font-bold text-lg">{benefit.title}</h3>
-                  <p className="text-muted-foreground text-sm leading-relaxed">{benefit.desc}</p>
+                  <p className="text-muted-foreground text-sm leading-relaxed"><BrandText text={benefit.desc} /></p>
                 </div>
               </motion.div>
             );
@@ -53,12 +54,17 @@ export default function Tournaments() {
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6, delay: 0.5 }}
         >
+          <div className="flex justify-center">
+            <span className="px-3 py-1 rounded-full bg-primary/10 border border-primary/20 text-primary text-[11px] font-mono uppercase tracking-[0.22em]">
+              {copy.tournaments.futureLabel}
+            </span>
+          </div>
           <div className="w-16 h-16 rounded-2xl bg-secondary flex items-center justify-center mx-auto">
             <Monitor className="w-8 h-8 text-primary" />
           </div>
           <h3 className="text-2xl font-bold">{copy.tournaments.highlightTitle}</h3>
           <p className="text-muted-foreground max-w-xl mx-auto leading-relaxed">
-            {copy.tournaments.highlightBody}
+            <BrandText text={copy.tournaments.highlightBody} />
           </p>
         </motion.div>
       </div>

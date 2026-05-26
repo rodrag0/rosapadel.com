@@ -25,6 +25,8 @@ export const siteCopy = {
       toggleTheme: "Toggle theme",
       openMenu: "Open menu",
       closeMenu: "Close menu",
+      forClubs: "For Clubs",
+      forInvestors: "For Investors",
     },
     hero: {
       headlines: [
@@ -63,7 +65,7 @@ export const siteCopy = {
           name: "Core LED",
           description:
             "Portable LED scoring for any court. Touchpad control, offline operation, and plug-and-play installation.",
-          features: ["LED Scoreboard", "Touchpad Control", "Offline Mode", "Plug & Play", "Tournament Ready"],
+          features: ["LED Scoreboard", "Touchpad Control", "Offline Mode", "Plug & Play"],
         },
         {
           tier: "Growth",
@@ -75,9 +77,11 @@ export const siteCopy = {
         {
           tier: "Advanced",
           name: "rosa Vision",
+          status: "Planned ecosystem",
           description:
-            "AI-powered analysis with video replay, heatmaps, and shot classification. Access your full match video and stats online after every game.",
-          features: ["Everything in Core HD", "AI Video Analysis", "Instant Replay", "Heatmaps", "Shot Classification", "Player Stats", "Online Match Access"],
+            "The planned camera-integrated layer for replay, match history, and player insights across the full rosa system.",
+          features: ["Everything in Core HD", "Camera-Integrated Replay", "Match Highlights", "Player History", "Club Screens", "Post-Match Insights", "Vision Roadmap Layer"],
+          note: "Built to extend rosa from live scoring into replay, review, and retention.",
         },
       ],
     },
@@ -110,13 +114,14 @@ export const siteCopy = {
       title: "Every match tells a story.",
       accent: "rosa",
       titleSuffix: " captures it.",
+      status: "Vision roadmap",
       body:
-        "From casual padel rallies to competitive tournaments, replay your best shots, understand your patterns, and share highlights with your team.",
+        "Players move from live match tracking into replay, review, and shareable moments. rosa Vision is designed to turn every match into something you can revisit, learn from, and talk about after leaving the court.",
       features: [
-        { label: "Instant Replay", desc: "Relive every point in HD" },
-        { label: "Shot Breakdown", desc: "Smashes, bandejas, viboras per player" },
-        { label: "Match Summary", desc: "Full stats per set with comparisons" },
-        { label: "Video Output", desc: "Auto-generated match highlights" },
+        { label: "Instant Replay", desc: "Go back to the points that changed the match" },
+        { label: "Match Flow", desc: "Review score context, momentum, and key swings" },
+        { label: "Player Insights", desc: "Track patterns, tendencies, and post-match summaries" },
+        { label: "Shareable Clips", desc: "Save standout points and send match recaps" },
       ],
       mockup: {
         liveMatch: "Live Match",
@@ -131,32 +136,61 @@ export const siteCopy = {
         highlights: "Match Highlights",
       },
     },
+    visionEcosystem: {
+      label: "rosa Vision",
+      title: "From Court to Clubhouse.",
+      body:
+        "rosa Vision is the planned camera-integrated layer that connects live play, replay, player history, and club-facing screens in one system.",
+      status: "Planned ecosystem",
+      playerTitle: "For players",
+      playerBody:
+        "Turn one match into a repeatable loop that keeps players engaged after they leave the court.",
+      playerItems: [
+        { title: "Capture the match", desc: "Record the full session on top of rosa scoring and HD output." },
+        { title: "Replay key moments", desc: "Jump back to the rallies, points, and patterns that mattered most." },
+        { title: "Build match history", desc: "Create a personal archive of videos, clips, and post-match summaries." },
+        { title: "Share the best points", desc: "Send clips and recaps that keep the match alive beyond the court." },
+      ],
+      clubTitle: "For clubs",
+      clubBody:
+        "Use the same match layer to create a premium venue experience and a stronger retention loop.",
+      clubItems: [
+        { title: "Club screens", desc: "Turn live matches and replays into content that keeps the venue active." },
+        { title: "Member retention", desc: "Give players better reasons to return, compare, and book again." },
+        { title: "Content inventory", desc: "Generate clips and recap assets for promotion, sponsors, and events." },
+        { title: "System continuity", desc: "Extend the rosa stack instead of replacing the live scoring workflow." },
+      ],
+      footerTitle: "Built as an extension of the rosa stack",
+      footerBody:
+        "Vision is designed to sit on top of rosa scoring and HD output, so clubs can grow from live operations into replay, content, and insights without changing the rest of their setup.",
+    },
     tournaments: {
       label: "Tournaments & Events",
-      title: "Run Events Like the Pros",
+      title: "Run Events Without the Chaos.",
+      futureLabel: "Vision expansion",
       body:
-        "From local padel tournaments to premium events, rosa handles the match experience so organizers can focus on the event.",
+        "rosa gives organizers a live view of every court — who's playing, what's waiting, and where each match goes next. No whiteboards, no bottlenecks.",
       benefits: [
         {
-          title: "Live Court Visibility",
-          desc: "Real-time scores visible on court and remotely. Spectators and organizers always know the match status.",
+          title: "Court Status Board",
+          desc: "See every court at a glance — In Use, On Hold, Available. Visible on the central club screen and on your device.",
         },
         {
-          title: "Pro Match Experience",
-          desc: "Every match feels premium with live scoring, instant replays, and post-match stats for players and spectators.",
+          title: "Smart Court Allocation",
+          desc: "Assign matches to courts from one screen. Organizers stay in control without running between courts.",
         },
         {
-          title: "Post-Match Content",
-          desc: "Players get shareable match videos and stats. Organizers get content for social media and event promotion.",
+          title: "ETA & Wait Times",
+          desc: "Players waiting for their court see a live estimated wait time based on match progress. No more crowding around the organizer.",
         },
         {
-          title: "Multi-Court Ready",
-          desc: "Scale from a single court to full-venue events. Each court runs independently with rosa Vision.",
+          title: "Live Draw on Club Screens",
+          desc: "The tournament bracket and court assignments display live across all rosa screens. Players always know where they stand.",
         },
       ],
-      highlightTitle: "TV-Style Video Output",
+      highlightTitle: "Replay and Screen Output",
       highlightBody:
-        "Every match generates a full video with live score overlay throughout the game and complete statistics at the end of each set, just like a professional broadcast. Players can share and relive their matches instantly.",
+        "rosa Vision adds replay-ready output, shareable clips, and venue-screen moments on top of the live tournament layer — without replacing your existing management tools.",
     },
     clubRoi: {
       label: "Club ROI",
@@ -336,6 +370,103 @@ export const siteCopy = {
         },
       },
     },
+    productFamily: {
+      label: "The rosa Ecosystem",
+      title: "One system. Every court.",
+      subtitle: "Four interconnected products that take any padel court from basic scoring to full AI-powered match intelligence.",
+      carouselHint: "Swipe products",
+      viewProduct: "View product",
+      items: [
+        {
+          num: "01",
+          tier: "Entry",
+          name: "Core LED",
+          tagline: "Plug in. Score on.",
+          status: "Production ready",
+          statusType: "available",
+          href: "/products/core-led",
+          features: ["LED Scoreboard", "Touchpad Control", "Offline Mode", "Plug & Play"],
+        },
+        {
+          num: "02",
+          tier: "Professional",
+          name: "Core HD",
+          tagline: "HD display. Pro control.",
+          status: "Production ready",
+          statusType: "available",
+          href: "/products/core-hd",
+          features: ["HD Monitor", "QR / Web Setup", "Referee Mode", "Tournament Management", "Cloud Sync"],
+        },
+        {
+          num: "03",
+          tier: "Advanced",
+          name: "rosa Vision",
+          tagline: "Replay. Analyze. Share.",
+          status: "Pilot-ready",
+          statusType: "pilot",
+          href: "/products/vision",
+          features: ["Camera Integration", "Instant Replay", "Court Heatmaps", "Player History"],
+        },
+        {
+          num: "04",
+          tier: "Intelligence",
+          name: "rosa Coach",
+          tagline: "Your AI padel coach.",
+          status: "In Development",
+          statusType: "coming",
+          href: "/products/coach",
+          features: ["AI Shot Analysis", "Tactical Breakdown", "Improvement Tracking", "Video Review"],
+        },
+      ],
+    },
+    audiencePortals: {
+      label: "Built for your game",
+      title: "Who is rosa for?",
+      items: [
+        {
+          id: "players",
+          title: "Players",
+          desc: "Track your stats, replay your best moments, and improve with every match.",
+          cta: "Explore Player Features",
+          href: "/#how-it-works",
+        },
+        {
+          id: "clubs",
+          title: "Clubs & Venues",
+          desc: "Retain more members, run smoother tournaments, and unlock new revenue streams.",
+          cta: "See Club ROI",
+          href: "/for-clubs",
+        },
+        {
+          id: "investors",
+          title: "Investors",
+          desc: "Hardware-led court intelligence at the intersection of padel's global boom.",
+          cta: "View Investor Overview",
+          href: "/investors",
+        },
+      ],
+    },
+    roiCalculator: {
+      label: "Club ROI",
+      title: "Estimated Club Upside",
+      subtitle: "Estimate the extra revenue rosa can help your club create.",
+      courtLabel: "Number of courts",
+      bookingsLabel: "Average bookings per court / month",
+      priceLabel: "Average booking price (€)",
+      monthlyLabel: "Potential added club revenue per month",
+      numberContext: "This is estimated upside for your club, not rosa pricing.",
+      annualPrefix: "≈",
+      annualSuffix: "additional club revenue per year",
+      streamsTitle: "Where the upside comes from",
+      streams: [
+        "Sponsorship displays on court screens",
+        "Analytics subscription revenue",
+        "Premium match recording packages",
+        "Tournament content and highlights",
+      ],
+      disclaimer: "Estimate reflects booking uplift only and excludes sponsorship, content, or other complementary income. Actual results vary by club.",
+      cta: "Get rosa now",
+    },
     notFound: {
       title: "404",
       body: "Oops! Page not found",
@@ -360,6 +491,8 @@ export const siteCopy = {
       toggleTheme: "Cambiar tema",
       openMenu: "Abrir menú",
       closeMenu: "Cerrar menú",
+      forClubs: "Para clubes",
+      forInvestors: "Para inversores",
     },
     hero: {
       headlines: [
@@ -398,7 +531,7 @@ export const siteCopy = {
           name: "Core LED",
           description:
             "Marcador LED portátil para cualquier pista. Control por touchpad, funcionamiento offline e instalación plug and play.",
-          features: ["Marcador LED", "Control por touchpad", "Modo offline", "Plug and play", "Listo para torneos"],
+          features: ["Marcador LED", "Control por touchpad", "Modo offline", "Plug and play"],
         },
         {
           tier: "Crecimiento",
@@ -410,9 +543,11 @@ export const siteCopy = {
         {
           tier: "Avanzado",
           name: "rosa Vision",
+          status: "Ecosistema planificado",
           description:
-            "Analítica con IA, replay en vídeo, mapas de calor y clasificación de golpes. Accede al vídeo completo y a las estadísticas online después de cada partido.",
-          features: ["Todo lo de Core HD", "Analítica de vídeo con IA", "Repetición instantánea", "Mapas de calor", "Clasificación de golpes", "Estadísticas por jugador", "Acceso online al partido"],
+            "La capa planificada que integra cámaras para replay, historial de partidos e insights de jugador dentro del sistema completo de rosa.",
+          features: ["Todo lo de Core HD", "Replay con cámaras integradas", "Highlights del partido", "Historial del jugador", "Pantallas del club", "Insights postpartido", "Capa roadmap Vision"],
+          note: "Pensado para ampliar rosa desde el marcador en vivo hacia replay, revisión y retención.",
         },
       ],
     },
@@ -445,13 +580,14 @@ export const siteCopy = {
       title: "Cada partido cuenta una historia.",
       accent: "rosa",
       titleSuffix: " la captura.",
+      status: "Roadmap Vision",
       body:
-        "Desde pachangas hasta torneos competitivos, revive tus mejores golpes, entiende tus patrones y comparte highlights con tu equipo.",
+        "Los jugadores pasan del seguimiento en vivo al replay, la revisión y los momentos compartibles. rosa Vision está pensado para convertir cada partido en algo que puedas revisar, entender y comentar después de salir de la pista.",
       features: [
-        { label: "Repetición instantánea", desc: "Revive cada punto en HD" },
-        { label: "Desglose de golpes", desc: "Remates, bandejas y víboras por jugador" },
-        { label: "Resumen del partido", desc: "Estadísticas completas por set con comparaciones" },
-        { label: "Salida de vídeo", desc: "Highlights generados automáticamente" },
+        { label: "Repetición instantánea", desc: "Vuelve a los puntos que cambiaron el partido" },
+        { label: "Flujo del partido", desc: "Revisa contexto de marcador, momentum y momentos clave" },
+        { label: "Insights del jugador", desc: "Sigue patrones, tendencias y resúmenes postpartido" },
+        { label: "Clips compartibles", desc: "Guarda puntos destacados y envía recapitulaciones" },
       ],
       mockup: {
         liveMatch: "Partido en vivo",
@@ -466,32 +602,61 @@ export const siteCopy = {
         highlights: "Highlights del partido",
       },
     },
+    visionEcosystem: {
+      label: "rosa Vision",
+      title: "De la pista al club.",
+      body:
+        "rosa Vision es la capa planificada que integra cámaras para conectar juego en vivo, replay, historial del jugador y pantallas del club en un solo sistema.",
+      status: "Ecosistema planificado",
+      playerTitle: "Para jugadores",
+      playerBody:
+        "Convierte un partido en un bucle repetible que mantiene a los jugadores conectados después de salir de la pista.",
+      playerItems: [
+        { title: "Captura el partido", desc: "Graba la sesión completa sobre el marcador y la salida HD de rosa." },
+        { title: "Revisa momentos clave", desc: "Vuelve a rallies, puntos y patrones que marcaron el partido." },
+        { title: "Crea historial", desc: "Genera un archivo personal de vídeos, clips y resúmenes postpartido." },
+        { title: "Comparte los mejores puntos", desc: "Envía clips y recapitulaciones que alargan la vida del partido." },
+      ],
+      clubTitle: "Para clubes",
+      clubBody:
+        "Usa la misma capa de partido para crear una experiencia premium de sede y un mejor bucle de retención.",
+      clubItems: [
+        { title: "Pantallas del club", desc: "Convierte partidos en vivo y replays en contenido para toda la instalación." },
+        { title: "Retención de socios", desc: "Da más razones para volver, comparar y reservar otra vez." },
+        { title: "Inventario de contenido", desc: "Genera clips y resúmenes para promoción, sponsors y eventos." },
+        { title: "Continuidad del sistema", desc: "Amplía el stack de rosa sin reemplazar el flujo de marcador en vivo." },
+      ],
+      footerTitle: "Construido como extensión del stack de rosa",
+      footerBody:
+        "Vision está pensado para apoyarse sobre el scoring y la salida HD de rosa, de modo que los clubes crezcan desde la operación en vivo hacia replay, contenido e insights sin cambiar el resto de su setup.",
+    },
     tournaments: {
       label: "Torneos y eventos",
       title: "Gestiona eventos como los profesionales",
+      futureLabel: "Expansión Vision",
       body:
-        "Desde torneos locales de pádel hasta eventos premium, rosa se ocupa de la experiencia del partido para que los organizadores se centren en el evento.",
+        "Desde torneos locales de pádel hasta eventos premium, rosa se ocupa hoy de la experiencia en vivo mientras rosa Vision amplía el sistema con replay, highlights y contenido preparado para pantallas.",
       benefits: [
         {
           title: "Visibilidad en pista",
           desc: "Marcadores en tiempo real visibles en pista y en remoto. Espectadores y organizadores siempre saben el estado del partido.",
         },
         {
-          title: "Experiencia pro de partido",
-          desc: "Cada partido se siente premium con marcador en vivo, replays instantáneos y estadísticas postpartido para jugadores y espectadores.",
+          title: "Experiencia preparada para Vision",
+          desc: "Cada partido puede crecer desde el marcador en vivo hacia replay, generación de clips y revisión postpartido para jugadores y espectadores.",
         },
         {
           title: "Contenido postpartido",
-          desc: "Los jugadores reciben vídeos y estadísticas para compartir. Los organizadores consiguen contenido para redes sociales y promoción del evento.",
+          desc: "Los jugadores reciben momentos compartibles. Los organizadores consiguen contenido para redes, pantallas del club y promoción del evento.",
         },
         {
           title: "Preparado para varias pistas",
           desc: "Escala de una sola pista a eventos de todo el recinto. Cada pista funciona de forma independiente con rosa Vision.",
         },
       ],
-      highlightTitle: "Salida de vídeo estilo TV",
+      highlightTitle: "Replay y salida para pantallas",
       highlightBody:
-        "Cada partido genera un vídeo completo con marcador en vivo durante el juego y estadísticas al final de cada set, como una retransmisión profesional. Los jugadores pueden compartir y revivir sus partidos al instante.",
+        "rosa Vision está pensado para añadir replay listo para revisar, clips compartibles y momentos para pantallas del recinto sobre la capa de scoring en vivo de rosa sin sustituir las herramientas de gestión del torneo.",
     },
     clubRoi: {
       label: "ROI para clubes",
@@ -671,6 +836,103 @@ export const siteCopy = {
         },
       },
     },
+    productFamily: {
+      label: "El ecosistema rosa",
+      title: "Un sistema. Cada pista.",
+      subtitle: "Cuatro productos interconectados que llevan cualquier pista de pádel del marcador básico a la inteligencia de partido completa con IA.",
+      carouselHint: "Desliza productos",
+      viewProduct: "Ver producto",
+      items: [
+        {
+          num: "01",
+          tier: "Entrada",
+          name: "Core LED",
+          tagline: "Conéctalo. Marca en vivo.",
+          status: "Listo para producir",
+          statusType: "available",
+          href: "/products/core-led",
+          features: ["Marcador LED", "Control touchpad", "Modo offline", "Plug & Play"],
+        },
+        {
+          num: "02",
+          tier: "Profesional",
+          name: "Core HD",
+          tagline: "Pantalla HD. Control pro.",
+          status: "Listo para producir",
+          statusType: "available",
+          href: "/products/core-hd",
+          features: ["Monitor HD", "Configuración QR/Web", "Modo árbitro", "Gestión de torneos", "Sincronización cloud"],
+        },
+        {
+          num: "03",
+          tier: "Avanzado",
+          name: "rosa Vision",
+          tagline: "Replay. Analiza. Comparte.",
+          status: "Piloto disponible",
+          statusType: "pilot",
+          href: "/products/vision",
+          features: ["Integración cámara", "Replay instantáneo", "Mapas de calor", "Historial jugador"],
+        },
+        {
+          num: "04",
+          tier: "Inteligencia",
+          name: "rosa Coach",
+          tagline: "Tu entrenador IA de pádel.",
+          status: "En desarrollo",
+          statusType: "coming",
+          href: "/products/coach",
+          features: ["Análisis IA de golpes", "Desglose táctico", "Seguimiento de mejora", "Revisión en vídeo"],
+        },
+      ],
+    },
+    audiencePortals: {
+      label: "Hecho para tu juego",
+      title: "¿Para quién es rosa?",
+      items: [
+        {
+          id: "players",
+          title: "Jugadores",
+          desc: "Sigue tus estadísticas, revive tus mejores momentos y mejora partido a partido.",
+          cta: "Ver funciones para jugadores",
+          href: "/#how-it-works",
+        },
+        {
+          id: "clubs",
+          title: "Clubes y recintos",
+          desc: "Retén más socios, gestiona torneos con fluidez y desbloquea nuevas fuentes de ingresos.",
+          cta: "Ver ROI para clubes",
+          href: "/for-clubs",
+        },
+        {
+          id: "investors",
+          title: "Inversores",
+          desc: "Inteligencia de pista basada en hardware en el corazón del boom global del pádel.",
+          cta: "Ver visión para inversores",
+          href: "/investors",
+        },
+      ],
+    },
+    roiCalculator: {
+      label: "ROI para clubes",
+      title: "Ingresos extra estimados",
+      subtitle: "Estima los ingresos adicionales que rosa puede ayudar a crear para tu club.",
+      courtLabel: "Número de pistas",
+      bookingsLabel: "Reservas promedio por pista / mes",
+      priceLabel: "Precio promedio de reserva (€)",
+      monthlyLabel: "Ingresos adicionales potenciales para el club / mes",
+      numberContext: "Esto es upside estimado para tu club, no el precio de rosa.",
+      annualPrefix: "≈",
+      annualSuffix: "de ingresos adicionales para el club / año",
+      streamsTitle: "De dónde viene el upside",
+      streams: [
+        "Pantallas de patrocinio en pistas",
+        "Ingresos por suscripción de analítica",
+        "Paquetes premium de grabación",
+        "Contenido y highlights de torneos",
+      ],
+      disclaimer: "La estimación refleja solo el incremento en reservas y no incluye patrocinios, contenido u otras fuentes complementarias. Los resultados reales varían según el club.",
+      cta: "Obtener rosa ahora",
+    },
     notFound: {
       title: "404",
       body: "Uy. No encontramos esta página",
@@ -695,6 +957,8 @@ export const siteCopy = {
       toggleTheme: "Theme wechseln",
       openMenu: "Menue oeffnen",
       closeMenu: "Menue schliessen",
+      forClubs: "Für Clubs",
+      forInvestors: "Für Investoren",
     },
     hero: {
       headlines: [
@@ -733,7 +997,7 @@ export const siteCopy = {
           name: "Core LED",
           description:
             "Tragbares LED-Scoring fuer jeden Court. Touchpad-Steuerung, Offline-Betrieb und Plug-and-Play-Installation.",
-          features: ["LED-Scoreboard", "Touchpad-Steuerung", "Offline-Modus", "Plug and Play", "Turnierbereit"],
+          features: ["LED-Scoreboard", "Touchpad-Steuerung", "Offline-Modus", "Plug and Play"],
         },
         {
           tier: "Wachstum",
@@ -745,9 +1009,11 @@ export const siteCopy = {
         {
           tier: "Fortgeschritten",
           name: "rosa Vision",
+          status: "Geplantes Oekosystem",
           description:
-            "KI-gestuetzte Analyse mit Video-Replay, Heatmaps und Schlagklassifizierung. Greife nach jedem Match online auf Video und Statistiken zu.",
-          features: ["Alles aus Core HD", "KI-Videoanalyse", "Instant Replay", "Heatmaps", "Schlagklassifizierung", "Spielerstatistiken", "Online-Matchzugang"],
+            "Die geplante kamera-integrierte Ebene fuer Replay, Match-Historie und Spieler-Insights im gesamten rosa System.",
+          features: ["Alles aus Core HD", "Kamera-integriertes Replay", "Match-Highlights", "Spieler-Historie", "Club-Screens", "Post-Match-Insights", "Vision-Roadmap-Ebene"],
+          note: "Entwickelt, um rosa von Live-Scoring zu Replay, Review und Retention zu erweitern.",
         },
       ],
     },
@@ -780,13 +1046,14 @@ export const siteCopy = {
       title: "Jedes Match erzaehlt eine Geschichte.",
       accent: "rosa",
       titleSuffix: " haelt sie fest.",
+      status: "Vision-Roadmap",
       body:
-        "Von lockeren Ballwechseln bis zu kompetitiven Turnieren: Spiele deine besten Punkte erneut ab, erkenne Muster und teile Highlights mit deinem Team.",
+        "Spieler gehen von Live-Tracking zu Replay, Review und teilbaren Momenten ueber. rosa Vision ist darauf ausgelegt, jedes Match zu etwas zu machen, das man spaeter erneut ansehen, verstehen und weitergeben kann.",
       features: [
-        { label: "Instant Replay", desc: "Erlebe jeden Punkt in HD erneut" },
-        { label: "Schlaganalyse", desc: "Smashes, Bandejas und Viboras pro Spieler" },
-        { label: "Match-Zusammenfassung", desc: "Vollstaendige Satzstatistiken mit Vergleichen" },
-        { label: "Video-Ausgabe", desc: "Automatisch erzeugte Match-Highlights" },
+        { label: "Instant Replay", desc: "Gehe zu den Punkten zurueck, die das Match entschieden haben" },
+        { label: "Match-Verlauf", desc: "Pruefe Score-Kontext, Momentum und Schluesselmomente" },
+        { label: "Spieler-Insights", desc: "Verfolge Muster, Tendenzen und Post-Match-Zusammenfassungen" },
+        { label: "Teilbare Clips", desc: "Speichere starke Punkte und teile Match-Recaps" },
       ],
       mockup: {
         liveMatch: "Live-Match",
@@ -801,32 +1068,61 @@ export const siteCopy = {
         highlights: "Match-Highlights",
       },
     },
+    visionEcosystem: {
+      label: "rosa Vision",
+      title: "Vom Court ins Clubhaus.",
+      body:
+        "rosa Vision ist die geplante kamera-integrierte Ebene, die Live-Spiel, Replay, Spieler-Historie und Club-Screens in einem System verbindet.",
+      status: "Geplantes Oekosystem",
+      playerTitle: "Fuer Spieler",
+      playerBody:
+        "Verwandle ein Match in einen wiederholbaren Loop, der Spieler auch nach dem Verlassen des Courts bindet.",
+      playerItems: [
+        { title: "Match aufzeichnen", desc: "Erfasse die komplette Session auf Basis von rosa Scoring und HD-Ausgabe." },
+        { title: "Schluesselmomente reviewen", desc: "Springe zu Rallyes, Punkten und Mustern zurueck, die wichtig waren." },
+        { title: "Historie aufbauen", desc: "Erstelle ein persoenliches Archiv aus Videos, Clips und Post-Match-Recaps." },
+        { title: "Highlights teilen", desc: "Sende Clips und Zusammenfassungen, die das Match ueber den Court hinaus weitertragen." },
+      ],
+      clubTitle: "Fuer Clubs",
+      clubBody:
+        "Nutze dieselbe Match-Ebene fuer ein hochwertiges Venue-Erlebnis und einen staerkeren Retention-Loop.",
+      clubItems: [
+        { title: "Club-Screens", desc: "Nutze Live-Matches und Replays als Content fuer die gesamte Anlage." },
+        { title: "Mitgliederbindung", desc: "Gib Spielern mehr Gruende, zurueckzukommen, zu vergleichen und erneut zu buchen." },
+        { title: "Content-Inventar", desc: "Erzeuge Clips und Recaps fuer Promotion, Sponsoren und Events." },
+        { title: "System-Kontinuitaet", desc: "Erweitere den rosa Stack, ohne den Live-Scoring-Workflow zu ersetzen." },
+      ],
+      footerTitle: "Als Erweiterung des rosa Stacks gebaut",
+      footerBody:
+        "Vision ist darauf ausgelegt, auf rosa Scoring und HD-Ausgabe aufzubauen, damit Clubs von Live-Betrieb zu Replay, Content und Insights wachsen koennen, ohne ihr restliches Setup auszutauschen.",
+    },
     tournaments: {
       label: "Turniere & Events",
       title: "Veranstalte Events wie die Profis",
+      futureLabel: "Vision-Erweiterung",
       body:
-        "Von lokalen Padel-Turnieren bis zu Premium-Events uebernimmt rosa das Matcherlebnis, damit sich Veranstalter auf das Event konzentrieren koennen.",
+        "Von lokalen Padel-Turnieren bis zu Premium-Events uebernimmt rosa heute das Live-Matcherlebnis, waehrend rosa Vision das System um Replay, Highlights und Screen-Content erweitert.",
       benefits: [
         {
           title: "Live-Sichtbarkeit auf dem Court",
           desc: "Echtzeit-Scores auf dem Court und remote sichtbar. Zuschauer und Veranstalter kennen jederzeit den Match-Status.",
         },
         {
-          title: "Professionelles Matcherlebnis",
-          desc: "Jedes Match wirkt hochwertig mit Live-Scoring, Instant Replays und Nach-Match-Statistiken fuer Spieler und Zuschauer.",
+          title: "Vision-bereites Matcherlebnis",
+          desc: "Jedes Match kann von Live-Scoring zu Replay, Clip-Erstellung und Post-Match-Review fuer Spieler und Zuschauer wachsen.",
         },
         {
           title: "Content nach dem Match",
-          desc: "Spieler erhalten teilbare Match-Videos und Statistiken. Veranstalter erhalten Content fuer Social Media und Event-Promotion.",
+          desc: "Spieler erhalten teilbare Match-Momente. Veranstalter erhalten Content fuer Social Media, Club-Screens und Event-Promotion.",
         },
         {
           title: "Bereit fuer mehrere Courts",
           desc: "Skaliere von einem einzelnen Court bis zu Events ueber den gesamten Standort. Jeder Court laeuft mit rosa Vision eigenstaendig.",
         },
       ],
-      highlightTitle: "TV-aehnliche Video-Ausgabe",
+      highlightTitle: "Replay- und Screen-Ausgabe",
       highlightBody:
-        "Jedes Match erzeugt ein vollstaendiges Video mit Live-Score-Overlay waehrend des Spiels und kompletten Statistiken am Ende jedes Satzes, ganz wie bei einer professionellen Uebertragung. Spieler koennen ihre Matches sofort teilen und erneut ansehen.",
+        "rosa Vision soll replay-faehige Ausgaben, teilbare Clips und Venue-Screen-Momente ueber die rosa Live-Scoring-Ebene legen, ohne Turnier-Management-Tools zu ersetzen.",
     },
     clubRoi: {
       label: "Club-ROI",
@@ -1005,6 +1301,103 @@ export const siteCopy = {
             "Nutzer koennen Cookies und lokalen Speicher jederzeit ueber ihre Browser-Einstellungen loeschen. Wenn spaeter nicht notwendiges Tracking eingefuehrt wird, sollte zusaetzlich eine sichtbare Cookie-Einstellungsfunktion bereitgestellt werden.",
         },
       },
+    },
+    productFamily: {
+      label: "Das rosa-Ökosystem",
+      title: "Ein System. Jeder Court.",
+      subtitle: "Vier verknüpfte Produkte, die jeden Padel-Court von einfachem Scoring zur vollständigen KI-gestützten Match-Intelligenz bringen.",
+      carouselHint: "Produkte wischen",
+      viewProduct: "Produkt ansehen",
+      items: [
+        {
+          num: "01",
+          tier: "Einstieg",
+          name: "Core LED",
+          tagline: "Einstecken. Spielen. Punkten.",
+          status: "Produktionsbereit",
+          statusType: "available",
+          href: "/products/core-led",
+          features: ["LED-Scoreboard", "Touchpad-Steuerung", "Offline-Modus", "Plug & Play"],
+        },
+        {
+          num: "02",
+          tier: "Professional",
+          name: "Core HD",
+          tagline: "HD-Display. Pro-Steuerung.",
+          status: "Produktionsbereit",
+          statusType: "available",
+          href: "/products/core-hd",
+          features: ["HD-Monitor", "QR / Web-Setup", "Schiedsrichtermodus", "Turniermanagement", "Cloud-Sync"],
+        },
+        {
+          num: "03",
+          tier: "Fortgeschritten",
+          name: "rosa Vision",
+          tagline: "Replay. Analyse. Teilen.",
+          status: "Pilot verfügbar",
+          statusType: "pilot",
+          href: "/products/vision",
+          features: ["Kamera-Integration", "Instant Replay", "Court-Heatmaps", "Spieler-Historie"],
+        },
+        {
+          num: "04",
+          tier: "Intelligenz",
+          name: "rosa Coach",
+          tagline: "Dein KI-Padel-Coach.",
+          status: "In Entwicklung",
+          statusType: "coming",
+          href: "/products/coach",
+          features: ["KI-Schlaganalyse", "Taktik-Breakdown", "Verbesserungs-Tracking", "Video-Review"],
+        },
+      ],
+    },
+    audiencePortals: {
+      label: "Für dein Spiel gemacht",
+      title: "Für wen ist rosa?",
+      items: [
+        {
+          id: "players",
+          title: "Spieler",
+          desc: "Verfolge deine Stats, erlebe deine besten Momente erneut und verbessere dich mit jedem Match.",
+          cta: "Spieler-Features entdecken",
+          href: "/#how-it-works",
+        },
+        {
+          id: "clubs",
+          title: "Clubs & Venues",
+          desc: "Binde mehr Mitglieder, führe Turniere reibungsloser durch und erschließe neue Umsatzquellen.",
+          cta: "Club-ROI ansehen",
+          href: "/for-clubs",
+        },
+        {
+          id: "investors",
+          title: "Investoren",
+          desc: "Hardware-geführte Court-Intelligenz an der Schnittstelle des globalen Padel-Booms.",
+          cta: "Investor-Übersicht",
+          href: "/investors",
+        },
+      ],
+    },
+    roiCalculator: {
+      label: "Club-ROI",
+      title: "Geschätzter Club-Upside",
+      subtitle: "Schätze den zusätzlichen Umsatz, den rosa fuer deinen Club schaffen kann.",
+      courtLabel: "Anzahl Courts",
+      bookingsLabel: "Durchschnittliche Buchungen pro Court / Monat",
+      priceLabel: "Durchschnittlicher Buchungspreis (€)",
+      monthlyLabel: "Potenzieller zusätzlicher Club-Umsatz pro Monat",
+      numberContext: "Das ist geschätzter Upside fuer deinen Club, nicht der rosa-Preis.",
+      annualPrefix: "≈",
+      annualSuffix: "zusätzlicher Club-Umsatz pro Jahr",
+      streamsTitle: "Woher der Upside kommt",
+      streams: [
+        "Sponsoring-Displays auf Court-Screens",
+        "Analyse-Abonnements",
+        "Premium-Aufnahmepakete",
+        "Turnier-Content und Highlights",
+      ],
+      disclaimer: "Schätzung berücksichtigt nur Buchungszuwächse und excludiert Sponsoring, Content oder andere ergänzende Einnahmen. Tatsächliche Ergebnisse variieren je Club.",
+      cta: "rosa jetzt holen",
     },
     notFound: {
       title: "404",

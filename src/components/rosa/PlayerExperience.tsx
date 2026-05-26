@@ -57,7 +57,7 @@ export default function PlayerExperience() {
               <div className="w-full h-full rounded-[2.4rem] bg-background/90 overflow-hidden flex flex-col">
                 <div className="flex justify-between items-center px-6 py-2 text-xs text-muted-foreground font-mono shrink-0">
                   <span>9:41</span>
-                  <span className="text-primary font-semibold">ROSA</span>
+                  <span className="text-primary font-semibold">rosa</span>
                   <span>100%</span>
                 </div>
 
@@ -240,6 +240,9 @@ export default function PlayerExperience() {
               <h2 className="text-4xl md:text-5xl font-bold leading-tight">
                 {copy.playerExperience.title} <span className="text-primary">{copy.playerExperience.accent}</span>{copy.playerExperience.titleSuffix}
               </h2>
+              <div className="inline-flex px-3 py-1 rounded-full bg-primary/10 border border-primary/20 text-primary text-[11px] font-mono uppercase tracking-[0.22em]">
+                {copy.playerExperience.status}
+              </div>
               <p className="text-muted-foreground text-lg">{copy.playerExperience.body}</p>
             </div>
 

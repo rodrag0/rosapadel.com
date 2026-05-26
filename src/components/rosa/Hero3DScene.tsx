@@ -4,7 +4,7 @@ import { Float } from "@react-three/drei";
 import * as THREE from "three";
 import rosaIconWhite from "@/assets/rosa-icon-white.png";
 
-const ROSA = new THREE.Color("#E4007C");
+const rosa = new THREE.Color("#E4007C");
 
 interface ThemeColors {
   floor: THREE.Color;
@@ -116,7 +116,7 @@ function ScoreboardScreen() {
     ctx.globalAlpha = 1;
     ctx.fillStyle = "#E4007C";
     ctx.font = "bold 11px sans-serif";
-    ctx.fillText("ROSA", 20, 242);
+    ctx.fillText("rosa", 20, 242);
     ctx.fillStyle = "#555";
     ctx.font = "11px sans-serif";
     ctx.fillText("Powered by AI", 65, 242);
@@ -177,7 +177,7 @@ function SignalPulse({ vertical = false, scale: baseScale = 1 }: { vertical?: bo
   return (
     <mesh ref={meshRef} rotation={vertical ? [0, 0, 0] : [Math.PI / 2, 0, 0]}>
       <ringGeometry args={[0.13, 0.18, 48]} />
-      <meshBasicMaterial color={ROSA} transparent opacity={0.12} side={THREE.DoubleSide} depthWrite={false} />
+      <meshBasicMaterial color={rosa} transparent opacity={0.12} side={THREE.DoubleSide} depthWrite={false} />
     </mesh>
   );
 }
@@ -368,11 +368,11 @@ function PadelCourt({ colors }: { colors: ThemeColors }) {
     [colors]
   );
   const edgeMat = useMemo(
-    () => new THREE.MeshBasicMaterial({ color: ROSA, transparent: true, opacity: 1.0 }),
+    () => new THREE.MeshBasicMaterial({ color: rosa, transparent: true, opacity: 1.0 }),
     []
   );
   const pinkMat = useMemo(
-    () => new THREE.MeshBasicMaterial({ color: ROSA }),
+    () => new THREE.MeshBasicMaterial({ color: rosa }),
     []
   );
   const netMat = useMemo(
@@ -605,7 +605,7 @@ function CourtGrid() {
         );
         return (
           <lineSegments key={i} geometry={geometry}>
-            <lineBasicMaterial color={ROSA} transparent opacity={0.06} />
+            <lineBasicMaterial color={rosa} transparent opacity={0.06} />
           </lineSegments>
         );
       })}

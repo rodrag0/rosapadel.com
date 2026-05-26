@@ -1,5 +1,6 @@
 import LegalPageLayout, { LegalDataTable, LegalSection } from "@/components/rosa/LegalPageLayout";
 import { useLanguage } from "@/components/rosa/LanguageProvider";
+import BrandText from "@/components/rosa/BrandText";
 
 export default function CookiePolicyPage() {
   const { copy } = useLanguage();
@@ -19,11 +20,11 @@ export default function CookiePolicyPage() {
       </LegalSection>
 
       <LegalSection title={cookies.sections.analyticsTitle}>
-        <p>{cookies.sections.analyticsBody}</p>
+        <p><BrandText text={cookies.sections.analyticsBody} /></p>
       </LegalSection>
 
       <LegalSection title={cookies.sections.manageTitle}>
-        <p>{cookies.sections.manageBody}</p>
+        <p><BrandText text={cookies.sections.manageBody} /></p>
       </LegalSection>
     </LegalPageLayout>
   );
