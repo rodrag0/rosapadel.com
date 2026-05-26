@@ -1,6 +1,6 @@
 import { motion, useInView } from "framer-motion";
 import { useRef, useEffect } from "react";
-import { Check, Zap, Wifi, WifiOff, Plug, Trophy, Monitor, Tablet, ChevronRight } from "lucide-react";
+import { WifiOff, Plug, Monitor, Tablet, ChevronRight } from "lucide-react";
 import Navbar from "@/components/rosa/Navbar";
 import Footer from "@/components/rosa/Footer";
 
@@ -24,11 +24,6 @@ const FEATURES = [
     icon: Plug,
     name: "Plug & Play",
     desc: "Power on and you're ready. No configuration, no cables to hide, no contractor required.",
-  },
-  {
-    icon: Trophy,
-    name: "Tournament Ready",
-    desc: "Built-in tournament mode handles brackets, sets, and tiebreaks without any setup overhead.",
   },
 ];
 
@@ -56,7 +51,7 @@ const SPECS = [
   ["Power", "Mains adapter"],
   ["Connectivity", "None required — offline"],
   ["Setup time", "Under 1 minute"],
-  ["Operating modes", "Match / Training / Tournament"],
+  ["Operating modes", "Match / Training"],
   ["Price", "From €299"],
 ];
 

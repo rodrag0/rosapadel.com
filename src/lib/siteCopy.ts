@@ -65,7 +65,7 @@ export const siteCopy = {
           name: "Core LED",
           description:
             "Portable LED scoring for any court. Touchpad control, offline operation, and plug-and-play installation.",
-          features: ["LED Scoreboard", "Touchpad Control", "Offline Mode", "Plug & Play", "Tournament Ready"],
+          features: ["LED Scoreboard", "Touchpad Control", "Offline Mode", "Plug & Play"],
         },
         {
           tier: "Growth",
@@ -531,7 +531,7 @@ export const siteCopy = {
           name: "Core LED",
           description:
             "Marcador LED portátil para cualquier pista. Control por touchpad, funcionamiento offline e instalación plug and play.",
-          features: ["Marcador LED", "Control por touchpad", "Modo offline", "Plug and play", "Listo para torneos"],
+          features: ["Marcador LED", "Control por touchpad", "Modo offline", "Plug and play"],
         },
         {
           tier: "Crecimiento",
@@ -997,7 +997,7 @@ export const siteCopy = {
           name: "Core LED",
           description:
             "Tragbares LED-Scoring fuer jeden Court. Touchpad-Steuerung, Offline-Betrieb und Plug-and-Play-Installation.",
-          features: ["LED-Scoreboard", "Touchpad-Steuerung", "Offline-Modus", "Plug and Play", "Turnierbereit"],
+          features: ["LED-Scoreboard", "Touchpad-Steuerung", "Offline-Modus", "Plug and Play"],
         },
         {
           tier: "Wachstum",

@@ -415,19 +415,19 @@ export default function Investors() {
                 name: "Rodrigo Ponce",
                 role: "Co-founder & CEO",
                 location: "Heilbronn, Germany",
-                bio: "Leading product, hardware, and company vision. Building the infrastructure for the next generation of smart padel courts.",
+                bio: "Leads company vision, product strategy, and business development across the rosa ecosystem. Mechatronics engineer, startup operator, and previous founder.",
               },
               {
-                name: "Leandro",
-                role: "Co-founder",
-                location: "—",
-                bio: "Core team member driving product development and technical execution across the rosa platform.",
+                name: "Leandro Ponce",
+                role: "Co-founder & CFO",
+                location: "Mexico",
+                bio: "Leads finance, operations, and investment planning. Industrial engineer with 20+ years in finance, operations, and large-scale real estate investments.",
               },
               {
-                name: "Saul",
-                role: "Co-founder",
-                location: "—",
-                bio: "Core team member responsible for growth, partnerships, and bringing rosa to clubs and venues.",
+                name: "Saul Ortiz de la Tejera",
+                role: "Co-founder & CTO",
+                location: "Mexico",
+                bio: "Leads hardware, software architecture, AI, IoT, and prototyping. Mechatronics engineer with hands-on engineering experience from Bosch.",
               },
             ].map((member, i) => (
               <motion.div

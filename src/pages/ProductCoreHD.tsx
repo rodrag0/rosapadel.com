@@ -1,6 +1,6 @@
 import { motion, useInView } from "framer-motion";
 import { useRef, useEffect } from "react";
-import { Monitor, QrCode, Shield, Palette, Cloud, LayoutGrid, ChevronRight } from "lucide-react";
+import { Monitor, QrCode, Shield, Palette, Cloud, LayoutGrid, Trophy, ChevronRight } from "lucide-react";
 import Navbar from "@/components/rosa/Navbar";
 import Footer from "@/components/rosa/Footer";
 
@@ -19,6 +19,11 @@ const FEATURES = [
     icon: Shield,
     name: "Referee Mode",
     desc: "Dedicated referee control for tournaments — full match authority with score override and event management.",
+  },
+  {
+    icon: Trophy,
+    name: "Tournament Management",
+    desc: "Run brackets, sets, tiebreaks, and court assignments from the HD system without extra setup overhead.",
   },
   {
     icon: Palette,
@@ -61,6 +66,7 @@ const SPECS = [
   ["Control pads", "Wireless pads for each team"],
   ["Control", "Wireless touchpads"],
   ["Connectivity", "Wi-Fi / Ethernet"],
+  ["Tournament tools", "Brackets, sets, tiebreaks, court assignments"],
   ["Setup time", "Under 5 minutes"],
   ["Price", "From €549"],
 ];
