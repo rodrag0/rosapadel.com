@@ -107,7 +107,7 @@ export default function ProductCoreLED() {
               </span>
               <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full border border-green-500/30 bg-green-500/10 text-green-400 text-[11px] font-mono uppercase tracking-[0.18em]">
                 <span className="w-1.5 h-1.5 rounded-full bg-green-500 flex-shrink-0" />
-                Available now
+                Production ready
               </span>
             </div>
 

@@ -18,8 +18,8 @@ import {
 } from "@/components/ui/dropdown-menu";
 
 const productLinks = [
-  { name: "Core LED", href: "/products/core-led", tier: "Entry", status: "Available", statusClass: "text-green-400" },
-  { name: "Core HD", href: "/products/core-hd", tier: "Professional", status: "Available", statusClass: "text-green-400" },
+  { name: "Core LED", href: "/products/core-led", tier: "Entry", status: "Production ready", statusClass: "text-green-400" },
+  { name: "Core HD", href: "/products/core-hd", tier: "Professional", status: "Production ready", statusClass: "text-green-400" },
   { name: "Rosa Vision", href: "/products/vision", tier: "Advanced", status: "Pilot", statusClass: "text-yellow-400" },
   { name: "Rosa Coach", href: "/products/coach", tier: "Intelligence", status: "Soon", statusClass: "text-muted-foreground" },
 ];
