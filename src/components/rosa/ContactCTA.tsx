@@ -7,6 +7,7 @@ import { Checkbox } from "@/components/ui/checkbox";
 import { toast } from "sonner";
 import { z } from "zod";
 import { useLanguage } from "./LanguageProvider";
+import BrandText from "./BrandText";
 
 export default function ContactCTA() {
   const ref = useRef(null);
@@ -58,7 +59,7 @@ export default function ContactCTA() {
           email: parsed.data.email,
           organization: parsed.data.organization || "",
           objective: parsed.data.objective || "",
-          _subject: "ROSA Demo Request",
+          _subject: "rosa Demo Request",
           _template: "table",
           _captcha: "false",
           _replyto: parsed.data.email,
@@ -97,7 +98,7 @@ export default function ContactCTA() {
             {copy.contact.title}
             <span className="text-primary text-glow">{copy.contact.accent}</span>
           </h2>
-          <p className="text-muted-foreground text-lg">{copy.contact.body}</p>
+          <p className="text-muted-foreground text-lg"><BrandText text={copy.contact.body} /></p>
         </motion.div>
 
         {submitted ? (
@@ -111,7 +112,7 @@ export default function ContactCTA() {
               <span className="text-3xl">{"\u2713"}</span>
             </div>
             <h3 className="text-2xl font-bold">{copy.contact.successTitle}</h3>
-            <p className="text-muted-foreground">{copy.contact.successBody}</p>
+            <p className="text-muted-foreground"><BrandText text={copy.contact.successBody} /></p>
           </motion.div>
         ) : (
           <motion.form

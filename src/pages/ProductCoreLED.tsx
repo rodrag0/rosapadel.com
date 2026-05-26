@@ -3,6 +3,7 @@ import { useRef, useEffect } from "react";
 import { WifiOff, Plug, Monitor, Tablet, ChevronRight } from "lucide-react";
 import Navbar from "@/components/rosa/Navbar";
 import Footer from "@/components/rosa/Footer";
+import BrandText from "@/components/rosa/BrandText";
 
 const FEATURES = [
   {
@@ -278,7 +279,7 @@ export default function ProductCoreLED() {
                 href: "/products/core-hd",
               },
               {
-                name: "Rosa Vision",
+                name: "rosa Vision",
                 tier: "Advanced",
                 desc: "Camera-integrated replay, court heatmaps, player history, and club screen content.",
                 href: "/products/vision",
@@ -297,7 +298,7 @@ export default function ProductCoreLED() {
                     {product.tier}
                   </span>
                 </div>
-                <h3 className="text-2xl font-bold">{product.name}</h3>
+                <h3 className="text-2xl font-bold"><BrandText text={product.name} /></h3>
                 <p className="text-sm text-muted-foreground leading-relaxed">{product.desc}</p>
                 <span className="inline-flex items-center gap-1 text-sm font-medium text-primary group-hover:opacity-80 transition-opacity">
                   Learn more <ChevronRight className="w-4 h-4" />

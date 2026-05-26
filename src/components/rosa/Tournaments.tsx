@@ -2,6 +2,7 @@ import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
 import { LayoutGrid, CalendarDays, Clock, Bell, Monitor } from "lucide-react";
 import { useLanguage } from "./LanguageProvider";
+import BrandText from "./BrandText";
 
 export default function Tournaments() {
   const ref = useRef(null);
@@ -20,7 +21,7 @@ export default function Tournaments() {
         >
           <span className="text-sm font-mono uppercase tracking-widest text-primary">{copy.tournaments.label}</span>
           <h2 className="text-4xl md:text-5xl font-bold">{copy.tournaments.title}</h2>
-          <p className="text-muted-foreground text-lg max-w-2xl mx-auto">{copy.tournaments.body}</p>
+          <p className="text-muted-foreground text-lg max-w-2xl mx-auto"><BrandText text={copy.tournaments.body} /></p>
         </motion.div>
 
         <div className="grid md:grid-cols-2 gap-6">
@@ -40,7 +41,7 @@ export default function Tournaments() {
                 </div>
                 <div className="space-y-1.5">
                   <h3 className="font-bold text-lg">{benefit.title}</h3>
-                  <p className="text-muted-foreground text-sm leading-relaxed">{benefit.desc}</p>
+                  <p className="text-muted-foreground text-sm leading-relaxed"><BrandText text={benefit.desc} /></p>
                 </div>
               </motion.div>
             );
@@ -63,7 +64,7 @@ export default function Tournaments() {
           </div>
           <h3 className="text-2xl font-bold">{copy.tournaments.highlightTitle}</h3>
           <p className="text-muted-foreground max-w-xl mx-auto leading-relaxed">
-            {copy.tournaments.highlightBody}
+            <BrandText text={copy.tournaments.highlightBody} />
           </p>
         </motion.div>
       </div>

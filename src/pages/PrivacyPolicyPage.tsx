@@ -1,5 +1,6 @@
 import LegalPageLayout, { LegalDataTable, LegalSection } from "@/components/rosa/LegalPageLayout";
 import { useLanguage } from "@/components/rosa/LanguageProvider";
+import BrandText from "@/components/rosa/BrandText";
 
 export default function PrivacyPolicyPage() {
   const { copy, language } = useLanguage();
@@ -20,7 +21,7 @@ export default function PrivacyPolicyPage() {
       <LegalSection title={privacy.sections.dataTitle}>
         <ul className="list-disc pl-5 space-y-2">
           {privacy.sections.dataList.map((item) => (
-            <li key={item}>{item}</li>
+            <li key={item}><BrandText text={item} /></li>
           ))}
         </ul>
       </LegalSection>
@@ -33,23 +34,23 @@ export default function PrivacyPolicyPage() {
       </LegalSection>
 
       <LegalSection title={privacy.sections.processorsTitle}>
-        <p>{privacy.sections.processorsBody}</p>
+        <p><BrandText text={privacy.sections.processorsBody} /></p>
       </LegalSection>
 
       <LegalSection title={privacy.sections.transfersTitle}>
-        <p>{privacy.sections.transfersBody}</p>
+        <p><BrandText text={privacy.sections.transfersBody} /></p>
       </LegalSection>
 
       <LegalSection title={privacy.sections.retentionTitle}>
-        <p>{privacy.sections.retentionBody}</p>
+        <p><BrandText text={privacy.sections.retentionBody} /></p>
       </LegalSection>
 
       <LegalSection title={privacy.sections.rightsTitle}>
-        <p>{privacy.sections.rightsBody}</p>
+        <p><BrandText text={privacy.sections.rightsBody} /></p>
       </LegalSection>
 
       <LegalSection title={privacy.sections.contactTitle}>
-        <p>{privacy.sections.contactBody}</p>
+        <p><BrandText text={privacy.sections.contactBody} /></p>
       </LegalSection>
     </LegalPageLayout>
   );

@@ -5,6 +5,7 @@ import { useLocation } from "react-router-dom";
 import { useTheme } from "./ThemeProvider";
 import { useLanguage } from "./LanguageProvider";
 import { getSectionHref } from "@/lib/siteLinks";
+import BrandText from "./BrandText";
 
 const Hero3DScene = lazy(() => import("./Hero3DScene"));
 
@@ -59,7 +60,7 @@ export default function HeroSection() {
           </h1>
 
           <p className="text-lg md:text-xl text-muted-foreground max-w-xl mx-auto">
-            {copy.hero.subtitle}
+            <BrandText text={copy.hero.subtitle} />
           </p>
 
           <div className="flex flex-wrap gap-4 justify-center">

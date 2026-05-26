@@ -2,6 +2,7 @@ import { motion, useInView } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { useLanguage } from "@/components/rosa/LanguageProvider";
+import BrandText from "@/components/rosa/BrandText";
 
 function StatusBadge({ statusType, label }: { statusType: string; label: string }) {
   const colorMap: Record<string, { dot: string; badge: string }> = {
@@ -80,9 +81,13 @@ export default function ProductFamilySlider() {
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
         >
-          <span className="text-sm font-mono uppercase tracking-widest text-primary">{section.label}</span>
+          <span className="text-sm font-mono uppercase tracking-widest text-primary">
+            <BrandText text={section.label} />
+          </span>
           <h2 className="text-4xl md:text-5xl font-bold">{section.title}</h2>
-          <p className="text-muted-foreground text-lg max-w-2xl">{section.subtitle}</p>
+          <p className="text-muted-foreground text-lg max-w-2xl">
+            <BrandText text={section.subtitle} />
+          </p>
           <div className="md:hidden inline-flex items-center gap-2 rounded-full border border-primary/30 bg-primary/10 px-3 py-1.5 text-xs font-mono uppercase tracking-[0.18em] text-primary">
             <ChevronLeft className="h-3.5 w-3.5" />
             {section.carouselHint}
@@ -133,7 +138,9 @@ export default function ProductFamilySlider() {
 
                 {/* Name + tagline */}
                 <div className="space-y-1">
-                  <h3 className="text-3xl font-bold leading-none tracking-tight">{item.name}</h3>
+                  <h3 className="text-3xl font-bold leading-none tracking-tight">
+                    <BrandText text={item.name} />
+                  </h3>
                   <p className="text-base text-muted-foreground">{item.tagline}</p>
                 </div>
 

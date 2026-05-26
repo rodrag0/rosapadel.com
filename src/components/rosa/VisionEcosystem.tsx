@@ -2,6 +2,7 @@ import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
 import { Camera, Play, History, Share2, MonitorPlay, Users, Clapperboard, Layers3 } from "lucide-react";
 import { useLanguage } from "./LanguageProvider";
+import BrandText from "./BrandText";
 
 export default function VisionEcosystem() {
   const ref = useRef(null);
@@ -20,9 +21,9 @@ export default function VisionEcosystem() {
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
         >
-          <span className="text-sm font-mono uppercase tracking-widest text-primary">{section.label}</span>
+          <span className="text-sm font-mono uppercase tracking-widest text-primary"><BrandText text={section.label} /></span>
           <h2 className="text-4xl md:text-5xl font-bold">{section.title}</h2>
-          <p className="text-muted-foreground text-lg max-w-3xl mx-auto">{section.body}</p>
+          <p className="text-muted-foreground text-lg max-w-3xl mx-auto"><BrandText text={section.body} /></p>
           <div className="flex justify-center">
             <span className="px-4 py-1.5 text-xs font-mono uppercase tracking-[0.24em] rounded-full border border-primary/20 bg-primary/10 text-primary">
               {section.status}
@@ -38,8 +39,8 @@ export default function VisionEcosystem() {
             className="rounded-[2rem] bg-card inner-glow p-8 md:p-10 space-y-8"
           >
             <div className="space-y-3">
-              <p className="text-sm font-mono uppercase tracking-widest text-primary">{section.playerTitle}</p>
-              <h3 className="text-3xl font-bold leading-tight">{section.playerBody}</h3>
+              <p className="text-sm font-mono uppercase tracking-widest text-primary"><BrandText text={section.playerTitle} /></p>
+              <h3 className="text-3xl font-bold leading-tight"><BrandText text={section.playerBody} /></h3>
             </div>
 
             <div className="grid sm:grid-cols-2 gap-4">
@@ -53,7 +54,7 @@ export default function VisionEcosystem() {
                     </div>
                     <div className="space-y-1.5">
                       <h4 className="font-semibold">{item.title}</h4>
-                      <p className="text-sm leading-relaxed text-muted-foreground">{item.desc}</p>
+                      <p className="text-sm leading-relaxed text-muted-foreground"><BrandText text={item.desc} /></p>
                     </div>
                   </div>
                 );
@@ -68,8 +69,8 @@ export default function VisionEcosystem() {
             className="rounded-[2rem] bg-card inner-glow p-8 md:p-10 space-y-8"
           >
             <div className="space-y-3">
-              <p className="text-sm font-mono uppercase tracking-widest text-primary">{section.clubTitle}</p>
-              <h3 className="text-3xl font-bold leading-tight">{section.clubBody}</h3>
+              <p className="text-sm font-mono uppercase tracking-widest text-primary"><BrandText text={section.clubTitle} /></p>
+              <h3 className="text-3xl font-bold leading-tight"><BrandText text={section.clubBody} /></h3>
             </div>
 
             <div className="grid sm:grid-cols-2 gap-4">
@@ -83,7 +84,7 @@ export default function VisionEcosystem() {
                     </div>
                     <div className="space-y-1.5">
                       <h4 className="font-semibold">{item.title}</h4>
-                      <p className="text-sm leading-relaxed text-muted-foreground">{item.desc}</p>
+                      <p className="text-sm leading-relaxed text-muted-foreground"><BrandText text={item.desc} /></p>
                     </div>
                   </div>
                 );
@@ -99,8 +100,8 @@ export default function VisionEcosystem() {
           className="mt-8 rounded-[2rem] border border-primary/15 bg-card p-8 md:p-10"
         >
           <div className="max-w-4xl space-y-3">
-            <p className="text-sm font-mono uppercase tracking-widest text-primary">{section.footerTitle}</p>
-            <p className="text-lg leading-relaxed text-muted-foreground">{section.footerBody}</p>
+            <p className="text-sm font-mono uppercase tracking-widest text-primary"><BrandText text={section.footerTitle} /></p>
+            <p className="text-lg leading-relaxed text-muted-foreground"><BrandText text={section.footerBody} /></p>
           </div>
         </motion.div>
       </div>

@@ -4,6 +4,7 @@ import { Megaphone, RefreshCw, Video, Trophy, Wrench, Users, TrendingUp, CheckCi
 import Navbar from "@/components/rosa/Navbar";
 import Footer from "@/components/rosa/Footer";
 import ROICalculator from "@/components/rosa/ROICalculator";
+import BrandText from "@/components/rosa/BrandText";
 
 const STATS = [
   { value: "Up to 25%", label: "More bookings" },
@@ -107,7 +108,7 @@ export default function ForClubs() {
               Built for clubs that want to grow.
             </h1>
             <p className="text-xl text-muted-foreground max-w-xl">
-              rosa gives your venue professional-grade court technology that increases bookings, creates new revenue, and installs in minutes — not days.
+              <BrandText text="rosa gives your venue professional-grade court technology that increases bookings, creates new revenue, and installs in minutes — not days." />
             </p>
             <div className="flex flex-wrap gap-4 pt-2">
               <a
@@ -157,7 +158,7 @@ export default function ForClubs() {
             <span className="text-sm font-mono uppercase tracking-widest text-primary">Revenue Streams</span>
             <h2 className="text-4xl md:text-5xl font-bold">New revenue from day one.</h2>
             <p className="text-muted-foreground max-w-xl">
-              rosa doesn't just improve your courts — it opens revenue channels you don't currently have.
+              <BrandText text="rosa doesn't just improve your courts — it opens revenue channels you don't currently have." />
             </p>
           </motion.div>
 
@@ -198,7 +199,7 @@ export default function ForClubs() {
             <span className="text-sm font-mono uppercase tracking-widest text-primary">Tournament Management</span>
             <h2 className="text-4xl md:text-5xl font-bold">Run tournaments without the chaos.</h2>
             <p className="text-muted-foreground text-lg">
-              rosa gives your organizers a live view of every court — who's playing, what's waiting, and where to send each match next. No whiteboards. No shouting across the venue.
+              <BrandText text="rosa gives your organizers a live view of every court — who's playing, what's waiting, and where to send each match next. No whiteboards. No shouting across the venue." />
             </p>
           </motion.div>
 
@@ -239,7 +240,7 @@ export default function ForClubs() {
                   </div>
                   <div className="space-y-2">
                     <h3 className="font-bold text-lg">{item.title}</h3>
-                    <p className="text-sm text-muted-foreground leading-relaxed">{item.desc}</p>
+                    <p className="text-sm text-muted-foreground leading-relaxed"><BrandText text={item.desc} /></p>
                   </div>
                 </motion.div>
               );
@@ -257,8 +258,8 @@ export default function ForClubs() {
             transition={{ duration: 0.6 }}
             className="space-y-3"
           >
-            <span className="text-sm font-mono uppercase tracking-widest text-primary">Why Rosa</span>
-            <h2 className="text-4xl md:text-5xl font-bold">Why clubs choose rosa.</h2>
+            <span className="text-sm font-mono uppercase tracking-widest text-primary"><BrandText text="Why rosa" /></span>
+            <h2 className="text-4xl md:text-5xl font-bold"><BrandText text="Why clubs choose rosa." /></h2>
           </motion.div>
 
           <div className="grid md:grid-cols-3 gap-6">

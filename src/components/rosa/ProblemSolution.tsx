@@ -2,6 +2,7 @@ import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
 import { Target, Film, BarChart3 } from "lucide-react";
 import { useLanguage } from "./LanguageProvider";
+import BrandText from "./BrandText";
 
 export default function ProblemSolution() {
   const sectionRef = useRef(null);
@@ -41,13 +42,13 @@ export default function ProblemSolution() {
             className="space-y-6"
           >
             <span className="text-sm font-mono uppercase tracking-widest text-primary">
-              {copy.problemSolution.solutionLabel}
+              <BrandText text={copy.problemSolution.solutionLabel} />
             </span>
             <h2 className="text-3xl md:text-4xl font-bold leading-tight">
               {copy.problemSolution.solutionTitle}
             </h2>
             <p className="text-muted-foreground text-lg leading-relaxed">
-              {copy.problemSolution.solutionBody}
+              <BrandText text={copy.problemSolution.solutionBody} />
             </p>
           </motion.div>
         </div>

@@ -57,7 +57,7 @@ export default function PlayerExperience() {
               <div className="w-full h-full rounded-[2.4rem] bg-background/90 overflow-hidden flex flex-col">
                 <div className="flex justify-between items-center px-6 py-2 text-xs text-muted-foreground font-mono shrink-0">
                   <span>9:41</span>
-                  <span className="text-primary font-semibold">ROSA</span>
+                  <span className="text-primary font-semibold">rosa</span>
                   <span>100%</span>
                 </div>
 

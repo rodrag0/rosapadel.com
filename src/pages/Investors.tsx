@@ -3,6 +3,7 @@ import { useRef, useEffect } from "react";
 import { Users, BarChart2, TrendingUp, Package, RefreshCw, Globe, ChevronRight, User } from "lucide-react";
 import Navbar from "@/components/rosa/Navbar";
 import Footer from "@/components/rosa/Footer";
+import BrandText from "@/components/rosa/BrandText";
 
 const MARKET_STATS = [
   { value: "25M+", label: "Padel players globally" },
@@ -34,7 +35,7 @@ const PRODUCTS = [
   {
     num: "03",
     tier: "Advanced",
-    name: "Rosa Vision",
+    name: "rosa Vision",
     tagline: "Replay. Analyze. Share.",
     status: "Pilot-ready",
     statusClass: "border-yellow-400/30 bg-yellow-400/10 text-yellow-400",
@@ -44,7 +45,7 @@ const PRODUCTS = [
   {
     num: "04",
     tier: "Intelligence",
-    name: "Rosa Coach",
+    name: "rosa Coach",
     tagline: "Your AI padel coach.",
     status: "In Development",
     statusClass: "border-border bg-secondary text-muted-foreground",
@@ -120,7 +121,7 @@ export default function Investors() {
               <span className="text-primary">rosa is ready.</span>
             </h1>
             <p className="text-xl text-muted-foreground max-w-xl">
-              Hardware-led court intelligence for the fastest-growing racket sport in the world. Rosa builds the technology infrastructure that every padel court needs but currently lacks.
+              <BrandText text="Hardware-led court intelligence for the fastest-growing racket sport in the world. rosa builds the technology infrastructure that every padel court needs but currently lacks." />
             </p>
             <div className="flex flex-wrap gap-4 pt-2">
               <a
@@ -218,7 +219,7 @@ export default function Investors() {
               className="rounded-2xl border border-primary/20 bg-card p-6 md:p-8 space-y-4"
             >
               <span className="text-sm font-mono uppercase tracking-widest text-primary">The Solution</span>
-              <h3 className="text-2xl font-bold">Rosa fills the gap with modular hardware and software.</h3>
+              <h3 className="text-2xl font-bold"><BrandText text="rosa fills the gap with modular hardware and software." /></h3>
               <ul className="space-y-3">
                 {[
                   "LED and HD scoring hardware for any court size",
@@ -271,7 +272,7 @@ export default function Investors() {
                   </span>
                 </div>
                 <div className="space-y-1">
-                  <h3 className="text-2xl font-bold">{product.name}</h3>
+                  <h3 className="text-2xl font-bold"><BrandText text={product.name} /></h3>
                   <p className="text-muted-foreground">{product.tagline}</p>
                 </div>
                 <span className={`inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full border text-[11px] font-mono uppercase tracking-[0.18em] ${product.statusClass}`}>
@@ -447,7 +448,7 @@ export default function Investors() {
                     <p className="text-xs text-muted-foreground font-mono">{member.location}</p>
                   </div>
                 </div>
-                <p className="text-sm text-muted-foreground leading-relaxed">{member.bio}</p>
+                <p className="text-sm text-muted-foreground leading-relaxed"><BrandText text={member.bio} /></p>
               </motion.div>
             ))}
           </div>
@@ -464,7 +465,7 @@ export default function Investors() {
             className="max-w-2xl space-y-6"
           >
             <span className="text-sm font-mono uppercase tracking-widest text-primary">Contact</span>
-            <h2 className="text-4xl md:text-5xl font-bold">Interested in rosa?</h2>
+            <h2 className="text-4xl md:text-5xl font-bold"><BrandText text="Interested in rosa?" /></h2>
             <p className="text-muted-foreground text-lg">
               We're open to conversations with investors, partners, and distributors who believe in the padel opportunity.
             </p>

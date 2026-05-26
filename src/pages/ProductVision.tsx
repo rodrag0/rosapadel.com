@@ -3,6 +3,7 @@ import { useRef, useEffect } from "react";
 import { Camera, Play, MapPin, User, Tv, BarChart2, ChevronRight, AlertTriangle } from "lucide-react";
 import Navbar from "@/components/rosa/Navbar";
 import Footer from "@/components/rosa/Footer";
+import BrandText from "@/components/rosa/BrandText";
 
 const FEATURES = [
   {
@@ -71,7 +72,7 @@ const STATS = [
 
 export default function ProductVision() {
   useEffect(() => {
-    document.title = "rosa padel | Rosa Vision";
+    document.title = "rosa padel | rosa Vision";
   }, []);
 
   const heroRef = useRef(null);
@@ -107,7 +108,7 @@ export default function ProductVision() {
             <div className="flex items-center gap-2 text-sm text-muted-foreground font-mono">
               <a href="/" className="hover:text-primary transition-colors">rosa</a>
               <ChevronRight className="w-3 h-3" />
-              <span className="text-foreground">Rosa Vision</span>
+              <span className="text-foreground"><BrandText text="rosa Vision" /></span>
             </div>
 
             {/* Tier + Status */}
@@ -128,7 +129,7 @@ export default function ProductVision() {
             </h1>
 
             <p className="text-xl text-muted-foreground max-w-xl">
-              Rosa Vision adds camera-integrated replay, court heatmaps, and player analytics on top of Core HD.
+              <BrandText text="rosa Vision adds camera-integrated replay, court heatmaps, and player analytics on top of Core HD." />
             </p>
 
             {/* CTAs */}
@@ -316,7 +317,7 @@ export default function ProductVision() {
             <div className="space-y-1">
               <p className="font-semibold text-yellow-400 text-sm">Core HD required</p>
               <p className="text-sm text-muted-foreground leading-relaxed">
-                Rosa Vision extends Core HD — you'll need Core HD installed first.{" "}
+                <BrandText text="rosa Vision extends Core HD — you'll need Core HD installed first. " />
                 <a href="/products/core-hd" className="text-primary hover:underline">
                   Learn about Core HD →
                 </a>
@@ -336,7 +337,7 @@ export default function ProductVision() {
             className="space-y-3"
           >
             <span className="text-sm font-mono uppercase tracking-widest text-primary">Specifications</span>
-            <h2 className="text-4xl md:text-5xl font-bold">Rosa Vision specs.</h2>
+            <h2 className="text-4xl md:text-5xl font-bold"><BrandText text="rosa Vision specs." /></h2>
           </motion.div>
 
           <motion.div

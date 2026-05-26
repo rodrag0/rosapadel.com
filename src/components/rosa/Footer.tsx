@@ -4,12 +4,13 @@ import { useLanguage } from "./LanguageProvider";
 import rosaLogoDark from "@/assets/rosa-logo-dark.png";
 import rosaLogoLight from "@/assets/rosa-logo-light.png";
 import { getSectionHref } from "@/lib/siteLinks";
+import BrandText from "./BrandText";
 
 const productLinks = [
   { name: "Core LED", href: "/products/core-led" },
   { name: "Core HD", href: "/products/core-hd" },
-  { name: "Rosa Vision", href: "/products/vision" },
-  { name: "Rosa Coach", href: "/products/coach" },
+  { name: "rosa Vision", href: "/products/vision" },
+  { name: "rosa Coach", href: "/products/coach" },
 ];
 
 export default function Footer() {
@@ -26,7 +27,7 @@ export default function Footer() {
         <div className="grid md:grid-cols-5 gap-8">
           <div className="space-y-3 md:col-span-2">
             <img src={logo} alt="rosa padel" className="h-8" />
-            <p className="text-sm text-muted-foreground">{copy.footer.tagline}</p>
+            <p className="text-sm text-muted-foreground"><BrandText text={copy.footer.tagline} /></p>
           </div>
 
           <div className="space-y-3">
@@ -37,7 +38,7 @@ export default function Footer() {
               {productLinks.map((product) => (
                 <li key={product.name}>
                   <a href={product.href} className="text-foreground/70 hover:text-primary transition-colors">
-                    {product.name}
+                    <BrandText text={product.name} />
                   </a>
                 </li>
               ))}
@@ -108,7 +109,7 @@ export default function Footer() {
 
         <div className="pt-2 border-t border-border flex flex-col md:flex-row justify-between items-center gap-4">
           <p className="text-xs text-muted-foreground">
-            © {new Date().getFullYear()} rosa padel. {copy.footer.rights}
+            © {new Date().getFullYear()} <BrandText text="rosa" /> padel. {copy.footer.rights}
           </p>
           <div className="flex gap-6">
             <a

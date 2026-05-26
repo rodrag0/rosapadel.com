@@ -3,6 +3,7 @@ import { useRef, useEffect } from "react";
 import { Monitor, QrCode, Shield, Palette, Cloud, LayoutGrid, Trophy, ChevronRight } from "lucide-react";
 import Navbar from "@/components/rosa/Navbar";
 import Footer from "@/components/rosa/Footer";
+import BrandText from "@/components/rosa/BrandText";
 
 const FEATURES = [
   {
@@ -317,13 +318,15 @@ export default function ProductCoreHD() {
           >
             <span className="text-sm font-mono uppercase tracking-widest text-primary">What's Next</span>
             <h2 className="text-3xl md:text-4xl font-bold">Take it further with Vision.</h2>
-            <p className="text-muted-foreground">Core HD is the foundation. Rosa Vision and Rosa Coach build on top.</p>
+            <p className="text-muted-foreground">
+              <BrandText text="Core HD is the foundation. rosa Vision and rosa Coach build on top." />
+            </p>
           </motion.div>
 
           <div className="grid md:grid-cols-2 gap-5">
             {[
               {
-                name: "Rosa Vision",
+                name: "rosa Vision",
                 tier: "Advanced",
                 desc: "Camera-integrated replay, court heatmaps, player history, and club screen content.",
                 href: "/products/vision",
@@ -332,7 +335,7 @@ export default function ProductCoreHD() {
                 dotClass: "bg-yellow-400",
               },
               {
-                name: "Rosa Coach",
+                name: "rosa Coach",
                 tier: "Intelligence",
                 desc: "AI shot analysis, tactical breakdown, improvement tracking, and video review.",
                 href: "/products/coach",
@@ -358,7 +361,7 @@ export default function ProductCoreHD() {
                     {product.status}
                   </span>
                 </div>
-                <h3 className="text-2xl font-bold">{product.name}</h3>
+                <h3 className="text-2xl font-bold"><BrandText text={product.name} /></h3>
                 <p className="text-sm text-muted-foreground leading-relaxed">{product.desc}</p>
                 <span className="inline-flex items-center gap-1 text-sm font-medium text-primary group-hover:opacity-80 transition-opacity">
                   Learn more <ChevronRight className="w-4 h-4" />

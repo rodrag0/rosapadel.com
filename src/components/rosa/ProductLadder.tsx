@@ -2,6 +2,7 @@ import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
 import { Monitor, Tv, Eye, Check } from "lucide-react";
 import { useLanguage } from "./LanguageProvider";
+import BrandText from "./BrandText";
 
 export default function ProductLadder() {
   const ref = useRef(null);
@@ -50,7 +51,9 @@ export default function ProductLadder() {
                   </div>
                   <div>
                     <span className="text-xs font-mono uppercase tracking-widest text-muted-foreground">{product.tier}</span>
-                    <h3 className="text-xl font-bold">{product.name}</h3>
+                    <h3 className="text-xl font-bold">
+                      <BrandText text={product.name} />
+                    </h3>
                   </div>
                 </div>
 
@@ -60,11 +63,13 @@ export default function ProductLadder() {
                   </div>
                 )}
 
-                <p className="text-muted-foreground leading-relaxed">{product.description}</p>
+                <p className="text-muted-foreground leading-relaxed">
+                  <BrandText text={product.description} />
+                </p>
 
                 {"note" in product && product.note && (
                   <div className="rounded-xl border border-primary/15 bg-secondary/40 px-4 py-3 text-sm leading-relaxed text-muted-foreground">
-                    {product.note}
+                    <BrandText text={product.note} />
                   </div>
                 )}
 

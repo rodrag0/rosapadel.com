@@ -10,6 +10,7 @@ import rosaLogoLight from "@/assets/rosa-logo-light.png";
 import rosaIconDark from "@/assets/rosa-icon-dark.svg";
 import rosaIconLight from "@/assets/rosa-icon-light.svg";
 import { getSectionHref } from "@/lib/siteLinks";
+import BrandText from "./BrandText";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -20,8 +21,8 @@ import {
 const productLinks = [
   { name: "Core LED", href: "/products/core-led", tier: "Entry", status: "Production ready", statusClass: "text-green-400" },
   { name: "Core HD", href: "/products/core-hd", tier: "Professional", status: "Production ready", statusClass: "text-green-400" },
-  { name: "Rosa Vision", href: "/products/vision", tier: "Advanced", status: "Pilot", statusClass: "text-yellow-400" },
-  { name: "Rosa Coach", href: "/products/coach", tier: "Intelligence", status: "Soon", statusClass: "text-muted-foreground" },
+  { name: "rosa Vision", href: "/products/vision", tier: "Advanced", status: "Pilot", statusClass: "text-yellow-400" },
+  { name: "rosa Coach", href: "/products/coach", tier: "Intelligence", status: "Soon", statusClass: "text-muted-foreground" },
 ];
 
 export default function Navbar() {
@@ -65,7 +66,9 @@ export default function Navbar() {
                     className="flex items-center justify-between px-3 py-2.5 rounded-lg hover:bg-secondary transition-colors cursor-pointer"
                   >
                     <div className="flex items-baseline gap-2">
-                      <span className="text-sm font-semibold text-foreground">{product.name}</span>
+                      <span className="text-sm font-semibold text-foreground">
+                        <BrandText text={product.name} />
+                      </span>
                       <span className="text-[10px] font-mono text-muted-foreground uppercase tracking-wider">{product.tier}</span>
                     </div>
                     <span className={`text-[10px] font-mono uppercase tracking-widest ${product.statusClass}`}>
@@ -142,7 +145,9 @@ export default function Navbar() {
                     onClick={() => setOpen(false)}
                     className="flex items-center justify-between text-sm text-muted-foreground hover:text-foreground transition-colors"
                   >
-                    <span>{product.name}</span>
+                    <span>
+                      <BrandText text={product.name} />
+                    </span>
                     <span className={`text-[10px] font-mono ${product.statusClass}`}>{product.status}</span>
                   </a>
                 ))}

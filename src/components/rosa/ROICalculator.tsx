@@ -2,6 +2,7 @@ import { motion, useInView } from "framer-motion";
 import { useRef, useState } from "react";
 import { Calculator } from "lucide-react";
 import { useLanguage } from "@/components/rosa/LanguageProvider";
+import BrandText from "@/components/rosa/BrandText";
 
 interface SliderInputProps {
   label: string;
@@ -73,7 +74,9 @@ export default function ROICalculator() {
                   <span className="text-sm font-mono uppercase tracking-widest text-primary">{section.label}</span>
                 </div>
                 <h2 className="text-3xl md:text-4xl font-bold">{section.title}</h2>
-                <p className="text-muted-foreground">{section.subtitle}</p>
+                <p className="text-muted-foreground">
+                  <BrandText text={section.subtitle} />
+                </p>
               </div>
 
               {/* Sliders */}
@@ -115,7 +118,7 @@ export default function ROICalculator() {
                     €{monthlyLow.toLocaleString()} – €{monthlyHigh.toLocaleString()}
                   </p>
                   <p className="text-xs font-semibold uppercase tracking-[0.18em] text-foreground/70">
-                    {section.numberContext}
+                    <BrandText text={section.numberContext} />
                   </p>
                   <p className="text-sm text-muted-foreground font-mono tabular-nums">
                     {section.annualPrefix} €{annualLow.toLocaleString()} – €{annualHigh.toLocaleString()}{" "}

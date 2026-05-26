@@ -2,6 +2,7 @@ import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
 import { Wrench, Play, BarChart3 } from "lucide-react";
 import { useLanguage } from "./LanguageProvider";
+import BrandText from "./BrandText";
 
 export default function HowItWorks() {
   const ref = useRef(null);
@@ -41,7 +42,7 @@ export default function HowItWorks() {
                   </div>
                 </div>
                 <h3 className="text-xl font-bold">{step.title}</h3>
-                <p className="text-muted-foreground leading-relaxed">{step.description}</p>
+                <p className="text-muted-foreground leading-relaxed"><BrandText text={step.description} /></p>
 
                 {i < copy.howItWorks.steps.length - 1 && (
                   <div className="hidden md:block absolute top-8 -right-4 w-8 h-px bg-border" />

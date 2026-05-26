@@ -2,6 +2,7 @@ import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
 import { Users, Building2, TrendingUp } from "lucide-react";
 import { useLanguage } from "@/components/rosa/LanguageProvider";
+import BrandText from "@/components/rosa/BrandText";
 
 const ICONS = [Users, Building2, TrendingUp] as const;
 
@@ -22,7 +23,7 @@ export default function AudiencePortals() {
           transition={{ duration: 0.6 }}
         >
           <span className="text-sm font-mono uppercase tracking-widest text-primary">{section.label}</span>
-          <h2 className="text-4xl md:text-5xl font-bold">{section.title}</h2>
+          <h2 className="text-4xl md:text-5xl font-bold"><BrandText text={section.title} /></h2>
         </motion.div>
 
         {/* Cards grid */}
