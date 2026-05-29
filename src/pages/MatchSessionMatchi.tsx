@@ -11,8 +11,8 @@ const SESSION_POSTER = "/sessions/matchi-live-score/poster.jpg";
 const SIGNALS = [
   {
     icon: Gamepad2,
-    title: "Pad input",
-    body: "Players update the score from the court using rosa pads. No phone handling during the match.",
+    title: "Through-glass pad input",
+    body: "Players update the score with rosa pads from outside the court glass. The signal reaches the scoring system without phones, apps, or someone entering the court.",
   },
   {
     icon: Radio,
@@ -71,13 +71,13 @@ export default function MatchSessionMatchi() {
                   <BrandText text="rosa live score session for Matchi TV" />
                 </h1>
                 <p className="text-lg md:text-xl text-muted-foreground leading-relaxed">
-                  <BrandText text="A real padel match recorded with rosa pads, camera capture, and a live scoreboard overlay that updates as players touch the pads." />
+                  <BrandText text="A real padel match recorded with rosa pads, camera capture, and a live scoreboard overlay that updates as players touch the pads through the court glass." />
                 </p>
               </div>
 
               <div className="grid grid-cols-3 gap-px overflow-hidden rounded-2xl border border-border bg-border">
                 {[
-                  ["Input", "rosa pads"],
+                  ["Input", "through-glass pads"],
                   ["Output", "live overlay"],
                   ["Session", "39:36"],
                 ].map(([label, value]) => (
@@ -118,7 +118,7 @@ export default function MatchSessionMatchi() {
                 <span className="text-sm font-mono uppercase tracking-widest text-primary">Integration proof</span>
                 <h2 className="text-4xl md:text-5xl font-bold">A live scoring layer for app and broadcast workflows.</h2>
                 <p className="text-muted-foreground text-lg leading-relaxed">
-                  This session shows the core loop Matchi asked about at Padel World Summit: court-side score input, live state updates, and a video feed that can carry the score into Matchi TV or other match-session views.
+                  This session shows the core loop Matchi asked about at Padel World Summit: through-glass court-side score input, live state updates, and a video feed that can carry the score into Matchi TV or other match-session views.
                 </p>
               </div>
 
@@ -159,7 +159,7 @@ export default function MatchSessionMatchi() {
                 {[
                   ["Live match session links", Share2],
                   ["Court camera view with score overlay", Tv],
-                  ["Pad-driven scoring without manual app input", Zap],
+                  ["Through-glass pad scoring without manual app input", Zap],
                   ["Score state available for future integrations", Activity],
                 ].map(([text, icon]) => {
                   const Icon = icon as typeof Activity;
