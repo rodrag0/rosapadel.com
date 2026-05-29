@@ -5,14 +5,14 @@ import Navbar from "@/components/rosa/Navbar";
 import Footer from "@/components/rosa/Footer";
 import BrandText from "@/components/rosa/BrandText";
 
-const SESSION_VIDEO = "/sessions/matchi-live-score/scoreboard-session.mp4";
+const SESSION_VIDEO = "https://padelkarte.com/media/rosavstiebreak.mp4";
 const SESSION_POSTER = "/sessions/matchi-live-score/poster.jpg";
 
 const SIGNALS = [
   {
     icon: Gamepad2,
     title: "Through-glass pad input",
-    body: "Players update the score by touching the rosa pads through the court glass. The signal reaches the scoring system without phones, apps, or someone entering the court.",
+    body: "Players update the score by touching the rosa pads through the court glass. The signal reaches the scoring system without phones or apps.",
   },
   {
     icon: Radio,
