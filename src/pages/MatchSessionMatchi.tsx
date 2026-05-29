@@ -12,7 +12,7 @@ const SIGNALS = [
   {
     icon: Gamepad2,
     title: "Through-glass pad input",
-    body: "Players update the score with rosa pads from outside the court glass. The signal reaches the scoring system without phones, apps, or someone entering the court.",
+    body: "Players update the score by touching the rosa pads through the court glass. The signal reaches the scoring system without phones, apps, or someone entering the court.",
   },
   {
     icon: Radio,
@@ -160,7 +160,7 @@ export default function MatchSessionMatchi() {
                   ["Live match session links", Share2],
                   ["Court camera view with score overlay", Tv],
                   ["Through-glass pad scoring without manual app input", Zap],
-                  ["Score state available for future integrations", Activity],
+                  ["Score state available for partner integrations", Activity],
                 ].map(([text, icon]) => {
                   const Icon = icon as typeof Activity;
 
