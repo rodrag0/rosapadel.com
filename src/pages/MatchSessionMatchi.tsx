@@ -87,6 +87,15 @@ export default function MatchSessionMatchi() {
                   </div>
                 ))}
               </div>
+
+              <a
+                href="https://rosatournademo-alt1.vercel.app/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center justify-center rounded-xl bg-primary px-6 py-3 text-sm font-semibold text-primary-foreground transition-opacity hover:opacity-90"
+              >
+                Open live management demo
+              </a>
             </div>
 
             <div className="rounded-[2rem] border border-border bg-card p-3 shadow-2xl shadow-primary/10">
@@ -161,6 +170,7 @@ export default function MatchSessionMatchi() {
                   ["Court camera view with score overlay", Tv],
                   ["Through-glass pad scoring without manual app input", Zap],
                   ["Score state available for partner integrations", Activity],
+                  ["Management software powered by the live pad score feed", Radio],
                 ].map(([text, icon]) => {
                   const Icon = icon as typeof Activity;
 
@@ -176,6 +186,21 @@ export default function MatchSessionMatchi() {
               <div className="rounded-2xl bg-secondary p-5 space-y-2">
                 <p className="text-xs font-mono uppercase tracking-widest text-muted-foreground">Session URL</p>
                 <p className="break-all text-sm font-semibold">rosapadel.com/match-session/matchi-live-score</p>
+              </div>
+
+              <div className="rounded-2xl bg-secondary p-5 space-y-3">
+                <p className="text-xs font-mono uppercase tracking-widest text-muted-foreground">Management demo</p>
+                <p className="text-sm leading-relaxed text-muted-foreground">
+                  Tournament and court management software that can use the live score feed coming from the pads.
+                </p>
+                <a
+                  href="https://rosatournademo-alt1.vercel.app/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex text-sm font-semibold text-primary hover:underline"
+                >
+                  Open demo software →
+                </a>
               </div>
 
               <a
