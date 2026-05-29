@@ -33,7 +33,7 @@ export default function MatchSessionMatchi() {
   const detailsInView = useInView(detailsRef, { once: true, margin: "-80px" });
 
   useEffect(() => {
-    document.title = "rosa padel | Matchi live scoring session";
+    document.title = "rosa padel | Matchi livescore showcase";
 
     const meta = document.createElement("meta");
     meta.name = "robots";
@@ -62,13 +62,13 @@ export default function MatchSessionMatchi() {
                 <span className="text-sm font-mono uppercase tracking-widest text-primary">Match session</span>
                 <span className="inline-flex items-center gap-1.5 rounded-full border border-green-500/30 bg-green-500/10 px-3 py-1 text-[11px] font-mono uppercase tracking-[0.18em] text-green-400">
                   <span className="h-1.5 w-1.5 rounded-full bg-green-500" />
-                  Live scoring demo
+                  Live scoring
                 </span>
               </div>
 
               <div className="space-y-4">
                 <h1 className="text-5xl md:text-7xl font-extrabold leading-none tracking-tight">
-                  <BrandText text="rosa live score session for Matchi TV" />
+                  livescore showcase for Matchi TV
                 </h1>
                 <p className="text-lg md:text-xl text-muted-foreground leading-relaxed">
                   <BrandText text="A real padel match recorded with rosa pads, camera capture, and a live scoreboard overlay that updates as players touch the pads through the court glass." />
