@@ -1,3 +1,4 @@
+// Keep every user-facing key aligned across these three languages; sections read this through LanguageProvider.
 export type Language = "en" | "es" | "de";
 
 export const languageOptions: { code: Language; label: string }[] = [

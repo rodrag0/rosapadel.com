@@ -4,6 +4,7 @@ import { Video, Target, FileText, Play, BarChart3, ExternalLink } from "lucide-r
 import { useLanguage } from "./LanguageProvider";
 import { Button } from "@/components/ui/button";
 
+// Sample match data for the Vision mockup, not scores from a live service.
 const teamA = { name: "Rodrigo/Omar", short: "ROD/OMA" };
 const teamB = { name: "Saul/Memo", short: "SAU/MEM" };
 

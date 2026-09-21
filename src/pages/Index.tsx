@@ -32,6 +32,7 @@ const Index = () => {
   }, [copy.meta.homeDescription, copy.meta.homeTitle]);
 
   return (
+    // The section order is the sales narrative; keep it intentional when adding or moving sections.
     <main className="min-h-screen bg-background text-foreground overflow-x-hidden">
       <Navbar />
       <HeroSection />
