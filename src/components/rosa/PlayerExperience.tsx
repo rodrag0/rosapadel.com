@@ -1,8 +1,10 @@
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
-import { Video, Target, FileText, Play, BarChart3 } from "lucide-react";
+import { Video, Target, FileText, Play, BarChart3, ExternalLink } from "lucide-react";
 import { useLanguage } from "./LanguageProvider";
+import { Button } from "@/components/ui/button";
 
+// Sample match data for the Vision mockup, not scores from a live service.
 const teamA = { name: "Rodrigo/Omar", short: "ROD/OMA" };
 const teamB = { name: "Saul/Memo", short: "SAU/MEM" };
 
@@ -27,6 +29,7 @@ const players = [
 ];
 
 const last10 = [1, 2, 2, 2, 1, 2, 2, 1, 1, 1];
+const visionCoachDemoUrl = "https://rosavision.vercel.app/";
 
 export default function PlayerExperience() {
   const ref = useRef(null);
@@ -244,6 +247,15 @@ export default function PlayerExperience() {
                 {copy.playerExperience.status}
               </div>
               <p className="text-muted-foreground text-lg">{copy.playerExperience.body}</p>
+              <div className="rounded-xl border border-primary/20 bg-primary/5 p-4 space-y-2">
+                <p className="text-xs text-muted-foreground">{copy.playerExperience.demoCtaHint}</p>
+                <Button asChild size="sm" className="font-mono">
+                  <a href={visionCoachDemoUrl} target="_blank" rel="noreferrer">
+                    {copy.playerExperience.demoCtaLabel}
+                    <ExternalLink className="h-4 w-4" />
+                  </a>
+                </Button>
+              </div>
             </div>
 
             <div className="grid grid-cols-2 gap-4">

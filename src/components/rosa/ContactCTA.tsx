@@ -48,6 +48,7 @@ export default function ContactCTA() {
     let success = false;
 
     try {
+      // FormSubmit is the lead processor; changes here also require a privacy-copy review.
       const response = await fetch("https://formsubmit.co/ajax/info@rosapadel.com", {
         method: "POST",
         headers: {
