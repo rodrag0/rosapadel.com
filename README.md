@@ -31,7 +31,8 @@ At this handoff, lint has three existing errors in `src/components/ui/command.ts
 
 | Change | Start here |
 | --- | --- |
-| Marketing, navigation, legal, or CTA copy | `src/lib/siteCopy.ts` (English, Spanish, German) |
+| Shared homepage, navigation, legal, or CTA copy | `src/lib/siteCopy.ts` (English, Spanish, German) |
+| Product, clubs, investor, or Matchi page copy | The relevant file in `src/pages/` (currently mostly English) |
 | Homepage section order | `src/pages/Index.tsx` |
 | Routes and app-wide providers | `src/App.tsx` |
 | Homepage visuals and interactions | `src/components/rosa/` |
@@ -39,14 +40,16 @@ At this handoff, lint has three existing errors in `src/components/ui/command.ts
 | Theme tokens and shared styles | `src/index.css`, `tailwind.config.ts` |
 | Static files | `public/` |
 | Contact form | `src/components/rosa/ContactCTA.tsx` |
+| Matchi session video | `src/pages/MatchSessionMatchi.tsx` (video hosted outside this repo) |
+| Sitemap and crawler rules | `public/sitemap.xml`, `public/robots.txt`, `vercel.json` |
 
 `src/components/ui/` contains shared shadcn/Radix primitives. Prefer composing those in `src/components/rosa/` over editing every primitive for a page-specific change.
 
 ## Working on the site
 
-1. Check which Git branch Vercel currently tracks for the Production environment. Do not assume it is `main`; this repo has had multiple active branches.
+1. Check which Git branch Vercel tracks for Production before merging. At this handoff it is `rosa-web-live`, even though GitHub's default branch is `main`; the two must be kept in sync until Vercel is switched to `main`.
 2. Create a feature branch from that production branch. Open a pull request and review its Vercel preview on desktop and mobile before merging.
-3. Update all three languages when changing copy. Check product claims with Rodrigo: the site must distinguish available scoring/HD capabilities from planned Vision features and demonstrations.
+3. Update all three languages when changing `siteCopy.ts`. The product and audience pages have separate English copy; do not assume the language switcher translates them. Check product claims with Rodrigo, especially prototype and roadmap features.
 4. For navigation, use `getSectionHref()` in `src/lib/siteLinks.ts` so links back to homepage sections work from subpages.
 5. Review privacy/legal copy whenever changing analytics, form processing, or browser storage. The contact form currently uses FormSubmit; `index.html` loads Microsoft Clarity.
 

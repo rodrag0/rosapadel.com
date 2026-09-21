@@ -1,4 +1,4 @@
-// Keep every user-facing key aligned across these three languages; sections read this through LanguageProvider.
+// Keep keys in this shared copy map aligned across all three languages; detail pages also contain local copy.
 export type Language = "en" | "es" | "de";
 
 export const languageOptions: { code: Language; label: string }[] = [
