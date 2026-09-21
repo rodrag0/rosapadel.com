@@ -89,6 +89,8 @@ export const siteCopy = {
     howItWorks: {
       label: "How It Works",
       title: "Three Steps to Smart",
+      demoLabel: "Try the interactive match demo",
+      demoNote: "A simulation, not a live court connection.",
       steps: [
         {
           num: "01",
@@ -557,6 +559,8 @@ export const siteCopy = {
     howItWorks: {
       label: "Cómo funciona",
       title: "Tres pasos hacia una pista inteligente",
+      demoLabel: "Probar la demo interactiva de partido",
+      demoNote: "Una simulación, sin conexión a una pista en vivo.",
       steps: [
         {
           num: "01",
@@ -1025,6 +1029,8 @@ export const siteCopy = {
     howItWorks: {
       label: "So funktioniert es",
       title: "Drei Schritte zum Smart Court",
+      demoLabel: "Interaktive Match-Demo testen",
+      demoNote: "Eine Simulation ohne Verbindung zu einem Live-Court.",
       steps: [
         {
           num: "01",

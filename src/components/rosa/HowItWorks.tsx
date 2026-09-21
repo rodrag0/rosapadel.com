@@ -1,8 +1,11 @@
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
-import { Wrench, Play, BarChart3 } from "lucide-react";
+import { Wrench, Play, BarChart3, ExternalLink } from "lucide-react";
+import { Button } from "@/components/ui/button";
 import { useLanguage } from "./LanguageProvider";
 import BrandText from "./BrandText";
+
+const MATCH_DEMO_URL = "https://rosa-match-demo.vercel.app/";
 
 export default function HowItWorks() {
   const ref = useRef(null);
@@ -50,6 +53,16 @@ export default function HowItWorks() {
               </motion.div>
             );
           })}
+        </div>
+
+        <div className="mt-12 flex flex-col items-center gap-3 text-center">
+          <Button asChild variant="outline" className="border-primary/30 hover:border-primary">
+            <a href={MATCH_DEMO_URL} target="_blank" rel="noopener noreferrer">
+              {copy.howItWorks.demoLabel}
+              <ExternalLink className="h-4 w-4" aria-hidden="true" />
+            </a>
+          </Button>
+          <p className="text-sm text-muted-foreground">{copy.howItWorks.demoNote}</p>
         </div>
       </div>
     </section>
