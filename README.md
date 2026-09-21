@@ -47,8 +47,8 @@ At this handoff, lint has three existing errors in `src/components/ui/command.ts
 
 ## Working on the site
 
-1. Check which Git branch Vercel tracks for Production before merging. At this handoff it is `rosa-web-live`, even though GitHub's default branch is `main`; the two must be kept in sync until Vercel is switched to `main`.
-2. Create a feature branch from that production branch. Open a pull request and review its Vercel preview on desktop and mobile before merging.
+1. At this handoff, GitHub's default branch and Vercel's Production branch are both `main`. Verify this setting before any future release rather than assuming it cannot change.
+2. Create a feature branch from `main`. Open a pull request and review its Vercel preview on desktop and mobile before merging.
 3. Update all three languages when changing `siteCopy.ts`. The product and audience pages have separate English copy; do not assume the language switcher translates them. Check product claims with Rodrigo, especially prototype and roadmap features.
 4. For navigation, use `getSectionHref()` in `src/lib/siteLinks.ts` so links back to homepage sections work from subpages.
 5. Review privacy/legal copy whenever changing analytics, form processing, or browser storage. The contact form currently uses FormSubmit; `index.html` loads Microsoft Clarity.
