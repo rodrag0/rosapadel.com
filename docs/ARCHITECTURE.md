@@ -51,7 +51,6 @@ Use `getSectionHref(pathname, id)` from `src/lib/siteLinks.ts` for homepage anch
 | Demo/contact requests | Browser POST to `https://formsubmit.co/ajax/info@rosapadel.com` in `ContactCTA.tsx`; Zod client-side validation and toast/success state | Test without sending real leads; update privacy text if processor changes |
 | Analytics | Microsoft Clarity loader in `index.html` | Review consent, cookie, and privacy statements before changing tracking |
 | Player demo | External URL in `PlayerExperience.tsx` | Validate link and wording if the demo changes |
-| Match scoring simulation | `HowItWorks.tsx` links to `https://rosa-match-demo.vercel.app/` | Public interactive simulation; do not describe it as a connected court |
 | Matchi session | `MatchSessionMatchi.tsx` uses a video at `https://padelkarte.com/media/rosavstiebreak.mp4` and links to a separate management demo | Video is hosted on a separate VPS; check HTTP availability and playback if the page changes |
 | Preferences | `rosa-language`, `rosa-theme`, `rosa-theme-manual` in local storage | Keep preference behavior and legal table aligned |
 | Images/fonts | Bundled `src/assets/` and `public/` files; Pretendard font in `public/fonts/` | Check asset URLs and loading in production build |
