@@ -4,6 +4,12 @@ This repository contains the public `www.rosapadel.com` marketing website. It ex
 
 Start with [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md) for the page map, content flow, integrations, and change guidelines.
 
+This branch (`codex/vision-events-concept`) contains an alternative homepage and
+an `/events` page for review alongside Alfonso's work. It is not the production
+branch. See [the concept notes](docs/CONCEPT-2026-09.md) for references, media,
+product status, and scope. New home/event content is translated in
+`src/lib/experienceCopy.ts`; existing shared content stays in `siteCopy.ts`.
+
 ## Run locally
 
 Prerequisites: Node.js and npm. Use the committed `package-lock.json` for reproducible installs.
@@ -32,11 +38,15 @@ At this handoff, lint has three existing errors in `src/components/ui/command.ts
 | Change | Start here |
 | --- | --- |
 | Shared homepage, navigation, legal, or CTA copy | `src/lib/siteCopy.ts` (English, Spanish, German) |
+| Alternative homepage and event copy | `src/lib/experienceCopy.ts` (English, Spanish, German) |
+| Events and tournaments | `src/pages/Events.tsx` |
 | Product, clubs, investor, or Matchi page copy | The relevant file in `src/pages/` (currently mostly English) |
 | Homepage section order | `src/pages/Index.tsx` |
 | Routes and app-wide providers | `src/App.tsx` |
 | Homepage visuals and interactions | `src/components/rosa/` |
 | Court animation | `src/components/rosa/Hero3DScene.tsx` |
+| Homepage media URLs | `src/lib/experienceMedia.ts` |
+| Alternative layout styles | `src/experience.css` |
 | Theme tokens and shared styles | `src/index.css`, `tailwind.config.ts` |
 | Static files | `public/` |
 | Contact form | `src/components/rosa/ContactCTA.tsx` |
@@ -54,3 +64,18 @@ At this handoff, lint has three existing errors in `src/components/ui/command.ts
 5. Review privacy/legal copy whenever changing analytics, form processing, or browser storage. The contact form currently uses FormSubmit; `index.html` loads Microsoft Clarity.
 
 The production branch is configured in Vercel, not in this repository. A merge or push to that branch may publish immediately. No Vercel, GitHub, or VPS credentials should be committed here.
+
+## Check this concept
+
+With the dev server running, this browser verification checks responsive layouts
+in three languages, theme variants, rendered 3D pixels, motion, mobile navigation,
+event tabs, FAQ, video failure, and contact success/error. It intercepts
+FormSubmit requests so it never sends real leads.
+
+```bash
+node scripts/verify-experience.mjs http://localhost:8080
+```
+
+Screenshots and a report are written to ignored `review.local/`. The optional
+third argument changes the output directory. Install Playwright's Chromium
+browser first if needed (`npx playwright install chromium`).

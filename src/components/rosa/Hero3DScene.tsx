@@ -1,5 +1,5 @@
 import { useRef, useMemo, useEffect } from "react";
-import { Canvas, useFrame, useLoader } from "@react-three/fiber";
+import { Canvas, useFrame, useLoader, useThree } from "@react-three/fiber";
 import { Float } from "@react-three/drei";
 import * as THREE from "three";
 import rosaIconWhite from "@/assets/rosa-icon-white.png";
@@ -16,7 +16,7 @@ interface ThemeColors {
 }
 
 const DARK_THEME: ThemeColors = {
-  floor: new THREE.Color("#1a1a22"),
+  floor: new THREE.Color("#394449"),
   darker: new THREE.Color("#2a2a35"),
   fog: "#0d0d14",
   net: new THREE.Color("#555566"),
@@ -348,11 +348,11 @@ function PadelCourt({ colors }: { colors: ThemeColors }) {
   const logoTexture = useSvgTexture(rosaIconWhite);
 
   const darkMat = useMemo(
-    () => new THREE.MeshStandardMaterial({ color: colors.darker, metalness: 0.6, roughness: 0.4 }),
+    () => new THREE.MeshStandardMaterial({ color: colors.darker, metalness: 0.25, roughness: 0.65 }),
     [colors]
   );
   const floorMat = useMemo(
-    () => new THREE.MeshStandardMaterial({ color: colors.floor, metalness: 0.5, roughness: 0.5 }),
+    () => new THREE.MeshStandardMaterial({ color: colors.floor, metalness: 0.1, roughness: 0.8 }),
     [colors]
   );
   const glassMat = useMemo(
@@ -613,14 +613,37 @@ function CourtGrid() {
   );
 }
 
-export default function Hero3DScene({ theme }: { theme: "dark" | "light" }) {
+function ResponsiveCourtCamera() {
+  const { camera, size, invalidate } = useThree();
+
+  useEffect(() => {
+    if (!(camera instanceof THREE.PerspectiveCamera)) return;
+    // Fit the rotating court's full extent, including the camera and HD display.
+    const verticalFov = THREE.MathUtils.degToRad(camera.fov);
+    const aspect = size.width / size.height;
+    const horizontalFov = 2 * Math.atan(Math.tan(verticalFov / 2) * aspect);
+    const distance = 3.25 / Math.sin(Math.min(verticalFov, horizontalFov) / 2);
+    const target = new THREE.Vector3(0, 0.65, 0);
+    camera.position.copy(new THREE.Vector3(-0.95, 0.95, 1).normalize().multiplyScalar(distance).add(target));
+    camera.lookAt(target);
+    camera.updateProjectionMatrix();
+    invalidate();
+  }, [camera, size.width, size.height, invalidate]);
+
+  return null;
+}
+
+export default function Hero3DScene({ theme, reducedMotion = false }: { theme: "dark" | "light"; reducedMotion?: boolean }) {
   const colors = theme === "light" ? LIGHT_THEME : DARK_THEME;
 
   return (
     <div className="absolute inset-0">
-      <Canvas camera={{ position: [3.5, 2, 4.5], fov: 45 }} dpr={[1, 1.5]} gl={{ antialias: true, logarithmicDepthBuffer: true }} frameloop="always">
-        <fog attach="fog" args={[colors.fog, 6, 16]} />
-        <ambientLight intensity={theme === "light" ? 1.2 : 0.6} />
+      <Canvas camera={{ position: [3.5, 2, 4.5], fov: 45 }} dpr={[1, 1.5]} gl={{ antialias: true, logarithmicDepthBuffer: true }} frameloop={reducedMotion ? "demand" : "always"}>
+        <ResponsiveCourtCamera />
+        <fog attach="fog" args={[colors.fog, 15, 35]} />
+        <ambientLight intensity={theme === "light" ? 1.2 : 1.1} />
+        <hemisphereLight args={["#ffffff", "#50505b", 1.4]} />
+        <directionalLight position={[3, 8, 5]} intensity={2.5} />
         <pointLight position={[5, 5, 5]} intensity={theme === "light" ? 0.8 : 1.2} color="#E4007C" />
         <pointLight position={[-5, 3, 3]} intensity={theme === "light" ? 1.0 : 0.6} color="#ffffff" />
         <pointLight position={[0, 4, 0]} intensity={theme === "light" ? 0.8 : 0.4} color="#ffffff" />

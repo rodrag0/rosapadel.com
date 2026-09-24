@@ -37,6 +37,12 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://www.rosapadel.com/events</loc>
+    <lastmod>2026-09-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://www.rosapadel.com/investors</loc>
     <lastmod>2026-05-27</lastmod>
     <changefreq>monthly</changefreq>

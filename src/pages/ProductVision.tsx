@@ -13,8 +13,8 @@ const FEATURES = [
   },
   {
     icon: Play,
-    name: "Instant Replay",
-    desc: "Jump back to any point in the match. Review rallies, winners, and key moments in seconds.",
+    name: "Replay & VAR Review",
+    desc: "Revisit a play with video during the Vision pilot. Players or a referee review the footage and retain the decision; this is not automated line calling.",
   },
   {
     icon: MapPin,

@@ -17,6 +17,7 @@ import ProductCoach from "./pages/ProductCoach.tsx";
 import ForClubs from "./pages/ForClubs.tsx";
 import Investors from "./pages/Investors.tsx";
 import MatchSessionMatchi from "./pages/MatchSessionMatchi.tsx";
+import Events from "./pages/Events.tsx";
 
 const queryClient = new QueryClient();
 
@@ -38,6 +39,7 @@ const App = () => (
               <Route path="/products/vision" element={<ProductVision />} />
               <Route path="/products/coach" element={<ProductCoach />} />
               <Route path="/for-clubs" element={<ForClubs />} />
+              <Route path="/events" element={<Events />} />
               <Route path="/investors" element={<Investors />} />
               <Route path="/match-session/matchi-live-score" element={<MatchSessionMatchi />} />
               <Route path="*" element={<NotFound />} />

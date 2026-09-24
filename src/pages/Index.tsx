@@ -1,14 +1,14 @@
 import { useEffect } from "react";
 import Navbar from "@/components/rosa/Navbar";
-import HeroSection from "@/components/rosa/HeroSection";
-import ProblemSolution from "@/components/rosa/ProblemSolution";
-import ProductFamilySlider from "@/components/rosa/ProductFamilySlider";
-import AudiencePortals from "@/components/rosa/AudiencePortals";
-import HowItWorks from "@/components/rosa/HowItWorks";
-import PlayerExperience from "@/components/rosa/PlayerExperience";
-import VisionEcosystem from "@/components/rosa/VisionEcosystem";
-import Tournaments from "@/components/rosa/Tournaments";
-import ROICalculator from "@/components/rosa/ROICalculator";
+import ExperienceHero from "@/components/rosa/ExperienceHero";
+import {
+  ValueStrip,
+  ProductEcosystem,
+  MatchFlow,
+  AudienceSection,
+  EventsTeaser,
+  MatchProof,
+} from "@/components/rosa/HomeSections";
 import Partners from "@/components/rosa/Partners";
 import ContactCTA from "@/components/rosa/ContactCTA";
 import Footer from "@/components/rosa/Footer";
@@ -34,21 +34,17 @@ const Index = () => {
 
   return (
     // The section order is the sales narrative; keep it intentional when adding or moving sections.
-    <main className="min-h-screen bg-background text-foreground overflow-x-hidden">
+    <main className="experience-page min-h-screen bg-background text-foreground">
       <Navbar />
-      <HeroSection />
-      <ProductFamilySlider />
-      <AudiencePortals />
-      <ProblemSolution />
-      <div id="how-it-works">
-        <HowItWorks />
-      </div>
-      <PlayerExperience />
-      <VisionEcosystem />
-      <ROICalculator />
-      <Tournaments />
+      <ExperienceHero />
+      <ValueStrip />
+      <ProductEcosystem />
+      <MatchFlow />
+      <AudienceSection />
+      <EventsTeaser />
+      <MatchProof />
       <Partners />
-      <ContactCTA />
+      <ContactCTA editorial />
       <Footer />
     </main>
   );
