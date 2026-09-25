@@ -1,50 +1,17 @@
 import { useState } from "react";
-import {
-  ArrowUpRight,
-  BarChart3,
-  Building2,
-  Check,
-  Hand,
-  Instagram,
-  Linkedin,
-  Monitor,
-  Play,
-  RotateCcw,
-  Trophy,
-  Users,
-} from "lucide-react";
+import { ArrowRight, Play } from "lucide-react";
 import { useLanguage } from "./LanguageProvider";
 import BrandText from "./BrandText";
-import CourtPreview from "./CourtPreview";
+import AppScreenshot from "./AppScreenshot";
+import EventApplications from "./EventApplications";
 import { experienceCopy } from "@/lib/experienceCopy";
 import { experienceMedia } from "@/lib/experienceMedia";
-
-export function ValueStrip() {
-  const { language } = useLanguage();
-  const icons = [Hand, RotateCcw, BarChart3, Trophy];
-  return (
-    <div className="experience-value-band">
-      <div className="experience-container experience-values">
-        {experienceCopy[language].values.map((item, index) => {
-          const Icon = icons[index];
-          return (
-            <div key={item.title}>
-              <Icon size={23} strokeWidth={1.5} aria-hidden="true" />
-              <div>
-                <h2>{item.title}</h2>
-                <p>{item.body}</p>
-              </div>
-            </div>
-          );
-        })}
-      </div>
-    </div>
-  );
-}
+import { productPresentation } from "@/lib/productScreens";
 
 export function ProductEcosystem() {
   const { language } = useLanguage();
   const copy = experienceCopy[language].products;
+  const presentation = productPresentation[language];
   return (
     <section id="products" className="experience-section experience-container">
       <div className="experience-section-head">
@@ -52,63 +19,55 @@ export function ProductEcosystem() {
           <p className="experience-eyebrow">
             <BrandText text={copy.label} />
           </p>
-          <h2>{copy.title}</h2>
+          <h2>{presentation.systemTitle}</h2>
         </div>
-        <p className="experience-intro">{copy.body}</p>
+        <p className="experience-intro">{presentation.systemBody}</p>
       </div>
-      <div className="experience-vision-feature">
-        <div className="experience-vision-copy">
-          <span className="experience-status experience-status-pilot">
-            {copy.pilot}
-          </span>
-          <h3>
-            <BrandText text="rosa Vision" />
-          </h3>
-          <p>{copy.vision}</p>
-          <ul className="experience-checklist">
-            {copy.visionFeatures.map((item) => (
-              <li key={item}>
-                <Check size={17} aria-hidden="true" />
-                {item}
-              </li>
-            ))}
-          </ul>
-          <a className="experience-text-link" href="/products/vision">
-            {copy.discover}
-            <ArrowUpRight size={18} aria-hidden="true" />
-          </a>
-        </div>
-        <CourtPreview label={copy.illustration} />
-      </div>
-      <div className="experience-core-products">
+      <div className="product-lineup">
         {[
-          {
-            name: "Core HD",
-            href: "/products/core-hd",
-            body: copy.coreHd,
-            features: copy.coreHdFeatures,
-          },
           {
             name: "Core LED",
             href: "/products/core-led",
             body: copy.coreLed,
-            features: copy.coreLedFeatures,
+            details: copy.coreLedFeatures,
+            status: copy.ready,
           },
-        ].map((product) => (
+          {
+            name: "Core HD",
+            href: "/products/core-hd",
+            body: copy.coreHd,
+            details: copy.coreHdFeatures,
+            status: copy.ready,
+          },
+          {
+            name: "rosa Vision",
+            href: "/products/vision",
+            body: copy.vision,
+            details: copy.visionFeatures.join(" · "),
+            status: copy.pilot,
+          },
+        ].map((product, index) => (
           <article key={product.name}>
-            <div className="experience-product-heading">
-              <Monitor size={25} strokeWidth={1.5} aria-hidden="true" />
-              <h3>{product.name}</h3>
-              <span className="experience-status experience-status-ready">
-                {copy.ready}
-              </span>
-            </div>
+            <span className="product-lineup-index">0{index + 1}</span>
+            <h3>
+              <BrandText text={product.name} />
+            </h3>
             <p>{product.body}</p>
-            <p className="experience-product-features">{product.features}</p>
-            <a className="experience-text-link" href={product.href}>
-              {copy.discover}
-              <ArrowUpRight size={18} aria-hidden="true" />
-            </a>
+            <p className="product-lineup-details">{product.details}</p>
+            <div>
+              <span
+                className={`experience-status ${index === 2 ? "experience-status-pilot" : "experience-status-ready"}`}
+              >
+                {product.status}
+              </span>
+              <a
+                href={product.href}
+                aria-label={`${copy.discover}: ${product.name}`}
+                title={copy.discover}
+              >
+                <ArrowRight size={21} />
+              </a>
+            </div>
           </article>
         ))}
       </div>
@@ -119,28 +78,21 @@ export function ProductEcosystem() {
 export function MatchFlow() {
   const { language } = useLanguage();
   const copy = experienceCopy[language].flow;
-  const icons = [Hand, RotateCcw, BarChart3];
   return (
     <section id="how-it-works" className="experience-section experience-band">
       <div className="experience-container">
         <p className="experience-eyebrow">{copy.label}</p>
         <h2>{copy.title}</h2>
         <ol className="experience-flow">
-          {copy.steps.map((step, index) => {
-            const Icon = icons[index];
-            return (
-              <li key={step.title}>
-                <div className="experience-step-heading">
-                  <span>0{index + 1}</span>
-                  <Icon size={24} strokeWidth={1.5} aria-hidden="true" />
-                </div>
-                <h3>{step.title}</h3>
-                <p>
-                  <BrandText text={step.body} />
-                </p>
-              </li>
-            );
-          })}
+          {copy.steps.map((step, index) => (
+            <li key={step.title}>
+              <span className="flow-number">0{index + 1}</span>
+              <h3>{step.title}</h3>
+              <p>
+                <BrandText text={step.body} />
+              </p>
+            </li>
+          ))}
         </ol>
         <p className="experience-footnote">{copy.note}</p>
       </div>
@@ -149,80 +101,51 @@ export function MatchFlow() {
 }
 
 export function AudienceSection() {
-  const { language, copy: site } = useLanguage();
-  const copy = experienceCopy[language].audiences;
+  const { language } = useLanguage();
+  const copy = productPresentation[language];
   return (
-    <section id="players" className="experience-section experience-container">
-      <p className="experience-eyebrow">{copy.label}</p>
-      <h2 className="experience-heading-limit">{copy.title}</h2>
-      <div className="experience-audiences">
-        {[
-          {
-            ...copy.clubs,
-            label: site.nav.forClubs,
-            icon: Building2,
-            href: "/for-clubs",
-          },
-          {
-            ...copy.players,
-            label: experienceCopy[language].nav.players,
-            icon: Users,
-            href: "/products/vision",
-          },
-        ].map((item) => (
-          <article key={item.label}>
-            <p className="experience-audience-label">
-              <item.icon size={23} strokeWidth={1.5} aria-hidden="true" />
-              {item.label}
-            </p>
-            <h3>{item.title}</h3>
-            <p>{item.body}</p>
-            <ul className="experience-checklist">
-              {item.points.map((point) => (
-                <li key={point}>
-                  <Check size={17} aria-hidden="true" />
-                  {point}
-                </li>
-              ))}
-            </ul>
-            <a className="experience-text-link" href={item.href}>
-              <BrandText text={item.cta} />
-              <ArrowUpRight size={18} aria-hidden="true" />
-            </a>
-          </article>
-        ))}
+    <section
+      id="players"
+      className="experience-section experience-container player-story"
+    >
+      <div className="player-story-copy">
+        <p className="experience-eyebrow">{copy.playerLabel}</p>
+        <h2>{copy.playerTitle}</h2>
+        <p className="experience-intro">{copy.playerBody}</p>
+        <ul className="player-capabilities">
+          {copy.playerFeatures.map((feature) => (
+            <li key={feature}>{feature}</li>
+          ))}
+        </ul>
+        <a href="/products/vision" className="experience-text-link">
+          <BrandText text="rosa Vision" />
+          <ArrowRight size={18} aria-hidden="true" />
+        </a>
+        <p className="experience-footnote">
+          <BrandText text={copy.playerNote} />
+        </p>
       </div>
+      <AppScreenshot screen="player" mobile className="player-story-screen" />
     </section>
   );
 }
 
 export function EventsTeaser() {
   const { language } = useLanguage();
-  const copy = experienceCopy[language].eventsTeaser;
+  const copy = productPresentation[language];
   return (
     <section id="tournaments" className="experience-section experience-band">
-      <div className="experience-container experience-events-teaser">
-        <div>
-          <p className="experience-eyebrow">{copy.label}</p>
-          <h2>{copy.title}</h2>
-          <p className="experience-intro">{copy.body}</p>
-          <a className="experience-button" href="/events">
-            {copy.cta}
-            <ArrowUpRight size={18} aria-hidden="true" />
-          </a>
+      <div className="experience-container">
+        <div className="experience-section-head">
+          <div>
+            <p className="experience-eyebrow">
+              {experienceCopy[language].eventsTeaser.label}
+            </p>
+            <h2>{copy.eventsTitle}</h2>
+          </div>
+          <p className="experience-intro">{copy.eventsBody}</p>
         </div>
-        <div className="experience-format-list">
-          {copy.formats.map((format, index) => (
-            <a key={format.title} href="/events#formats">
-              <span className="experience-format-number">0{index + 1}</span>
-              <div>
-                <h3>{format.title}</h3>
-                <p>{format.body}</p>
-              </div>
-              <ArrowUpRight size={21} aria-hidden="true" />
-            </a>
-          ))}
-        </div>
+        <EventApplications compact />
       </div>
     </section>
   );
@@ -250,11 +173,11 @@ export function MatchProof() {
       <figure>
         <div className="experience-match-video">
           {failed ? (
-            <div className="experience-video-error">
+            <div className="experience-video-error" role="status">
               <p>{copy.error}</p>
               <a href="#contact" className="experience-text-link">
                 {copy.email}
-                <ArrowUpRight size={18} aria-hidden="true" />
+                <ArrowRight size={18} />
               </a>
             </div>
           ) : playing ? (
@@ -282,7 +205,7 @@ export function MatchProof() {
                 height="720"
               />
               <span>
-                <Play size={24} fill="currentColor" aria-hidden="true" />
+                <Play size={20} fill="currentColor" aria-hidden="true" />
                 {copy.play}
               </span>
             </button>
@@ -292,34 +215,6 @@ export function MatchProof() {
           {copy.caption}
         </figcaption>
       </figure>
-      <div className="experience-community">
-        <div>
-          <h3>{copy.social}</h3>
-          <p>
-            <BrandText text={copy.socialBody} />
-          </p>
-        </div>
-        <div>
-          <a
-            href="https://www.instagram.com/rosa.padel"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Instagram size={20} aria-hidden="true" />
-            Instagram
-            <ArrowUpRight size={15} aria-hidden="true" />
-          </a>
-          <a
-            href="https://www.linkedin.com/company/rosa-padel"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Linkedin size={20} aria-hidden="true" />
-            LinkedIn
-            <ArrowUpRight size={15} aria-hidden="true" />
-          </a>
-        </div>
-      </div>
     </section>
   );
 }

@@ -4,7 +4,7 @@
 
 This is a client-rendered Vite/React marketing site, deployed as static files on Vercel. It owns the public product story, product detail pages, legal pages, demo/contact flow, and a visual preview of the player experience. It does not implement live court scoring or tournament operations. Product mockups and external demo links should not be mistaken for live integrations.
 
-On this concept branch, the homepage tells this story: Vision hero, a compact value strip, product ecosystem, three-step match flow, clubs and players, events, real match footage, partners, and contact. `/events` explains how the pad score feed relates to tournament and club operations. The previous carousel, ROI calculator, and other homepage components remain available for comparison; they are not mounted by the new homepage. See `CONCEPT-2026-09.md` for reference analysis and media decisions.
+On this concept branch, the homepage tells this story: Vision with direct desktop/mobile app captures, product ecosystem, three-step match flow, the player app, actual event applications, real match footage, partners, and contact. `/events` explains how the pad score feed relates to tournament and club operations. The previous carousel, ROI calculator, 3D court and other homepage components remain available for comparison; they are not mounted by the new homepage. See `CONCEPT-2026-09.md` for reference analysis and media decisions.
 
 ## Runtime map
 
@@ -27,9 +27,9 @@ src/lib/siteCopy.ts + src/lib/experienceCopy.ts (en/es/de)
 
 `App.tsx` installs React Query, theme, language, tooltip, and toast providers. React Query is present as scaffolding; the marketing pages do not currently depend on a site API. Routes are client-side. `vercel.json` serves existing files first, then falls back to `index.html`; this keeps `public/sitemap.xml`, images, and other static assets from being rewritten as HTML.
 
-`Index.tsx` composes the active homepage from `ExperienceHero.tsx` and the named sections in `HomeSections.tsx`. Those components read `experienceCopy.ts` using the existing language provider. `CourtPreview.tsx` lazy-loads the existing `Hero3DScene.tsx` near the viewport, supplies an image fallback, and passes the reduced-motion preference into the Three.js render loop. `MatchProof` loads the real match video only after a visitor presses play and handles media failure. URLs live in `experienceMedia.ts`.
+`Index.tsx` composes the active homepage from `ExperienceHero.tsx` and the named sections in `HomeSections.tsx`. They read `experienceCopy.ts` and `productScreens.ts` using the existing language provider. `AppScreenshot.tsx` displays direct screenshots and opens a Radix dialog for enlargement, preserving keyboard focus and Escape behavior. Desktop/mobile captures are separate. `MatchProof` loads the real match video only after a visitor presses play and handles media failure. Video URLs live in `experienceMedia.ts`.
 
-`Events.tsx` uses Radix tabs for three illustrative event formats and Radix accordion for FAQs. The examples are static content, not an event-management engine. `ContactCTA` retains the existing lead processor and accepts optional `editorial` styling and `defaultObjective` props; the events page preselects tournaments. `experience.css` scopes the new layout to `.experience-page` using the existing theme tokens.
+`Events.tsx` uses `EventApplications.tsx` for three real application views in Radix tabs and a Radix accordion for FAQs. The screenshots show current local apps with demonstration data; the website is not an event-management engine. `ContactCTA` retains the existing lead processor and accepts optional `editorial` styling and `defaultObjective` props; the events page preselects tournaments. `experience.css` scopes the new layout to `.experience-page` using the existing theme tokens. Screenshot provenance lives in `public/product-screens/README.md`.
 
 ## Content, brand, and product claims
 
@@ -39,7 +39,7 @@ Product detail pages, `/for-clubs`, `/investors`, and the Matchi session page al
 
 Write the brand as lowercase `rosa` in new copy. The product family is Core LED, Core HD, `rosa Vision`, and `rosa Coach`. Current UI labels mark LED and HD as production-ready, Vision as pilot/roadmap, and Coach as coming soon. Confirm hardware availability and individual features with Rodrigo before turning roadmap or prototype claims into present-tense promises. Tournament management belongs with Core HD, not Core LED. Keep mock data visibly separate from claims of live operation.
 
-`ThemeProvider.tsx` controls the `light`/`dark` class on the document. It uses `rosa-theme` and `rosa-theme-manual` in local storage; `src/index.css` and `tailwind.config.ts` define the visual system. The court scene is part of the product explanation, so performance work should preserve a useful visual experience on desktop and mobile.
+`ThemeProvider.tsx` controls the `light`/`dark` class on the document. It uses `rosa-theme` and `rosa-theme-manual` in local storage; `src/index.css` and `tailwind.config.ts` define the visual system. App captures retain the actual source app appearance in both website themes. The 3D court is not loaded on the current homepage.
 
 ## Routes and links
 

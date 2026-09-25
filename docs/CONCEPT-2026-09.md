@@ -1,5 +1,27 @@
 # September website concept
 
+## September 25 revision
+
+Rodrigo rejected the photo/scrim hero, decorative feature icons and generic
+illustrative tables. The current version uses a centered product presentation,
+flat surfaces, restrained typography and direct captures of the actual apps.
+The previous 3D court and icon value strip are no longer mounted.
+
+`public/product-screens/` contains nine direct browser captures from rosaApp,
+TournamentManager, LeagueManager and AmericanoTournamentTool. Desktop and phone
+views are captured separately, not recreated as marketing UI. Each capture can
+be enlarged in an accessible dialog. See that directory's README for provenance.
+
+Tournament, league and Americano data was created in isolated local stores.
+Original app source and saved data were not changed. The player app's existing
+demo recording was served locally, with manual shot labels. These images do not
+claim that mock tracking metrics or every integration are production-ready.
+
+`productScreens.ts` owns the asset map and concise three-language presentation
+copy. `AppScreenshot.tsx` owns enlargement; `EventApplications.tsx` owns the real
+application gallery shared by the homepage and events page. The old content
+examples in `experienceCopy.ts` are not used as screen representations.
+
 Branch: `codex/vision-events-concept`, based on `main` at `e278d0b`.
 This is an independent review proposal alongside Alfonso's work. Production and
 `alfonso/primeros-cambios` are not the destination for these commits.
@@ -26,9 +48,8 @@ feed. The examples are explicitly illustrative and are not a tournament engine.
 
 - The homepage uses the existing real match poster and the VPS-hosted match
   video. No AI-generated photographs or competitor assets are included.
-- The existing court model is reused as an unframed 3D illustration; the
-  surrounding copy identifies it as an illustration. It can later be replaced
-  by verified hardware models without changing the narrative.
+- The existing court model is retained in the source for reference, but is not
+  displayed by this revision. Actual application captures replace it.
 - Media URLs are centralized in `src/lib/experienceMedia.ts`.
 - Core HD and Core LED remain production-ready; tournament management belongs
   to Core HD. Core LED is not presented as a tournament system.
@@ -42,7 +63,9 @@ feed. The examples are explicitly illustrative and are not a tournament engine.
 
 - `experienceCopy.ts`: new home/event content in English, Spanish, and German.
 - `ExperienceHero.tsx` and `HomeSections.tsx`: homepage narrative.
-- `CourtPreview.tsx`: lazy 3D illustration, reduced motion, and image fallback.
+- `AppScreenshot.tsx`: actual application captures and accessible enlargement.
+- `EventApplications.tsx`: tournament, league and Americano application gallery.
+- `productScreens.ts`: screenshot asset map and revised presentation copy.
 - `Events.tsx`: event formats, scoring flow, compatibility, FAQ, and contact.
 - `experience.css`: scoped, responsive styling using existing theme tokens.
 

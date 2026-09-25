@@ -8,7 +8,7 @@ This branch (`codex/vision-events-concept`) contains an alternative homepage and
 an `/events` page for review alongside Alfonso's work. It is not the production
 branch. See [the concept notes](docs/CONCEPT-2026-09.md) for references, media,
 product status, and scope. New home/event content is translated in
-`src/lib/experienceCopy.ts`; existing shared content stays in `siteCopy.ts`.
+`src/lib/experienceCopy.ts` and `src/lib/productScreens.ts`; existing shared content stays in `siteCopy.ts`.
 
 ## Run locally
 
@@ -44,7 +44,8 @@ At this handoff, lint has three existing errors in `src/components/ui/command.ts
 | Homepage section order | `src/pages/Index.tsx` |
 | Routes and app-wide providers | `src/App.tsx` |
 | Homepage visuals and interactions | `src/components/rosa/` |
-| Court animation | `src/components/rosa/Hero3DScene.tsx` |
+| Retained legacy court animation (not mounted) | `src/components/rosa/Hero3DScene.tsx` |
+| Real app screenshots and presentation | `public/product-screens/`, `src/lib/productScreens.ts`, `AppScreenshot.tsx` |
 | Homepage media URLs | `src/lib/experienceMedia.ts` |
 | Alternative layout styles | `src/experience.css` |
 | Theme tokens and shared styles | `src/index.css`, `tailwind.config.ts` |
@@ -68,8 +69,8 @@ The production branch is configured in Vercel, not in this repository. A merge o
 ## Check this concept
 
 With the dev server running, this browser verification checks responsive layouts
-in three languages, theme variants, rendered 3D pixels, motion, mobile navigation,
-event tabs, FAQ, video failure, and contact success/error. It intercepts
+in three languages, theme variants, actual screenshot loading, image enlargement,
+mobile navigation, event tabs, FAQ, video failure, and contact success/error. It intercepts
 FormSubmit requests so it never sends real leads.
 
 ```bash

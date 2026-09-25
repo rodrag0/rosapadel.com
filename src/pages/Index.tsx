@@ -2,7 +2,6 @@ import { useEffect } from "react";
 import Navbar from "@/components/rosa/Navbar";
 import ExperienceHero from "@/components/rosa/ExperienceHero";
 import {
-  ValueStrip,
   ProductEcosystem,
   MatchFlow,
   AudienceSection,
@@ -37,7 +36,6 @@ const Index = () => {
     <main className="experience-page min-h-screen bg-background text-foreground">
       <Navbar />
       <ExperienceHero />
-      <ValueStrip />
       <ProductEcosystem />
       <MatchFlow />
       <AudienceSection />
