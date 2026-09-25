@@ -57,7 +57,7 @@ try {
     [1920, 1080, "en", "dark"],
   ]) {
     const page = await newPage({ width, height }, language, theme);
-    for (const route of ["/", "/events"]) {
+    for (const route of ["/", "/events", "/products/vision", "/products/portable", "/subscriptions"]) {
       await page.goto(baseURL + route, { waitUntil: "networkidle" });
       await expect(page.locator("h1")).toBeVisible();
       await scrollThrough(page);
@@ -90,12 +90,14 @@ try {
       assert.deepEqual(metrics.brokenImages, [], "Broken image");
       assert.deepEqual(metrics.escapedHeadings, [], "Heading overflow");
       assert.equal(metrics.gradients, 0, "Decorative gradient returned");
+      assert(!/Core HD|Core LED|rosa Coach/.test(await page.locator("body").innerText()), `${route}: retired product in visible copy`);
+      assert.equal(await page.locator('a[href="/products/core-hd"],a[href="/products/core-led"],a[href="/products/coach"]').count(), 0, "Retired product link");
       assert(metrics.heroBottom < height - 20, `${width} ${language} ${route}: hero hides the next section`);
       assert.equal(
         await page.locator('a[href*="rosa-match-demo.vercel.app"]').count(),
         0,
       );
-      const key = `${route === "/" ? "home" : "events"}-${width}-${language}-${theme}`;
+      const key = `${route === "/" ? "home" : route.slice(1).replaceAll("/", "-")}-${width}-${language}-${theme}`;
       await page.screenshot({
         path: path.join(output, `${key}.png`),
         fullPage: true,
@@ -103,19 +105,30 @@ try {
       report.push({ key, ...metrics });
       console.log(key, JSON.stringify(metrics));
       await page.screenshot({ path: path.join(output, `${key}-first.png`) });
-      assert(
-        (await page.locator('img[src^="/product-screens/"]').count()) > 0,
-        "Missing real app captures",
-      );
+      if (route !== "/products/portable") {
+        assert((await page.locator('img[src^="/product-screens/"]').count()) > 0, "Missing real app captures");
+      }
     }
     await page.close();
   }
 
   const page = await newPage({ width: 390, height: 844 }, "es", "dark");
+  for (const [previous, current] of [
+    ["/products/core-led", "/products/portable"],
+    ["/products/core-hd", "/products/vision"],
+    ["/products/coach", "/subscriptions#player"],
+  ]) {
+    await page.goto(baseURL + previous);
+    await expect(page).toHaveURL(baseURL.replace(/\/$/, "") + current);
+  }
   await page.goto(baseURL);
   const menu = page.locator('button[aria-controls="site-mobile-menu"]');
   await menu.click();
   await expect(menu).toHaveAttribute("aria-expanded", "true");
+  await page.locator("#site-mobile-menu").getByRole("button", { name: "Productos", exact: true }).click();
+  await expect(page.locator('#site-mobile-menu a[href="/products/portable"]')).toBeVisible();
+  await expect(page.locator('#site-mobile-menu a[href="/products/vision"]')).toBeVisible();
+  await expect(page.locator('#site-mobile-menu a[href="/subscriptions"]')).toBeVisible();
   await page.keyboard.press("Escape");
   await expect(menu).toBeFocused();
   await menu.click();

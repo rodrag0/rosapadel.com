@@ -4,6 +4,9 @@
   "buildCommand": "npm run build",
   "outputDirectory": "dist",
   "routes": [
+    { "src": "/products/core-led/?", "status": 308, "headers": { "Location": "/products/portable" } },
+    { "src": "/products/core-hd/?", "status": 308, "headers": { "Location": "/products/vision" } },
+    { "src": "/products/coach/?", "status": 308, "headers": { "Location": "/subscriptions#player" } },
     { "handle": "filesystem" },
     {
       "src": "/.*",

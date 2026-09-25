@@ -68,21 +68,21 @@ export default function Events() {
         <div className="experience-container">
           <div className="experience-section-head">
             <h2>{presentation.integration}</h2>
-            <p className="experience-intro">{presentation.integrationBody}</p>
+            <p className="experience-intro"><BrandText text={presentation.integrationBody} /></p>
           </div>
           <ol className="score-connection">
             {presentation.flow.map((step, index) => (
               <li key={step}>
                 <span>0{index + 1}</span>
-                <h3>{step}</h3>
+                <h3><BrandText text={step} /></h3>
                 {index < 3 && <ArrowRight size={20} aria-hidden="true" />}
               </li>
             ))}
           </ol>
           <div className="connection-foot">
-            <p>{presentation.noLed}</p>
-            <a href="/products/core-hd" className="experience-text-link">
-              Core HD
+            <p><BrandText text={presentation.portableNote} /></p>
+            <a href="/products/vision" className="experience-text-link">
+              <BrandText text="rosa Vision" />
               <ArrowRight size={18} />
             </a>
           </div>
@@ -94,7 +94,7 @@ export default function Events() {
           {copy.faqs.map((faq, index) => (
             <AccordionItem key={faq.title} value={`faq-${index}`}>
               <AccordionTrigger>{faq.title}</AccordionTrigger>
-              <AccordionContent>{faq.body}</AccordionContent>
+              <AccordionContent><BrandText text={faq.body} /></AccordionContent>
             </AccordionItem>
           ))}
         </Accordion>

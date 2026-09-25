@@ -12,6 +12,7 @@ import rosaIconLight from "@/assets/rosa-icon-light.svg";
 import { getSectionHref } from "@/lib/siteLinks";
 import BrandText from "./BrandText";
 import { experienceCopy } from "@/lib/experienceCopy";
+import { getProductLinks } from "@/lib/productCatalog";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -19,42 +20,12 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 
-const productLinks = [
-  {
-    name: "Core LED",
-    href: "/products/core-led",
-    tier: "Entry",
-    status: "Production ready",
-    statusClass: "text-green-400",
-  },
-  {
-    name: "Core HD",
-    href: "/products/core-hd",
-    tier: "Professional",
-    status: "Production ready",
-    statusClass: "text-green-400",
-  },
-  {
-    name: "rosa Vision",
-    href: "/products/vision",
-    tier: "Advanced",
-    status: "Pilot",
-    statusClass: "text-yellow-400",
-  },
-  {
-    name: "rosa Coach",
-    href: "/products/coach",
-    tier: "Intelligence",
-    status: "Soon",
-    statusClass: "text-muted-foreground",
-  },
-];
-
 export default function Navbar() {
   const [open, setOpen] = useState(false);
   const [productsOpen, setProductsOpen] = useState(false);
   const { theme, toggleTheme } = useTheme();
   const { copy, language } = useLanguage();
+  const productLinks = getProductLinks(language);
   const experienceNav = experienceCopy[language].nav;
   const menuButton = useRef<HTMLButtonElement>(null);
   const location = useLocation();
@@ -108,15 +79,7 @@ export default function Navbar() {
                       <span className="text-sm font-semibold text-foreground">
                         <BrandText text={product.name} />
                       </span>
-                      <span className="text-[10px] font-mono text-muted-foreground uppercase tracking-wider">
-                        {product.tier}
-                      </span>
                     </div>
-                    <span
-                      className={`text-[10px] font-mono uppercase tracking-widest ${product.statusClass}`}
-                    >
-                      {product.status}
-                    </span>
                   </a>
                 </DropdownMenuItem>
               ))}
@@ -220,11 +183,6 @@ export default function Navbar() {
                   >
                     <span>
                       <BrandText text={product.name} />
-                    </span>
-                    <span
-                      className={`text-[10px] font-mono ${product.statusClass}`}
-                    >
-                      {product.status}
                     </span>
                   </a>
                 ))}

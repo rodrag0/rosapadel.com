@@ -39,7 +39,7 @@ const REASONS = [
   {
     icon: Wrench,
     title: "Simple installation",
-    desc: "Under 5 minutes, no contractor needed. Core LED is plug-and-play. Core HD needs one HDMI cable and power.",
+    desc: "rosa Portable brings offline LED scoring. We plan the screen, camera and connection requirements for each rosa Vision installation.",
   },
   {
     icon: Users,
@@ -49,7 +49,7 @@ const REASONS = [
   {
     icon: TrendingUp,
     title: "Grows with you",
-    desc: "Start with Core LED, add Core HD, then Vision. Pay as you scale — no big upfront commitment.",
+    desc: "Choose rosa Portable or rosa Vision for your courts, then discuss the separate club subscription that fits your operation.",
   },
 ];
 
@@ -57,12 +57,12 @@ const INSTALL_STEPS = [
   {
     num: "01",
     title: "Plan",
-    desc: "Choose your tier based on your courts, budget, and ambitions. We help you get the configuration right.",
+    desc: "Choose your hardware and subscription separately, based on your courts and priorities. We help you get the configuration right.",
   },
   {
     num: "02",
     title: "Install",
-    desc: "Plug in and mount. No tools required for Core LED. Core HD adds one monitor and one cable.",
+    desc: "Set up your rosa Portable scoreboard or prepare your rosa Vision installation with our team.",
   },
   {
     num: "03",
@@ -118,7 +118,7 @@ export default function ForClubs() {
                 Book a Demo
               </a>
               <a
-                href="/products/core-led"
+                href="/#products"
                 className="rounded-xl px-8 py-3 font-semibold inline-flex items-center gap-2 border border-border hover:border-primary/40 transition-colors text-foreground"
               >
                 See Products
@@ -277,7 +277,7 @@ export default function ForClubs() {
                     <Icon className="w-5 h-5 text-primary" />
                   </div>
                   <h3 className="text-xl font-bold">{reason.title}</h3>
-                  <p className="text-muted-foreground leading-relaxed text-sm">{reason.desc}</p>
+                  <p className="text-muted-foreground leading-relaxed text-sm"><BrandText text={reason.desc} /></p>
                 </motion.div>
               );
             })}
@@ -311,7 +311,7 @@ export default function ForClubs() {
                   <span className="font-mono text-4xl font-bold text-primary/20">{step.num}</span>
                   <h3 className="text-xl font-bold">{step.title}</h3>
                 </div>
-                <p className="text-muted-foreground leading-relaxed">{step.desc}</p>
+                <p className="text-muted-foreground leading-relaxed"><BrandText text={step.desc} /></p>
               </motion.div>
             ))}
           </div>

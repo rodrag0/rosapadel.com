@@ -1,8 +1,11 @@
 # rosa padel website
 
-This repository contains the public `www.rosapadel.com` marketing website. It explains the modular court-scoring products, introduces the planned Vision experience, and collects demo requests. It is not the scoring, tournament-management, or analytics backend.
+This repository contains the public `www.rosapadel.com` marketing website. It presents rosa Vision, rosa Portable, and separate club and player subscriptions, and collects demo requests. It is not the scoring, tournament-management, or analytics backend.
 
 Start with [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md) for the page map, content flow, integrations, and change guidelines.
+
+Read [docs/PRODUCT-CATALOG.md](docs/PRODUCT-CATALOG.md) before changing product
+names, subscription plans, prices or availability. Older HD/LED pages are retired.
 
 This branch (`codex/vision-events-concept`) contains an alternative homepage and
 an `/events` page for review alongside Alfonso's work. It is not the production
@@ -29,7 +32,7 @@ npm run lint
 npm test
 ```
 
-`npm run preview` serves a local production build. The existing Vitest test is only a smoke test; a passing test suite does not validate the pages, translations, contact form, or 3D scene.
+`npm run preview` serves a local production build. Vitest checks the catalog and includes a basic smoke test; browser checks below cover layouts, links and contact behavior. Passing tests do not validate commercial claims or product readiness.
 
 At this handoff, lint has three existing errors in `src/components/ui/command.tsx`, `src/components/ui/textarea.tsx`, and `tailwind.config.ts`. Do not assume a new change caused those errors; still check for any additional lint findings.
 
@@ -40,7 +43,8 @@ At this handoff, lint has three existing errors in `src/components/ui/command.ts
 | Shared homepage, navigation, legal, or CTA copy | `src/lib/siteCopy.ts` (English, Spanish, German) |
 | Alternative homepage and event copy | `src/lib/experienceCopy.ts` (English, Spanish, German) |
 | Events and tournaments | `src/pages/Events.tsx` |
-| Product, clubs, investor, or Matchi page copy | The relevant file in `src/pages/` (currently mostly English) |
+| Product and subscription catalog | `src/lib/productCatalog.ts`, `src/pages/Product.tsx`, `src/pages/Subscriptions.tsx` (en/es/de) |
+| Clubs, investor, or Matchi page copy | The relevant file in `src/pages/` (currently mostly English) |
 | Homepage section order | `src/pages/Index.tsx` |
 | Routes and app-wide providers | `src/App.tsx` |
 | Homepage visuals and interactions | `src/components/rosa/` |
@@ -60,7 +64,7 @@ At this handoff, lint has three existing errors in `src/components/ui/command.ts
 
 1. At this handoff, GitHub's default branch and Vercel's Production branch are both `main`. Verify this setting before any future release rather than assuming it cannot change.
 2. Create a feature branch from `main`. Open a pull request and review its Vercel preview on desktop and mobile before merging.
-3. Update all three languages when changing `siteCopy.ts`. The product and audience pages have separate English copy; do not assume the language switcher translates them. Check product claims with Rodrigo, especially prototype and roadmap features.
+3. Update all three languages when changing shared copy or `productCatalog.ts`. Club, investor and Matchi pages still have separate English copy. Check product claims with Rodrigo, especially plan entitlements and availability.
 4. For navigation, use `getSectionHref()` in `src/lib/siteLinks.ts` so links back to homepage sections work from subpages.
 5. Review privacy/legal copy whenever changing analytics, form processing, or browser storage. The contact form currently uses FormSubmit; `index.html` loads Microsoft Clarity.
 

@@ -2,6 +2,11 @@
 
 ## September 25 revision
 
+The catalog now follows the company KB and Rodrigo's correction: only rosa Vision
+and rosa Portable are hardware products. Club and rosa Player subscriptions are
+separate offers. Legacy HD/LED/Coach URLs redirect; no historical prices or
+unapproved tier names are published. See `PRODUCT-CATALOG.md` for provenance.
+
 Rodrigo rejected the photo/scrim hero, decorative feature icons and generic
 illustrative tables. The current version uses a centered product presentation,
 flat surfaces, restrained typography and direct captures of the actual apps.
@@ -51,10 +56,10 @@ feed. The examples are explicitly illustrative and are not a tournament engine.
 - The existing court model is retained in the source for reference, but is not
   displayed by this revision. Actual application captures replace it.
 - Media URLs are centralized in `src/lib/experienceMedia.ts`.
-- Core HD and Core LED remain production-ready; tournament management belongs
-  to Core HD. Core LED is not presented as a tournament system.
-- Vision, replay/VAR, and analysis are identified as pilot capabilities. VAR
-  means reviewing footage; no automatic or certified line-calling is promised.
+- Vision combines scoring, video and event connections in one product; Portable
+  provides offline LED scoring, without camera/video or tournament management.
+- Feature availability depends on the confirmed setup and services. VAR means
+  reviewing footage; no automatic or certified line-calling is promised.
 - Event-format availability is confirmed during the club demo. The marketing
   examples do not assert every possible competition format is shipping.
 - The main interactive match demo remains unlinked.
@@ -69,5 +74,6 @@ feed. The examples are explicitly illustrative and are not a tournament engine.
 - `Events.tsx`: event formats, scoring flow, compatibility, FAQ, and contact.
 - `experience.css`: scoped, responsive styling using existing theme tokens.
 
-The existing detail pages and legacy homepage components remain in the repo
-for comparison and reuse. See `ARCHITECTURE.md` for the active route map.
+The old product pages and unused product carousel/ladder have been replaced by
+the shared catalog. Some unrelated legacy homepage components remain for
+comparison. See `ARCHITECTURE.md` for the active route map.

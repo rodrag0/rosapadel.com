@@ -7,11 +7,11 @@ import EventApplications from "./EventApplications";
 import { experienceCopy } from "@/lib/experienceCopy";
 import { experienceMedia } from "@/lib/experienceMedia";
 import { productPresentation } from "@/lib/productScreens";
+import { hardwareProducts, productCatalog } from "@/lib/productCatalog";
 
 export function ProductEcosystem() {
   const { language } = useLanguage();
-  const copy = experienceCopy[language].products;
-  const presentation = productPresentation[language];
+  const copy = productCatalog[language];
   return (
     <section id="products" className="experience-section experience-container">
       <div className="experience-section-head">
@@ -19,47 +19,23 @@ export function ProductEcosystem() {
           <p className="experience-eyebrow">
             <BrandText text={copy.label} />
           </p>
-          <h2>{presentation.systemTitle}</h2>
+          <h2>{copy.title}</h2>
         </div>
-        <p className="experience-intro">{presentation.systemBody}</p>
+        <p className="experience-intro"><BrandText text={copy.body} /></p>
       </div>
       <div className="product-lineup">
-        {[
-          {
-            name: "Core LED",
-            href: "/products/core-led",
-            body: copy.coreLed,
-            details: copy.coreLedFeatures,
-            status: copy.ready,
-          },
-          {
-            name: "Core HD",
-            href: "/products/core-hd",
-            body: copy.coreHd,
-            details: copy.coreHdFeatures,
-            status: copy.ready,
-          },
-          {
-            name: "rosa Vision",
-            href: "/products/vision",
-            body: copy.vision,
-            details: copy.visionFeatures.join(" · "),
-            status: copy.pilot,
-          },
-        ].map((product, index) => (
+        {hardwareProducts.map((product, index) => (
           <article key={product.name}>
             <span className="product-lineup-index">0{index + 1}</span>
             <h3>
               <BrandText text={product.name} />
             </h3>
-            <p>{product.body}</p>
-            <p className="product-lineup-details">{product.details}</p>
+            <p><BrandText text={copy[product.id].body} /></p>
+            <ul className="player-capabilities">
+              {copy[product.id].features.map((feature) => <li key={feature}>{feature}</li>)}
+            </ul>
             <div>
-              <span
-                className={`experience-status ${index === 2 ? "experience-status-pilot" : "experience-status-ready"}`}
-              >
-                {product.status}
-              </span>
+              <span className="product-lineup-note">{copy[product.id].note}</span>
               <a
                 href={product.href}
                 aria-label={`${copy.discover}: ${product.name}`}
@@ -70,6 +46,16 @@ export function ProductEcosystem() {
             </div>
           </article>
         ))}
+      </div>
+      <div className="catalog-subscriptions">
+        <div>
+          <p className="experience-eyebrow">{copy.subscriptions}</p>
+          <h3>{copy.subscriptionTitle}</h3>
+          <p className="experience-intro">{copy.subscriptionBody}</p>
+        </div>
+        <a href="/subscriptions" className="experience-text-link">
+          {copy.subscriptions}<ArrowRight size={18} aria-hidden="true" />
+        </a>
       </div>
     </section>
   );
@@ -117,8 +103,8 @@ export function AudienceSection() {
             <li key={feature}>{feature}</li>
           ))}
         </ul>
-        <a href="/products/vision" className="experience-text-link">
-          <BrandText text="rosa Vision" />
+        <a href="/subscriptions#player" className="experience-text-link">
+          <BrandText text="rosa Player" />
           <ArrowRight size={18} aria-hidden="true" />
         </a>
         <p className="experience-footnote">

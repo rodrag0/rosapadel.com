@@ -4,7 +4,7 @@
 
 This is a client-rendered Vite/React marketing site, deployed as static files on Vercel. It owns the public product story, product detail pages, legal pages, demo/contact flow, and a visual preview of the player experience. It does not implement live court scoring or tournament operations. Product mockups and external demo links should not be mistaken for live integrations.
 
-On this concept branch, the homepage tells this story: Vision with direct desktop/mobile app captures, product ecosystem, three-step match flow, the player app, actual event applications, real match footage, partners, and contact. `/events` explains how the pad score feed relates to tournament and club operations. The previous carousel, ROI calculator, 3D court and other homepage components remain available for comparison; they are not mounted by the new homepage. See `CONCEPT-2026-09.md` for reference analysis and media decisions.
+On this concept branch, the homepage tells this story: Vision with direct desktop/mobile app captures, the two hardware products and subscriptions, three-step match flow, the player app, actual event applications, real match footage, partners, and contact. `/events` explains how the pad score feed relates to tournament and club operations. The ROI calculator, 3D court and some legacy homepage components remain for comparison; the retired product carousel and catalog pages were removed. See `CONCEPT-2026-09.md` for reference analysis and media decisions.
 
 ## Runtime map
 
@@ -13,7 +13,8 @@ index.html
   -> src/main.tsx
   -> src/App.tsx (providers and React Router)
       -> src/pages/Index.tsx (homepage sections)
-      -> src/pages/Product{CoreLED,CoreHD,Vision,Coach}.tsx
+      -> src/pages/Product.tsx (Vision / Portable)
+      -> src/pages/Subscriptions.tsx (club / player)
       -> src/pages/{ForClubs,Investors}.tsx
       -> src/pages/Events.tsx
       -> src/pages/MatchSessionMatchi.tsx
@@ -35,15 +36,15 @@ src/lib/siteCopy.ts + src/lib/experienceCopy.ts (en/es/de)
 
 `src/lib/siteCopy.ts` contains shared navigation, contact, legal, and legacy homepage text in English (`en`), Spanish (`es`), and German (`de`). `experienceCopy.ts` contains the alternative homepage and event content, with one shared TypeScript shape across all languages. Components use the existing `useLanguage()` provider. The choice is saved as `rosa-language`; browser language is the initial fallback. Keep language blocks aligned and check each language in the browser.
 
-Product detail pages, `/for-clubs`, `/investors`, and the Matchi session page also contain English text directly in their page components. The language switcher does not fully translate those routes. Treat localization there as separate work; do not assume adding a key to `siteCopy.ts` alone changes a detail page. `BrandText.tsx` renders lowercase `rosa` in the brand accent where used.
+Product and subscription pages use `productCatalog.ts` in all three languages. `/for-clubs`, `/investors`, and the Matchi session page still contain English text directly in their page components. The language switcher does not fully translate those routes. `BrandText.tsx` renders lowercase `rosa` in the brand accent where used.
 
-Write the brand as lowercase `rosa` in new copy. The product family is Core LED, Core HD, `rosa Vision`, and `rosa Coach`. Current UI labels mark LED and HD as production-ready, Vision as pilot/roadmap, and Coach as coming soon. Confirm hardware availability and individual features with Rodrigo before turning roadmap or prototype claims into present-tense promises. Tournament management belongs with Core HD, not Core LED. Keep mock data visibly separate from claims of live operation.
+Write the brand as lowercase `rosa` in new copy. The hardware catalog is only `rosa Vision` and `rosa Portable`. Club and `rosa Player` subscriptions are separate offers, not extra hardware tiers. Vision combines connected scoring and video; Portable is the offline LED scoring product without tournament management. See `PRODUCT-CATALOG.md` for the KB sources and current boundaries. Do not reuse historical prices or infer final subscription entitlements. Keep mock data visibly separate from claims of live operation.
 
 `ThemeProvider.tsx` controls the `light`/`dark` class on the document. It uses `rosa-theme` and `rosa-theme-manual` in local storage; `src/index.css` and `tailwind.config.ts` define the visual system. App captures retain the actual source app appearance in both website themes. The 3D court is not loaded on the current homepage.
 
 ## Routes and links
 
-`src/App.tsx` defines `/`, `/events`, the four `/products/*` pages, `/for-clubs`, `/investors`, `/match-session/matchi-live-score`, `/imprint`, `/privacy-policy`, `/cookie-policy`, and a `*` 404 route. Events is included in desktop/mobile navigation, the footer, and the sitemap. The Matchi page remains absent from the sitemap and adds a `noindex, nofollow` meta tag; the URL can still be shared directly. New routes need a route entry, navigation decision, title/description handling, and a direct-link check after deployment.
+`src/App.tsx` defines `/`, `/events`, `/products/vision`, `/products/portable`, `/subscriptions`, `/for-clubs`, `/investors`, `/match-session/matchi-live-score`, `/imprint`, `/privacy-policy`, `/cookie-policy`, and a `*` 404 route. Retired product URLs redirect through React Router and Vercel; only current URLs appear in the sitemap. The Matchi page remains absent from the sitemap and adds a `noindex, nofollow` meta tag; the URL can still be shared directly. New routes need a route entry, navigation decision, title/description handling, and a direct-link check after deployment.
 
 Use `getSectionHref(pathname, id)` from `src/lib/siteLinks.ts` for homepage anchors from subpages. It returns `#id` on the homepage and `/#id` elsewhere. Section IDs live in the homepage components or their wrappers.
 

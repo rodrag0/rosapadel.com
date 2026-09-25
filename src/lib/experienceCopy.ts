@@ -21,21 +21,6 @@ interface ExperienceCopy {
     photo: string;
   };
   values: Item[];
-  products: {
-    label: string;
-    title: string;
-    body: string;
-    pilot: string;
-    ready: string;
-    vision: string;
-    visionFeatures: string[];
-    discover: string;
-    illustration: string;
-    coreHd: string;
-    coreLed: string;
-    coreHdFeatures: string;
-    coreLedFeatures: string;
-  };
   flow: { label: string; title: string; steps: Item[]; note: string };
   audiences: {
     label: string;
@@ -127,28 +112,6 @@ export const experienceCopy: Record<Language, ExperienceCopy> = {
       },
       { title: "Activa tu club", body: "Eventos conectados al marcador." },
     ],
-    products: {
-      label: "El ecosistema rosa",
-      title: "Tu pista es el principio.",
-      body: "Empieza con el marcador. Añade vídeo, revisión y herramientas para que el partido siga aportando valor a tu club.",
-      pilot: "Vision · En fase piloto",
-      ready: "Listo para producción",
-      vision:
-        "La capa de vídeo que conecta lo que pasa en la pista con todo lo que viene después.",
-      visionFeatures: [
-        "Replay y revisión de jugadas (VAR)",
-        "Historial de partidos y momentos para compartir",
-        "Análisis para jugadores y contenido para el club",
-      ],
-      discover: "Conocer el producto",
-      illustration: "Ilustración del sistema · Core HD + Vision",
-      coreHd:
-        "Marcador HD y gestión de eventos en un mismo sistema. El punto registrado en la pista alimenta la operación del club.",
-      coreLed:
-        "Lo esencial, sin complicaciones. Marcador LED y pads para seguir el partido incluso sin conexión.",
-      coreHdFeatures: "Pads · Marcador HD · Torneos · Personalización",
-      coreLedFeatures: "Pads · Marcador LED · Sin conexión · Portátil",
-    },
     flow: {
       label: "Así funciona",
       title: "Toca. Juega. Vuelve a verlo.",
@@ -166,7 +129,7 @@ export const experienceCopy: Record<Language, ExperienceCopy> = {
           body: "Revisa momentos, consulta tu historial y comparte lo mejor. En un evento, el resultado alimenta la siguiente fase.",
         },
       ],
-      note: "Replay, revisión VAR e información de jugadores forman parte del piloto de Vision. La decisión sobre la jugada sigue siendo de jugadores o árbitro.",
+      note: "Las funciones de vídeo y análisis dependen de la configuración y los servicios contratados. La decisión sobre la jugada sigue siendo de jugadores o árbitro.",
     },
     audiences: {
       label: "Una pista. Más posibilidades.",
@@ -232,7 +195,7 @@ export const experienceCopy: Record<Language, ExperienceCopy> = {
       metaTitle: "rosa padel | Eventos y torneos",
       metaDescription:
         "Conecta el marcador rosa con la organización de torneos, ligas y jornadas sociales: pistas, rondas, resultados y pantallas del club.",
-      label: "Core HD + herramientas para tu club",
+      label: "rosa Vision + herramientas para tu club",
       title: "Eventos y torneos.",
       body: "Del punto en la pista a la clasificación. Conecta el juego con la organización y dedica más tiempo a tu comunidad.",
       primary: "Planear mi evento",
@@ -247,14 +210,14 @@ export const experienceCopy: Record<Language, ExperienceCopy> = {
       connectionLabel: "La diferencia está en la pista",
       connectionTitle: "El resultado no tiene que viajar en papel.",
       connectionBody:
-        "Los pads, Core HD y la gestión del evento trabajan sobre el mismo flujo de marcador. El organizador mantiene la supervisión y valida los resultados.",
+        "Los pads, rosa Vision y la gestión del evento trabajan sobre el mismo flujo de marcador. El organizador mantiene la supervisión y valida los resultados.",
       connection: [
         {
           title: "El jugador toca el pad",
           body: "Registra el punto a través del cristal, sin usar el móvil durante el partido.",
         },
         {
-          title: "Core HD actualiza",
+          title: "rosa Vision actualiza",
           body: "El marcador de la pista refleja el estado del partido y proporciona el flujo de puntuación.",
         },
         {
@@ -361,18 +324,18 @@ export const experienceCopy: Record<Language, ExperienceCopy> = {
       match: "Encuentro",
       stage: "Fase",
       compatibilityLabel: "Un sistema, dos capas",
-      compatibilityTitle: "Gestiona con Core HD. Añade la mirada de Vision.",
+      compatibilityTitle: "Marcador y vídeo en un mismo sistema.",
       hdBody:
         "Pads, marcador en pantalla y herramientas de gestión. Es la base para conectar los puntos con la operación del evento.",
       visionBody:
         "Vídeo, replay y revisión VAR añaden otra perspectiva para jugadores y árbitros. Funciones en fase piloto.",
       ledNote:
-        "Core LED está pensado para el marcador independiente. Actualmente no incluye gestión de torneos.",
+        "rosa Portable está pensado para el marcador independiente. Actualmente no incluye gestión de torneos.",
       faqTitle: "Antes de tu próximo evento.",
       faqs: [
         {
           title: "¿Necesito cámaras para organizar un torneo?",
-          body: "La gestión de eventos se apoya en Core HD y el marcador de los pads. Las cámaras de Vision añaden vídeo y revisión de jugadas como una capa adicional.",
+          body: "La gestión del evento utiliza el marcador de rosa Vision y las herramientas del club. Las cámaras se usan para vídeo y revisión de jugadas, no para organizar los cuadros.",
         },
         {
           title: "¿Qué formatos puedo usar?",
@@ -419,28 +382,6 @@ export const experienceCopy: Record<Language, ExperienceCopy> = {
         body: "Events connected to the scoreboard.",
       },
     ],
-    products: {
-      label: "The rosa ecosystem",
-      title: "Your court is just the beginning.",
-      body: "Start with scoring. Add video, review and tools that let every match do more for your club.",
-      pilot: "Vision · In pilot",
-      ready: "Production ready",
-      vision:
-        "The video layer connecting what happens on court with everything that comes after.",
-      visionFeatures: [
-        "Replay and play review (VAR)",
-        "Match history and moments to share",
-        "Player insights and club content",
-      ],
-      discover: "Explore the product",
-      illustration: "System illustration · Core HD + Vision",
-      coreHd:
-        "HD scoring and event management in one system. A point registered on court feeds into your club's operations.",
-      coreLed:
-        "The essentials, without the fuss. LED scoring and pads to keep the match moving, even offline.",
-      coreHdFeatures: "Pads · HD scoreboard · Tournaments · Branding",
-      coreLedFeatures: "Pads · LED scoreboard · Offline · Portable",
-    },
     flow: {
       label: "How it works",
       title: "Tap. Play. Play it back.",
@@ -458,7 +399,7 @@ export const experienceCopy: Record<Language, ExperienceCopy> = {
           body: "Review moments, follow your history and share the best points. At an event, the result feeds into the next stage.",
         },
       ],
-      note: "Replay, VAR review and player insights are part of the Vision pilot. Decisions on a play remain with the players or referee.",
+      note: "Video and analytics features depend on the configuration and selected services. Decisions on a play remain with the players or referee.",
     },
     audiences: {
       label: "One court. More possibilities.",
@@ -527,7 +468,7 @@ export const experienceCopy: Record<Language, ExperienceCopy> = {
       metaTitle: "rosa padel | Events & tournaments",
       metaDescription:
         "Connect rosa scoring to tournaments, leagues and social matchdays: courts, rounds, results and club screens.",
-      label: "Core HD + tools for your club",
+      label: "rosa Vision + tools for your club",
       title: "Events & tournaments.",
       body: "From the point on court to the standings. Connect play with operations and spend more time with your community.",
       primary: "Plan my event",
@@ -542,14 +483,14 @@ export const experienceCopy: Record<Language, ExperienceCopy> = {
       connectionLabel: "It starts on court",
       connectionTitle: "Results shouldn't travel on paper.",
       connectionBody:
-        "The pads, Core HD and event management share the same score feed. The organizer stays in control and validates the results.",
+        "The pads, rosa Vision and event management share the same score feed. The organizer stays in control and validates the results.",
       connection: [
         {
           title: "The player taps the pad",
           body: "Register a point through the glass, without using a phone during the match.",
         },
         {
-          title: "Core HD updates",
+          title: "rosa Vision updates",
           body: "The courtside scoreboard reflects the match and provides the score feed.",
         },
         {
@@ -644,18 +585,18 @@ export const experienceCopy: Record<Language, ExperienceCopy> = {
       match: "Match",
       stage: "Stage",
       compatibilityLabel: "One system, two layers",
-      compatibilityTitle: "Manage with Core HD. Add the Vision perspective.",
+      compatibilityTitle: "Scoring and video in one system.",
       hdBody:
         "Pads, on-screen scoring and management tools. The foundation connecting points with event operations.",
       visionBody:
         "Video, replay and VAR review bring another perspective for players and referees. Features in pilot.",
       ledNote:
-        "Core LED is designed for standalone scoring. It does not currently include tournament management.",
+        "rosa Portable is designed for standalone scoring. It does not currently include tournament management.",
       faqTitle: "Before your next event.",
       faqs: [
         {
           title: "Do I need cameras to organize a tournament?",
-          body: "Event management uses Core HD and pad scoring. Vision cameras add video and play review as a separate layer.",
+          body: "Event management uses rosa Vision scoring and club tools. Cameras support video and play review; they are not needed to organize the draw.",
         },
         {
           title: "Which formats can I use?",
@@ -699,28 +640,6 @@ export const experienceCopy: Record<Language, ExperienceCopy> = {
       },
       { title: "Den Club verbinden", body: "Events mit direktem Spielstand." },
     ],
-    products: {
-      label: "Das rosa Ökosystem",
-      title: "Dein Court ist erst der Anfang.",
-      body: "Starte mit dem Spielstand. Ergänze Video, Rückblick und Werkzeuge, damit jedes Match mehr für deinen Club bewirkt.",
-      pilot: "Vision · Pilotphase",
-      ready: "Produktionsbereit",
-      vision:
-        "Die Videoebene verbindet das Geschehen auf dem Court mit allem, was danach kommt.",
-      visionFeatures: [
-        "Replay und Überprüfung von Spielzügen (VAR)",
-        "Matchverlauf und Momente zum Teilen",
-        "Einblicke für Spieler und Inhalte für den Club",
-      ],
-      discover: "Produkt entdecken",
-      illustration: "Systemillustration · Core HD + Vision",
-      coreHd:
-        "HD-Spielstand und Eventverwaltung in einem System. Ein Punkt auf dem Court fließt direkt in die Cluborganisation ein.",
-      coreLed:
-        "Das Wesentliche, unkompliziert. LED-Anzeige und Pads halten das Match in Gang, auch ohne Internet.",
-      coreHdFeatures: "Pads · HD-Anzeige · Turniere · Branding",
-      coreLedFeatures: "Pads · LED-Anzeige · Offline · Mobil",
-    },
     flow: {
       label: "So funktioniert es",
       title: "Tippen. Spielen. Wieder ansehen.",
@@ -738,7 +657,7 @@ export const experienceCopy: Record<Language, ExperienceCopy> = {
           body: "Momente ansehen, den Verlauf verfolgen und die besten Punkte teilen. Bei Events fließt das Ergebnis in die nächste Phase ein.",
         },
       ],
-      note: "Replay, VAR-Videoprüfung und Spielereinblicke gehören zum Vision-Piloten. Die Entscheidung über einen Spielzug bleibt bei Spielern oder Schiedsrichter.",
+      note: "Video- und Analysefunktionen hängen von Konfiguration und gebuchten Leistungen ab. Die Entscheidung über einen Spielzug bleibt bei Spielern oder Schiedsrichter.",
     },
     audiences: {
       label: "Ein Court. Mehr Möglichkeiten.",
@@ -804,7 +723,7 @@ export const experienceCopy: Record<Language, ExperienceCopy> = {
       metaTitle: "rosa padel | Events & Turniere",
       metaDescription:
         "Verbinde rosa Spielstände mit Turnieren, Ligen und Social-Events: Courts, Runden, Ergebnisse und Club-Bildschirme.",
-      label: "Core HD + Werkzeuge für deinen Club",
+      label: "rosa Vision + Werkzeuge für deinen Club",
       title: "Events & Turniere.",
       body: "Vom Punkt auf dem Court bis zur Tabelle. Verbinde Spiel und Organisation und gewinne Zeit für deine Community.",
       primary: "Mein Event planen",
@@ -819,14 +738,14 @@ export const experienceCopy: Record<Language, ExperienceCopy> = {
       connectionLabel: "Es beginnt auf dem Court",
       connectionTitle: "Ergebnisse brauchen keinen Papierweg.",
       connectionBody:
-        "Pads, Core HD und Eventverwaltung nutzen denselben Spielstand. Der Organisator behält den Überblick und bestätigt die Ergebnisse.",
+        "Pads, rosa Vision und Eventverwaltung nutzen denselben Spielstand. Der Organisator behält den Überblick und bestätigt die Ergebnisse.",
       connection: [
         {
           title: "Der Spieler tippt auf das Pad",
           body: "Ein Punkt wird durch das Glas erfasst, ohne Handy während des Matches.",
         },
         {
-          title: "Core HD aktualisiert",
+          title: "rosa Vision aktualisiert",
           body: "Die Anzeige am Court zeigt das Match und stellt die Punktedaten bereit.",
         },
         {
@@ -917,18 +836,18 @@ export const experienceCopy: Record<Language, ExperienceCopy> = {
       match: "Begegnung",
       stage: "Phase",
       compatibilityLabel: "Ein System, zwei Ebenen",
-      compatibilityTitle: "Mit Core HD organisieren. Mit Vision mehr sehen.",
+      compatibilityTitle: "Spielstand und Video in einem System.",
       hdBody:
         "Pads, Spielstand am Bildschirm und Verwaltungswerkzeuge. Die Basis zwischen Punkten und Eventorganisation.",
       visionBody:
         "Video, Replay und VAR-Videoprüfung ergänzen die Sicht von Spielern und Schiedsrichtern. Funktionen in der Pilotphase.",
       ledNote:
-        "Core LED ist für eigenständige Spielstandsanzeigen gedacht. Es enthält derzeit keine Turnierverwaltung.",
+        "rosa Portable ist für eigenständige Spielstandsanzeigen gedacht. Es enthält derzeit keine Turnierverwaltung.",
       faqTitle: "Vor deinem nächsten Event.",
       faqs: [
         {
           title: "Brauche ich Kameras für ein Turnier?",
-          body: "Die Eventverwaltung nutzt Core HD und die Pad-Spielstände. Vision-Kameras ergänzen Video und Spielzugprüfung als zusätzliche Ebene.",
+          body: "Die Eventverwaltung nutzt die Spielstände von rosa Vision und die Club-Werkzeuge. Kameras dienen Video und Spielzugprüfung, nicht der Organisation des Turnierbaums.",
         },
         {
           title: "Welche Formate kann ich nutzen?",
