@@ -48,7 +48,7 @@ At this handoff, lint has three existing errors in `src/components/ui/command.ts
 | Homepage section order | `src/pages/Index.tsx` |
 | Routes and app-wide providers | `src/App.tsx` |
 | Homepage visuals and interactions | `src/components/rosa/` |
-| Retained legacy court animation (not mounted) | `src/components/rosa/Hero3DScene.tsx` |
+| Homepage rotating court and playback controls | `src/components/rosa/Hero3DScene.tsx`, `CourtPreview.tsx` |
 | Real app screenshots and presentation | `public/product-screens/`, `src/lib/productScreens.ts`, `AppScreenshot.tsx` |
 | Homepage media URLs | `src/lib/experienceMedia.ts` |
 | Alternative layout styles | `src/experience.css` |
@@ -79,8 +79,12 @@ FormSubmit requests so it never sends real leads.
 
 ```bash
 node scripts/verify-experience.mjs http://localhost:8080
+node scripts/verify-court.mjs http://localhost:8080
 ```
 
 Screenshots and a report are written to ignored `review.local/`. The optional
 third argument changes the output directory. Install Playwright's Chromium
 browser first if needed (`npx playwright install chromium`).
+
+The court check uses rendered canvas pixels to verify nonblank geometry, framing,
+movement, pause/resume and reduced-motion behavior at desktop and mobile sizes.

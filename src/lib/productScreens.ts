@@ -28,6 +28,11 @@ export const productScreens = {
 
 export const productPresentation = {
   es: {
+    courtLabel: "Pista de rosa Vision con pads, marcador y cámara",
+    courtCaption: "rosa Vision · Ilustración del sistema",
+    courtFallback: "Partido real con el marcador de rosa",
+    pauseCourt: "Pausar animación de la pista",
+    playCourt: "Reproducir animación de la pista",
     hero: "El partido, en detalle.",
     body: "Marcador conectado. Replay. Revisión VAR.",
     cta: "Conocer el sistema",
@@ -67,6 +72,11 @@ export const productPresentation = {
     appCaption: "Captura de la aplicación · Datos de demostración",
   },
   en: {
+    courtLabel: "rosa Vision court with pads, scoreboard and camera",
+    courtCaption: "rosa Vision · System illustration",
+    courtFallback: "Real match with rosa scoring",
+    pauseCourt: "Pause court animation",
+    playCourt: "Play court animation",
     hero: "The match, in detail.",
     body: "Connected scoring. Replay. VAR review.",
     cta: "Explore the system",
@@ -102,6 +112,11 @@ export const productPresentation = {
     appCaption: "Application screenshot · Demonstration data",
   },
   de: {
+    courtLabel: "rosa Vision Court mit Pads, Spielstandsanzeige und Kamera",
+    courtCaption: "rosa Vision · Systemillustration",
+    courtFallback: "Echtes Match mit rosa Spielstand",
+    pauseCourt: "Court-Animation pausieren",
+    playCourt: "Court-Animation abspielen",
     hero: "Das Match. Im Detail.",
     body: "Vernetzter Spielstand. Replay. VAR-Videoprüfung.",
     cta: "System entdecken",

@@ -4,7 +4,7 @@
 
 This is a client-rendered Vite/React marketing site, deployed as static files on Vercel. It owns the public product story, product detail pages, legal pages, demo/contact flow, and a visual preview of the player experience. It does not implement live court scoring or tournament operations. Product mockups and external demo links should not be mistaken for live integrations.
 
-On this concept branch, the homepage tells this story: Vision with direct desktop/mobile app captures, the two hardware products and subscriptions, three-step match flow, the player app, actual event applications, real match footage, partners, and contact. `/events` explains how the pad score feed relates to tournament and club operations. The ROI calculator, 3D court and some legacy homepage components remain for comparison; the retired product carousel and catalog pages were removed. See `CONCEPT-2026-09.md` for reference analysis and media decisions.
+On this concept branch, the homepage tells this story: Vision with the original rotating court, the two hardware products and subscriptions, three-step match flow, the player app, actual event applications, real match footage, partners, and contact. `/events` explains how the pad score feed relates to tournament and club operations. The ROI calculator and some legacy homepage components remain for comparison; the retired product carousel and catalog pages were removed. See `CONCEPT-2026-09.md` for reference analysis and media decisions.
 
 ## Runtime map
 
@@ -40,7 +40,7 @@ Product and subscription pages use `productCatalog.ts` in all three languages. `
 
 Write the brand as lowercase `rosa` in new copy. The hardware catalog is only `rosa Vision` and `rosa Portable`. Club and `rosa Player` subscriptions are separate offers, not extra hardware tiers. Vision combines connected scoring and video; Portable is the offline LED scoring product without tournament management. See `PRODUCT-CATALOG.md` for the KB sources and current boundaries. Do not reuse historical prices or infer final subscription entitlements. Keep mock data visibly separate from claims of live operation.
 
-`ThemeProvider.tsx` controls the `light`/`dark` class on the document. It uses `rosa-theme` and `rosa-theme-manual` in local storage; `src/index.css` and `tailwind.config.ts` define the visual system. App captures retain the actual source app appearance in both website themes. The 3D court is not loaded on the current homepage.
+`ThemeProvider.tsx` controls the `light`/`dark` class on the document. It uses `rosa-theme` and `rosa-theme-manual` in local storage; `src/index.css` and `tailwind.config.ts` define the visual system. App captures retain the actual source app appearance in both website themes. `CourtPreview.tsx` lazy-loads the original Three.js court in the homepage hero. The scene uses theme-aware materials, responsive camera framing, an accessible pause/play button and a static default for reduced-motion preferences. Rendering pauses outside the viewport. A real match poster is the loading/error/WebGL fallback; the court is labelled as an illustration, not live match data.
 
 ## Routes and links
 

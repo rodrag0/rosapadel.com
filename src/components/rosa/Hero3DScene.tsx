@@ -1,5 +1,5 @@
-import { useRef, useMemo, useEffect } from "react";
-import { Canvas, useFrame, useLoader, useThree } from "@react-three/fiber";
+import { useRef, useMemo, useEffect, type ReactNode } from "react";
+import { Canvas, useFrame, useThree } from "@react-three/fiber";
 import { Float } from "@react-three/drei";
 import * as THREE from "three";
 import rosaIconWhite from "@/assets/rosa-icon-white.png";
@@ -34,16 +34,22 @@ const LIGHT_THEME: ThemeColors = {
 };
 
 function useSvgTexture(src: string) {
-  const texture = useMemo(() => {
-    const tex = new THREE.Texture();
+  const invalidate = useThree((state) => state.invalidate);
+  const texture = useMemo(() => new THREE.Texture(), []);
+  useEffect(() => {
     const img = new Image();
     img.onload = () => {
-      tex.image = img;
-      tex.needsUpdate = true;
+      texture.image = img;
+      texture.needsUpdate = true;
+      // Reduced-motion mode also needs a frame once the pad logo has loaded.
+      invalidate();
     };
     img.src = src;
-    return tex;
-  }, [src]);
+    return () => {
+      img.onload = null;
+      texture.dispose();
+    };
+  }, [src, texture, invalidate]);
   return texture;
 }
 
@@ -343,8 +349,9 @@ function heatColor(v: number): [number, number, number] {
   }
 }
 
-function PadelCourt({ colors }: { colors: ThemeColors }) {
+function PadelCourt({ colors, animated }: { colors: ThemeColors; animated: boolean }) {
   const groupRef = useRef<THREE.Group>(null);
+  const elapsed = useRef(0);
   const logoTexture = useSvgTexture(rosaIconWhite);
 
   const darkMat = useMemo(
@@ -380,10 +387,11 @@ function PadelCourt({ colors }: { colors: ThemeColors }) {
     [colors]
   );
 
-  useFrame((state) => {
-    if (groupRef.current) {
-      groupRef.current.rotation.y = state.clock.elapsedTime * 0.15;
-      groupRef.current.position.y = Math.sin(state.clock.elapsedTime * 0.5) * 0.08;
+  useFrame((_, delta) => {
+    if (groupRef.current && animated) {
+      elapsed.current += Math.min(delta, 0.05);
+      groupRef.current.rotation.y = elapsed.current * 0.15;
+      groupRef.current.position.y = Math.sin(elapsed.current * 0.5) * 0.08;
     }
   });
 
@@ -394,7 +402,7 @@ function PadelCourt({ colors }: { colors: ThemeColors }) {
   const floorThick = 0.05;
 
   return (
-    <Float speed={0.8} rotationIntensity={0.15} floatIntensity={0.3}>
+    <Float enabled={animated} speed={0.8} rotationIntensity={0.15} floatIntensity={0.3}>
       <group ref={groupRef}>
         {/* Floor */}
         <mesh material={floorMat} position={[0, 0, 0]}>
@@ -633,12 +641,12 @@ function ResponsiveCourtCamera() {
   return null;
 }
 
-export default function Hero3DScene({ theme, reducedMotion = false }: { theme: "dark" | "light"; reducedMotion?: boolean }) {
+export default function Hero3DScene({ theme, reducedMotion = false, fallback }: { theme: "dark" | "light"; reducedMotion?: boolean; fallback?: ReactNode }) {
   const colors = theme === "light" ? LIGHT_THEME : DARK_THEME;
 
   return (
     <div className="absolute inset-0">
-      <Canvas camera={{ position: [3.5, 2, 4.5], fov: 45 }} dpr={[1, 1.5]} gl={{ antialias: true, logarithmicDepthBuffer: true }} frameloop={reducedMotion ? "demand" : "always"}>
+      <Canvas fallback={fallback} camera={{ position: [3.5, 2, 4.5], fov: 45 }} dpr={[1, 1.5]} gl={{ antialias: true, logarithmicDepthBuffer: true }} frameloop={reducedMotion ? "demand" : "always"}>
         <ResponsiveCourtCamera />
         <fog attach="fog" args={[colors.fog, 15, 35]} />
         <ambientLight intensity={theme === "light" ? 1.2 : 1.1} />
@@ -647,7 +655,7 @@ export default function Hero3DScene({ theme, reducedMotion = false }: { theme: "
         <pointLight position={[5, 5, 5]} intensity={theme === "light" ? 0.8 : 1.2} color="#E4007C" />
         <pointLight position={[-5, 3, 3]} intensity={theme === "light" ? 1.0 : 0.6} color="#ffffff" />
         <pointLight position={[0, 4, 0]} intensity={theme === "light" ? 0.8 : 0.4} color="#ffffff" />
-        <PadelCourt colors={colors} />
+        <PadelCourt colors={colors} animated={!reducedMotion} />
         <CourtGrid />
       </Canvas>
     </div>

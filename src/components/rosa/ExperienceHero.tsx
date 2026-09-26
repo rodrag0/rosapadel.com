@@ -1,7 +1,7 @@
 import { ArrowRight, Play } from "lucide-react";
 import { useLanguage } from "./LanguageProvider";
 import { useTheme } from "./ThemeProvider";
-import AppScreenshot from "./AppScreenshot";
+import CourtPreview from "./CourtPreview";
 import rosaLogoDark from "@/assets/rosa-logo-dark.png";
 import rosaLogoLight from "@/assets/rosa-logo-light.png";
 import { productPresentation } from "@/lib/productScreens";
@@ -35,26 +35,7 @@ export default function ExperienceHero() {
           </a>
         </div>
       </div>
-      <div className="hero-product-stage">
-        <AppScreenshot
-          screen="player"
-          className="hero-desktop-screen"
-          priority
-          caption={false}
-        />
-        <AppScreenshot
-          screen="player"
-          className="hero-phone-screen"
-          mobile
-          priority
-          caption={false}
-        />
-      </div>
-      <p className="hero-caption">
-        {copy.pilot}
-        <span aria-hidden="true"> · </span>
-        {copy.screens}
-      </p>
+      <CourtPreview />
     </section>
   );
 }

@@ -10,7 +10,9 @@ unapproved tier names are published. See `PRODUCT-CATALOG.md` for provenance.
 Rodrigo rejected the photo/scrim hero, decorative feature icons and generic
 illustrative tables. The current version uses a centered product presentation,
 flat surfaces, restrained typography and direct captures of the actual apps.
-The previous 3D court and icon value strip are no longer mounted.
+At Rodrigo's request, the original rotating 3D court is restored in the hero,
+without a decorative frame or gradient. Real app captures remain in the player
+and events sections. The icon value strip remains unmounted.
 
 `public/product-screens/` contains nine direct browser captures from rosaApp,
 TournamentManager, LeagueManager and AmericanoTournamentTool. Desktop and phone
@@ -53,8 +55,10 @@ feed. The examples are explicitly illustrative and are not a tournament engine.
 
 - The homepage uses the existing real match poster and the VPS-hosted match
   video. No AI-generated photographs or competitor assets are included.
-- The existing court model is retained in the source for reference, but is not
-  displayed by this revision. Actual application captures replace it.
+- The existing rotating court model is the homepage hero visual. It is labelled
+  as a system illustration, has a pause/play control, respects reduced motion,
+  and pauses rendering outside the viewport. The real match poster is its
+  loading/error/WebGL fallback.
 - Media URLs are centralized in `src/lib/experienceMedia.ts`.
 - Vision combines scoring, video and event connections in one product; Portable
   provides offline LED scoring, without camera/video or tournament management.
@@ -68,6 +72,8 @@ feed. The examples are explicitly illustrative and are not a tournament engine.
 
 - `experienceCopy.ts`: new home/event content in English, Spanish, and German.
 - `ExperienceHero.tsx` and `HomeSections.tsx`: homepage narrative.
+- `CourtPreview.tsx` and `Hero3DScene.tsx`: original court, lazy loading,
+  responsive camera, theme materials and accessible playback controls.
 - `AppScreenshot.tsx`: actual application captures and accessible enlargement.
 - `EventApplications.tsx`: tournament, league and Americano application gallery.
 - `productScreens.ts`: screenshot asset map and revised presentation copy.
