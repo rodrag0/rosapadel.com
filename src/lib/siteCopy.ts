@@ -55,37 +55,6 @@ export const siteCopy = {
         { label: "Match Insights", desc: "Heatmaps, shot breakdown, and player analytics" },
       ],
     },
-    products: {
-      label: "Modular Products",
-      title: "One System. Three Tiers.",
-      subtitle: "Start where you are. Scale when you're ready. Every tier is built to work independently or together.",
-      popular: "Popular",
-      items: [
-        {
-          tier: "Entry",
-          name: "Core LED",
-          description:
-            "Portable LED scoring for any court. Touchpad control, offline operation, and plug-and-play installation.",
-          features: ["LED Scoreboard", "Touchpad Control", "Offline Mode", "Plug & Play"],
-        },
-        {
-          tier: "Growth",
-          name: "Core HD",
-          description:
-            "HD display with QR or web match setup, referee mode, and premium event branding capabilities.",
-          features: ["HD Monitor Display", "QR/Web Setup", "Referee Mode", "Custom Branding", "Event Management", "Cloud Sync"],
-        },
-        {
-          tier: "Advanced",
-          name: "rosa Vision",
-          status: "Planned ecosystem",
-          description:
-            "The planned camera-integrated layer for replay, match history, and player insights across the full rosa system.",
-          features: ["Everything in Core HD", "Camera-Integrated Replay", "Match Highlights + Shot Classification", "Player History", "Club Screens", "Post-Match Insights", "Vision Roadmap Layer"],
-          note: "Built to extend rosa from live scoring into replay, review, and retention.",
-        },
-      ],
-    },
     howItWorks: {
       label: "How It Works",
       title: "Three Steps to Smart",
@@ -94,7 +63,7 @@ export const siteCopy = {
           num: "01",
           title: "Deploy on Court",
           description:
-            "Core LED is plug-and-play and sets up on any padel court in under a minute. HD and Vision also use a very quick, simple installation, with only a monitor and power connection required.",
+            "Choose rosa Portable for offline LED scoring or rosa Vision for connected scoring and video. Installation is configured for your court.",
         },
         {
           num: "02",
@@ -373,55 +342,6 @@ export const siteCopy = {
         },
       },
     },
-    productFamily: {
-      label: "The rosa Ecosystem",
-      title: "One system. Every court.",
-      subtitle: "Four interconnected products that take any padel court from basic scoring to full AI-powered match intelligence.",
-      carouselHint: "Swipe products",
-      viewProduct: "View product",
-      items: [
-        {
-          num: "01",
-          tier: "Entry",
-          name: "Core LED",
-          tagline: "Plug in. Score on.",
-          status: "Production ready",
-          statusType: "available",
-          href: "/products/core-led",
-          features: ["LED Scoreboard", "Touchpad Control", "Offline Mode", "Plug & Play"],
-        },
-        {
-          num: "02",
-          tier: "Professional",
-          name: "Core HD",
-          tagline: "HD display. Pro control.",
-          status: "Production ready",
-          statusType: "available",
-          href: "/products/core-hd",
-          features: ["HD Monitor", "QR / Web Setup", "Referee Mode", "Tournament Management", "Cloud Sync"],
-        },
-        {
-          num: "03",
-          tier: "Advanced",
-          name: "rosa Vision",
-          tagline: "Replay. Analyze. Share.",
-          status: "Pilot-ready",
-          statusType: "pilot",
-          href: "/products/vision",
-          features: ["Camera Integration", "Instant Replay", "Court Heatmaps", "Player History"],
-        },
-        {
-          num: "04",
-          tier: "Intelligence",
-          name: "rosa Coach",
-          tagline: "Your AI padel coach.",
-          status: "In Development",
-          statusType: "coming",
-          href: "/products/coach",
-          features: ["AI Shot Analysis", "Tactical Breakdown", "Improvement Tracking", "Video Review"],
-        },
-      ],
-    },
     audiencePortals: {
       label: "Built for your game",
       title: "Who is rosa for?",
@@ -523,37 +443,6 @@ export const siteCopy = {
         { label: "Insights del partido", desc: "Mapas de calor, desglose de golpes y analítica por jugador" },
       ],
     },
-    products: {
-      label: "Productos modulares",
-      title: "Un sistema. Tres niveles.",
-      subtitle: "Empieza donde estás. Escala cuando quieras. Cada nivel funciona por separado o en conjunto.",
-      popular: "Popular",
-      items: [
-        {
-          tier: "Entrada",
-          name: "Core LED",
-          description:
-            "Marcador LED portátil para cualquier pista. Control por touchpad, funcionamiento offline e instalación plug and play.",
-          features: ["Marcador LED", "Control por touchpad", "Modo offline", "Plug and play"],
-        },
-        {
-          tier: "Crecimiento",
-          name: "Core HD",
-          description:
-            "Pantalla HD con configuración del partido por QR o web, modo árbitro y capacidades premium de branding para eventos.",
-          features: ["Pantalla HD", "Configuración QR/Web", "Modo árbitro", "Branding personalizado", "Gestión de eventos", "Sincronización en la nube"],
-        },
-        {
-          tier: "Avanzado",
-          name: "rosa Vision",
-          status: "Ecosistema planificado",
-          description:
-            "La capa planificada que integra cámaras para replay, historial de partidos e insights de jugador dentro del sistema completo de rosa.",
-          features: ["Todo lo de Core HD", "Replay con cámaras integradas", "Highlights del partido + clasificacion de golpes", "Historial del jugador", "Pantallas del club", "Insights postpartido", "Capa roadmap Vision"],
-          note: "Pensado para ampliar rosa desde el marcador en vivo hacia replay, revisión y retención.",
-        },
-      ],
-    },
     howItWorks: {
       label: "Cómo funciona",
       title: "Tres pasos hacia una pista inteligente",
@@ -562,7 +451,7 @@ export const siteCopy = {
           num: "01",
           title: "Despliega en pista",
           description:
-            "Core LED es plug and play y se instala en cualquier pista de pádel en menos de un minuto. HD y Vision también tienen una instalación muy rápida y sencilla, y solo requieren un monitor y alimentación eléctrica.",
+            "Elige rosa Portable para el marcador LED sin conexión o rosa Vision para marcador conectado y vídeo. La instalación se adapta a tu pista.",
         },
         {
           num: "02",
@@ -841,55 +730,6 @@ export const siteCopy = {
         },
       },
     },
-    productFamily: {
-      label: "El ecosistema rosa",
-      title: "Un sistema. Cada pista.",
-      subtitle: "Cuatro productos interconectados que llevan cualquier pista de pádel del marcador básico a la inteligencia de partido completa con IA.",
-      carouselHint: "Desliza productos",
-      viewProduct: "Ver producto",
-      items: [
-        {
-          num: "01",
-          tier: "Entrada",
-          name: "Core LED",
-          tagline: "Conéctalo. Marca en vivo.",
-          status: "Listo para producir",
-          statusType: "available",
-          href: "/products/core-led",
-          features: ["Marcador LED", "Control touchpad", "Modo offline", "Plug & Play"],
-        },
-        {
-          num: "02",
-          tier: "Profesional",
-          name: "Core HD",
-          tagline: "Pantalla HD. Control pro.",
-          status: "Listo para producir",
-          statusType: "available",
-          href: "/products/core-hd",
-          features: ["Monitor HD", "Configuración QR/Web", "Modo árbitro", "Gestión de torneos", "Sincronización cloud"],
-        },
-        {
-          num: "03",
-          tier: "Avanzado",
-          name: "rosa Vision",
-          tagline: "Replay. Analiza. Comparte.",
-          status: "Piloto disponible",
-          statusType: "pilot",
-          href: "/products/vision",
-          features: ["Integración cámara", "Replay instantáneo", "Mapas de calor", "Historial jugador"],
-        },
-        {
-          num: "04",
-          tier: "Inteligencia",
-          name: "rosa Coach",
-          tagline: "Tu entrenador IA de pádel.",
-          status: "En desarrollo",
-          statusType: "coming",
-          href: "/products/coach",
-          features: ["Análisis IA de golpes", "Desglose táctico", "Seguimiento de mejora", "Revisión en vídeo"],
-        },
-      ],
-    },
     audiencePortals: {
       label: "Hecho para tu juego",
       title: "¿Para quién es rosa?",
@@ -991,37 +831,6 @@ export const siteCopy = {
         { label: "Match-Insights", desc: "Heatmaps, Schlaganalysen und Spielerstatistiken" },
       ],
     },
-    products: {
-      label: "Modulare Produkte",
-      title: "Ein System. Drei Stufen.",
-      subtitle: "Starte dort, wo du stehst. Skaliere, wenn du bereit bist. Jede Stufe funktioniert allein oder zusammen.",
-      popular: "Beliebt",
-      items: [
-        {
-          tier: "Einstieg",
-          name: "Core LED",
-          description:
-            "Tragbares LED-Scoring fuer jeden Court. Touchpad-Steuerung, Offline-Betrieb und Plug-and-Play-Installation.",
-          features: ["LED-Scoreboard", "Touchpad-Steuerung", "Offline-Modus", "Plug and Play"],
-        },
-        {
-          tier: "Wachstum",
-          name: "Core HD",
-          description:
-            "HD-Display mit QR- oder Web-Match-Setup, Schiedsrichtermodus und Premium-Branding fuer Events.",
-          features: ["HD-Monitor", "QR/Web-Setup", "Schiedsrichtermodus", "Individuelles Branding", "Event-Management", "Cloud-Sync"],
-        },
-        {
-          tier: "Fortgeschritten",
-          name: "rosa Vision",
-          status: "Geplantes Oekosystem",
-          description:
-            "Die geplante kamera-integrierte Ebene fuer Replay, Match-Historie und Spieler-Insights im gesamten rosa System.",
-          features: ["Alles aus Core HD", "Kamera-integriertes Replay", "Match-Highlights + Schlagklassifizierung", "Spieler-Historie", "Club-Screens", "Post-Match-Insights", "Vision-Roadmap-Ebene"],
-          note: "Entwickelt, um rosa von Live-Scoring zu Replay, Review und Retention zu erweitern.",
-        },
-      ],
-    },
     howItWorks: {
       label: "So funktioniert es",
       title: "Drei Schritte zum Smart Court",
@@ -1030,7 +839,7 @@ export const siteCopy = {
           num: "01",
           title: "Auf dem Court einsetzen",
           description:
-            "Core LED ist Plug-and-Play und auf jedem Padel-Court in weniger als einer Minute einsatzbereit. Auch HD und Vision lassen sich sehr schnell und einfach installieren und benoetigen nur einen Monitor und Stromanschluss.",
+            "Wähle rosa Portable für Offline-LED-Spielstände oder rosa Vision für vernetzte Spielstände und Video. Die Installation wird auf deinen Court abgestimmt.",
         },
         {
           num: "02",
@@ -1308,55 +1117,6 @@ export const siteCopy = {
             "Nutzer koennen Cookies und lokalen Speicher jederzeit ueber ihre Browser-Einstellungen loeschen. Wenn spaeter nicht notwendiges Tracking eingefuehrt wird, sollte zusaetzlich eine sichtbare Cookie-Einstellungsfunktion bereitgestellt werden.",
         },
       },
-    },
-    productFamily: {
-      label: "Das rosa-Ökosystem",
-      title: "Ein System. Jeder Court.",
-      subtitle: "Vier verknüpfte Produkte, die jeden Padel-Court von einfachem Scoring zur vollständigen KI-gestützten Match-Intelligenz bringen.",
-      carouselHint: "Produkte wischen",
-      viewProduct: "Produkt ansehen",
-      items: [
-        {
-          num: "01",
-          tier: "Einstieg",
-          name: "Core LED",
-          tagline: "Einstecken. Spielen. Punkten.",
-          status: "Produktionsbereit",
-          statusType: "available",
-          href: "/products/core-led",
-          features: ["LED-Scoreboard", "Touchpad-Steuerung", "Offline-Modus", "Plug & Play"],
-        },
-        {
-          num: "02",
-          tier: "Professional",
-          name: "Core HD",
-          tagline: "HD-Display. Pro-Steuerung.",
-          status: "Produktionsbereit",
-          statusType: "available",
-          href: "/products/core-hd",
-          features: ["HD-Monitor", "QR / Web-Setup", "Schiedsrichtermodus", "Turniermanagement", "Cloud-Sync"],
-        },
-        {
-          num: "03",
-          tier: "Fortgeschritten",
-          name: "rosa Vision",
-          tagline: "Replay. Analyse. Teilen.",
-          status: "Pilot verfügbar",
-          statusType: "pilot",
-          href: "/products/vision",
-          features: ["Kamera-Integration", "Instant Replay", "Court-Heatmaps", "Spieler-Historie"],
-        },
-        {
-          num: "04",
-          tier: "Intelligenz",
-          name: "rosa Coach",
-          tagline: "Dein KI-Padel-Coach.",
-          status: "In Entwicklung",
-          statusType: "coming",
-          href: "/products/coach",
-          features: ["KI-Schlaganalyse", "Taktik-Breakdown", "Verbesserungs-Tracking", "Video-Review"],
-        },
-      ],
     },
     audiencePortals: {
       label: "Für dein Spiel gemacht",

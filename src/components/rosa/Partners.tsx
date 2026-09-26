@@ -1,4 +1,4 @@
-import { motion, useInView } from "framer-motion";
+import { motion, useInView, useReducedMotion } from "framer-motion";
 import { useRef } from "react";
 import { useTheme } from "./ThemeProvider";
 import { useLanguage } from "./LanguageProvider";
@@ -9,6 +9,7 @@ import BrandText from "./BrandText";
 export default function Partners() {
   const ref = useRef(null);
   const inView = useInView(ref, { once: true, margin: "-100px" });
+  const reducedMotion = useReducedMotion();
   const { theme } = useTheme();
   const { copy } = useLanguage();
 
@@ -19,7 +20,7 @@ export default function Partners() {
       <div className="container mx-auto px-6 lg:px-12">
         <motion.div
           className="text-center space-y-10"
-          initial={{ opacity: 0, y: 20 }}
+          initial={reducedMotion ? false : { opacity: 0, y: 20 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
         >
@@ -30,11 +31,11 @@ export default function Partners() {
 
           <motion.div
             className="flex justify-center"
-            initial={{ opacity: 0, scale: 0.9 }}
+            initial={reducedMotion ? false : { opacity: 0, scale: 0.9 }}
             animate={inView ? { opacity: 1, scale: 1 } : {}}
             transition={{ duration: 0.4, delay: 0.2 }}
           >
-            <div className="px-10 py-6 rounded-xl inner-glow bg-card">
+            <div className="px-10 py-6">
               <img src={campusLogo} alt="Campus Founders" className="h-10 w-auto" />
             </div>
           </motion.div>

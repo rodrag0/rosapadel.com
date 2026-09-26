@@ -1,4 +1,4 @@
-import { motion, useInView } from "framer-motion";
+import { motion, useInView, useReducedMotion } from "framer-motion";
 import { useMemo, useRef, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -8,23 +8,44 @@ import { toast } from "sonner";
 import { z } from "zod";
 import { useLanguage } from "./LanguageProvider";
 import BrandText from "./BrandText";
+import { Check } from "lucide-react";
+import { experienceCopy } from "@/lib/experienceCopy";
 
-export default function ContactCTA() {
+export default function ContactCTA({
+  editorial = false,
+  defaultObjective = "",
+}: {
+  editorial?: boolean;
+  defaultObjective?: string;
+}) {
   const ref = useRef(null);
   const inView = useInView(ref, { once: true, margin: "-100px" });
-  const { copy } = useLanguage();
+  const reducedMotion = useReducedMotion();
+  const { copy, language } = useLanguage();
+  const editorialCopy = experienceCopy[language].contact;
   const [agreed, setAgreed] = useState(false);
   const [submitting, setSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
   const formSchema = useMemo(
     () =>
       z.object({
-        name: z.string().trim().min(1, copy.contact.validation.nameRequired).max(100),
-        email: z.string().trim().email(copy.contact.validation.emailInvalid).max(255),
+        name: z
+          .string()
+          .trim()
+          .min(1, copy.contact.validation.nameRequired)
+          .max(100),
+        email: z
+          .string()
+          .trim()
+          .email(copy.contact.validation.emailInvalid)
+          .max(255),
         organization: z.string().trim().max(200).optional(),
         objective: z.string().max(100).optional(),
       }),
-    [copy.contact.validation.emailInvalid, copy.contact.validation.nameRequired],
+    [
+      copy.contact.validation.emailInvalid,
+      copy.contact.validation.nameRequired,
+    ],
   );
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
@@ -49,26 +70,32 @@ export default function ContactCTA() {
 
     try {
       // FormSubmit is the lead processor; changes here also require a privacy-copy review.
-      const response = await fetch("https://formsubmit.co/ajax/info@rosapadel.com", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Accept: "application/json",
+      const response = await fetch(
+        "https://formsubmit.co/ajax/info@rosapadel.com",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Accept: "application/json",
+          },
+          body: JSON.stringify({
+            name: parsed.data.name,
+            email: parsed.data.email,
+            organization: parsed.data.organization || "",
+            objective: parsed.data.objective || "",
+            _subject: "rosa Demo Request",
+            _template: "table",
+            _captcha: "false",
+            _replyto: parsed.data.email,
+          }),
         },
-        body: JSON.stringify({
-          name: parsed.data.name,
-          email: parsed.data.email,
-          organization: parsed.data.organization || "",
-          objective: parsed.data.objective || "",
-          _subject: "rosa Demo Request",
-          _template: "table",
-          _captcha: "false",
-          _replyto: parsed.data.email,
-        }),
-      });
+      );
 
-      const result = (await response.json().catch(() => null)) as { success?: boolean | string } | null;
-      success = response.ok && result?.success !== false && result?.success !== "false";
+      const result = (await response.json().catch(() => null)) as {
+        success?: boolean | string;
+      } | null;
+      success =
+        response.ok && result?.success !== false && result?.success !== "false";
     } catch {
       success = false;
     } finally {
@@ -87,25 +114,70 @@ export default function ContactCTA() {
   };
 
   return (
-    <section ref={ref} className="py-24 md:py-32" id="contact">
-      <div className="container mx-auto px-6 lg:px-12 max-w-2xl">
+    <section
+      ref={ref}
+      className={
+        editorial ? "experience-section experience-contact" : "py-24 md:py-32"
+      }
+      id="contact"
+    >
+      <div
+        className={
+          editorial
+            ? "experience-container experience-contact-grid"
+            : "container mx-auto px-6 lg:px-12 max-w-2xl"
+        }
+      >
         <motion.div
-          className="text-center mb-12 space-y-4"
-          initial={{ opacity: 0, y: 20 }}
+          className={
+            editorial
+              ? "experience-contact-copy"
+              : "text-center mb-12 space-y-4"
+          }
+          initial={reducedMotion ? false : { opacity: 0, y: 20 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
         >
-          <h2 className="text-4xl md:text-5xl font-bold">
-            {copy.contact.title}
-            <span className="text-primary text-glow">{copy.contact.accent}</span>
-          </h2>
-          <p className="text-muted-foreground text-lg"><BrandText text={copy.contact.body} /></p>
+          {editorial ? (
+            <>
+              <p className="experience-eyebrow">{editorialCopy.label}</p>
+              <h2>{editorialCopy.title}</h2>
+              <p className="experience-intro">
+                <BrandText text={editorialCopy.body} />
+              </p>
+              <ul className="experience-checklist">
+                {editorialCopy.points.map((point) => (
+                  <li key={point}>
+                    <Check size={17} aria-hidden="true" />
+                    {point}
+                  </li>
+                ))}
+              </ul>
+            </>
+          ) : (
+            <>
+              <h2 className="text-4xl md:text-5xl font-bold">
+                {copy.contact.title}
+                <span className="text-primary text-glow">
+                  {copy.contact.accent}
+                </span>
+              </h2>
+              <p className="text-muted-foreground text-lg">
+                <BrandText text={copy.contact.body} />
+              </p>
+            </>
+          )}
         </motion.div>
 
         {submitted ? (
           <motion.div
-            className="p-12 rounded-2xl inner-glow bg-card text-center space-y-4"
-            initial={{ opacity: 0, scale: 0.95 }}
+            className={
+              editorial
+                ? "experience-form-success space-y-4"
+                : "p-12 rounded-2xl inner-glow bg-card text-center space-y-4"
+            }
+            role="status"
+            initial={reducedMotion ? false : { opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.4 }}
           >
@@ -113,12 +185,18 @@ export default function ContactCTA() {
               <span className="text-3xl">{"\u2713"}</span>
             </div>
             <h3 className="text-2xl font-bold">{copy.contact.successTitle}</h3>
-            <p className="text-muted-foreground"><BrandText text={copy.contact.successBody} /></p>
+            <p className="text-muted-foreground">
+              <BrandText text={copy.contact.successBody} />
+            </p>
           </motion.div>
         ) : (
           <motion.form
-            className="space-y-6 p-8 rounded-2xl inner-glow bg-card"
-            initial={{ opacity: 0, y: 30 }}
+            className={
+              editorial
+                ? "experience-contact-form space-y-6"
+                : "space-y-6 p-8 rounded-2xl inner-glow bg-card"
+            }
+            initial={reducedMotion ? false : { opacity: 0, y: 30 }}
             animate={inView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.6, delay: 0.2 }}
             onSubmit={handleSubmit}
@@ -162,12 +240,21 @@ export default function ContactCTA() {
               <select
                 id="objective"
                 name="objective"
+                defaultValue={defaultObjective}
                 className="flex h-10 w-full rounded-md border border-border bg-secondary px-3 py-2 text-sm text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
               >
-                <option value="">{copy.contact.fields.objectivePlaceholder}</option>
-                <option value="scoring">{copy.contact.objectives.scoring}</option>
-                <option value="tournaments">{copy.contact.objectives.tournaments}</option>
-                <option value="analytics">{copy.contact.objectives.analytics}</option>
+                <option value="">
+                  {copy.contact.fields.objectivePlaceholder}
+                </option>
+                <option value="scoring">
+                  {copy.contact.objectives.scoring}
+                </option>
+                <option value="tournaments">
+                  {copy.contact.objectives.tournaments}
+                </option>
+                <option value="analytics">
+                  {copy.contact.objectives.analytics}
+                </option>
                 <option value="full">{copy.contact.objectives.full}</option>
                 <option value="other">{copy.contact.objectives.other}</option>
               </select>
@@ -180,9 +267,15 @@ export default function ContactCTA() {
                 onCheckedChange={(checked) => setAgreed(!!checked)}
                 className="mt-0.5"
               />
-              <Label htmlFor="privacy" className="text-sm text-muted-foreground leading-relaxed cursor-pointer">
+              <Label
+                htmlFor="privacy"
+                className="text-sm text-muted-foreground leading-relaxed cursor-pointer"
+              >
                 {copy.contact.consentPrefix}
-                <a href="/privacy-policy" className="text-primary hover:text-primary/90 underline underline-offset-4">
+                <a
+                  href="/privacy-policy"
+                  className="text-primary hover:text-primary/90 underline underline-offset-4"
+                >
                   {copy.contact.consentLink}
                 </a>
                 {copy.contact.consentSuffix}

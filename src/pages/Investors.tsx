@@ -4,6 +4,7 @@ import { Users, BarChart2, TrendingUp, Package, RefreshCw, Globe, ChevronRight, 
 import Navbar from "@/components/rosa/Navbar";
 import Footer from "@/components/rosa/Footer";
 import BrandText from "@/components/rosa/BrandText";
+import { hardwareProducts, productCatalog } from "@/lib/productCatalog";
 
 const MARKET_STATS = [
   { value: "25M+", label: "Padel players globally" },
@@ -11,64 +12,27 @@ const MARKET_STATS = [
   { value: "20%", label: "Annual court growth" },
 ];
 
-const PRODUCTS = [
-  {
-    num: "01",
-    tier: "Entry",
-    name: "Core LED",
-    tagline: "Plug in. Score on.",
-    status: "Production ready",
-    statusClass: "border-green-500/30 bg-green-500/10 text-green-400",
-    dotClass: "bg-green-500",
-    href: "/products/core-led",
-  },
-  {
-    num: "02",
-    tier: "Professional",
-    name: "Core HD",
-    tagline: "HD display. Pro control.",
-    status: "Production ready",
-    statusClass: "border-green-500/30 bg-green-500/10 text-green-400",
-    dotClass: "bg-green-500",
-    href: "/products/core-hd",
-  },
-  {
-    num: "03",
-    tier: "Advanced",
-    name: "rosa Vision",
-    tagline: "Replay. Analyze. Share.",
-    status: "Pilot-ready",
-    statusClass: "border-yellow-400/30 bg-yellow-400/10 text-yellow-400",
-    dotClass: "bg-yellow-400",
-    href: "/products/vision",
-  },
-  {
-    num: "04",
-    tier: "Intelligence",
-    name: "rosa Coach",
-    tagline: "Your AI padel coach.",
-    status: "In Development",
-    statusClass: "border-border bg-secondary text-muted-foreground",
-    dotClass: "bg-muted-foreground/40",
-    href: "/products/coach",
-  },
-];
+const PRODUCTS = hardwareProducts.map((product, index) => ({
+  ...product,
+  num: `0${index + 1}`,
+  tagline: productCatalog.en[product.id].body,
+}));
 
 const BUSINESS_MODEL = [
   {
     icon: Package,
     title: "Hardware Sales",
-    desc: "One-time revenue per court installation. Core LED from €299, Core HD from €549. Scalable across club sizes from 2 to 20+ courts.",
+    desc: "rosa Vision and rosa Portable are the two hardware products. Configuration and current commercial terms are quoted separately.",
   },
   {
     icon: RefreshCw,
-    title: "SaaS Subscription",
-    desc: "Recurring per-court per-month revenue for analytics, cloud sync, and the player dashboard. Predictable, scalable ARR.",
+    title: "Club Subscription",
+    desc: "A separate B2B software and services offer for club operations, the match experience and events.",
   },
   {
     icon: Globe,
-    title: "Ecosystem Revenue",
-    desc: "Coaching content, tournament management, sponsorship inventory, and event packages. High-margin add-ons on top of the core stack.",
+    title: "rosa Player Subscription",
+    desc: "A separate B2C subscription for player services, with Padel Chess Engine as a player-facing layer. Plan inclusions and commercial terms are confirmed separately.",
   },
 ];
 
@@ -249,9 +213,9 @@ export default function Investors() {
             className="space-y-3"
           >
             <span className="text-sm font-mono uppercase tracking-widest text-primary">Product Family</span>
-            <h2 className="text-4xl md:text-5xl font-bold">Four products. One ecosystem.</h2>
+            <h2 className="text-4xl md:text-5xl font-bold">Two products. Separate subscriptions.</h2>
             <p className="text-muted-foreground max-w-xl">
-              Each product works standalone. Together they form a complete court intelligence platform.
+              <BrandText text="rosa Vision combines connected scoring and video. rosa Portable focuses on LED scoring. Club and rosa Player subscriptions are separate offers." />
             </p>
           </motion.div>
 
@@ -267,18 +231,11 @@ export default function Investors() {
               >
                 <div className="flex items-start justify-between">
                   <span className="font-mono text-xs text-muted-foreground/60">{product.num}</span>
-                  <span className="px-2 py-0.5 rounded border border-border text-[10px] font-mono uppercase tracking-widest text-muted-foreground">
-                    {product.tier}
-                  </span>
                 </div>
                 <div className="space-y-1">
                   <h3 className="text-2xl font-bold"><BrandText text={product.name} /></h3>
-                  <p className="text-muted-foreground">{product.tagline}</p>
+                  <p className="text-muted-foreground"><BrandText text={product.tagline} /></p>
                 </div>
-                <span className={`inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full border text-[11px] font-mono uppercase tracking-[0.18em] ${product.statusClass}`}>
-                  <span className={`w-1.5 h-1.5 rounded-full flex-shrink-0 ${product.dotClass}`} />
-                  {product.status}
-                </span>
                 <div>
                   <span className="inline-flex items-center gap-1 text-sm font-medium text-primary group-hover:opacity-80 transition-opacity">
                     View product <ChevronRight className="w-4 h-4" />
@@ -317,8 +274,8 @@ export default function Investors() {
                   <div className="w-10 h-10 rounded-xl bg-secondary flex items-center justify-center">
                     <Icon className="w-5 h-5 text-primary" />
                   </div>
-                  <h3 className="font-bold text-lg">{stream.title}</h3>
-                  <p className="text-sm text-muted-foreground leading-relaxed">{stream.desc}</p>
+                  <h3 className="font-bold text-lg"><BrandText text={stream.title} /></h3>
+                  <p className="text-sm text-muted-foreground leading-relaxed"><BrandText text={stream.desc} /></p>
                 </motion.div>
               );
             })}
@@ -350,7 +307,7 @@ export default function Investors() {
               },
               {
                 label: "Prototype validated",
-                desc: "Core LED and Core HD hardware validated in real court conditions.",
+                desc: "Scoring hardware tested in real court conditions.",
               },
               {
                 label: "Pilot clubs identified",
