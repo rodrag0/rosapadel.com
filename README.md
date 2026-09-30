@@ -54,3 +54,15 @@ At this handoff, lint has three existing errors in `src/components/ui/command.ts
 5. Review privacy/legal copy whenever changing analytics, form processing, or browser storage. The contact form currently uses FormSubmit; `index.html` loads Microsoft Clarity.
 
 The production branch is configured in Vercel, not in this repository. A merge or push to that branch may publish immediately. No Vercel, GitHub, or VPS credentials should be committed here.
+
+## Online management-tool showcases
+
+The repository publishes three standalone routes. They are intentionally absent from the marketing-site navigation:
+
+- `/tournament-tool` — tournament operations, including the One Point Challenge mode
+- `/americano-tool` — Americano setup, rotations, live scoring, timer, and standings
+- `/league-tool` — league registration, scheduling, groups, results, progression, and insights
+
+These showcase routes save changes in the current browser so they remain usable on the static Vercel deployment. Shared accounts, durable invitations, QR export services, and ROSA Vision court connections remain part of the server-backed applications for the VPS deployment.
+
+The League showcase uses the production league engine bundled for the browser. Rebuild that adapter after engine changes with `npm run build:league-showcase`.

@@ -1,0 +1,21 @@
+.rosa-showcase {
+  position: relative;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  min-height: 38px;
+  padding: 8px 20px;
+  color: #fff;
+  background: #232325;
+  border-bottom: 1px solid rgba(255,255,255,.12);
+  font: 500 12px/1.35 Arial, sans-serif;
+  text-align: center;
+}
+.rosa-showcase strong { color: #ff2d8b; text-transform: uppercase; letter-spacing: .08em; }
+.rosa-showcase a { color: #fff; text-decoration: underline; text-underline-offset: 3px; }
+@media (max-width: 720px) {
+  .rosa-showcase { flex-wrap: wrap; gap: 4px 10px; padding: 8px 12px; }
+  .rosa-showcase span { flex-basis: 100%; order: 3; }
+}

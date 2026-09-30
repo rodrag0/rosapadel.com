@@ -1,0 +1,311 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <base href="/americano-tool/" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#232325" />
+    <title>ROSA Americano Manager</title>
+    <link rel="icon" href="assets/rosa-icon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="style.css?v=20260930" />
+    <link rel="stylesheet" href="../tool-showcase.css" />
+  </head>
+  <body>
+    <div class="rosa-showcase"><strong>Online showcase</strong><span>Saved in this browser · shared accounts and ROSA court connections follow on the VPS deployment</span><a href="https://rosapadel.com">rosapadel.com ↗</a></div>
+    <a class="skip-link" href="#mainContent">Skip to tournament controls</a>
+
+    <main id="authShell" class="auth-shell" hidden>
+      <section class="auth-story" aria-labelledby="authStoryTitle">
+        <div>
+          <img class="brand-logo auth-logo" src="assets/rosa-dark.svg" alt="ROSA" />
+          <p class="eyebrow">Tournament operations</p>
+          <h1 id="authStoryTitle">Run your Americano without losing the room.</h1>
+          <p>Players, live rounds, the shared timer, results, and rankings stay together in one fast event desk.</p>
+        </div>
+        <ol class="auth-steps" aria-label="Americano workflow">
+          <li><span>01</span> Add the players and choose the format.</li>
+          <li><span>02</span> Generate the complete rotation.</li>
+          <li><span>03</span> Work one active round at a time.</li>
+        </ol>
+      </section>
+
+      <section class="auth-form-pane">
+        <div class="auth-card">
+          <p class="eyebrow rose">ROSA Americano</p>
+          <h2>Welcome back</h2>
+          <p class="auth-copy">Sign in to your private tournament dashboard or create an account for this device.</p>
+          <form id="authForm" class="auth-form">
+            <label class="field">
+              <span>Username</span>
+              <input id="authUsername" type="text" autocomplete="username" minlength="3" required />
+            </label>
+            <label class="field">
+              <span>Password</span>
+              <input id="authPassword" type="password" autocomplete="current-password" minlength="8" required />
+            </label>
+            <button id="loginButton" class="button primary" type="submit">Sign in</button>
+            <button id="registerButton" class="button secondary" type="button">Create account</button>
+          </form>
+        </div>
+      </section>
+    </main>
+
+    <div id="appShell" class="shell" hidden>
+      <aside class="sidebar">
+        <a class="brand" href="#liveRound" aria-label="ROSA Americano home">
+          <img class="brand-logo" src="assets/rosa-dark.svg" alt="ROSA" />
+          <small>AMERICANO MANAGER</small>
+        </a>
+        <p class="nav-label">Event desk</p>
+        <nav class="nav" aria-label="Tournament sections">
+          <a href="#settingsPanel"><span aria-hidden="true">⌁</span> Match setup</a>
+          <a class="active" href="#liveRound"><span aria-hidden="true">●</span> Live round</a>
+          <a href="#rankingPanel"><span aria-hidden="true">↗</span> Ranking</a>
+          <a href="#playersPanel"><span aria-hidden="true">+</span> Players</a>
+        </nav>
+        <div class="sidebar-bottom">
+          <span class="connection"><span class="dot"></span>Saved locally</span>
+          <p id="accountLabel">Account</p>
+          <small>Private tournament workspace</small>
+        </div>
+      </aside>
+
+      <div class="workspace">
+        <header class="topbar">
+          <div class="event-heading">
+            <span class="eyebrow">Americano manager</span>
+            <strong id="tournamentTitle">ROSA Americano</strong>
+          </div>
+          <div class="top-tools">
+            <span id="saveState" class="save-state" role="status">Saved</span>
+            <details class="utility-menu">
+              <summary class="button secondary">More</summary>
+              <div class="utility-popover">
+                <a class="utility-action" href="/api/export" download>Export JSON</a>
+                <button id="printSheet" class="utility-action" type="button">Print sheet</button>
+                <button id="openReset" class="utility-action danger-text" type="button">Reset tournament</button>
+                <button id="logoutButton" class="utility-action" type="button">Log out</button>
+              </div>
+            </details>
+          </div>
+        </header>
+
+        <main id="mainContent" class="main-content">
+          <section class="page-heading">
+            <div>
+              <p class="eyebrow rose">Live operations</p>
+              <h1>Keep the next match moving.</h1>
+              <p>Enter results in the active round; the desk moves forward when that round is complete.</p>
+            </div>
+          </section>
+
+          <section id="settingsPanel" class="panel settings-panel" aria-labelledby="settingsHeading">
+            <div class="panel-head settings-head">
+              <div>
+                <p class="eyebrow rose">Tournament setup</p>
+                <h2 id="settingsHeading">Match configuration</h2>
+                <p id="settingsSummary">Scoring, timing and available courts</p>
+              </div>
+              <button
+                id="settingsToggle"
+                class="button secondary compact settings-toggle"
+                type="button"
+                aria-expanded="true"
+                aria-controls="settingsBody"
+              >
+                Hide setup
+              </button>
+            </div>
+            <div id="settingsBody" class="settings-body">
+              <div class="settings-grid">
+                <label class="field event-field">
+                  <span>Event name</span>
+                  <input id="eventName" type="text" maxlength="64" />
+                </label>
+                <label class="field">
+                  <span>Scoring format</span>
+                  <select id="defaultScoringMode">
+                    <option value="points">Target points</option>
+                    <option value="time">Timed match</option>
+                  </select>
+                </label>
+                <label id="pointTargetField" class="field">
+                  <span>Target score</span>
+                  <input id="pointLimit" type="number" min="1" max="999" inputmode="numeric" />
+                </label>
+                <label class="field">
+                  <span>Round duration (minutes)</span>
+                  <input id="timerMinutes" type="number" min="0" max="240" inputmode="numeric" />
+                </label>
+                <label class="field">
+                  <span>Courts available</span>
+                  <input id="courts" type="number" min="1" max="32" inputmode="numeric" />
+                </label>
+              </div>
+              <div class="settings-footer">
+                <p id="scoringModeHelp" class="field-help">Each generated match must finish at the configured total score.</p>
+                <button id="saveSettings" class="button primary" type="button">Save settings</button>
+              </div>
+              <p class="settings-note">Paired ROSA score pads can send results to this tournament automatically.</p>
+            </div>
+          </section>
+
+          <div class="schedule-action">
+            <button
+              id="generateRounds"
+              class="button primary generate-schedule"
+              type="button"
+              aria-describedby="scheduleActionHint"
+            >
+              <span id="generateRoundsLabel">Generate full schedule</span>
+              <span class="generate-arrow" aria-hidden="true">→</span>
+            </button>
+            <p id="scheduleActionHint">Build every round from the current players and match configuration.</p>
+          </div>
+
+          <section id="liveRound" class="hero" aria-labelledby="timerHeading">
+            <div class="hero-copy">
+              <p class="eyebrow">Shared round timer</p>
+              <h2 id="timerHeading">Current round</h2>
+              <p id="timerContext">Use the shared timer for consistent match windows.</p>
+            </div>
+            <div class="timer-block">
+              <strong id="timerDisplay" class="timer-display">15:00</strong>
+              <div class="timer-actions">
+                <button id="startTimer" class="button primary" type="button">Start</button>
+                <button id="pauseTimer" class="button hero-secondary" type="button">Pause</button>
+                <button id="resetTimer" class="button hero-secondary" type="button">Reset</button>
+              </div>
+            </div>
+          </section>
+
+          <section class="panel rounds-panel" aria-labelledby="roundsHeading">
+            <div class="panel-head">
+              <div>
+                <p class="eyebrow rose">Tournament flow</p>
+                <h2 id="roundsHeading">Rounds</h2>
+                <p id="roundSummary">No schedule yet</p>
+              </div>
+              <span id="roundProgress" class="progress-copy">0 complete</span>
+            </div>
+
+            <div id="roundNavigation" class="round-navigation" hidden>
+              <button id="previousRound" class="round-step" type="button" aria-label="Show previous round">←</button>
+              <div id="roundTabs" class="round-tabs" role="tablist" aria-label="Tournament rounds"></div>
+              <button id="nextRound" class="round-step" type="button" aria-label="Show next round">→</button>
+            </div>
+
+            <div id="selectedRoundHeader" class="selected-round-header" hidden>
+              <div>
+                <p id="selectedRoundEyebrow" class="eyebrow">Selected round</p>
+                <h3 id="selectedRoundTitle">Round</h3>
+                <p id="selectedRoundSummary"></p>
+              </div>
+              <span id="selectedRoundStatus" class="status-pill">Upcoming</span>
+            </div>
+
+            <div id="matches" class="matches" aria-live="polite"></div>
+            <div id="printRounds" class="print-rounds" aria-hidden="true"></div>
+          </section>
+
+          <div class="overview-grid">
+            <section id="rankingPanel" class="panel" aria-labelledby="rankingHeading">
+              <div class="panel-head compact-head">
+                <div>
+                  <p class="eyebrow rose">Live table</p>
+                  <h2 id="rankingHeading">Ranking</h2>
+                  <p id="rankingSubtitle">Win = 3 · Draw = 1 · Loss = 0</p>
+                </div>
+                <fieldset class="ranking-toggle">
+                  <legend>Ranking calculation</legend>
+                  <div class="ranking-options">
+                    <label>
+                      <input type="radio" name="rankingMode" value="match_points" checked />
+                      <span>
+                        <strong>Match points</strong>
+                        <small>3 / 1 / 0</small>
+                      </span>
+                    </label>
+                    <label>
+                      <input type="radio" name="rankingMode" value="point_total" />
+                      <span>
+                        <strong>Total points</strong>
+                        <small>Points scored</small>
+                      </span>
+                    </label>
+                  </div>
+                </fieldset>
+              </div>
+              <div id="standings" class="standings"></div>
+            </section>
+
+            <section id="playersPanel" class="panel" aria-labelledby="playersHeading">
+              <div class="panel-head compact-head">
+                <div>
+                  <p class="eyebrow rose">Roster</p>
+                  <h2 id="playersHeading">Players</h2>
+                  <p id="playerCount">0 registered</p>
+                </div>
+                <button id="openClearPlayers" class="button danger compact" type="button">Clear players</button>
+              </div>
+              <div class="panel-body">
+                <form id="playerForm" class="inline-form">
+                  <label class="sr-only" for="playerName">Player name</label>
+                  <input id="playerName" type="text" placeholder="Player name" autocomplete="off" />
+                  <button class="button primary" type="submit">Add player</button>
+                </form>
+                <div id="playersList" class="player-list"></div>
+              </div>
+            </section>
+          </div>
+
+          <footer class="footer">
+            <span>ROSA Americano Manager</span>
+            <span>Fast, private event operations</span>
+          </footer>
+        </main>
+      </div>
+    </div>
+
+    <div id="toast" class="toast" role="status" aria-live="polite"></div>
+
+    <dialog id="resetDialog" class="confirm-dialog">
+      <form method="dialog" class="confirm-box">
+        <div>
+          <p class="eyebrow rose">Confirm reset</p>
+          <h2>Reset tournament data</h2>
+          <p class="confirm-copy">This clears generated rounds and results, but keeps the registered players. Use Clear players if you want to remove the player list too.</p>
+        </div>
+        <label class="field">
+          <span>Type RESET to continue</span>
+          <input id="resetConfirmText" type="text" autocomplete="off" />
+        </label>
+        <div class="confirm-actions">
+          <button id="cancelReset" class="button secondary" value="cancel" type="button">Cancel</button>
+          <button id="confirmReset" class="button danger" value="confirm" type="button" disabled>Reset tournament</button>
+        </div>
+      </form>
+    </dialog>
+
+    <dialog id="clearPlayersDialog" class="confirm-dialog">
+      <form method="dialog" class="confirm-box">
+        <div>
+          <p class="eyebrow rose">Confirm player clear</p>
+          <h2>Clear all players</h2>
+          <p class="confirm-copy">This removes all registered players and generated rounds from this account dashboard. Existing tournament settings are kept.</p>
+        </div>
+        <label class="field">
+          <span>Type CLEAR to continue</span>
+          <input id="clearPlayersConfirmText" type="text" autocomplete="off" />
+        </label>
+        <div class="confirm-actions">
+          <button id="cancelClearPlayers" class="button secondary" value="cancel" type="button">Cancel</button>
+          <button id="confirmClearPlayers" class="button danger" value="confirm" type="button" disabled>Clear players</button>
+        </div>
+      </form>
+    </dialog>
+
+    <script src="demo-api.js?v=20260930"></script>
+    <script src="app.js?v=20260930"></script>
+  </body>
+</html>
