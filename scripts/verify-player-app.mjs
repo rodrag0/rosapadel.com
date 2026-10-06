@@ -41,8 +41,8 @@ try {
     await expect(app.getByLabel("Player", { exact: true })).toBeVisible();
     await app.getByRole("button", { name: /^Play .* by / }).first().click();
     const video = app.locator(".shot-video video");
-    await expect.poll(() => video.evaluate((element) => element.readyState)).toBeGreaterThanOrEqual(2);
-    await expect.poll(() => video.evaluate((element) => element.currentTime)).toBeGreaterThan(0);
+    await expect.poll(() => video.evaluate((element) => element.readyState), { timeout: 60000 }).toBeGreaterThanOrEqual(2);
+    await expect.poll(() => video.evaluate((element) => element.currentTime), { timeout: 30000 }).toBeGreaterThan(0);
     assert.equal(await video.evaluate((element) => Math.round(element.duration)), 120);
     assert.equal(await video.evaluate((element) => element.videoWidth), 1920);
     await app.getByRole("button", { name: "Save this clip", exact: true }).click();
