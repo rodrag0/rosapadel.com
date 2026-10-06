@@ -32,6 +32,7 @@ try {
     }, theme);
     await page.goto(`${base}/rosa-app${width === 390 ? "/" : ""}`);
     await expect(page).toHaveTitle("rosa app");
+    await expect(page.locator('link[rel="icon"]')).toHaveAttribute("href", "/favicon.png?v=rosa-2");
     assert.equal(await page.locator('meta[name="robots"]').getAttribute("content"), "noindex, nofollow");
     const app = page;
     await expect(app.locator(".directory-replay .shot-finished")).toBeVisible({ timeout: 30000 });
