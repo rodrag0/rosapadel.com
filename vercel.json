@@ -4,6 +4,7 @@
   "buildCommand": "npm run build",
   "outputDirectory": "dist",
   "routes": [
+    { "src": "/rosa-app/?", "dest": "/rosa-app/index.html" },
     { "src": "/tournament-tool/?", "dest": "/tournament-tool/index.html" },
     { "src": "/americano-tool/?", "dest": "/americano-tool/index.html" },
     { "src": "/league-tool/?", "dest": "/league-tool/index.html" },

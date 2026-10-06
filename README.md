@@ -57,12 +57,15 @@ The production branch is configured in Vercel, not in this repository. A merge o
 
 ## Online management-tool showcases
 
-The repository publishes three standalone routes. They are intentionally absent from the marketing-site navigation:
+The repository publishes four standalone routes. They are intentionally absent from the marketing-site navigation:
 
 - `/tournament-tool` — tournament operations, including the One Point Challenge mode
 - `/americano-tool` — Americano setup, rotations, live scoring, timer, and standings
 - `/league-tool` — league registration, scheduling, groups, results, progression, and insights
+- `/rosa-app` — the player app with recorded match replay, shot browsing, and browser-local saved highlights
 
 These showcase routes save changes in the current browser so they remain usable on the static Vercel deployment. Shared accounts, durable invitations, QR export services, and ROSA Vision court connections remain part of the server-backed applications for the VPS deployment.
 
 The League showcase uses the production league engine bundled for the browser. Rebuild that adapter after engine changes with `npm run build:league-showcase`.
+
+See [docs/PLAYER-APP-PREVIEW.md](docs/PLAYER-APP-PREVIEW.md) for the player app's packaging, media, verification, and backend boundaries. It opens directly, without a marketing-site wrapper or showcase banner.
