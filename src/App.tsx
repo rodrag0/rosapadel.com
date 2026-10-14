@@ -38,7 +38,7 @@ const App = () => (
               <Route path="/investors" element={<Investors />} />
               <Route path="/match-session/matchi-live-score" element={<MatchSessionMatchi />} />
               <Route path="*" element={<NotFound />} />
-              <Route path="/new-tab" element={<NewTab />} />
+              <Route path="/tournament-managment" element={<NewTab />} />
             </Routes>
           </BrowserRouter>
         </TooltipProvider>
