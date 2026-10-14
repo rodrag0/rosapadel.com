@@ -87,7 +87,7 @@ export default function Navbar() {
           <a href="/investors" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
             {copy.nav.forInvestors}
           </a>
-          <a href="/tournamen-managment" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
+          <a href="/tournament-managment" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
             {copy.nav.newTab}
           </a>
 
@@ -178,7 +178,7 @@ export default function Navbar() {
             {copy.nav.forInvestors}
           </a>
           <a
-            href="/new-tab"
+            href="/tournament-managment"
             onClick={() => setOpen(false)}
             className="block text-sm text-muted-foreground hover:text-foreground transition-colors"
           >
