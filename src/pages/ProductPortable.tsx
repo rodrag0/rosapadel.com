@@ -4,6 +4,7 @@ import { WifiOff, Plug, Monitor, Tablet, ChevronRight } from "lucide-react";
 import Navbar from "@/components/rosa/Navbar";
 import Footer from "@/components/rosa/Footer";
 import BrandText from "@/components/rosa/BrandText";
+import ProductTitle from "@/components/rosa/ProductTitle";
 
 const FEATURES = [
   {
@@ -19,7 +20,7 @@ const FEATURES = [
   {
     icon: WifiOff,
     name: "Offline Mode",
-    desc: "Zero network dependency. Core LED runs entirely offline — perfect for any club, any location.",
+    desc: "rosa portable keeps the score without a network connection, for clubs and players on any court.",
   },
   {
     icon: Plug,
@@ -53,18 +54,18 @@ const SPECS = [
   ["Connectivity", "None required — offline"],
   ["Setup time", "Under 1 minute"],
   ["Operating modes", "Match / Training"],
-  ["Price", "From €299"],
+  ["Product focus", "Portable scoring; camera, video and tournament management are not included"],
 ];
 
 const STATS = [
   { value: "< 1 min", label: "Setup time" },
   { value: "100%", label: "Offline-capable" },
-  { value: "Any court", label: "Compatibility" },
+  { value: "Any court", label: "Court setup" },
 ];
 
-export default function ProductCoreLED() {
+export default function ProductPortable() {
   useEffect(() => {
-    document.title = "rosa padel | Core LED";
+    document.title = "rosa padel | rosa portable";
   }, []);
 
   const heroRef = useRef(null);
@@ -98,13 +99,13 @@ export default function ProductCoreLED() {
             <div className="flex items-center gap-2 text-sm text-muted-foreground font-mono">
               <a href="/" className="hover:text-primary transition-colors">rosa</a>
               <ChevronRight className="w-3 h-3" />
-              <span className="text-foreground">Core LED</span>
+              <span className="text-foreground"><BrandText text="rosa portable" /></span>
             </div>
 
             {/* Tier + Status */}
             <div className="flex items-center gap-3 flex-wrap">
               <span className="px-2.5 py-1 rounded border border-border text-[10px] font-mono uppercase tracking-widest text-muted-foreground">
-                Entry
+                Portable scoring
               </span>
               <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full border border-green-500/30 bg-green-500/10 text-green-400 text-[11px] font-mono uppercase tracking-[0.18em]">
                 <span className="w-1.5 h-1.5 rounded-full bg-green-500 flex-shrink-0" />
@@ -113,9 +114,8 @@ export default function ProductCoreLED() {
             </div>
 
             {/* Heading */}
-            <h1 className="text-5xl md:text-7xl font-extrabold leading-none tracking-tight">
-              Plug in.<br />Score on.
-            </h1>
+            <ProductTitle name="portable" />
+            <p className="text-2xl font-semibold">Plug in. Score on.</p>
 
             <p className="text-xl text-muted-foreground max-w-xl">
               The simplest way to bring professional scoring to any padel court. No network. No complexity. Just score.
@@ -130,10 +130,10 @@ export default function ProductCoreLED() {
                 Book a Demo
               </a>
               <a
-                href="/products/core-hd"
+                href="/products/vision"
                 className="rounded-xl px-8 py-3 font-semibold inline-flex items-center gap-2 border border-border hover:border-primary/40 transition-colors text-foreground"
               >
-                See Core HD <ChevronRight className="w-4 h-4" />
+                See <BrandText text="rosa vision" /> <ChevronRight className="w-4 h-4" />
               </a>
             </div>
           </motion.div>
@@ -146,7 +146,7 @@ export default function ProductCoreLED() {
             className="mt-16 grid grid-cols-3 gap-px rounded-2xl border border-border overflow-hidden bg-border max-w-2xl"
           >
             {STATS.map((stat) => (
-              <div key={stat.label} className="bg-card px-6 py-6 space-y-1">
+              <div key={stat.label} className="bg-card px-3 md:px-6 py-6 space-y-1">
                 <p className="font-mono text-2xl md:text-3xl font-bold text-primary tabular-nums">{stat.value}</p>
                 <p className="text-xs text-muted-foreground">{stat.label}</p>
               </div>
@@ -184,7 +184,7 @@ export default function ProductCoreLED() {
                   </div>
                   <div className="space-y-2">
                     <h3 className="font-bold text-lg">{feature.name}</h3>
-                    <p className="text-sm text-muted-foreground leading-relaxed">{feature.desc}</p>
+                    <p className="text-sm text-muted-foreground leading-relaxed"><BrandText text={feature.desc} /></p>
                   </div>
                 </motion.div>
               );
@@ -234,7 +234,7 @@ export default function ProductCoreLED() {
             className="space-y-3"
           >
             <span className="text-sm font-mono uppercase tracking-widest text-primary">Specifications</span>
-            <h2 className="text-4xl md:text-5xl font-bold">Core LED specs.</h2>
+            <h2 className="text-4xl md:text-5xl font-bold"><BrandText text="rosa portable specs." /></h2>
           </motion.div>
 
           <motion.div
@@ -265,24 +265,24 @@ export default function ProductCoreLED() {
             transition={{ duration: 0.6 }}
             className="space-y-3"
           >
-            <span className="text-sm font-mono uppercase tracking-widest text-primary">Upgrade Path</span>
+            <span className="text-sm font-mono uppercase tracking-widest text-primary">The ecosystem</span>
             <h2 className="text-3xl md:text-4xl font-bold">Ready to go further?</h2>
-            <p className="text-muted-foreground">Core LED is just the beginning. Scale when you're ready.</p>
+            <p className="text-muted-foreground"><BrandText text="Explore rosa vision for the connected court and rosa coach for the AI layer." /></p>
           </motion.div>
 
           <div className="grid md:grid-cols-2 gap-5">
             {[
               {
-                name: "Core HD",
-                tier: "Professional",
-                desc: "HD monitor display, QR match setup, referee mode, custom branding, and cloud sync.",
-                href: "/products/core-hd",
+                name: "rosa vision",
+                tier: "Connected court",
+                desc: "HD scoring, pads, replay, VAR and tournament management in one court system.",
+                href: "/products/vision",
               },
               {
-                name: "rosa Vision",
-                tier: "Advanced",
-                desc: "Camera-integrated replay, court heatmaps, player history, and club screen content.",
-                href: "/products/vision",
+                name: "rosa coach",
+                tier: "AI layer",
+                desc: "The AI software layer for shot analysis, tactical insights and progress tracking.",
+                href: "/products/coach",
               },
             ].map((product, i) => (
               <motion.a
@@ -319,7 +319,7 @@ export default function ProductCoreLED() {
             className="max-w-2xl space-y-6"
           >
             <span className="text-sm font-mono uppercase tracking-widest text-primary">Get Started</span>
-            <h2 className="text-4xl md:text-5xl font-bold">Get Core LED in your club.</h2>
+            <h2 className="text-4xl md:text-5xl font-bold"><BrandText text="Bring rosa portable to your court." /></h2>
             <p className="text-muted-foreground text-lg">
               We'll help you find the right configuration and get you set up. No commitment required.
             </p>

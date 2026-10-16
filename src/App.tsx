@@ -1,5 +1,5 @@
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
@@ -10,12 +10,15 @@ import ImprintPage from "./pages/ImprintPage.tsx";
 import PrivacyPolicyPage from "./pages/PrivacyPolicyPage.tsx";
 import CookiePolicyPage from "./pages/CookiePolicyPage.tsx";
 import NotFound from "./pages/NotFound.tsx";
-import ProductCoreLED from "./pages/ProductCoreLED.tsx";
+import ProductPortable from "./pages/ProductPortable.tsx";
+import ProductVision from "./pages/ProductVision.tsx";
 import ProductCoach from "./pages/ProductCoach.tsx";
 import ForClubs from "./pages/ForClubs.tsx";
 import Investors from "./pages/Investors.tsx";
 import MatchSessionMatchi from "./pages/MatchSessionMatchi.tsx";
 import NewTab from "./pages/NewTab.tsx";
+import { tournamentManagementHref } from "@/lib/siteLinks";
+import SectionNavigation from "@/components/rosa/SectionNavigation";
 
 const queryClient = new QueryClient();
 
@@ -27,18 +30,25 @@ const App = () => (
           <Toaster />
           <Sonner />
           <BrowserRouter>
+            <SectionNavigation />
             <Routes>
               <Route path="/" element={<Index />} />
               <Route path="/imprint" element={<ImprintPage />} />
               <Route path="/privacy-policy" element={<PrivacyPolicyPage />} />
               <Route path="/cookie-policy" element={<CookiePolicyPage />} />
-              <Route path="/products/core-led" element={<ProductCoreLED />} />
+              <Route path="/products/portable" element={<ProductPortable />} />
+              <Route path="/products/vision" element={<ProductVision />} />
+              <Route path="/products/core-led" element={<Navigate to="/products/portable" replace />} />
+              <Route path="/products/core-hd" element={<Navigate to="/products/vision" replace />} />
               <Route path="/products/coach" element={<ProductCoach />} />
               <Route path="/for-clubs" element={<ForClubs />} />
               <Route path="/investors" element={<Investors />} />
               <Route path="/match-session/matchi-live-score" element={<MatchSessionMatchi />} />
+              <Route path={tournamentManagementHref} element={<NewTab />} />
+              <Route path="/new-tab" element={<Navigate to={tournamentManagementHref} replace />} />
+              <Route path="/tournamen-managment" element={<Navigate to={tournamentManagementHref} replace />} />
+              <Route path="/tournament-managment" element={<Navigate to={tournamentManagementHref} replace />} />
               <Route path="*" element={<NotFound />} />
-              <Route path="/new-tab" element={<NewTab />} />
             </Routes>
           </BrowserRouter>
         </TooltipProvider>

@@ -24,7 +24,7 @@ export default function ProductLadder() {
           <p className="text-muted-foreground text-lg max-w-2xl mx-auto">{copy.products.subtitle}</p>
         </motion.div>
 
-        <div className="grid md:grid-cols-3 gap-6">
+        <div className="grid md:grid-cols-2 gap-6">
           {copy.products.items.map((product, i) => {
             const Icon = icons[i] ?? Monitor;
 

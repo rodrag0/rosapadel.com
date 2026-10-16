@@ -9,7 +9,8 @@ import rosaLogoDark from "@/assets/rosa-logo-dark.png";
 import rosaLogoLight from "@/assets/rosa-logo-light.png";
 import rosaIconDark from "@/assets/rosa-icon-dark.svg";
 import rosaIconLight from "@/assets/rosa-icon-light.svg";
-import { getSectionHref } from "@/lib/siteLinks";
+import { getSectionHref, tournamentManagementHref } from "@/lib/siteLinks";
+import { getProductLinks, getProductStatusClass } from "@/lib/productCatalog";
 import BrandText from "./BrandText";
 import {
   DropdownMenu,
@@ -18,16 +19,12 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 
-const productLinks = [
-  { name: "Core LED", href: "/products/core-led", tier: "Entry", status: "Production ready", statusClass: "text-green-400" },
-  { name: "rosa Coach", href: "/products/coach", tier: "Intelligence", status: "Soon", statusClass: "text-muted-foreground" },
-];
-
 export default function Navbar() {
   const [open, setOpen] = useState(false);
   const [productsOpen, setProductsOpen] = useState(false);
   const { theme, toggleTheme } = useTheme();
-  const { copy } = useLanguage();
+  const { copy, language } = useLanguage();
+  const productLinks = getProductLinks(language);
   const location = useLocation();
 
   const logo = theme === "dark" ? rosaLogoDark : rosaLogoLight;
@@ -69,7 +66,7 @@ export default function Navbar() {
                       </span>
                       <span className="text-[10px] font-mono text-muted-foreground uppercase tracking-wider">{product.tier}</span>
                     </div>
-                    <span className={`text-[10px] font-mono uppercase tracking-widest ${product.statusClass}`}>
+                    <span className={`text-[10px] font-mono uppercase tracking-widest ${getProductStatusClass(product.statusType)}`}>
                       {product.status}
                     </span>
                   </a>
@@ -87,7 +84,7 @@ export default function Navbar() {
           <a href="/investors" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
             {copy.nav.forInvestors}
           </a>
-          <a href="/tournamen-managment" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
+          <a href={tournamentManagementHref} className="text-sm text-muted-foreground hover:text-foreground transition-colors">
             {copy.nav.newTab}
           </a>
 
@@ -149,7 +146,7 @@ export default function Navbar() {
                     <span>
                       <BrandText text={product.name} />
                     </span>
-                    <span className={`text-[10px] font-mono ${product.statusClass}`}>{product.status}</span>
+                    <span className={`text-[10px] font-mono ${getProductStatusClass(product.statusType)}`}>{product.status}</span>
                   </a>
                 ))}
               </div>
@@ -178,7 +175,7 @@ export default function Navbar() {
             {copy.nav.forInvestors}
           </a>
           <a
-            href="/new-tab"
+            href={tournamentManagementHref}
             onClick={() => setOpen(false)}
             className="block text-sm text-muted-foreground hover:text-foreground transition-colors"
           >

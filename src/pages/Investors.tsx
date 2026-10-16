@@ -1,9 +1,11 @@
 import { motion, useInView } from "framer-motion";
 import { useRef, useEffect } from "react";
-import { Users, BarChart2, TrendingUp, Package, RefreshCw, Globe, ChevronRight, User } from "lucide-react";
+import { Users, BarChart2, TrendingUp, Package, RefreshCw, Globe, ChevronRight } from "lucide-react";
 import Navbar from "@/components/rosa/Navbar";
 import Footer from "@/components/rosa/Footer";
 import BrandText from "@/components/rosa/BrandText";
+import { getHardwareProducts } from "@/lib/productCatalog";
+import { siteCopy } from "@/lib/siteCopy";
 
 const MARKET_STATS = [
   { value: "25M+", label: "Padel players globally" },
@@ -11,54 +13,20 @@ const MARKET_STATS = [
   { value: "20%", label: "Annual court growth" },
 ];
 
-const PRODUCTS = [
-  {
-    num: "01",
-    tier: "Entry",
-    name: "Core LED",
-    tagline: "Plug in. Score on.",
-    status: "Production ready",
-    statusClass: "border-green-500/30 bg-green-500/10 text-green-400",
-    dotClass: "bg-green-500",
-    href: "/products/core-led",
-  },
-  {
-    num: "02",
-    tier: "Professional",
-    name: "Core HD",
-    tagline: "HD display. Pro control.",
-    status: "Production ready",
-    statusClass: "border-green-500/30 bg-green-500/10 text-green-400",
-    dotClass: "bg-green-500",
-    href: "/products/core-hd",
-  },
-  {
-    num: "03",
-    tier: "Advanced",
-    name: "rosa Vision",
-    tagline: "Replay. Analyze. Share.",
-    status: "Pilot-ready",
-    statusClass: "border-yellow-400/30 bg-yellow-400/10 text-yellow-400",
-    dotClass: "bg-yellow-400",
-    href: "/products/vision",
-  },
-  {
-    num: "04",
-    tier: "Intelligence",
-    name: "rosa Coach",
-    tagline: "Your AI padel coach.",
-    status: "In Development",
-    statusClass: "border-border bg-secondary text-muted-foreground",
-    dotClass: "bg-muted-foreground/40",
-    href: "/products/coach",
-  },
-];
+const PRODUCTS = getHardwareProducts("en").map((product) => ({
+  ...product,
+  statusClass: product.statusType === "available"
+    ? "border-green-500/30 bg-green-500/10 text-green-400"
+    : "border-yellow-400/30 bg-yellow-400/10 text-yellow-400",
+  dotClass: product.statusType === "available" ? "bg-green-500" : "bg-yellow-400",
+}));
+const AI_LAYER = siteCopy.en.productFamily.aiLayer;
 
 const BUSINESS_MODEL = [
   {
     icon: Package,
     title: "Hardware Sales",
-    desc: "One-time revenue per court installation. Core LED from €299, Core HD from €549. Scalable across club sizes from 2 to 20+ courts.",
+    desc: "Hardware sales through rosa portable and rosa vision, serving portable scoring and connected court installations.",
   },
   {
     icon: RefreshCw,
@@ -249,9 +217,9 @@ export default function Investors() {
             className="space-y-3"
           >
             <span className="text-sm font-mono uppercase tracking-widest text-primary">Product Family</span>
-            <h2 className="text-4xl md:text-5xl font-bold">Four products. One ecosystem.</h2>
+            <h2 className="text-4xl md:text-5xl font-bold">Two products. One AI layer.</h2>
             <p className="text-muted-foreground max-w-xl">
-              Each product works standalone. Together they form a complete court intelligence platform.
+              <BrandText text="rosa portable for LED scoring. rosa vision for the connected court. rosa coach adds the AI software layer." />
             </p>
           </motion.div>
 
@@ -286,6 +254,14 @@ export default function Investors() {
                 </div>
               </motion.a>
             ))}
+          </div>
+          <div className="space-y-3 border-t border-border pt-8" data-product-layer="ai">
+            <p className="text-xs font-mono text-muted-foreground">{AI_LAYER.tier} · {AI_LAYER.status}</p>
+            <h3 className="text-2xl font-bold"><BrandText text={AI_LAYER.name} /></h3>
+            <p className="max-w-2xl text-muted-foreground"><BrandText text={AI_LAYER.body} /></p>
+            <a href={AI_LAYER.href} className="inline-flex items-center gap-2 text-primary font-medium">
+              <BrandText text={AI_LAYER.cta} /><ChevronRight className="h-4 w-4" aria-hidden="true" />
+            </a>
           </div>
         </div>
       </section>
@@ -350,7 +326,7 @@ export default function Investors() {
               },
               {
                 label: "Prototype validated",
-                desc: "Core LED and Core HD hardware validated in real court conditions.",
+                desc: "rosa portable and rosa vision scoring hardware tested in real court conditions.",
               },
               {
                 label: "Pilot clubs identified",
@@ -398,7 +374,7 @@ export default function Investors() {
       </section>
 
       {/* Team */}
-      <section ref={teamRef} className="py-24 bg-card/50">
+      <section ref={teamRef} id="team" className="scroll-mt-24 py-24 bg-card/50">
         <div className="container mx-auto px-6 lg:px-12 space-y-12">
           <motion.div
             initial={{ opacity: 0, y: 24 }}
@@ -414,18 +390,21 @@ export default function Investors() {
             {[
               {
                 name: "Rodrigo Ponce",
+                portrait: "/images/team/rodrigo-ponce.webp",
                 role: "Co-founder & CEO",
                 location: "Heilbronn, Germany",
                 bio: "Leads company vision, product strategy, and business development across the rosa ecosystem. Mechatronics engineer, startup operator, and previous founder.",
               },
               {
                 name: "Leandro Ponce",
+                portrait: "/images/team/leandro-ponce.webp",
                 role: "Co-founder & CFO",
                 location: "Mexico",
                 bio: "Leads finance, operations, and investment planning. Industrial engineer with 20+ years in finance, operations, and large-scale real estate investments.",
               },
               {
                 name: "Saul Ortiz de la Tejera",
+                portrait: "/images/team/saul-ortiz-de-la-tejera.webp",
                 role: "Co-founder & CTO",
                 location: "Mexico",
                 bio: "Leads hardware, software architecture, AI, IoT, and prototyping. Mechatronics engineer with hands-on engineering experience from Bosch.",
@@ -436,13 +415,11 @@ export default function Investors() {
                 initial={{ opacity: 0, y: 24 }}
                 animate={teamInView ? { opacity: 1, y: 0 } : {}}
                 transition={{ duration: 0.6, delay: 0.1 + i * 0.12 }}
-                className="rounded-2xl border border-border bg-card p-6 space-y-4"
+                className="min-w-0 space-y-5"
               >
-                <div className="flex items-center gap-3">
-                  <div className="w-12 h-12 rounded-full bg-secondary border border-border flex items-center justify-center">
-                    <User className="w-6 h-6 text-muted-foreground" />
-                  </div>
-                  <div>
+                <img src={member.portrait} alt={member.name} width="768" height="960" loading="lazy" decoding="async" className="aspect-[4/5] w-full rounded-lg object-cover" />
+                <div className="space-y-3">
+                  <div className="min-w-0">
                     <p className="font-bold">{member.name}</p>
                     <p className="text-sm text-muted-foreground">{member.role}</p>
                     <p className="text-xs text-muted-foreground font-mono">{member.location}</p>

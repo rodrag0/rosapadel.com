@@ -1,5 +1,6 @@
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
+import { ArrowUpRight, Brain } from "lucide-react";
 import { useLanguage } from "@/components/rosa/LanguageProvider";
 import BrandText from "@/components/rosa/BrandText";
 
@@ -38,7 +39,7 @@ export default function ProductFamilySlider() {
   const section = copy.productFamily;
 
   return (
-    <section ref={ref} className="py-24 md:py-32" id="product-family">
+    <section ref={ref} className="py-24 md:py-32" id="products">
       <div className="container mx-auto px-6 lg:px-12">
         {/* Header */}
         <motion.div
@@ -108,18 +109,26 @@ export default function ProductFamilySlider() {
                 </a>
               </div>
 
-              {/* Image placeholder (inside the card).
-                  When you have the image, replace this whole <div> with:
-                  <img src="/images/your-image.jpg" alt={item.name} className="w-full aspect-[16/10] rounded-xl object-cover" />
-              */}
               <div className="px-8 pb-8 md:px-10 md:pb-10">
-                <div
-                  className="w-full aspect-[16/10] rounded-xl border border-dashed border-border bg-secondary/30"
-                  aria-hidden
-                />
+                {item.href === "/products/vision" ? (
+                  <img src="/images/products/rosa-vision-court.webp" alt={item.name} width="1600" height="900" loading="lazy" decoding="async" className="aspect-video w-full rounded-lg object-contain" />
+                ) : (
+                  <div className="aspect-[16/10] w-full rounded-lg border border-dashed border-border bg-secondary/30" aria-hidden />
+                )}
               </div>
             </motion.div>
           ))}
+        </div>
+        <div className="mt-12 grid grid-cols-1 items-start gap-6 border-t border-border pt-8 md:grid-cols-[auto_1fr_auto]" data-product-layer="ai">
+          <Brain className="h-6 w-6 text-primary" aria-hidden="true" />
+          <div className="space-y-3">
+            <p className="text-xs font-mono text-muted-foreground">{section.aiLayer.tier} · {section.aiLayer.status}</p>
+            <h3 className="text-2xl font-bold"><BrandText text={section.aiLayer.name} /></h3>
+            <p className="max-w-2xl leading-relaxed text-muted-foreground"><BrandText text={section.aiLayer.body} /></p>
+          </div>
+          <a href={section.aiLayer.href} className="inline-flex items-center gap-2 text-sm font-medium text-primary">
+            <BrandText text={section.aiLayer.cta} /><ArrowUpRight className="h-4 w-4" aria-hidden="true" />
+          </a>
         </div>
       </div>
     </section>

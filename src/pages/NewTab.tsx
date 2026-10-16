@@ -61,7 +61,7 @@ const VISION_POINTS = [
   { name: "Live scoring.", desc: "Follow the match score." },
   { name: "VAR.", desc: "Review specific plays on court." },
   { name: "Replay.", desc: "Watch the match again." },
-  { name: "ROSA App.", desc: "Explore statistics, highlights and match moments." },
+  { name: "rosa app.", desc: "Explore statistics, highlights and match moments." },
 ];
 
 const AUDIENCES = ["Clubs", "Organizers", "Players", "Creators & communities"];
@@ -228,7 +228,7 @@ export default function NewTab() {
       {/* Hero */}
       <section className="pt-32 pb-20 md:pt-40 md:pb-28">
         <div className="container mx-auto px-6 lg:px-12">
-          <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-16">
+          <div className="grid grid-cols-1 items-center gap-12 lg:grid-cols-2 lg:gap-16">
             {/* Left: copy */}
             <motion.div
               initial={{ opacity: 0, y: 24 }}
@@ -240,7 +240,7 @@ export default function NewTab() {
                 rosa · Tournament Management
               </span>
 
-              <h1 className="text-5xl md:text-6xl lg:text-7xl font-extrabold leading-[0.95] tracking-tight">
+              <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold leading-[0.95] tracking-tight">
                 Your tournament.
                 <br />
                 Your courts.
@@ -365,7 +365,7 @@ export default function NewTab() {
         </div>
       </section>
 
-      {/* 3. Tournament management + ROSA Vision */}
+      {/* 3. Tournament management + rosa vision */}
       <section className="py-20 md:py-28">
         <div className="container mx-auto px-6 lg:px-12">
           <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-16">
@@ -378,7 +378,7 @@ export default function NewTab() {
               className="space-y-6"
             >
               <span className="text-[11px] font-mono font-semibold uppercase tracking-widest text-primary">
-                Tournament management + ROSA Vision
+                Tournament management + rosa vision
               </span>
               <h2 className="text-4xl md:text-5xl font-extrabold leading-[1.05] tracking-tight">
                 Manage the tournament.
@@ -386,7 +386,7 @@ export default function NewTab() {
                 Connect the experience.
               </h2>
               <p className="max-w-md text-muted-foreground leading-relaxed">
-                Tournament Management runs the competition. ROSA Vision adds scoring, video and a connected
+                Tournament Management runs the competition. rosa vision adds scoring, video and a connected
                 experience on equipped courts.
               </p>
               <ul className="space-y-3">
@@ -408,7 +408,7 @@ export default function NewTab() {
               </a>
             </motion.div>
 
-            {/* Illustrative ROSA Vision card */}
+            {/* Illustrative rosa vision card */}
             <motion.div
               initial={{ opacity: 0, y: 24 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -418,7 +418,7 @@ export default function NewTab() {
             >
               <div className="overflow-hidden rounded-xl border border-border bg-card">
                 <div className="flex items-center justify-between border-b border-border px-5 py-3">
-                  <span className="text-[11px] font-semibold text-primary">ROSA Vision</span>
+                  <span className="text-[11px] font-semibold text-primary">rosa vision</span>
                   <span className="text-[11px] text-muted-foreground">Court 1 · Tournament match</span>
                 </div>
 
@@ -467,12 +467,12 @@ export default function NewTab() {
                 </div>
 
                 <div className="flex items-center justify-between border-t border-border px-5 py-3 text-[11px]">
-                  <span className="font-semibold">The experience continues in ROSA App</span>
+                  <span className="font-semibold">The experience continues in rosa app</span>
                   <span className="text-muted-foreground">Stats · Highlights</span>
                 </div>
               </div>
               <p className="text-[11px] text-muted-foreground">
-                Illustrative view. Video and analytics require the corresponding ROSA Vision setup.
+                Illustrative view. Video and analytics require the corresponding rosa vision setup.
               </p>
             </motion.div>
           </div>

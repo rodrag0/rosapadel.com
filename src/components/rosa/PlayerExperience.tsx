@@ -1,8 +1,9 @@
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
-import { Video, Target, FileText, Play, BarChart3, ExternalLink } from "lucide-react";
+import { Video, Target, FileText, Play, BarChart3, ArrowUpRight } from "lucide-react";
 import { useLanguage } from "./LanguageProvider";
 import { Button } from "@/components/ui/button";
+import BrandText from "./BrandText";
 
 // Sample match data for the Vision mockup, not scores from a live service.
 const teamA = { name: "Rodrigo/Omar", short: "ROD/OMA" };
@@ -29,7 +30,6 @@ const players = [
 ];
 
 const last10 = [1, 2, 2, 2, 1, 2, 2, 1, 1, 1];
-const visionCoachDemoUrl = "https://rosavision.vercel.app/";
 
 export default function PlayerExperience() {
   const ref = useRef(null);
@@ -246,13 +246,13 @@ export default function PlayerExperience() {
               <div className="inline-flex px-3 py-1 rounded-full bg-primary/10 border border-primary/20 text-primary text-[11px] font-mono uppercase tracking-[0.22em]">
                 {copy.playerExperience.status}
               </div>
-              <p className="text-muted-foreground text-lg">{copy.playerExperience.body}</p>
+              <p className="text-muted-foreground text-lg"><BrandText text={copy.playerExperience.body} /></p>
               <div className="rounded-xl border border-primary/20 bg-primary/5 p-4 space-y-2">
                 <p className="text-xs text-muted-foreground">{copy.playerExperience.demoCtaHint}</p>
                 <Button asChild size="sm" className="font-mono">
-                  <a href={visionCoachDemoUrl} target="_blank" rel="noreferrer">
-                    {copy.playerExperience.demoCtaLabel}
-                    <ExternalLink className="h-4 w-4" />
+                  <a href={copy.productFamily.aiLayer.href}>
+                    <BrandText text={copy.playerExperience.demoCtaLabel} />
+                    <ArrowUpRight className="h-4 w-4" />
                   </a>
                 </Button>
               </div>

@@ -10,7 +10,7 @@ export default function BrandText({ text, brandClassName = "font-bold text-prima
     <>
       {parts.map((part, index) =>
         part.toLowerCase() === "rosa" ? (
-          <span key={`${part}-${index}`} className={brandClassName}>
+          <span key={`${part}-${index}`} className={`${brandClassName} normal-case`}>
             rosa
           </span>
         ) : (

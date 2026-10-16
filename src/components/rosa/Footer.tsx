@@ -4,17 +4,13 @@ import { useLanguage } from "./LanguageProvider";
 import rosaLogoDark from "@/assets/rosa-logo-dark.png";
 import rosaLogoLight from "@/assets/rosa-logo-light.png";
 import { getSectionHref } from "@/lib/siteLinks";
+import { getProductLinks } from "@/lib/productCatalog";
 import BrandText from "./BrandText";
-
-const productLinks = [
-  { name: "Core LED", href: "/products/core-led" },
-  
-  { name: "rosa Vision", href: "/products/vision" },
-];
 
 export default function Footer() {
   const { theme } = useTheme();
-  const { copy } = useLanguage();
+  const { copy, language } = useLanguage();
+  const productLinks = getProductLinks(language);
   const location = useLocation();
   const logo = theme === "dark" ? rosaLogoDark : rosaLogoLight;
   const howItWorksHref = getSectionHref(location.pathname, "how-it-works");

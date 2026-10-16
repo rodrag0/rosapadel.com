@@ -39,7 +39,7 @@ const REASONS = [
   {
     icon: Wrench,
     title: "Simple installation",
-    desc: "Under 5 minutes, no contractor needed. Core LED is plug-and-play. Core HD needs one HDMI cable and power.",
+    desc: "rosa portable brings plug-and-play LED scoring. We help plan the display, pads and camera setup for rosa vision.",
   },
   {
     icon: Users,
@@ -49,7 +49,7 @@ const REASONS = [
   {
     icon: TrendingUp,
     title: "Grows with you",
-    desc: "Start with Core LED, add Core HD, then Vision. Pay as you scale — no big upfront commitment.",
+    desc: "Choose rosa portable or rosa vision for your courts, then select the club and player services you need. rosa coach provides the AI layer.",
   },
 ];
 
@@ -57,12 +57,12 @@ const INSTALL_STEPS = [
   {
     num: "01",
     title: "Plan",
-    desc: "Choose your tier based on your courts, budget, and ambitions. We help you get the configuration right.",
+    desc: "Choose your product and services based on your courts and ambitions. We help you get the configuration right.",
   },
   {
     num: "02",
     title: "Install",
-    desc: "Plug in and mount. No tools required for Core LED. Core HD adds one monitor and one cable.",
+    desc: "Set up rosa portable for LED scoring, or install the HD display, pads and video system for rosa vision.",
   },
   {
     num: "03",
@@ -118,12 +118,31 @@ export default function ForClubs() {
                 Book a Demo
               </a>
               <a
-                href="/products/core-led"
+                href="/#products"
                 className="rounded-xl px-8 py-3 font-semibold inline-flex items-center gap-2 border border-border hover:border-primary/40 transition-colors text-foreground"
               >
                 See Products
               </a>
             </div>
+            <aside aria-label="Club hardware payback" className="max-w-xl space-y-3 pt-6">
+              <p className="text-sm font-semibold leading-relaxed">
+                <BrandText text="With 1 extra booked court hour a week, you could cover your rosa vision hardware investment in 6 months.*" />
+              </p>
+              <p className="text-sm leading-relaxed text-muted-foreground">
+                Attract players, build loyalty and create new advertising opportunities for your club.
+              </p>
+              <details className="text-xs leading-relaxed text-muted-foreground">
+                <summary className="cursor-pointer py-1 focus-visible:outline focus-visible:outline-2 focus-visible:outline-primary">*Estimate assumptions</summary>
+                <div className="space-y-2 pt-2">
+                  <p>
+                    <BrandText text="Illustrative rosa vision scenario for one court, based on our commercial proposal: one additional paid court-hour each week for six months. Actual payback depends on your booking rate, operating costs and additional paid bookings." />
+                  </p>
+                  <p>
+                    Hardware only. TV, installation, taxes and software subscriptions are excluded. This is not an estimate of your club's overall profit.
+                  </p>
+                </div>
+              </details>
+            </aside>
           </motion.div>
 
           {/* Stats row */}
@@ -277,7 +296,7 @@ export default function ForClubs() {
                     <Icon className="w-5 h-5 text-primary" />
                   </div>
                   <h3 className="text-xl font-bold">{reason.title}</h3>
-                  <p className="text-muted-foreground leading-relaxed text-sm">{reason.desc}</p>
+                  <p className="text-muted-foreground leading-relaxed text-sm"><BrandText text={reason.desc} /></p>
                 </motion.div>
               );
             })}
@@ -311,7 +330,7 @@ export default function ForClubs() {
                   <span className="font-mono text-4xl font-bold text-primary/20">{step.num}</span>
                   <h3 className="text-xl font-bold">{step.title}</h3>
                 </div>
-                <p className="text-muted-foreground leading-relaxed">{step.desc}</p>
+                <p className="text-muted-foreground leading-relaxed"><BrandText text={step.desc} /></p>
               </motion.div>
             ))}
           </div>

@@ -4,6 +4,7 @@ import { Zap, BarChart2, TrendingUp, Video, ChevronRight, Clock } from "lucide-r
 import Navbar from "@/components/rosa/Navbar";
 import Footer from "@/components/rosa/Footer";
 import BrandText from "@/components/rosa/BrandText";
+import ProductTitle from "@/components/rosa/ProductTitle";
 
 const FEATURES = [
   {
@@ -30,7 +31,7 @@ const FEATURES = [
 
 export default function ProductCoach() {
   useEffect(() => {
-    document.title = "rosa padel | rosa Coach";
+    document.title = "rosa padel | rosa coach";
   }, []);
 
   const heroRef = useRef(null);
@@ -60,13 +61,13 @@ export default function ProductCoach() {
             <div className="flex items-center gap-2 text-sm text-muted-foreground font-mono">
               <a href="/" className="hover:text-primary transition-colors">rosa</a>
               <ChevronRight className="w-3 h-3" />
-              <span className="text-foreground"><BrandText text="rosa Coach" /></span>
+              <span className="text-foreground"><BrandText text="rosa coach" /></span>
             </div>
 
             {/* Tier + Status */}
             <div className="flex items-center gap-3 flex-wrap">
               <span className="px-2.5 py-1 rounded border border-border text-[10px] font-mono uppercase tracking-widest text-muted-foreground">
-                Intelligence
+                AI software layer
               </span>
               <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full border border-border bg-secondary text-muted-foreground text-[11px] font-mono uppercase tracking-[0.18em]">
                 <span className="w-1.5 h-1.5 rounded-full bg-muted-foreground/40 flex-shrink-0" />
@@ -75,12 +76,11 @@ export default function ProductCoach() {
             </div>
 
             {/* Heading */}
-            <h1 className="text-5xl md:text-7xl font-extrabold leading-none tracking-tight">
-              Your AI padel coach.
-            </h1>
+            <ProductTitle name="coach" />
+            <p className="text-2xl font-semibold">Your AI padel coach.</p>
 
             <p className="text-xl text-muted-foreground max-w-xl">
-              <BrandText text="rosa Coach is the intelligence layer on top of Vision — AI-powered shot analysis, tactical breakdowns, and improvement tracking built for every player level." />
+              <BrandText text="rosa coach is the AI software layer for rosa vision: shot analysis, tactical breakdowns and improvement tracking built on your match footage." />
             </p>
 
             {/* CTAs */}
@@ -95,7 +95,7 @@ export default function ProductCoach() {
                 href="/products/vision"
                 className="rounded-xl px-8 py-3 font-semibold inline-flex items-center gap-2 border border-border hover:border-primary/40 transition-colors text-foreground"
               >
-                See <BrandText text="rosa Vision" /> <ChevronRight className="w-4 h-4" />
+                See <BrandText text="rosa vision" /> <ChevronRight className="w-4 h-4" />
               </a>
             </div>
 
@@ -103,7 +103,7 @@ export default function ProductCoach() {
             <p className="text-sm text-muted-foreground font-mono pt-2">
               Part of the{" "}
               <a href="/products/vision" className="text-primary hover:underline">
-                <BrandText text="rosa Vision ecosystem" />
+                <BrandText text="rosa vision ecosystem" />
               </a>
             </p>
           </motion.div>
@@ -119,10 +119,10 @@ export default function ProductCoach() {
             transition={{ duration: 0.6 }}
             className="space-y-3"
           >
-            <span className="text-sm font-mono uppercase tracking-widest text-primary"><BrandText text="What rosa Coach Will Do" /></span>
+            <span className="text-sm font-mono uppercase tracking-widest text-primary"><BrandText text="What rosa coach Will Do" /></span>
             <h2 className="text-4xl md:text-5xl font-bold">AI coaching, built for padel.</h2>
             <p className="text-muted-foreground max-w-xl">
-              <BrandText text="Each of these features is in development. Install rosa Vision today and rosa Coach will activate automatically when ready." />
+              <BrandText text="These rosa coach features are in development. Access will depend on the selected software services and availability." />
             </p>
           </motion.div>
 
@@ -168,33 +168,26 @@ export default function ProductCoach() {
           >
             <div className="space-y-3">
               <span className="text-sm font-mono uppercase tracking-widest text-primary">Roadmap</span>
-              <h2 className="text-4xl md:text-5xl font-bold">Built on Vision. Automatic when ready.</h2>
+              <h2 className="text-4xl md:text-5xl font-bold">The intelligence layer for your match.</h2>
             </div>
 
             <div className="rounded-2xl border border-border bg-card p-6 md:p-8 space-y-4">
               <p className="text-muted-foreground leading-relaxed">
-                <BrandText text="rosa Coach is built on top of rosa Vision. Install Vision today and Coach will activate automatically when ready — no additional hardware, no reconfiguration." />
+                <BrandText text="rosa vision connects scoring and video on court. rosa coach adds AI analysis to that match experience through software." />
               </p>
               <div className="flex flex-col sm:flex-row items-start sm:items-center gap-3 pt-2">
-                <div className="flex items-center gap-2">
-                  <div className="w-8 h-8 rounded-lg bg-green-500/10 border border-green-500/30 flex items-center justify-center">
-                    <span className="w-2 h-2 rounded-full bg-green-500" />
-                  </div>
-                  <span className="text-sm font-medium">Core HD</span>
-                </div>
-                <ChevronRight className="w-4 h-4 text-muted-foreground hidden sm:block" />
                 <div className="flex items-center gap-2">
                   <div className="w-8 h-8 rounded-lg bg-yellow-400/10 border border-yellow-400/30 flex items-center justify-center">
                     <span className="w-2 h-2 rounded-full bg-yellow-400" />
                   </div>
-                  <span className="text-sm font-medium"><BrandText text="rosa Vision" /></span>
+                  <span className="text-sm font-medium"><BrandText text="rosa vision" /></span>
                 </div>
                 <ChevronRight className="w-4 h-4 text-muted-foreground hidden sm:block" />
                 <div className="flex items-center gap-2">
                   <div className="w-8 h-8 rounded-lg bg-secondary border border-border flex items-center justify-center">
                     <span className="w-2 h-2 rounded-full bg-muted-foreground/40" />
                   </div>
-                  <span className="text-sm font-medium text-muted-foreground"><BrandText text="rosa Coach" /></span>
+                  <span className="text-sm font-medium text-muted-foreground"><BrandText text="rosa coach" /></span>
                 </div>
               </div>
             </div>
@@ -203,7 +196,7 @@ export default function ProductCoach() {
               href="/products/vision"
               className="inline-flex items-center gap-2 text-sm font-medium text-primary hover:opacity-80 transition-opacity"
             >
-              Learn about <BrandText text="rosa Vision" /> <ChevronRight className="w-4 h-4" />
+              Learn about <BrandText text="rosa vision" /> <ChevronRight className="w-4 h-4" />
             </a>
           </motion.div>
         </div>
@@ -219,9 +212,9 @@ export default function ProductCoach() {
             className="max-w-2xl space-y-6"
           >
             <span className="text-sm font-mono uppercase tracking-widest text-primary">Waitlist</span>
-            <h2 className="text-4xl md:text-5xl font-bold"><BrandText text="Be the first to get rosa Coach." /></h2>
+            <h2 className="text-4xl md:text-5xl font-bold"><BrandText text="Be the first to get rosa coach." /></h2>
             <p className="text-muted-foreground text-lg">
-              <BrandText text="Join the waitlist and we'll notify you as soon as rosa Coach is ready. Early access for Vision pilot clubs." />
+              <BrandText text="Join the waitlist and we'll notify you as soon as rosa coach is ready. Early access for Vision pilot clubs." />
             </p>
             <a
               href="mailto:rodrigo@rosapadel.com"
