@@ -4,6 +4,7 @@ import { Users, BarChart2, TrendingUp, Package, RefreshCw, Globe, ChevronRight }
 import Navbar from "@/components/rosa/Navbar";
 import Footer from "@/components/rosa/Footer";
 import BrandText from "@/components/rosa/BrandText";
+import InvestorContactDialog from "@/components/rosa/InvestorContactDialog";
 import { getHardwareProducts } from "@/lib/productCatalog";
 import { siteCopy } from "@/lib/siteCopy";
 
@@ -15,10 +16,10 @@ const MARKET_STATS = [
 
 const PRODUCTS = getHardwareProducts("en").map((product) => ({
   ...product,
-  statusClass: product.statusType === "available"
-    ? "border-green-500/30 bg-green-500/10 text-green-400"
+  statusClass: product.statusType === "available" || product.statusType === "presale"
+    ? "border-green-600/20 bg-green-500/5 text-green-700 dark:text-green-400"
     : "border-yellow-400/30 bg-yellow-400/10 text-yellow-400",
-  dotClass: product.statusType === "available" ? "bg-green-500" : "bg-yellow-400",
+  dotClass: product.statusType === "available" || product.statusType === "presale" ? "bg-green-500" : "bg-yellow-400",
 }));
 const AI_LAYER = siteCopy.en.productFamily.aiLayer;
 
@@ -92,12 +93,7 @@ export default function Investors() {
               <BrandText text="Hardware-led court intelligence for the fastest-growing racket sport in the world. rosa builds the technology infrastructure that every padel court needs but currently lacks." />
             </p>
             <div className="flex flex-wrap gap-4 pt-2">
-              <a
-                href="#contact"
-                className="bg-primary text-primary-foreground hover:opacity-90 transition-opacity rounded-xl px-8 py-3 font-semibold inline-flex items-center gap-2"
-              >
-                Get in touch
-              </a>
+              <InvestorContactDialog />
               <a
                 href="/#products"
                 className="rounded-xl px-8 py-3 font-semibold inline-flex items-center gap-2 border border-border hover:border-primary/40 transition-colors text-foreground"
@@ -433,7 +429,7 @@ export default function Investors() {
       </section>
 
       {/* CTA */}
-      <section ref={ctaRef} id="contact" className="py-24">
+      <section ref={ctaRef} id="contact" className="scroll-mt-24 py-24">
         <div className="container mx-auto px-6 lg:px-12">
           <motion.div
             initial={{ opacity: 0, y: 24 }}
@@ -447,13 +443,8 @@ export default function Investors() {
               We're open to conversations with investors, partners, and distributors who believe in the padel opportunity.
             </p>
             <div className="space-y-3">
-              <a
-                href="mailto:rodrigo@rosapadel.com"
-                className="bg-primary text-primary-foreground hover:opacity-90 transition-opacity rounded-xl px-8 py-3 font-semibold inline-flex items-center gap-2"
-              >
-                Get in touch
-              </a>
-              <p className="text-sm text-muted-foreground font-mono">rodrigo@rosapadel.com</p>
+              <InvestorContactDialog />
+              <p className="text-sm text-muted-foreground font-mono"><a href="mailto:rodrigo@rosapadel.com" className="underline-offset-4 hover:underline">rodrigo@rosapadel.com</a></p>
             </div>
           </motion.div>
         </div>

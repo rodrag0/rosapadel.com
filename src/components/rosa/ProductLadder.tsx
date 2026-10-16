@@ -58,7 +58,7 @@ export default function ProductLadder() {
                 </div>
 
                 {"status" in product && product.status && (
-                  <div className="inline-flex w-fit px-3 py-1 rounded-full bg-primary/10 border border-primary/20 text-primary text-[11px] font-mono uppercase tracking-[0.22em]">
+                  <div className="inline-flex w-fit rounded border border-green-600/20 bg-green-500/5 px-3 py-1 text-xs font-mono text-green-700 dark:text-green-400">
                     {product.status}
                   </div>
                 )}

@@ -52,21 +52,21 @@ export default function Navbar() {
             </DropdownMenuTrigger>
             <DropdownMenuContent
               align="start"
-              className="rounded-xl border border-border bg-card p-2 min-w-[260px] shadow-lg"
+              className="w-80 max-w-[calc(100vw-2rem)] rounded-lg border border-border bg-card p-2 shadow-lg"
             >
               {productLinks.map((product) => (
-                <DropdownMenuItem key={product.href} asChild>
+                <DropdownMenuItem key={product.href} asChild className="focus:bg-secondary focus:text-foreground">
                   <a
                     href={product.href}
-                    className="flex items-center justify-between px-3 py-2.5 rounded-lg hover:bg-secondary transition-colors cursor-pointer"
+                    className="grid grid-cols-[minmax(0,1fr)_auto] items-start gap-x-4 rounded px-3 py-3 hover:bg-secondary transition-colors cursor-pointer"
                   >
-                    <div className="flex items-baseline gap-2">
-                      <span className="text-sm font-semibold text-foreground">
+                    <div className="min-w-0 space-y-1">
+                      <span className="block text-sm font-semibold text-foreground">
                         <BrandText text={product.name} />
                       </span>
-                      <span className="text-[10px] font-mono text-muted-foreground uppercase tracking-wider">{product.tier}</span>
+                      <span className="block text-xs text-muted-foreground">{product.tier}</span>
                     </div>
-                    <span className={`text-[10px] font-mono uppercase tracking-widest ${getProductStatusClass(product.statusType)}`}>
+                    <span className={`max-w-32 text-right text-xs font-mono ${getProductStatusClass(product.statusType)}`}>
                       {product.status}
                     </span>
                   </a>
@@ -141,12 +141,12 @@ export default function Navbar() {
                     key={product.href}
                     href={product.href}
                     onClick={() => setOpen(false)}
-                    className="flex items-center justify-between text-sm text-muted-foreground hover:text-foreground transition-colors"
+                    className="flex min-h-11 items-center justify-between gap-4 text-sm text-muted-foreground hover:text-foreground transition-colors"
                   >
                     <span>
                       <BrandText text={product.name} />
                     </span>
-                    <span className={`text-[10px] font-mono ${getProductStatusClass(product.statusType)}`}>{product.status}</span>
+                    <span className={`max-w-32 text-right text-xs font-mono ${getProductStatusClass(product.statusType)}`}>{product.status}</span>
                   </a>
                 ))}
               </div>

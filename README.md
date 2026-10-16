@@ -23,7 +23,7 @@ npm run lint
 npm test
 ```
 
-`npm run preview` serves a local production build. The existing Vitest test is only a smoke test; a passing test suite does not validate the pages, translations, contact form, or 3D scene.
+`npm run preview` serves a local production build. Vitest covers referral/demo submissions and investor inquiries with mocked requests. A passing suite does not verify live email delivery, page layouts, translations or the 3D scene; check those separately in the browser.
 
 At this handoff, lint has three existing errors in `src/components/ui/command.tsx`, `src/components/ui/textarea.tsx`, and `tailwind.config.ts`. Do not assume a new change caused those errors; still check for any additional lint findings.
 
@@ -40,6 +40,7 @@ At this handoff, lint has three existing errors in `src/components/ui/command.ts
 | Theme tokens and shared styles | `src/index.css`, `tailwind.config.ts` |
 | Static files | `public/` |
 | Contact form | `src/components/rosa/ContactCTA.tsx` |
+| Investor inquiry dialog | `src/components/rosa/InvestorContactDialog.tsx` |
 | Matchi session video | `src/pages/MatchSessionMatchi.tsx` (video hosted outside this repo) |
 | Sitemap and crawler rules | `public/sitemap.xml`, `public/robots.txt`, `vercel.json` |
 

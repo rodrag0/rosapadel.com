@@ -16,6 +16,8 @@ Supplied assets are resized/compressed for the web without changing their conten
 
 Partner logos switch with `ThemeProvider`; the tagline appears below the logo row. On narrow screens the row scrolls horizontally. Portraits retain their 4:5 composition. The court image uses its full 16:9 frame rather than a cropped product detail.
 
+Homepage product photos occupy the top of each product card edge to edge. The portable detail page uses an unframed, full-width hardware showcase with a specification rail below the image. Both preserve the full supplied composition without generated backgrounds or visual effects.
+
 ## Pending replacements
 
 1. Tournament page, "More play. Less admin." banner: awaiting suitable wide event/court media.

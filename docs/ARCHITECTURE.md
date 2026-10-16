@@ -53,6 +53,7 @@ Use `getSectionHref(pathname, id)` from `src/lib/siteLinks.ts` for homepage anch
 | Concern | Current implementation | Change impact |
 | --- | --- | --- |
 | Referrals and demo requests | Browser POST to `https://formsubmit.co/ajax/info@rosapadel.com` in `ContactCTA.tsx`; distinct `requestType` and email subject, Zod validation, consent and confirmed-success state | Test with mocked requests, not real leads; keep collected data and privacy text aligned |
+| Investor, partner and distributor inquiries | Both investor-page contact buttons open `InvestorContactDialog.tsx` immediately; POST to the same FormSubmit endpoint with `requestType: investor`, reply-to email, name, optional organization and message | Requires consent and validated fields; 15-second request timeout, confirmed-success state and retryable error state; direct email remains a fallback |
 | Analytics | Microsoft Clarity loader in `index.html` | Review consent, cookie, and privacy statements before changing tracking |
 | Player demo | External URL in `PlayerExperience.tsx` | Validate link and wording if the demo changes |
 | Matchi session | `MatchSessionMatchi.tsx` uses a video at `https://padelkarte.com/media/rosavstiebreak.mp4` and links to a separate management demo | Video is hosted on a separate VPS; check HTTP availability and playback if the page changes |

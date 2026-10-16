@@ -87,7 +87,7 @@ export default function ProductPortable() {
       <Navbar />
 
       {/* Hero */}
-      <section ref={heroRef} className="pt-36 pb-20">
+      <section ref={heroRef} className="pb-12 pt-28 md:pb-16 md:pt-36">
         <div className="container mx-auto px-6 lg:px-12">
           <motion.div
             initial={{ opacity: 0, y: 24 }}
@@ -138,38 +138,29 @@ export default function ProductPortable() {
             </div>
           </motion.div>
 
-          <motion.div
-            initial={{ opacity: 0, y: 24 }}
-            animate={heroInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.6, delay: 0.1 }}
-            className="mt-12"
-          >
-            <img
-              src="/images/products/rosa-portable.webp"
-              alt="rosa portable LED scoreboard with two wireless touchpads"
-              width="1672"
-              height="941"
-              decoding="async"
-              fetchPriority="high"
-              className="aspect-video w-full object-contain"
-            />
-          </motion.div>
+        </div>
+      </section>
 
-          {/* Stats row */}
-          <motion.div
-            initial={{ opacity: 0, y: 24 }}
-            animate={heroInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            className="mt-16 grid grid-cols-3 gap-px rounded-2xl border border-border overflow-hidden bg-border max-w-2xl"
-          >
+      <section aria-label="rosa portable hardware" className="border-y border-border bg-secondary/30">
+        <figure className="mx-auto max-w-7xl">
+          <img
+            src="/images/products/rosa-portable.webp"
+            alt="rosa portable LED scoreboard with two wireless touchpads"
+            width="1672"
+            height="941"
+            decoding="async"
+            fetchPriority="high"
+            className="aspect-video w-full object-contain"
+          />
+          <figcaption className="grid grid-cols-3 divide-x divide-border border-t border-border bg-background">
             {STATS.map((stat) => (
-              <div key={stat.label} className="bg-card px-3 md:px-6 py-6 space-y-1">
-                <p className="font-mono text-2xl md:text-3xl font-bold text-primary tabular-nums">{stat.value}</p>
-                <p className="text-xs text-muted-foreground">{stat.label}</p>
+              <div key={stat.label} className="min-w-0 px-3 py-6 text-center md:px-8 md:py-8">
+                <p className="flex min-h-12 items-center justify-center text-xl font-semibold tabular-nums md:text-3xl">{stat.value}</p>
+                <p className="text-xs text-muted-foreground md:text-sm">{stat.label}</p>
               </div>
             ))}
-          </motion.div>
-        </div>
+          </figcaption>
+        </figure>
       </section>
 
       {/* Features */}

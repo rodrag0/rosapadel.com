@@ -8,7 +8,11 @@ function StatusBadge({ statusType, label }: { statusType: string; label: string 
   const colorMap: Record<string, { dot: string; badge: string }> = {
     available: {
       dot: "bg-green-500",
-      badge: "border-green-500/30 bg-green-500/10 text-green-400",
+      badge: "border-green-600/20 bg-green-500/5 text-green-700 dark:text-green-400",
+    },
+    presale: {
+      dot: "bg-green-500",
+      badge: "border-green-600/20 bg-green-500/5 text-green-700 dark:text-green-400",
     },
     pilot: {
       dot: "bg-yellow-400",
@@ -24,7 +28,7 @@ function StatusBadge({ statusType, label }: { statusType: string; label: string 
 
   return (
     <span
-      className={`inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full border text-[11px] font-mono uppercase tracking-[0.18em] ${colors.badge}`}
+      className={`inline-flex w-fit max-w-full items-center gap-1.5 self-start rounded border px-2.5 py-1 text-xs font-mono ${colors.badge}`}
     >
       <span className={`w-1.5 h-1.5 rounded-full flex-shrink-0 ${colors.dot}`} />
       {label}
@@ -65,12 +69,20 @@ export default function ProductFamilySlider() {
               initial={{ opacity: 0, y: 30 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.55, delay: i * 0.1 }}
-              className="flex flex-col rounded-2xl border border-border bg-card hover:border-primary/40 hover:bg-secondary/60 transition-colors duration-200"
+              className="flex min-w-0 flex-col overflow-hidden rounded-lg border border-border bg-card"
             >
+              <div className="aspect-video w-full overflow-hidden border-b border-border bg-secondary/30">
+                {item.href === "/products/vision" ? (
+                  <img src="/images/products/rosa-vision-court.webp" alt={item.name} width="1600" height="900" loading="lazy" decoding="async" className="h-full w-full object-contain" />
+                ) : (
+                  <img src="/images/products/rosa-portable.webp" alt={item.name} width="1672" height="941" loading="lazy" decoding="async" className="h-full w-full object-contain" />
+                )}
+              </div>
+
               {/* Info */}
-              <div className="flex flex-1 flex-col space-y-6 p-8 md:p-10">
+              <div className="flex flex-1 flex-col gap-6 p-6 md:p-8">
                 {/* Number + tier */}
-                <div className="flex items-start justify-between">
+                <div className="flex flex-wrap items-start justify-between gap-3">
                   <span className="font-mono text-sm text-muted-foreground/60 tabular-nums">{item.num}</span>
                   <span className="px-2.5 py-1 rounded border border-border text-[11px] font-mono uppercase tracking-widest text-muted-foreground">
                     {item.tier}
@@ -79,10 +91,10 @@ export default function ProductFamilySlider() {
 
                 {/* Name + tagline */}
                 <div className="space-y-2">
-                  <h3 className="text-4xl md:text-5xl font-bold leading-none tracking-tight">
+                  <h3 className="text-3xl font-bold leading-tight">
                     <BrandText text={item.name} />
                   </h3>
-                  <p className="text-lg md:text-xl text-muted-foreground">{item.tagline}</p>
+                  <p className="text-lg text-muted-foreground">{item.tagline}</p>
                 </div>
 
                 {/* Status */}
@@ -103,19 +115,12 @@ export default function ProductFamilySlider() {
                 {/* CTA */}
                 <a
                   href={item.href}
-                  className="inline-flex items-center gap-1 text-base font-medium text-primary hover:opacity-80 transition-opacity"
+                  className="mt-auto inline-flex items-center gap-1 pt-2 text-base font-medium text-primary hover:opacity-80 transition-opacity"
                 >
                   {section.viewProduct} <span aria-hidden>→</span>
                 </a>
               </div>
 
-              <div className="px-8 pb-8 md:px-10 md:pb-10">
-                {item.href === "/products/vision" ? (
-                  <img src="/images/products/rosa-vision-court.webp" alt={item.name} width="1600" height="900" loading="lazy" decoding="async" className="aspect-video w-full rounded-lg object-contain" />
-                ) : (
-                  <img src="/images/products/rosa-portable.webp" alt={item.name} width="1672" height="941" loading="lazy" decoding="async" className="aspect-video w-full rounded-lg object-contain" />
-                )}
-              </div>
             </motion.div>
           ))}
         </div>

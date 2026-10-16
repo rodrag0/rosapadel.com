@@ -72,7 +72,7 @@ export const siteCopy = {
         {
           tier: "Connected court",
           name: "rosa vision",
-          status: "Pilot-ready",
+          status: "Pre-sale",
           description:
             "HD scoring, pads and video in one connected court system.",
           features: ["HD Scoring", "Pads Through the Glass", "Replay & VAR", "Tournament Management"],
@@ -406,8 +406,8 @@ export const siteCopy = {
           tier: "Connected court",
           name: "rosa vision",
           tagline: "Score. Replay. Connect.",
-          status: "Pilot-ready",
-          statusType: "pilot",
+          status: "Pre-sale",
+          statusType: "presale",
           href: "/products/vision",
           features: ["HD Scoring", "Pads Through the Glass", "Replay & VAR", "Automated Tournament Management"],
         },
@@ -592,7 +592,7 @@ export const siteCopy = {
         {
           tier: "Pista conectada",
           name: "rosa vision",
-          status: "Piloto disponible",
+          status: "Preventa",
           description:
             "Marcador HD, pads y vídeo en un mismo sistema de pista conectada.",
           features: ["Marcador HD", "Pads a través del cristal", "Replay y VAR", "Gestión de torneos"],
@@ -936,8 +936,8 @@ export const siteCopy = {
           tier: "Pista conectada",
           name: "rosa vision",
           tagline: "Marcador. Replay. Conexión.",
-          status: "Piloto disponible",
-          statusType: "pilot",
+          status: "Preventa",
+          statusType: "presale",
           href: "/products/vision",
           features: ["Marcador HD", "Pads a través del cristal", "Replay y VAR", "Gestión automática de torneos"],
         },
@@ -1112,7 +1112,7 @@ export const siteCopy = {
         {
           tier: "Vernetzter Court",
           name: "rosa vision",
-          status: "Pilot verfügbar",
+          status: "Vorverkauf",
           description:
             "HD-Scoring, Pads und Video in einem vernetzten Court-System.",
           features: ["HD-Scoring", "Pads durch das Glas", "Replay & VAR", "Turniermanagement"],
@@ -1456,8 +1456,8 @@ export const siteCopy = {
           tier: "Vernetzter Court",
           name: "rosa vision",
           tagline: "Scoring. Replay. Vernetzung.",
-          status: "Pilot verfügbar",
-          statusType: "pilot",
+          status: "Vorverkauf",
+          statusType: "presale",
           href: "/products/vision",
           features: ["HD-Scoring", "Pads durch das Glas", "Replay & VAR", "Automatisches Turniermanagement"],
         },

@@ -10,7 +10,7 @@ export function getProductLinks(language: Language) {
 }
 
 export function getProductStatusClass(statusType: string) {
-  if (statusType === "available") return "text-green-400";
+  if (statusType === "available" || statusType === "presale") return "text-green-700 dark:text-green-400";
   if (statusType === "pilot") return "text-yellow-400";
   return "text-muted-foreground";
 }
