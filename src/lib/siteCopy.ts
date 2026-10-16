@@ -40,6 +40,7 @@ export const siteCopy = {
       primaryCta: "Book a Demo",
       secondaryCta: "See Products",
       badges: ["Live Scoring", "Instant Replay", "Match Analytics"],
+      origin: { technology: "German technology.", heart: "Mexican heart." },
     },
     problemSolution: {
       gapLabel: "The Gap",
@@ -560,6 +561,7 @@ export const siteCopy = {
       primaryCta: "Reservar demo",
       secondaryCta: "Ver productos",
       badges: ["Marcador en vivo", "Repetición instantánea", "Analítica de partido"],
+      origin: { technology: "Tecnología alemana.", heart: "Corazón mexicano." },
     },
     problemSolution: {
       gapLabel: "La brecha",
@@ -1080,6 +1082,7 @@ export const siteCopy = {
       primaryCta: "Demo buchen",
       secondaryCta: "Produkte ansehen",
       badges: ["Live-Scoring", "Instant Replay", "Match-Analyse"],
+      origin: { technology: "Deutsche Technologie.", heart: "Mexikanisches Herz." },
     },
     problemSolution: {
       gapLabel: "Die Luecke",

@@ -8,6 +8,7 @@ Supplied assets are resized/compressed for the web without changing their conten
 | --- | --- | --- |
 | rosa vision full-court visualization | `public/images/products/rosa-vision-court.webp` | Homepage product card |
 | rosa portable supplied product photo | `public/images/products/rosa-portable.webp` | Homepage product card and portable product page |
+| German and Mexican flags | `public/images/flags/{de,mx}.svg` | Homepage hero, German technology / Mexican heart line |
 | emprelatam, light theme | `src/assets/emprelatam-light.png` | Backed by, beside Campus Founders |
 | emprelatam, dark theme | `src/assets/emprelatam-dark.png` | Backed by, beside Campus Founders |
 | Rodrigo Ponce portrait | `public/images/team/rodrigo-ponce.webp` | Investor page, team |
@@ -17,6 +18,8 @@ Supplied assets are resized/compressed for the web without changing their conten
 Partner logos switch with `ThemeProvider`; the tagline appears below the logo row. On narrow screens the row scrolls horizontally. Portraits retain their 4:5 composition. The court image uses its full 16:9 frame rather than a cropped product detail.
 
 Homepage product photos occupy the top of each product card edge to edge. The portable detail page uses an unframed, full-width hardware showcase with a specification rail below the image. Both preserve the full supplied composition without generated backgrounds or visual effects.
+
+The flag graphics are self-hosted copies from [flag-icons](https://github.com/lipis/flag-icons), version 7.3.2 (MIT). The license notice is included at `public/images/flags/LICENSE.txt`. The hero line is localized through `siteCopy.hero.origin`; it does not claim a manufacturing location or certification.
 
 ## Pending replacements
 

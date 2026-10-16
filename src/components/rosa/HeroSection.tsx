@@ -48,6 +48,16 @@ export default function HeroSection() {
             }}
             className="space-y-6 text-left lg:pr-8"
           >
+            <p className="flex flex-wrap items-center gap-x-6 gap-y-3 text-sm font-medium text-muted-foreground" data-brand-origin>
+              <span className="inline-flex items-center gap-2">
+                <img src="/images/flags/de.svg" alt="" aria-hidden="true" width="24" height="18" className="h-auto w-6 shrink-0 ring-1 ring-foreground/10" />
+                <span>{copy.hero.origin.technology}</span>
+              </span>
+              <span className="inline-flex items-center gap-2">
+                <img src="/images/flags/mx.svg" alt="" aria-hidden="true" width="24" height="18" className="h-auto w-6 shrink-0 ring-1 ring-foreground/10" />
+                <span>{copy.hero.origin.heart}</span>
+              </span>
+            </p>
             <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold leading-[1.05] tracking-tight relative min-h-[4.6em] sm:min-h-[4em] md:min-h-[2.4em]">
               <AnimatePresence mode="wait">
                 <motion.span
