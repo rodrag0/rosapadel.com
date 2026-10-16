@@ -1,0 +1,28 @@
+{
+  "profile": "interactive-demo-preview",
+  "sourceSha256": "48e7f3b8f51148ea5479d75af67d7d7fe3dc4f4e10c5db1dd436fc22cf722fc7",
+  "sourceFileCount": 34,
+  "excerptStartSeconds": 4550,
+  "excerptDurationSeconds": 120,
+  "annotatedShots": 33,
+  "liveVideo": "Bundled recording; not a live court feed",
+  "exports": false,
+  "referralProgram": "Disabled; no unapproved reward offer",
+  "artifacts": [
+    "index.html",
+    "media/cluster-highlight-poster.jpg",
+    "media/live-demo-poster.jpg",
+    "media/match-001-poster.jpg",
+    "media/rosa-vision-demo.mp4",
+    "media/rosa-vision-poster.jpg",
+    "fonts/PretendardVariable.ttf",
+    "demo/match.json",
+    "demo/replay.mp4",
+    "assets/esm-C1ZgjSH8.js",
+    "assets/index-BarfvARh.js",
+    "assets/index-Qw6WuToh.css",
+    "assets/rosa-icon-dark.svg",
+    "assets/rosa-logo-dark.png",
+    "assets/rosa-logo-light.png"
+  ]
+}
