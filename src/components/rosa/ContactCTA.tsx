@@ -143,7 +143,9 @@ export default function ContactCTA() {
                 <>
                   <div className="space-y-4">
                     <h2 id={`contact-title-${formMode}`} className="text-3xl font-bold leading-tight md:text-4xl">
-                      {formMode === "referral" ? referral.title : `${contact.title}${contact.accent}`}
+                      {formMode === "referral" ? (
+                        <>{referral.title}<span className="text-primary">{referral.accent}</span></>
+                      ) : `${contact.title}${contact.accent}`}
                     </h2>
                     <p className="text-base leading-relaxed text-muted-foreground">
                       <BrandText text={formMode === "referral" ? referral.body : contact.body} />
