@@ -7,6 +7,7 @@ Supplied assets are resized/compressed for the web without changing their conten
 | Asset | File | Location |
 | --- | --- | --- |
 | rosa vision full-court visualization | `public/images/products/rosa-vision-court.webp` | Homepage product card |
+| rosa portable supplied product photo | `public/images/products/rosa-portable.webp` | Homepage product card and portable product page |
 | emprelatam, light theme | `src/assets/emprelatam-light.png` | Backed by, beside Campus Founders |
 | emprelatam, dark theme | `src/assets/emprelatam-dark.png` | Backed by, beside Campus Founders |
 | Rodrigo Ponce portrait | `public/images/team/rodrigo-ponce.webp` | Investor page, team |
@@ -17,10 +18,9 @@ Partner logos switch with `ThemeProvider`; the tagline appears below the logo ro
 
 ## Pending replacements
 
-1. rosa portable product photo: the supplied local path was unavailable; awaiting the attached file or corrected path.
-2. Tournament page, "More play. Less admin." banner: awaiting suitable wide event/court media.
-3. Tournament page, connected-court video/image: awaiting the rendering video or a frame from it.
-4. Tournament page hero dashboard: current UI uses illustrative sample data; replace with an approved screenshot from TournamentManager.
-5. Homepage player experience: current UI uses a sample dashboard; replace with an approved screenshot from rosa app.
+1. Tournament page, "More play. Less admin." banner: awaiting suitable wide event/court media.
+2. Tournament page, connected-court video/image: awaiting the rendering video or a frame from it.
+3. Tournament page hero dashboard: current UI uses illustrative sample data; replace with an approved screenshot from TournamentManager.
+4. Homepage player experience: current UI uses a sample dashboard; replace with an approved screenshot from rosa app.
 
 The real match poster on the vision product page and the Matchi session video are existing media, not missing assets. The rotating court is an intentional interactive scene and should remain. Never add the private commercial proposal PDF or hardware/subscription prices to public media.

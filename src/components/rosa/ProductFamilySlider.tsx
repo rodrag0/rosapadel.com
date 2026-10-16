@@ -113,7 +113,7 @@ export default function ProductFamilySlider() {
                 {item.href === "/products/vision" ? (
                   <img src="/images/products/rosa-vision-court.webp" alt={item.name} width="1600" height="900" loading="lazy" decoding="async" className="aspect-video w-full rounded-lg object-contain" />
                 ) : (
-                  <div className="aspect-[16/10] w-full rounded-lg border border-dashed border-border bg-secondary/30" aria-hidden />
+                  <img src="/images/products/rosa-portable.webp" alt={item.name} width="1672" height="941" loading="lazy" decoding="async" className="aspect-video w-full rounded-lg object-contain" />
                 )}
               </div>
             </motion.div>

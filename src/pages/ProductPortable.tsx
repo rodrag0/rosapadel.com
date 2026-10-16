@@ -138,6 +138,23 @@ export default function ProductPortable() {
             </div>
           </motion.div>
 
+          <motion.div
+            initial={{ opacity: 0, y: 24 }}
+            animate={heroInView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.6, delay: 0.1 }}
+            className="mt-12"
+          >
+            <img
+              src="/images/products/rosa-portable.webp"
+              alt="rosa portable LED scoreboard with two wireless touchpads"
+              width="1672"
+              height="941"
+              decoding="async"
+              fetchPriority="high"
+              className="aspect-video w-full object-contain"
+            />
+          </motion.div>
+
           {/* Stats row */}
           <motion.div
             initial={{ opacity: 0, y: 24 }}
