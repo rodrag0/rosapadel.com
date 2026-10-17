@@ -925,16 +925,6 @@ export const siteCopy = {
       items: [
         {
           num: "01",
-          tier: "Marcador portátil",
-          name: "rosa portable",
-          tagline: "Conéctalo. Marca en vivo.",
-          status: "Listo para producir",
-          statusType: "available",
-          href: "/products/portable",
-          features: ["Marcador LED", "Control touchpad", "Modo offline", "Plug & Play"],
-        },
-        {
-          num: "02",
           tier: "Pista conectada",
           name: "rosa vision",
           tagline: "Marcador. Replay. Conexión.",
@@ -942,6 +932,16 @@ export const siteCopy = {
           statusType: "presale",
           href: "/products/vision",
           features: ["Marcador HD", "Pads a través del cristal", "Replay y VAR", "Gestión automática de torneos"],
+        },
+        {
+          num: "02",
+          tier: "Marcador portátil",
+          name: "rosa portable",
+          tagline: "Conéctalo. Marca en vivo.",
+          status: "Listo para producir",
+          statusType: "available",
+          href: "/products/portable",
+          features: ["Marcador LED", "Control touchpad", "Modo offline", "Plug & Play"],
         },
       ],
       aiLayer: {
@@ -1446,16 +1446,6 @@ export const siteCopy = {
       items: [
         {
           num: "01",
-          tier: "Mobiles Scoring",
-          name: "rosa portable",
-          tagline: "Einstecken. Spielen. Punkten.",
-          status: "Produktionsbereit",
-          statusType: "available",
-          href: "/products/portable",
-          features: ["LED-Scoreboard", "Touchpad-Steuerung", "Offline-Modus", "Plug & Play"],
-        },
-        {
-          num: "02",
           tier: "Vernetzter Court",
           name: "rosa vision",
           tagline: "Scoring. Replay. Vernetzung.",
@@ -1463,6 +1453,16 @@ export const siteCopy = {
           statusType: "presale",
           href: "/products/vision",
           features: ["HD-Scoring", "Pads durch das Glas", "Replay & VAR", "Automatisches Turniermanagement"],
+        },
+        {
+          num: "02",
+          tier: "Mobiles Scoring",
+          name: "rosa portable",
+          tagline: "Einstecken. Spielen. Punkten.",
+          status: "Produktionsbereit",
+          statusType: "available",
+          href: "/products/portable",
+          features: ["LED-Scoreboard", "Touchpad-Steuerung", "Offline-Modus", "Plug & Play"],
         },
       ],
       aiLayer: {
