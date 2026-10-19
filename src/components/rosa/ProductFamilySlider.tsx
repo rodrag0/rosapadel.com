@@ -10,9 +10,9 @@ function StatusBadge({ statusType, label }: { statusType: string; label: string 
       badge: "border-green-500/30 bg-green-500/10 text-green-400",
     },
     pilot: {
-      dot: "bg-yellow-400",
-      badge: "border-yellow-400/30 bg-yellow-400/10 text-yellow-400",
-    },
+    dot: "bg-green-500",
+    badge: "border-green-500/30 bg-green-500/10 text-green-400",
+  },
     coming: {
       dot: "bg-muted-foreground/40",
       badge: "border-border bg-secondary text-muted-foreground",
