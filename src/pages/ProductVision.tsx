@@ -7,6 +7,8 @@ import ProductTitle from "@/components/rosa/ProductTitle";
 import ContactCTA from "@/components/rosa/ContactCTA";
 import { tournamentManagementHref } from "@/lib/siteLinks";
 
+const MATCH_PREVIEW_URL = "https://cloud.rosapadel.com/media/invicto-20261025/preview-a2ab3377007c.mp4";
+
 const FEATURES = [
   { icon: Monitor, name: "HD scoring", body: "Follow points, games and sets on the court display, alongside the match information." },
   { icon: Tablet, name: "Pads through the glass", body: "Players update the score by touching the rosa pads through the glass. No phone is needed during play." },
@@ -43,15 +45,32 @@ export default function ProductVision() {
         </div>
       </section>
 
-      <section className="py-16 bg-card/50">
-        <div className="container mx-auto px-6 lg:px-12 space-y-6">
-          <img src="/sessions/matchi-live-score/poster.jpg" alt="A recorded padel match played with rosa" className="aspect-video w-full rounded-lg object-contain" loading="lazy" width="1920" height="1080" />
-          <div className="flex flex-wrap items-center justify-between gap-4">
-            <p className="text-sm text-muted-foreground"><BrandText text="A real match played with rosa." /></p>
-            <a href="/match-session/matchi-live-score" className="inline-flex items-center gap-2 text-sm font-medium text-primary">
-              Watch the recorded match <ArrowUpRight className="h-4 w-4" aria-hidden="true" />
-            </a>
-          </div>
+      <section id="match-preview" className="scroll-mt-24 py-16 bg-card/50">
+        <div className="container mx-auto px-6 lg:px-12">
+          <figure className="space-y-6">
+            <video
+              controls
+              playsInline
+              preload="none"
+              poster="https://cloud.rosapadel.com/media/invicto-20261025/poster-b5238bdc7f05.webp"
+              width="1280"
+              height="720"
+              aria-label="Invicto match preview: Crosio / Kloster vs Alem / Almada"
+              className="aspect-video w-full rounded-lg bg-black object-contain"
+            >
+              <source src={MATCH_PREVIEW_URL} type="video/mp4" />
+              <a href={MATCH_PREVIEW_URL}>Open the Invicto match preview</a>
+            </video>
+            <figcaption className="flex flex-wrap items-center justify-between gap-4">
+              <div className="min-w-0 space-y-1">
+                <p className="font-medium">Crosio / Kloster vs Alem / Almada</p>
+                <p className="text-sm text-muted-foreground">Invicto · 25 October 2026 · Match preview</p>
+              </div>
+              <a href={MATCH_PREVIEW_URL} target="_blank" rel="noopener noreferrer" className="inline-flex min-h-11 items-center gap-2 text-sm font-medium text-primary">
+                Open preview <ArrowUpRight className="h-4 w-4" aria-hidden="true" />
+              </a>
+            </figcaption>
+          </figure>
         </div>
       </section>
 
