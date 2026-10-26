@@ -3,15 +3,97 @@
   "installCommand": "npm install",
   "buildCommand": "npm run build",
   "outputDirectory": "dist",
-  "routes": [
-    { "src": "/rosa-app/?", "dest": "/rosa-app/index.html" },
-    { "src": "/tournament-tool/?", "dest": "/tournament-tool/index.html" },
-    { "src": "/americano-tool/?", "dest": "/americano-tool/index.html" },
-    { "src": "/league-tool/?", "dest": "/league-tool/index.html" },
-    { "handle": "filesystem" },
+  "cleanUrls": true,
+  "trailingSlash": false,
+  "redirects": [
     {
-      "src": "/.*",
-      "dest": "/index.html"
+      "source": "/:path*",
+      "has": [{ "type": "host", "value": "rosapadel.com" }],
+      "destination": "https://www.rosapadel.com/:path*",
+      "permanent": true
+    },
+    {
+      "source": "/products/core-led",
+      "destination": "/products/portable",
+      "permanent": true
+    },
+    {
+      "source": "/products/core-hd",
+      "destination": "/products/vision",
+      "permanent": true
+    },
+    {
+      "source": "/new-tab",
+      "destination": "/tournament-management",
+      "permanent": true
+    },
+    {
+      "source": "/tournamen-managment",
+      "destination": "/tournament-management",
+      "permanent": true
+    },
+    {
+      "source": "/tournament-managment",
+      "destination": "/tournament-management",
+      "permanent": true
+    }
+  ],
+  "rewrites": [
+    {
+      "source": "/products/portable",
+      "destination": "/products/portable/index.html"
+    },
+    {
+      "source": "/products/vision",
+      "destination": "/products/vision/index.html"
+    },
+    {
+      "source": "/products/coach",
+      "destination": "/products/coach/index.html"
+    },
+    {
+      "source": "/for-clubs",
+      "destination": "/for-clubs/index.html"
+    },
+    {
+      "source": "/investors",
+      "destination": "/investors/index.html"
+    },
+    {
+      "source": "/privacy-policy",
+      "destination": "/privacy-policy/index.html"
+    },
+    {
+      "source": "/cookie-policy",
+      "destination": "/cookie-policy/index.html"
+    },
+    {
+      "source": "/imprint",
+      "destination": "/imprint/index.html"
+    },
+    {
+      "source": "/tournament-management",
+      "destination": "/tournament-management/index.html"
+    },
+    {
+      "source": "/match-session/matchi-live-score",
+      "destination": "/match-session/matchi-live-score/index.html"
+    },
+    {
+      "source": "/rosa-app",
+      "destination": "/rosa-app/index.html"
+    },
+    {
+      "source": "/tournament-tool",
+      "destination": "/tournament-tool/index.html"
+    },
+    {
+      "source": "/americano-tool",
+      "destination": "/americano-tool/index.html"
+    },
+    {
+      "source": "/league-tool",
+      "destination": "/league-tool/index.html"
     }
   ]
 }

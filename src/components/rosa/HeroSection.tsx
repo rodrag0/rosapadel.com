@@ -133,7 +133,7 @@ export default function HeroSection() {
             className="w-full h-[450px] md:h-[550px] lg:h-[650px] relative"
           >
             <Suspense fallback={null}>
-              <Hero3DScene theme={theme} />
+              {typeof window !== "undefined" && <Hero3DScene theme={theme} />}
             </Suspense>
           </motion.div>
 

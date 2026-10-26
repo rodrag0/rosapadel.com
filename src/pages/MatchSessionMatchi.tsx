@@ -1,4 +1,4 @@
-import { useEffect, useRef } from "react";
+import { useRef } from "react";
 import { motion, useInView } from "framer-motion";
 import { Activity, Camera, Gamepad2, Radio, Share2, Tv, Zap } from "lucide-react";
 import Navbar from "@/components/rosa/Navbar";
@@ -31,19 +31,6 @@ export default function MatchSessionMatchi() {
   const detailsRef = useRef(null);
   const heroInView = useInView(heroRef, { once: true, margin: "-80px" });
   const detailsInView = useInView(detailsRef, { once: true, margin: "-80px" });
-
-  useEffect(() => {
-    document.title = "rosa padel | Matchi livescore showcase";
-
-    const meta = document.createElement("meta");
-    meta.name = "robots";
-    meta.content = "noindex, nofollow";
-    document.head.appendChild(meta);
-
-    return () => {
-      document.head.removeChild(meta);
-    };
-  }, []);
 
   return (
     <main className="min-h-screen bg-background text-foreground overflow-x-hidden">

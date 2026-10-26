@@ -1,4 +1,3 @@
-import { useEffect } from "react";
 import Navbar from "@/components/rosa/Navbar";
 import ProblemSolution from "@/components/rosa/ProblemSolution";
 import HeroSection from "@/components/rosa/HeroSection";
@@ -13,26 +12,8 @@ import ROICalculator from "@/components/rosa/ROICalculator";
 import Partners from "@/components/rosa/Partners";
 import ContactCTA from "@/components/rosa/ContactCTA";
 import Footer from "@/components/rosa/Footer";
-import { useLanguage } from "@/components/rosa/LanguageProvider";
 
 const Index = () => {
-  const { copy } = useLanguage();
-
-  useEffect(() => {
-    document.title = copy.meta.homeTitle;
-
-    const description =
-      document.querySelector('meta[name="description"]') ??
-      (() => {
-        const element = document.createElement("meta");
-        element.setAttribute("name", "description");
-        document.head.appendChild(element);
-        return element;
-      })();
-
-    description.setAttribute("content", copy.meta.homeDescription);
-  }, [copy.meta.homeDescription, copy.meta.homeTitle]);
-
   return (
     // The section order is the sales narrative; keep it intentional when adding or moving sections.
     <main className="min-h-screen bg-background text-foreground overflow-x-hidden">

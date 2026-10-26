@@ -1,5 +1,5 @@
 import { motion, useInView } from "framer-motion";
-import { useRef, useEffect } from "react";
+import { useRef } from "react";
 import { WifiOff, Plug, Monitor, Tablet, ChevronRight } from "lucide-react";
 import Navbar from "@/components/rosa/Navbar";
 import Footer from "@/components/rosa/Footer";
@@ -64,10 +64,6 @@ const STATS = [
 ];
 
 export default function ProductPortable() {
-  useEffect(() => {
-    document.title = "rosa padel | rosa portable";
-  }, []);
-
   const heroRef = useRef(null);
   const featuresRef = useRef(null);
   const stepsRef = useRef(null);
