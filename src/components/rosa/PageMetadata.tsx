@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { useLocation } from "react-router-dom";
-import { getPageMetadata, organizationData } from "@/lib/seo";
+import { getPageMetadata, getPageStructuredData } from "@/lib/seo";
 import { useLanguage } from "./LanguageProvider";
 
 export default function PageMetadata() {
@@ -32,7 +32,7 @@ export default function PageMetadata() {
     const schema = document.getElementById("rosa-organization") ?? document.createElement("script");
     schema.id = "rosa-organization";
     schema.setAttribute("type", "application/ld+json");
-    schema.textContent = JSON.stringify(organizationData);
+    schema.textContent = JSON.stringify(getPageStructuredData(pathname));
     if (!schema.parentNode) document.head.appendChild(schema);
   }, [pathname, language]);
   return null;

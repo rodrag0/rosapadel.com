@@ -38,6 +38,10 @@
     }
   ],
   "rewrites": [
+    { "source": "/learn", "destination": "/learn/index.html" },
+    { "source": "/compare/rosa-vs-playsight", "destination": "/compare/rosa-vs-playsight/index.html" },
+    { "source": "/learn/matchi-tv-alternatives", "destination": "/learn/matchi-tv-alternatives/index.html" },
+    { "source": "/compare/rosa-vs-padel-camera", "destination": "/compare/rosa-vs-padel-camera/index.html" },
     {
       "source": "/products/portable",
       "destination": "/products/portable/index.html"

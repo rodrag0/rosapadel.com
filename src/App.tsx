@@ -17,6 +17,9 @@ import ForClubs from "./pages/ForClubs.tsx";
 import Investors from "./pages/Investors.tsx";
 import MatchSessionMatchi from "./pages/MatchSessionMatchi.tsx";
 import NewTab from "./pages/NewTab.tsx";
+import Learn from "./pages/Learn";
+import ComparisonGuide from "./pages/ComparisonGuide";
+import { comparisonGuides } from "@/lib/comparisonGuides";
 import { tournamentManagementHref } from "@/lib/siteLinks";
 import SectionNavigation from "@/components/rosa/SectionNavigation";
 import PageMetadata from "@/components/rosa/PageMetadata";
@@ -43,6 +46,8 @@ export const SiteRoutes = () => (
             <SectionNavigation />
             <PageMetadata />
             <Routes>
+              <Route path="/learn" element={<Learn />} />
+              {comparisonGuides.map(guide => <Route key={guide.path} path={guide.path} element={<ComparisonGuide guide={guide} />} />)}
               <Route path="/" element={<Index />} />
               <Route path="/imprint" element={<ImprintPage />} />
               <Route path="/privacy-policy" element={<PrivacyPolicyPage />} />

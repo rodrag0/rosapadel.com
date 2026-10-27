@@ -1,4 +1,5 @@
 import { siteCopy, type Language } from "./siteCopy";
+import { comparisonGuides, reviewGuidePaths, sourceCheckDate } from "./comparisonGuides";
 
 export const siteOrigin = "https://www.rosapadel.com";
 export const publicPagePaths = ["/", "/products/vision", "/products/portable", "/products/coach", "/for-clubs", "/tournament-management", "/investors", "/privacy-policy", "/cookie-policy", "/imprint"] as const;
@@ -6,7 +7,7 @@ export const routeAliases: Record<string, string> = {
   "/products/core-led": "/products/portable", "/products/core-hd": "/products/vision",
   "/new-tab": "/tournament-management", "/tournamen-managment": "/tournament-management", "/tournament-managment": "/tournament-management",
 };
-export const extraPagePaths = ["/match-session/matchi-live-score"];
+export const extraPagePaths = ["/match-session/matchi-live-score", ...reviewGuidePaths];
 export type PageMetadata = { title: string; description: string; canonical: string | null; robots: "index, follow" | "noindex, nofollow" };
 
 export function normalizePagePath(url: string) {
@@ -16,6 +17,9 @@ export function normalizePagePath(url: string) {
 
 export function getPageMetadata(url: string, language: Language = "en"): PageMetadata {
   const pathname = normalizePagePath(url);
+  const guide = comparisonGuides.find(guide => guide.path === pathname);
+  if (guide) return { title: `${guide.title}: ${guide.subtitle} | rosa padel`, description: guide.description, canonical: siteOrigin + pathname, robots: "noindex, nofollow" };
+  if (pathname === "/learn") return { title: "Padel Court System Buying Guides | rosa padel", description: "Review ROSA's evidence-led comparison drafts for club scoring, video, review and events. Prepared for product and editorial review.", canonical: siteOrigin + pathname, robots: "noindex, nofollow" };
   const copy = siteCopy[language];
   const pages: Record<string, { title: string; description: string }> = {
     "/": { title: copy.meta.homeTitle, description: copy.meta.homeDescription },
@@ -39,3 +43,18 @@ export const organizationData = { "@context": "https://schema.org", "@graph": [
   { "@type": "Organization", "@id": `${siteOrigin}/#organization`, name: "rosa padel", url: `${siteOrigin}/` },
   { "@type": "WebSite", "@id": `${siteOrigin}/#website`, name: "rosa padel", url: `${siteOrigin}/`, publisher: { "@id": `${siteOrigin}/#organization` } },
 ] };
+
+export function getPageStructuredData(url: string) {
+  const pathname = normalizePagePath(url);
+  const guide = comparisonGuides.find(guide => guide.path === pathname);
+  if (!guide) return organizationData;
+  return { "@context": "https://schema.org", "@graph": [
+    ...organizationData["@graph"],
+    { "@type": "Article", "@id": siteOrigin + pathname + "#article", headline: guide.title, description: guide.description, inLanguage: "en", dateModified: sourceCheckDate, author: { "@type": "Organization", name: "ROSA product team" }, publisher: { "@id": siteOrigin + "/#organization" }, mainEntityOfPage: siteOrigin + pathname },
+    { "@type": "BreadcrumbList", itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Home", item: siteOrigin + "/" },
+      { "@type": "ListItem", position: 2, name: "Guides", item: siteOrigin + "/learn" },
+      { "@type": "ListItem", position: 3, name: guide.title, item: siteOrigin + pathname },
+    ] },
+  ] };
+}

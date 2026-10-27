@@ -8,7 +8,7 @@ if (process.env.VERCEL_GIT_COMMIT_REF?.startsWith("codex/seo-review-") && proces
 
 process.env.NODE_ENV = "production";
 const root = fileURLToPath(new URL("../", import.meta.url));
-const { render, getPageMetadata, publicPagePaths, extraPagePaths, organizationData } = await import("../dist-ssr/entry-server.js");
+const { render, getPageMetadata, getPageStructuredData, publicPagePaths, extraPagePaths } = await import("../dist-ssr/entry-server.js");
 const template = await readFile(path.join(root, "dist/index.html"), "utf8");
 const escape = value => value.replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" })[c]);
 
@@ -27,7 +27,7 @@ function documentFor(url) {
     `<meta name="twitter:title" content="${escape(meta.title)}">`,
     `<meta name="twitter:description" content="${escape(meta.description)}">`,
     meta.canonical ? `<link rel="canonical" href="${meta.canonical}"><meta property="og:url" content="${meta.canonical}">` : "",
-    `<script type="application/ld+json" id="rosa-organization">${JSON.stringify(organizationData).replace(/</g, "\\u003c")}</script>`,
+    `<script type="application/ld+json" id="rosa-organization">${JSON.stringify(getPageStructuredData(url)).replace(/</g, "\\u003c")}</script>`,
     // Preserve readable content before JS/with JS disabled. The normal client
     // mount removes the flag and restores existing in-view animation behavior.
     '<style>#root[data-prerendered] [style*="opacity:0;"],#root[data-prerendered] [style$="opacity:0"],#root[data-prerendered] [style*="opacity: 0;"],#root[data-prerendered] [style$="opacity: 0"]{opacity:1!important;transform:none!important}</style>',
