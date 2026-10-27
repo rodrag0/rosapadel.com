@@ -60,6 +60,11 @@ export default function Footer() {
                   For Investors
                 </a>
               </li>
+              <li>
+                <a href="/learn" className="text-foreground/70 hover:text-primary transition-colors">
+                  {{ en: "Guides", es: "Guías", de: "Ratgeber" }[language]}
+                </a>
+              </li>
             </ul>
           </div>
 

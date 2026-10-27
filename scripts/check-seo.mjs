@@ -31,4 +31,4 @@ if (routing.cleanUrls) {
 }
 assert.ok(!routing.rewrites.some(route => route.source.includes("*") || route.source.includes("(.*)")), "A wildcard rewrite would mask real 404s");
 assert.ok(routing.redirects.some(route => route.source === "/products/core-hd" && route.destination === "/products/vision" && route.permanent));
-console.log("Initial HTML content, metadata, schema and 404 build checks passed for 11 routes.");
+console.log(`Initial HTML content, metadata, schema and 404 build checks passed for ${publicPagePaths.length + extraPagePaths.length} routes.`);
