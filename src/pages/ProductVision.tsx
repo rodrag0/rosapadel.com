@@ -7,7 +7,8 @@ import ProductTitle from "@/components/rosa/ProductTitle";
 import ContactCTA from "@/components/rosa/ContactCTA";
 import { tournamentManagementHref } from "@/lib/siteLinks";
 
-const MATCH_PREVIEW_URL = "https://cloud.rosapadel.com/media/invicto-20261025/preview-a2ab3377007c.mp4";
+const MATCH_PREVIEW_URL = "https://cloud.rosapadel.com/media/tolito-mati-expo-20261018/preview-b450dc716753.mp4";
+const MATCH_SHARE_URL = "https://cloud.rosapadel.com/watch?grant=f4cab714-f796-4a31-9e41-7dcd05a5e384";
 
 const FEATURES = [
   { icon: Monitor, name: "HD scoring", body: "Follow points, games and sets on the court display, alongside the match information." },
@@ -52,21 +53,21 @@ export default function ProductVision() {
               controls
               playsInline
               preload="none"
-              poster="https://cloud.rosapadel.com/media/invicto-20261025/poster-b5238bdc7f05.webp"
+              poster="https://cloud.rosapadel.com/media/tolito-mati-expo-20261018/poster-6cb993f3d3ea.webp"
               width="1280"
               height="720"
-              aria-label="Invicto match preview: Crosio / Kloster vs Alem / Almada"
+              aria-label="Final Expo 2026 match preview: Tolito / Mati vs Argañaras / Pablo"
               className="aspect-video w-full rounded-lg bg-black object-contain"
             >
               <source src={MATCH_PREVIEW_URL} type="video/mp4" />
-              <a href={MATCH_PREVIEW_URL}>Open the Invicto match preview</a>
+              <a href={MATCH_SHARE_URL}>Open the Final Expo 2026 match</a>
             </video>
             <figcaption className="flex flex-wrap items-center justify-between gap-4">
               <div className="min-w-0 space-y-1">
-                <p className="font-medium">Crosio / Kloster vs Alem / Almada</p>
-                <p className="text-sm text-muted-foreground">Invicto · 25 October 2026 · Match preview</p>
+                <p className="font-medium">Tolito / Mati vs Argañaras / Pablo</p>
+                <p className="text-sm text-muted-foreground">Final Expo 2026 · 18 October 2026 · Match preview</p>
               </div>
-              <a href={MATCH_PREVIEW_URL} target="_blank" rel="noopener noreferrer" className="inline-flex min-h-11 items-center gap-2 text-sm font-medium text-primary">
+              <a href={MATCH_SHARE_URL} target="_blank" rel="noopener noreferrer" className="inline-flex min-h-11 items-center gap-2 text-sm font-medium text-primary">
                 Open preview <ArrowUpRight className="h-4 w-4" aria-hidden="true" />
               </a>
             </figcaption>
