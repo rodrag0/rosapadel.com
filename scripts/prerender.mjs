@@ -2,6 +2,10 @@ import { readFile, writeFile, mkdir } from "node:fs/promises";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 
+if (process.env.VERCEL_GIT_COMMIT_REF?.startsWith("codex/seo-review-") && process.env.VERCEL_ENV === "production") {
+  throw new Error("SEO review branches are preview-only; production deployment is on hold.");
+}
+
 process.env.NODE_ENV = "production";
 const root = fileURLToPath(new URL("../", import.meta.url));
 const { render, getPageMetadata, publicPagePaths, extraPagePaths, organizationData } = await import("../dist-ssr/entry-server.js");
