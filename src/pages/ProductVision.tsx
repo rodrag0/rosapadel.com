@@ -6,6 +6,9 @@ import ProductTitle from "@/components/rosa/ProductTitle";
 import ContactCTA from "@/components/rosa/ContactCTA";
 import { tournamentManagementHref } from "@/lib/siteLinks";
 
+const MATCH_PREVIEW_URL = "https://cloud.rosapadel.com/media/tolito-mati-expo-20261018/preview-63527cc14d19.mp4";
+const MATCH_SHARE_URL = "https://cloud.rosapadel.com/watch?grant=f4cab714-f796-4a31-9e41-7dcd05a5e384";
+
 const FEATURES = [
   { icon: Monitor, name: "HD scoring", body: "Follow points, games and sets on the court display, alongside the match information." },
   { icon: Tablet, name: "Pads through the glass", body: "Players update the score by touching the rosa pads through the glass. No phone is needed during play." },
@@ -38,15 +41,32 @@ export default function ProductVision() {
         </div>
       </section>
 
-      <section className="py-16 bg-card/50">
-        <div className="container mx-auto px-6 lg:px-12 space-y-6">
-          <img src="/sessions/matchi-live-score/poster.jpg" alt="A recorded padel match played with rosa" className="aspect-video w-full rounded-lg object-contain" loading="lazy" width="1920" height="1080" />
-          <div className="flex flex-wrap items-center justify-between gap-4">
-            <p className="text-sm text-muted-foreground"><BrandText text="A real match played with rosa." /></p>
-            <a href="/match-session/matchi-live-score" className="inline-flex items-center gap-2 text-sm font-medium text-primary">
-              Watch the recorded match <ArrowUpRight className="h-4 w-4" aria-hidden="true" />
-            </a>
-          </div>
+      <section id="match-preview" className="scroll-mt-24 py-16 bg-card/50">
+        <div className="container mx-auto px-6 lg:px-12">
+          <figure className="space-y-6">
+            <video
+              controls
+              playsInline
+              preload="none"
+              poster="https://cloud.rosapadel.com/media/tolito-mati-expo-20261018/poster-4e7582d7a08e.webp"
+              width="1280"
+              height="720"
+              aria-label="Final Expo 2026 match preview: Tolito / Mati vs Argañaras / Pablo"
+              className="aspect-video w-full rounded-lg bg-black object-contain"
+            >
+              <source src={MATCH_PREVIEW_URL} type="video/mp4" />
+              <a href={MATCH_SHARE_URL}>Open the Final Expo 2026 match</a>
+            </video>
+            <figcaption className="flex flex-wrap items-center justify-between gap-4">
+              <div className="min-w-0 space-y-1">
+                <p className="font-medium">Tolito / Mati vs Argañaras / Pablo</p>
+                <p className="text-sm text-muted-foreground">Final Expo 2026 · 18 October 2026 · Match preview</p>
+              </div>
+              <a href={MATCH_SHARE_URL} target="_blank" rel="noopener noreferrer" className="inline-flex min-h-11 items-center gap-2 text-sm font-medium text-primary">
+                Open preview <ArrowUpRight className="h-4 w-4" aria-hidden="true" />
+              </a>
+            </figcaption>
+          </figure>
         </div>
       </section>
 
