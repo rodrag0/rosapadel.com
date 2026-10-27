@@ -16,6 +16,7 @@ export default function HeroSection() {
   const [index, setIndex] = useState(0);
 
   const headline = copy.hero.headlines[index];
+  const courtPreview = <img src="/images/products/rosa-vision-court.webp" alt={copy.hero.sceneAlt} width="1600" height="900" decoding="async" className="h-full w-full object-contain" data-court-preview />;
   const contactHref = getSectionHref(location.pathname, "contact");
   const productsHref = getSectionHref(location.pathname, "products");
 
@@ -132,8 +133,8 @@ export default function HeroSection() {
             }}
             className="w-full h-[450px] md:h-[550px] lg:h-[650px] relative"
           >
-            <Suspense fallback={null}>
-              {typeof window !== "undefined" && <Hero3DScene theme={theme} />}
+            <Suspense fallback={courtPreview}>
+              {typeof window !== "undefined" ? <Hero3DScene theme={theme} /> : courtPreview}
             </Suspense>
           </motion.div>
 

@@ -41,6 +41,7 @@ export const siteCopy = {
       secondaryCta: "See Products",
       badges: ["Live Scoring", "Instant Replay", "Match Analytics"],
       origin: { technology: "German technology.", heart: "Mexican heart." },
+      sceneAlt: "rosa vision connected padel court",
     },
     problemSolution: {
       gapLabel: "The Gap",
@@ -562,6 +563,7 @@ export const siteCopy = {
       secondaryCta: "Ver productos",
       badges: ["Marcador en vivo", "Repetición instantánea", "Analítica de partido"],
       origin: { technology: "Tecnología alemana.", heart: "Corazón mexicano." },
+      sceneAlt: "Pista de pádel conectada con rosa vision",
     },
     problemSolution: {
       gapLabel: "La brecha",
@@ -1083,6 +1085,7 @@ export const siteCopy = {
       secondaryCta: "Produkte ansehen",
       badges: ["Live-Scoring", "Instant Replay", "Match-Analyse"],
       origin: { technology: "Deutsche Technologie.", heart: "Mexikanisches Herz." },
+      sceneAlt: "Vernetzter Padel-Court mit rosa vision",
     },
     problemSolution: {
       gapLabel: "Die Luecke",

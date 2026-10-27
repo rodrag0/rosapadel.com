@@ -1,12 +1,12 @@
 import { siteCopy, type Language } from "./siteCopy";
 
 export const siteOrigin = "https://www.rosapadel.com";
-export const publicPagePaths = ["/", "/products/portable", "/products/vision", "/products/coach", "/for-clubs", "/investors", "/privacy-policy", "/cookie-policy", "/imprint"] as const;
+export const publicPagePaths = ["/", "/products/vision", "/products/portable", "/products/coach", "/for-clubs", "/tournament-management", "/investors", "/privacy-policy", "/cookie-policy", "/imprint"] as const;
 export const routeAliases: Record<string, string> = {
   "/products/core-led": "/products/portable", "/products/core-hd": "/products/vision",
   "/new-tab": "/tournament-management", "/tournamen-managment": "/tournament-management", "/tournament-managment": "/tournament-management",
 };
-export const extraPagePaths = ["/tournament-management", "/match-session/matchi-live-score"];
+export const extraPagePaths = ["/match-session/matchi-live-score"];
 export type PageMetadata = { title: string; description: string; canonical: string | null; robots: "index, follow" | "noindex, nofollow" };
 
 export function normalizePagePath(url: string) {
