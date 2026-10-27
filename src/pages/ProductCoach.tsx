@@ -1,5 +1,5 @@
 import { motion, useInView } from "framer-motion";
-import { useRef, useEffect } from "react";
+import { useRef } from "react";
 import { Zap, BarChart2, TrendingUp, Video, ChevronRight, Clock } from "lucide-react";
 import Navbar from "@/components/rosa/Navbar";
 import Footer from "@/components/rosa/Footer";
@@ -30,10 +30,6 @@ const FEATURES = [
 ];
 
 export default function ProductCoach() {
-  useEffect(() => {
-    document.title = "rosa padel | rosa coach";
-  }, []);
-
   const heroRef = useRef(null);
   const featuresRef = useRef(null);
   const roadmapRef = useRef(null);

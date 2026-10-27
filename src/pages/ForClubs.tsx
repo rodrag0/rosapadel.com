@@ -1,5 +1,5 @@
 import { motion, useInView } from "framer-motion";
-import { useRef, useEffect } from "react";
+import { useRef } from "react";
 import { Megaphone, RefreshCw, Video, Trophy, Wrench, Users, TrendingUp, CheckCircle, LayoutGrid, Clock, Bell, CalendarDays } from "lucide-react";
 import Navbar from "@/components/rosa/Navbar";
 import Footer from "@/components/rosa/Footer";
@@ -72,10 +72,6 @@ const INSTALL_STEPS = [
 ];
 
 export default function ForClubs() {
-  useEffect(() => {
-    document.title = "rosa padel | For Clubs";
-  }, []);
-
   const heroRef = useRef(null);
   const revenueRef = useRef(null);
   const tournamentRef = useRef(null);

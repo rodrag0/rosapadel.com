@@ -19,18 +19,29 @@ import MatchSessionMatchi from "./pages/MatchSessionMatchi.tsx";
 import NewTab from "./pages/NewTab.tsx";
 import { tournamentManagementHref } from "@/lib/siteLinks";
 import SectionNavigation from "@/components/rosa/SectionNavigation";
+import PageMetadata from "@/components/rosa/PageMetadata";
+import { useEffect, type ReactNode } from "react";
 
 const queryClient = new QueryClient();
 
-const App = () => (
+export const AppProviders = ({ children }: { children: ReactNode }) => (
   <QueryClientProvider client={queryClient}>
     <ThemeProvider>
       <LanguageProvider>
         <TooltipProvider>
           <Toaster />
           <Sonner />
-          <BrowserRouter>
+          {children}
+        </TooltipProvider>
+      </LanguageProvider>
+    </ThemeProvider>
+  </QueryClientProvider>
+);
+
+export const SiteRoutes = () => (
+  <>
             <SectionNavigation />
+            <PageMetadata />
             <Routes>
               <Route path="/" element={<Index />} />
               <Route path="/imprint" element={<ImprintPage />} />
@@ -50,11 +61,15 @@ const App = () => (
               <Route path="/tournament-managment" element={<Navigate to={tournamentManagementHref} replace />} />
               <Route path="*" element={<NotFound />} />
             </Routes>
-          </BrowserRouter>
-        </TooltipProvider>
-      </LanguageProvider>
-    </ThemeProvider>
-  </QueryClientProvider>
+  </>
 );
+
+const App = () => {
+  useEffect(() => {
+    const frame = requestAnimationFrame(() => document.getElementById("root")?.removeAttribute("data-prerendered"));
+    return () => cancelAnimationFrame(frame);
+  }, []);
+  return <AppProviders><BrowserRouter><SiteRoutes /></BrowserRouter></AppProviders>;
+};
 
 export default App;

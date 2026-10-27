@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { ArrowUpRight, ArrowDown, Image as ImageIcon } from "lucide-react";
 import Navbar from "@/components/rosa/Navbar";
 import Footer from "@/components/rosa/Footer";
@@ -217,10 +217,6 @@ function TournamentCard() {
 }
 
 export default function NewTab() {
-  useEffect(() => {
-    document.title = "rosa padel | Tournament Management";
-  }, []);
-
   return (
     <main className="min-h-screen bg-background text-foreground overflow-x-hidden">
       <Navbar />

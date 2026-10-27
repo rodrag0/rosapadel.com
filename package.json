@@ -6,11 +6,12 @@
   "scripts": {
     "build:league-showcase": "esbuild scripts/league-browser/demo-api.entry.cjs --bundle --platform=browser --format=iife --target=es2022 --outfile=public/league-tool/demo-api.js",
     "dev": "vite",
-    "build": "vite build",
+    "build": "vite build && vite build --ssr src/entry-server.tsx --outDir dist-ssr && node scripts/prerender.mjs",
     "build:dev": "vite build --mode development",
     "lint": "eslint .",
     "preview": "vite preview",
     "test": "vitest run",
+    "check:seo": "node scripts/check-seo.mjs",
     "test:watch": "vitest"
   },
   "dependencies": {

@@ -1,5 +1,5 @@
 import { motion, useInView } from "framer-motion";
-import { useRef, useEffect } from "react";
+import { useRef } from "react";
 import { Users, BarChart2, TrendingUp, Package, RefreshCw, Globe, ChevronRight } from "lucide-react";
 import Navbar from "@/components/rosa/Navbar";
 import Footer from "@/components/rosa/Footer";
@@ -49,10 +49,6 @@ const TIMELINE = [
 ];
 
 export default function Investors() {
-  useEffect(() => {
-    document.title = "rosa padel | Investor Overview";
-  }, []);
-
   const heroRef = useRef(null);
   const marketRef = useRef(null);
   const problemRef = useRef(null);

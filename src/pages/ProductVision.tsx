@@ -1,4 +1,3 @@
-import { useEffect } from "react";
 import { ArrowUpRight, Camera, Monitor, Palette, Shield, Tablet, Trophy } from "lucide-react";
 import Navbar from "@/components/rosa/Navbar";
 import Footer from "@/components/rosa/Footer";
@@ -20,10 +19,6 @@ const FEATURES = [
 ];
 
 export default function ProductVision() {
-  useEffect(() => {
-    document.title = "rosa padel | rosa vision";
-  }, []);
-
   return (
     <main className="min-h-screen bg-background text-foreground overflow-x-hidden">
       <Navbar />
