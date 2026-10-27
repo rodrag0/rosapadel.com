@@ -7,7 +7,7 @@ import ProductTitle from "@/components/rosa/ProductTitle";
 import ContactCTA from "@/components/rosa/ContactCTA";
 import { tournamentManagementHref } from "@/lib/siteLinks";
 
-const MATCH_PREVIEW_URL = "https://cloud.rosapadel.com/media/tolito-mati-expo-20261018/preview-b450dc716753.mp4";
+const MATCH_PREVIEW_URL = "https://cloud.rosapadel.com/media/tolito-mati-expo-20261018/preview-63527cc14d19.mp4";
 const MATCH_SHARE_URL = "https://cloud.rosapadel.com/watch?grant=f4cab714-f796-4a31-9e41-7dcd05a5e384";
 
 const FEATURES = [
@@ -53,7 +53,7 @@ export default function ProductVision() {
               controls
               playsInline
               preload="none"
-              poster="https://cloud.rosapadel.com/media/tolito-mati-expo-20261018/poster-6cb993f3d3ea.webp"
+              poster="https://cloud.rosapadel.com/media/tolito-mati-expo-20261018/poster-4e7582d7a08e.webp"
               width="1280"
               height="720"
               aria-label="Final Expo 2026 match preview: Tolito / Mati vs Argañaras / Pablo"

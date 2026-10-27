@@ -17,8 +17,8 @@ describe("rosa vision match sample", () => {
     expect(video).toHaveAttribute("playsinline");
     expect(video).toHaveAttribute("preload", "none");
     expect(video).not.toHaveAttribute("autoplay");
-    expect(video).toHaveAttribute("poster", "https://cloud.rosapadel.com/media/tolito-mati-expo-20261018/poster-6cb993f3d3ea.webp");
-    expect(video.querySelector("source")).toHaveAttribute("src", "https://cloud.rosapadel.com/media/tolito-mati-expo-20261018/preview-b450dc716753.mp4");
+    expect(video).toHaveAttribute("poster", "https://cloud.rosapadel.com/media/tolito-mati-expo-20261018/poster-4e7582d7a08e.webp");
+    expect(video.querySelector("source")).toHaveAttribute("src", "https://cloud.rosapadel.com/media/tolito-mati-expo-20261018/preview-63527cc14d19.mp4");
     expect(video.querySelector("source")).toHaveAttribute("type", "video/mp4");
   });
 
