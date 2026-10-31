@@ -1,0 +1,11 @@
+{
+  "date": "2026-10-27",
+  "scope": "Review-only comparison pages",
+  "framework": "Existing React/Vite/Tailwind",
+  "font": "Existing Pretendard Variable, src/index.css",
+  "palette": "Existing light/dark tokens and official ROSA assets",
+  "layout": "Editorial articles and unframed guide list",
+  "motion": "No new decorative motion",
+  "evidence": "Approved real Tolito preview frame",
+  "new_theme": false
+}

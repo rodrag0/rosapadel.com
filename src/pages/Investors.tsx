@@ -1,455 +1,173 @@
-import { motion, useInView } from "framer-motion";
-import { useRef, useEffect } from "react";
-import { Users, BarChart2, TrendingUp, Package, RefreshCw, Globe, ChevronRight } from "lucide-react";
+import { ArrowUpRight, Monitor, Layers, Trophy } from "lucide-react";
 import Navbar from "@/components/rosa/Navbar";
 import Footer from "@/components/rosa/Footer";
-import BrandText from "@/components/rosa/BrandText";
 import InvestorContactDialog from "@/components/rosa/InvestorContactDialog";
-import { getHardwareProducts } from "@/lib/productCatalog";
-import { siteCopy } from "@/lib/siteCopy";
+import Partners from "@/components/rosa/Partners";
+import { HardwareCollection } from "@/components/rosa/StudioSections";
+import { useLanguage } from "@/components/rosa/LanguageProvider";
+import BrandText from "@/components/rosa/BrandText";
 
-const MARKET_STATS = [
-  { value: "25M+", label: "Padel players globally" },
-  { value: "25,000+", label: "Courts worldwide" },
-  { value: "20%", label: "Annual court growth" },
-];
-
-const PRODUCTS = getHardwareProducts("en").map((product) => ({
-  ...product,
-  statusClass: product.statusType === "available" || product.statusType === "presale"
-    ? "border-green-600/20 bg-green-500/5 text-green-700 dark:text-green-400"
-    : "border-yellow-400/30 bg-yellow-400/10 text-yellow-400",
-  dotClass: product.statusType === "available" || product.statusType === "presale" ? "bg-green-500" : "bg-yellow-400",
-}));
-const AI_LAYER = siteCopy.en.productFamily.aiLayer;
-
-const BUSINESS_MODEL = [
+const team = [
   {
-    icon: Package,
-    title: "Hardware Sales",
-    desc: "Hardware sales through rosa portable and rosa vision, serving portable scoring and connected court installations.",
+    name: "Rodrigo Ponce",
+    portrait: "rodrigo-ponce",
+    role: "Co-founder & CEO",
   },
   {
-    icon: RefreshCw,
-    title: "SaaS Subscription",
-    desc: "Recurring per-court per-month revenue for analytics, cloud sync, and the player dashboard. Predictable, scalable ARR.",
+    name: "Leandro Ponce",
+    portrait: "leandro-ponce",
+    role: "Co-founder & CFO",
   },
   {
-    icon: Globe,
-    title: "Ecosystem Revenue",
-    desc: "Coaching content, tournament management, sponsorship inventory, and event packages. High-margin add-ons on top of the core stack.",
+    name: "Saul Ortiz de la Tejera",
+    portrait: "saul-ortiz-de-la-tejera",
+    role: "Co-founder & CTO",
   },
-];
-
-const TIMELINE = [
-  { label: "Prototype", done: true },
-  { label: "First pilots", done: true },
-  { label: "LOI phase", done: true },
-  { label: "Fundraising & launch", done: false },
 ];
 
 export default function Investors() {
-  useEffect(() => {
-    document.title = "rosa padel | Investor Overview";
-  }, []);
-
-  const heroRef = useRef(null);
-  const marketRef = useRef(null);
-  const problemRef = useRef(null);
-  const productsRef = useRef(null);
-  const bizRef = useRef(null);
-  const tractionRef = useRef(null);
-  const teamRef = useRef(null);
-  const ctaRef = useRef(null);
-
-  const heroInView = useInView(heroRef, { once: true, margin: "-100px" });
-  const marketInView = useInView(marketRef, { once: true, margin: "-100px" });
-  const problemInView = useInView(problemRef, { once: true, margin: "-100px" });
-  const productsInView = useInView(productsRef, { once: true, margin: "-100px" });
-  const bizInView = useInView(bizRef, { once: true, margin: "-100px" });
-  const tractionInView = useInView(tractionRef, { once: true, margin: "-100px" });
-  const teamInView = useInView(teamRef, { once: true, margin: "-100px" });
-  const ctaInView = useInView(ctaRef, { once: true, margin: "-100px" });
-
+  const { language } = useLanguage();
+  const words = {
+    en: {
+      title: "rosa padel for investors.",
+      body: "Court hardware, match software and club experiences. ROSA brings them together, one court at a time.",
+      model: "Hardware at the court. Software across the club.",
+      modelBody:
+        "Two hardware products, with club and player services scoped separately.",
+      team: "The people behind ROSA.",
+      contact: "Interested in rosa?",
+      contactBody:
+        "We're open to conversations with investors, partners and distributors who believe in the padel opportunity.",
+      pillars: ["Court hardware", "Software services", "Club events"],
+      descriptions: [
+        "rosa portable for LED scoring. rosa vision for the connected court.",
+        "Match access, replay and review, with rosa coach as the AI layer in development.",
+        "Tournament, Americano and league workflows, connected to the club experience.",
+      ],
+    },
+    es: {
+      title: "rosa padel para inversionistas.",
+      body: "Hardware en cancha, software de partido y experiencias de club. ROSA los reúne, una cancha a la vez.",
+      model: "Hardware en cancha. Software en todo el club.",
+      modelBody:
+        "Dos productos de hardware, con servicios para clubes y jugadores por separado.",
+      team: "Las personas detrás de ROSA.",
+      contact: "¿Te interesa rosa?",
+      contactBody:
+        "Conversemos con inversionistas, socios y distribuidores que creen en la oportunidad del pádel.",
+      pillars: [
+        "Hardware en cancha",
+        "Servicios de software",
+        "Eventos del club",
+      ],
+      descriptions: [
+        "rosa portable para marcador LED. rosa vision para la cancha conectada.",
+        "Acceso a partidos, replay y revisión, con rosa coach como capa de IA en desarrollo.",
+        "Torneos, Americanos y ligas, conectados con la experiencia del club.",
+      ],
+    },
+    de: {
+      title: "rosa padel für Investoren.",
+      body: "Court-Hardware, Match-Software und Club-Erlebnisse. ROSA verbindet sie, Court für Court.",
+      model: "Hardware am Court. Software im ganzen Club.",
+      modelBody:
+        "Zwei Hardware-Produkte mit separat geplanten Club- und Spielerdiensten.",
+      team: "Die Menschen hinter ROSA.",
+      contact: "Interesse an rosa?",
+      contactBody:
+        "Wir sprechen mit Investoren, Partnern und Vertriebspartnern, die an die Padel-Chance glauben.",
+      pillars: ["Court-Hardware", "Software-Dienste", "Club-Events"],
+      descriptions: [
+        "rosa portable für den LED-Spielstand. rosa vision für den vernetzten Court.",
+        "Match-Zugang, Replay und Review sowie rosa coach als KI-Ebene in Entwicklung.",
+        "Turnier-, Americano- und Liga-Workflows im Club-Erlebnis.",
+      ],
+    },
+  }[language];
+  const icons = [Monitor, Layers, Trophy];
   return (
-    <main className="min-h-screen bg-background text-foreground overflow-x-hidden">
+    <main className="bg-background text-foreground">
       <Navbar />
-
-      {/* Hero */}
-      <section ref={heroRef} className="pt-36 pb-24">
-        <div className="container mx-auto px-6 lg:px-12">
-          <motion.div
-            initial={{ opacity: 0, y: 24 }}
-            animate={heroInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.6 }}
-            className="space-y-6 max-w-3xl"
-          >
-            <span className="text-sm font-mono uppercase tracking-widest text-primary">Investor Overview</span>
-            <h1 className="text-5xl md:text-7xl font-extrabold leading-none tracking-tight">
-              Padel is growing.<br />
-              <span className="text-primary">rosa is ready.</span>
-            </h1>
-            <p className="text-xl text-muted-foreground max-w-xl">
-              <BrandText text="Hardware-led court intelligence for the fastest-growing racket sport in the world. rosa builds the technology infrastructure that every padel court needs but currently lacks." />
-            </p>
-            <div className="flex flex-wrap gap-4 pt-2">
-              <InvestorContactDialog />
-              <a
-                href="/#products"
-                className="rounded-xl px-8 py-3 font-semibold inline-flex items-center gap-2 border border-border hover:border-primary/40 transition-colors text-foreground"
-              >
-                View product family <ChevronRight className="w-4 h-4" />
-              </a>
-            </div>
-          </motion.div>
+      <section className="studio-section studio-container detail-intro">
+        <h1>{words.title}</h1>
+        <p>{words.body}</p>
+        <div className="studio-actions">
+          <InvestorContactDialog />
+          <a href="/#products" className="studio-link">
+            <BrandText text="rosa vision & rosa portable" />
+            <ArrowUpRight size={16} aria-hidden="true" />
+          </a>
         </div>
       </section>
-
-      {/* Market opportunity */}
-      <section ref={marketRef} className="py-24">
-        <div className="container mx-auto px-6 lg:px-12 space-y-12">
-          <motion.div
-            initial={{ opacity: 0, y: 24 }}
-            animate={marketInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.6 }}
-            className="space-y-3"
-          >
-            <span className="text-sm font-mono uppercase tracking-widest text-primary">Market Opportunity</span>
-            <h2 className="text-4xl md:text-5xl font-bold">The market.</h2>
-            <p className="text-muted-foreground max-w-2xl">
-              Padel is one of the fastest-growing sports in the world. Court counts double every three years in Spain alone, and the sport is rapidly expanding across Europe, Latin America, and beyond. Yet the infrastructure serving these courts remains almost entirely analog.
-            </p>
-          </motion.div>
-
-          <div className="grid grid-cols-3 gap-px rounded-2xl border border-border overflow-hidden bg-border max-w-3xl">
-            {MARKET_STATS.map((stat, i) => (
-              <motion.div
-                key={stat.label}
-                initial={{ opacity: 0, y: 24 }}
-                animate={marketInView ? { opacity: 1, y: 0 } : {}}
-                transition={{ duration: 0.55, delay: i * 0.12 }}
-                className="bg-card px-6 py-8 space-y-2"
-              >
-                <p className="font-mono text-3xl md:text-4xl font-bold text-primary tabular-nums">{stat.value}</p>
-                <p className="text-sm text-muted-foreground">{stat.label}</p>
-              </motion.div>
-            ))}
-          </div>
+      <figure className="studio-container">
+        <img
+          src="/images/products/rosa-vision-court.webp"
+          alt="rosa vision connected padel court"
+          width="1600"
+          height="900"
+          className="product-photo"
+        />
+      </figure>
+      <section className="studio-section studio-container">
+        <div className="section-heading">
+          <h2>{words.model}</h2>
+          <p>{words.modelBody}</p>
         </div>
-      </section>
-
-      {/* Problem + Solution */}
-      <section ref={problemRef} className="py-24 bg-card/50">
-        <div className="container mx-auto px-6 lg:px-12 space-y-12">
-          <motion.div
-            initial={{ opacity: 0, y: 24 }}
-            animate={problemInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.6 }}
-            className="space-y-3"
-          >
-            <span className="text-sm font-mono uppercase tracking-widest text-primary">Problem & Solution</span>
-            <h2 className="text-4xl md:text-5xl font-bold">A clear gap. A clear answer.</h2>
-          </motion.div>
-
-          <div className="grid md:grid-cols-2 gap-6">
-            <motion.div
-              initial={{ opacity: 0, y: 24 }}
-              animate={problemInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.55, delay: 0.12 }}
-              className="rounded-2xl border border-border bg-card p-6 md:p-8 space-y-4"
-            >
-              <span className="text-sm font-mono uppercase tracking-widest text-muted-foreground">The Problem</span>
-              <h3 className="text-2xl font-bold">Clubs lack proper tech infrastructure. Players get no data.</h3>
-              <ul className="space-y-3">
-                {[
-                  "Scoreboards are handwritten or non-existent",
-                  "No match recording at the club level",
-                  "Players leave the court with zero data",
-                  "Clubs miss sponsorship and subscription revenue",
-                  "Tournaments are managed manually",
-                ].map((item) => (
-                  <li key={item} className="flex items-start gap-3 text-sm text-muted-foreground">
-                    <span className="mt-1.5 w-1.5 h-1.5 rounded-full bg-border flex-shrink-0" />
-                    {item}
-                  </li>
-                ))}
-              </ul>
-            </motion.div>
-
-            <motion.div
-              initial={{ opacity: 0, y: 24 }}
-              animate={problemInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.55, delay: 0.24 }}
-              className="rounded-2xl border border-primary/20 bg-card p-6 md:p-8 space-y-4"
-            >
-              <span className="text-sm font-mono uppercase tracking-widest text-primary">The Solution</span>
-              <h3 className="text-2xl font-bold"><BrandText text="rosa fills the gap with modular hardware and software." /></h3>
-              <ul className="space-y-3">
-                {[
-                  "LED and HD scoring hardware for any court size",
-                  "Camera-integrated replay and analytics layer",
-                  "Player dashboards and post-match insights",
-                  "Sponsorship, subscription, and recording revenue",
-                  "Modular — start entry-level, scale to AI coaching",
-                ].map((item) => (
-                  <li key={item} className="flex items-start gap-3 text-sm text-muted-foreground">
-                    <span className="mt-1.5 w-1.5 h-1.5 rounded-full bg-primary flex-shrink-0" />
-                    {item}
-                  </li>
-                ))}
-              </ul>
-            </motion.div>
-          </div>
-        </div>
-      </section>
-
-      {/* Product family */}
-      <section ref={productsRef} className="py-24">
-        <div className="container mx-auto px-6 lg:px-12 space-y-12">
-          <motion.div
-            initial={{ opacity: 0, y: 24 }}
-            animate={productsInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.6 }}
-            className="space-y-3"
-          >
-            <span className="text-sm font-mono uppercase tracking-widest text-primary">Product Family</span>
-            <h2 className="text-4xl md:text-5xl font-bold">Two products. One AI layer.</h2>
-            <p className="text-muted-foreground max-w-xl">
-              <BrandText text="rosa portable for LED scoring. rosa vision for the connected court. rosa coach adds the AI software layer." />
-            </p>
-          </motion.div>
-
-          <div className="grid md:grid-cols-2 gap-5">
-            {PRODUCTS.map((product, i) => (
-              <motion.a
-                key={product.name}
-                href={product.href}
-                initial={{ opacity: 0, y: 24 }}
-                animate={productsInView ? { opacity: 1, y: 0 } : {}}
-                transition={{ duration: 0.55, delay: i * 0.12 }}
-                className="group rounded-2xl border border-border bg-card p-6 md:p-8 space-y-4 hover:border-primary/40 transition-colors"
-              >
-                <div className="flex items-start justify-between">
-                  <span className="font-mono text-xs text-muted-foreground/60">{product.num}</span>
-                  <span className="px-2 py-0.5 rounded border border-border text-[10px] font-mono uppercase tracking-widest text-muted-foreground">
-                    {product.tier}
-                  </span>
-                </div>
-                <div className="space-y-1">
-                  <h3 className="text-2xl font-bold"><BrandText text={product.name} /></h3>
-                  <p className="text-muted-foreground">{product.tagline}</p>
-                </div>
-                <span className={`inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full border text-[11px] font-mono uppercase tracking-[0.18em] ${product.statusClass}`}>
-                  <span className={`w-1.5 h-1.5 rounded-full flex-shrink-0 ${product.dotClass}`} />
-                  {product.status}
-                </span>
+        <div className="feature-rows">
+          {words.pillars.map((title, index) => {
+            const Icon = icons[index];
+            return (
+              <div key={title}>
+                <Icon size={22} aria-hidden="true" />
                 <div>
-                  <span className="inline-flex items-center gap-1 text-sm font-medium text-primary group-hover:opacity-80 transition-opacity">
-                    View product <ChevronRight className="w-4 h-4" />
-                  </span>
+                  <h3>{title}</h3>
+                  <p>
+                    <BrandText text={words.descriptions[index]} />
+                  </p>
                 </div>
-              </motion.a>
-            ))}
-          </div>
-          <div className="space-y-3 border-t border-border pt-8" data-product-layer="ai">
-            <p className="text-xs font-mono text-muted-foreground">{AI_LAYER.tier} · {AI_LAYER.status}</p>
-            <h3 className="text-2xl font-bold"><BrandText text={AI_LAYER.name} /></h3>
-            <p className="max-w-2xl text-muted-foreground"><BrandText text={AI_LAYER.body} /></p>
-            <a href={AI_LAYER.href} className="inline-flex items-center gap-2 text-primary font-medium">
-              <BrandText text={AI_LAYER.cta} /><ChevronRight className="h-4 w-4" aria-hidden="true" />
+              </div>
+            );
+          })}
+        </div>
+      </section>
+      <HardwareCollection />
+      <section className="studio-section studio-container">
+        <div className="section-heading">
+          <h2>{words.team}</h2>
+        </div>
+        <div className="team-grid">
+          {team.map((member) => (
+            <article key={member.name}>
+              <img
+                src={`/images/team/${member.portrait}.webp`}
+                alt={member.name}
+                width="1122"
+                height="1402"
+                loading="lazy"
+              />
+              <h3>{member.name}</h3>
+              <p>{member.role}</p>
+            </article>
+          ))}
+        </div>
+      </section>
+      <Partners />
+      <section className="studio-section studio-contact">
+        <div className="studio-container">
+          <h2 className="text-4xl font-semibold">
+            <BrandText text={words.contact} />
+          </h2>
+          <p className="mt-6 max-w-2xl text-lg text-muted-foreground">
+            {words.contactBody}
+          </p>
+          <div className="studio-actions !justify-start mt-8">
+            <InvestorContactDialog />
+            <a href="mailto:rodrigo@rosapadel.com" className="studio-link">
+              rodrigo@rosapadel.com
             </a>
           </div>
         </div>
       </section>
-
-      {/* Business model */}
-      <section ref={bizRef} className="py-24 bg-card/50">
-        <div className="container mx-auto px-6 lg:px-12 space-y-12">
-          <motion.div
-            initial={{ opacity: 0, y: 24 }}
-            animate={bizInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.6 }}
-            className="space-y-3"
-          >
-            <span className="text-sm font-mono uppercase tracking-widest text-primary">Business Model</span>
-            <h2 className="text-4xl md:text-5xl font-bold">Three revenue streams.</h2>
-          </motion.div>
-
-          <div className="grid md:grid-cols-3 gap-6">
-            {BUSINESS_MODEL.map((stream, i) => {
-              const Icon = stream.icon;
-              return (
-                <motion.div
-                  key={stream.title}
-                  initial={{ opacity: 0, y: 24 }}
-                  animate={bizInView ? { opacity: 1, y: 0 } : {}}
-                  transition={{ duration: 0.55, delay: i * 0.12 }}
-                  className="rounded-2xl border border-border bg-card p-6 md:p-8 space-y-4"
-                >
-                  <div className="w-10 h-10 rounded-xl bg-secondary flex items-center justify-center">
-                    <Icon className="w-5 h-5 text-primary" />
-                  </div>
-                  <h3 className="font-bold text-lg">{stream.title}</h3>
-                  <p className="text-sm text-muted-foreground leading-relaxed">{stream.desc}</p>
-                </motion.div>
-              );
-            })}
-          </div>
-        </div>
-      </section>
-
-      {/* Traction */}
-      <section ref={tractionRef} className="py-24">
-        <div className="container mx-auto px-6 lg:px-12 space-y-12">
-          <motion.div
-            initial={{ opacity: 0, y: 24 }}
-            animate={tractionInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.6 }}
-            className="space-y-3"
-          >
-            <span className="text-sm font-mono uppercase tracking-widest text-primary">Early Traction</span>
-            <h2 className="text-4xl md:text-5xl font-bold">Traction.</h2>
-            <p className="text-muted-foreground max-w-xl">
-              Current stage: prototype validation, pilot clubs, and first LOIs in place.
-            </p>
-          </motion.div>
-
-          <div className="grid md:grid-cols-3 gap-5">
-            {[
-              {
-                label: "3 Letters of Intent",
-                desc: "Signed LOIs from clubs and distributors across Spain and Europe.",
-              },
-              {
-                label: "Prototype validated",
-                desc: "rosa portable and rosa vision scoring hardware tested in real court conditions.",
-              },
-              {
-                label: "Pilot clubs identified",
-                desc: "First pilot venues confirmed and ready for live deployment.",
-              },
-            ].map((item, i) => (
-              <motion.div
-                key={item.label}
-                initial={{ opacity: 0, y: 24 }}
-                animate={tractionInView ? { opacity: 1, y: 0 } : {}}
-                transition={{ duration: 0.55, delay: i * 0.12 }}
-                className="rounded-2xl border border-border bg-card p-6 md:p-8 space-y-3"
-              >
-                <h3 className="font-bold text-lg text-primary">{item.label}</h3>
-                <p className="text-sm text-muted-foreground leading-relaxed">{item.desc}</p>
-              </motion.div>
-            ))}
-          </div>
-
-          {/* Timeline */}
-          <motion.div
-            initial={{ opacity: 0, y: 24 }}
-            animate={tractionInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.6, delay: 0.3 }}
-            className="rounded-2xl border border-border bg-card p-6 md:p-8"
-          >
-            <p className="text-sm font-mono uppercase tracking-widest text-muted-foreground mb-6">Roadmap</p>
-            <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4 flex-wrap">
-              {TIMELINE.map((item, i) => (
-                <div key={item.label} className="flex items-center gap-3">
-                  <div className={`w-8 h-8 rounded-full flex items-center justify-center border ${item.done ? "border-primary bg-primary/10 text-primary" : "border-border bg-secondary text-muted-foreground"}`}>
-                    <span className="text-xs font-bold">{i + 1}</span>
-                  </div>
-                  <span className={`text-sm font-medium ${item.done ? "text-foreground" : "text-muted-foreground"}`}>
-                    {item.label}
-                  </span>
-                  {i < TIMELINE.length - 1 && (
-                    <ChevronRight className="w-4 h-4 text-muted-foreground hidden sm:block" />
-                  )}
-                </div>
-              ))}
-            </div>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* Team */}
-      <section ref={teamRef} id="team" className="scroll-mt-24 py-24 bg-card/50">
-        <div className="container mx-auto px-6 lg:px-12 space-y-12">
-          <motion.div
-            initial={{ opacity: 0, y: 24 }}
-            animate={teamInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.6 }}
-            className="space-y-3"
-          >
-            <span className="text-sm font-mono uppercase tracking-widest text-primary">Team</span>
-            <h2 className="text-4xl md:text-5xl font-bold">The team.</h2>
-          </motion.div>
-
-          <div className="grid md:grid-cols-3 gap-5 max-w-4xl">
-            {[
-              {
-                name: "Rodrigo Ponce",
-                portrait: "/images/team/rodrigo-ponce.webp",
-                role: "Co-founder & CEO",
-                location: "Heilbronn, Germany",
-                bio: "Leads company vision, product strategy, and business development across the rosa ecosystem. Mechatronics engineer, startup operator, and previous founder.",
-              },
-              {
-                name: "Leandro Ponce",
-                portrait: "/images/team/leandro-ponce.webp",
-                role: "Co-founder & CFO",
-                location: "Mexico",
-                bio: "Leads finance, operations, and investment planning. Industrial engineer with 20+ years in finance, operations, and large-scale real estate investments.",
-              },
-              {
-                name: "Saul Ortiz de la Tejera",
-                portrait: "/images/team/saul-ortiz-de-la-tejera.webp",
-                role: "Co-founder & CTO",
-                location: "Mexico",
-                bio: "Leads hardware, software architecture, AI, IoT, and prototyping. Mechatronics engineer with hands-on engineering experience from Bosch.",
-              },
-            ].map((member, i) => (
-              <motion.div
-                key={member.name}
-                initial={{ opacity: 0, y: 24 }}
-                animate={teamInView ? { opacity: 1, y: 0 } : {}}
-                transition={{ duration: 0.6, delay: 0.1 + i * 0.12 }}
-                className="min-w-0 space-y-5"
-              >
-                <img src={member.portrait} alt={member.name} width="768" height="960" loading="lazy" decoding="async" className="aspect-[4/5] w-full rounded-lg object-cover" />
-                <div className="space-y-3">
-                  <div className="min-w-0">
-                    <p className="font-bold">{member.name}</p>
-                    <p className="text-sm text-muted-foreground">{member.role}</p>
-                    <p className="text-xs text-muted-foreground font-mono">{member.location}</p>
-                  </div>
-                </div>
-                <p className="text-sm text-muted-foreground leading-relaxed"><BrandText text={member.bio} /></p>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* CTA */}
-      <section ref={ctaRef} id="contact" className="scroll-mt-24 py-24">
-        <div className="container mx-auto px-6 lg:px-12">
-          <motion.div
-            initial={{ opacity: 0, y: 24 }}
-            animate={ctaInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.6 }}
-            className="max-w-2xl space-y-6"
-          >
-            <span className="text-sm font-mono uppercase tracking-widest text-primary">Contact</span>
-            <h2 className="text-4xl md:text-5xl font-bold"><BrandText text="Interested in rosa?" /></h2>
-            <p className="text-muted-foreground text-lg">
-              We're open to conversations with investors, partners, and distributors who believe in the padel opportunity.
-            </p>
-            <div className="space-y-3">
-              <InvestorContactDialog />
-              <p className="text-sm text-muted-foreground font-mono"><a href="mailto:rodrigo@rosapadel.com" className="underline-offset-4 hover:underline">rodrigo@rosapadel.com</a></p>
-            </div>
-          </motion.div>
-        </div>
-      </section>
-
       <Footer />
     </main>
   );
