@@ -1,227 +1,118 @@
-import { motion, useInView } from "framer-motion";
-import { useRef } from "react";
-import { Zap, BarChart2, TrendingUp, Video, ChevronRight, Clock } from "lucide-react";
+import { ArrowUpRight, BarChart2, Video, Scan, TrendingUp } from "lucide-react";
 import Navbar from "@/components/rosa/Navbar";
 import Footer from "@/components/rosa/Footer";
-import BrandText from "@/components/rosa/BrandText";
 import ProductTitle from "@/components/rosa/ProductTitle";
-
-const FEATURES = [
-  {
-    icon: Zap,
-    name: "AI Shot Analysis",
-    desc: "Automatic classification of every shot — type, placement, outcome. No manual tagging required.",
-  },
-  {
-    icon: BarChart2,
-    name: "Tactical Breakdown",
-    desc: "Match patterns analyzed and presented as clear tactical summaries. Understand what's working and what isn't.",
-  },
-  {
-    icon: TrendingUp,
-    name: "Improvement Tracking",
-    desc: "Track progress across sessions. See which areas are improving and where to focus next.",
-  },
-  {
-    icon: Video,
-    name: "Video Review",
-    desc: "AI-tagged video clips of key moments, linked directly to your stats and tactical notes.",
-  },
-];
+import ContactCTA from "@/components/rosa/ContactCTA";
+import { useLanguage } from "@/components/rosa/LanguageProvider";
 
 export default function ProductCoach() {
-  const heroRef = useRef(null);
-  const featuresRef = useRef(null);
-  const roadmapRef = useRef(null);
-  const ctaRef = useRef(null);
-
-  const heroInView = useInView(heroRef, { once: true, margin: "-100px" });
-  const featuresInView = useInView(featuresRef, { once: true, margin: "-100px" });
-  const roadmapInView = useInView(roadmapRef, { once: true, margin: "-100px" });
-  const ctaInView = useInView(ctaRef, { once: true, margin: "-100px" });
-
+  const { copy, language } = useLanguage();
+  const words = {
+    en: {
+      title: "A closer look at your game.",
+      body: "Planned analysis workflows for coaches and players. Features and availability depend on the enabled services; pilot outputs do not guarantee accuracy for every match.",
+      app: "ROSA player app demonstration; not a guarantee of released coach features.",
+      names: [
+        "Shot analysis",
+        "Tactical review",
+        "Match progress",
+        "Video and context",
+      ],
+      descriptions: [
+        "Explore shot patterns in your recorded matches.",
+        "Review court positions and heatmaps alongside the footage.",
+        "Bring match summaries into a longer view of your game.",
+        "Connect the moments on video with the match's information.",
+      ],
+    },
+    es: {
+      title: "Una mirada más cerca a tu juego.",
+      body: "Flujos de análisis previstos para entrenadores y jugadores. Funciones y disponibilidad dependen de los servicios habilitados; los resultados piloto no garantizan precisión en cada partido.",
+      app: "Demostración de la app de jugadores; no garantiza funciones de coach publicadas.",
+      names: [
+        "Análisis de golpes",
+        "Revisión táctica",
+        "Evolución del juego",
+        "Video y contexto",
+      ],
+      descriptions: [
+        "Explora patrones de golpes en tus partidos grabados.",
+        "Revisa posiciones y mapas de calor junto al video.",
+        "Conecta los resúmenes para ver tu juego a lo largo del tiempo.",
+        "Relaciona los momentos del video con la información del partido.",
+      ],
+    },
+    de: {
+      title: "Dein Spiel genauer betrachtet.",
+      body: "Geplante Analyse-Workflows für Trainer und Spieler. Funktionen und Verfügbarkeit hängen von den aktivierten Diensten ab; Pilotdaten garantieren keine Genauigkeit für jedes Match.",
+      app: "Demonstration der Spieler-App; keine Garantie veröffentlichter Coach-Funktionen.",
+      names: [
+        "Schlaganalyse",
+        "Taktische Auswertung",
+        "Spielentwicklung",
+        "Video und Kontext",
+      ],
+      descriptions: [
+        "Schlagmuster in aufgezeichneten Matches entdecken.",
+        "Court-Positionen und Heatmaps mit dem Video prüfen.",
+        "Match-Zusammenfassungen über längere Zeit betrachten.",
+        "Videomomente mit Match-Informationen verbinden.",
+      ],
+    },
+  }[language];
+  const icons = [Scan, BarChart2, TrendingUp, Video];
   return (
-    <main className="min-h-screen bg-background text-foreground overflow-x-hidden">
+    <main className="bg-background text-foreground">
       <Navbar />
-
-      {/* Hero */}
-      <section ref={heroRef} className="pt-36 pb-20">
-        <div className="container mx-auto px-6 lg:px-12">
-          <motion.div
-            initial={{ opacity: 0, y: 24 }}
-            animate={heroInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.6 }}
-            className="space-y-6 max-w-3xl"
-          >
-            {/* Breadcrumb */}
-            <div className="flex items-center gap-2 text-sm text-muted-foreground font-mono">
-              <a href="/" className="hover:text-primary transition-colors">rosa</a>
-              <ChevronRight className="w-3 h-3" />
-              <span className="text-foreground"><BrandText text="rosa coach" /></span>
-            </div>
-
-            {/* Tier + Status */}
-            <div className="flex items-center gap-3 flex-wrap">
-              <span className="px-2.5 py-1 rounded border border-border text-[10px] font-mono uppercase tracking-widest text-muted-foreground">
-                AI software layer
-              </span>
-              <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full border border-border bg-secondary text-muted-foreground text-[11px] font-mono uppercase tracking-[0.18em]">
-                <span className="w-1.5 h-1.5 rounded-full bg-muted-foreground/40 flex-shrink-0" />
-                In Development
-              </span>
-            </div>
-
-            {/* Heading */}
-            <ProductTitle name="coach" />
-            <p className="text-2xl font-semibold">Your AI padel coach.</p>
-
-            <p className="text-xl text-muted-foreground max-w-xl">
-              <BrandText text="rosa coach is the AI software layer for rosa vision: shot analysis, tactical breakdowns and improvement tracking built on your match footage." />
-            </p>
-
-            {/* CTAs */}
-            <div className="flex flex-wrap gap-4 pt-2">
-              <a
-                href="#contact"
-                className="bg-primary text-primary-foreground hover:opacity-90 transition-opacity rounded-xl px-8 py-3 font-semibold inline-flex items-center gap-2"
-              >
-                Join the Waitlist
-              </a>
-              <a
-                href="/products/vision"
-                className="rounded-xl px-8 py-3 font-semibold inline-flex items-center gap-2 border border-border hover:border-primary/40 transition-colors text-foreground"
-              >
-                See <BrandText text="rosa vision" /> <ChevronRight className="w-4 h-4" />
-              </a>
-            </div>
-
-            {/* Ecosystem note */}
-            <p className="text-sm text-muted-foreground font-mono pt-2">
-              Part of the{" "}
-              <a href="/products/vision" className="text-primary hover:underline">
-                <BrandText text="rosa vision ecosystem" />
-              </a>
-            </p>
-          </motion.div>
+      <section className="studio-container product-page-hero">
+        <div className="product-heading-line">
+          <ProductTitle name="coach" />
+          <span className="text-sm text-muted-foreground">
+            {copy.productFamily.aiLayer.status}
+          </span>
+        </div>
+        <p className="product-intro">{copy.productFamily.aiLayer.body}</p>
+        <div className="studio-actions">
+          <a href="#contact" className="studio-button">
+            {copy.hero.primaryCta}
+            <ArrowUpRight size={16} aria-hidden="true" />
+          </a>
+          <a href="/products/vision" className="studio-link">
+            rosa vision
+            <ArrowUpRight size={16} aria-hidden="true" />
+          </a>
         </div>
       </section>
-
-      {/* Feature preview cards */}
-      <section ref={featuresRef} className="py-24 bg-card/50">
-        <div className="container mx-auto px-6 lg:px-12 space-y-12">
-          <motion.div
-            initial={{ opacity: 0, y: 24 }}
-            animate={featuresInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.6 }}
-            className="space-y-3"
-          >
-            <span className="text-sm font-mono uppercase tracking-widest text-primary"><BrandText text="What rosa coach Will Do" /></span>
-            <h2 className="text-4xl md:text-5xl font-bold">AI coaching, built for padel.</h2>
-            <p className="text-muted-foreground max-w-xl">
-              <BrandText text="These rosa coach features are in development. Access will depend on the selected software services and availability." />
-            </p>
-          </motion.div>
-
-          <div className="grid md:grid-cols-2 gap-5">
-            {FEATURES.map((feature, i) => {
-              const Icon = feature.icon;
-              return (
-                <motion.div
-                  key={feature.name}
-                  initial={{ opacity: 0, y: 24 }}
-                  animate={featuresInView ? { opacity: 1, y: 0 } : {}}
-                  transition={{ duration: 0.55, delay: i * 0.12 }}
-                  className="rounded-2xl border border-border bg-card p-6 md:p-8 space-y-4"
-                >
-                  <div className="flex items-start justify-between">
-                    <div className="w-10 h-10 rounded-xl bg-secondary flex items-center justify-center">
-                      <Icon className="w-5 h-5 text-primary" />
-                    </div>
-                    <span className="inline-flex items-center gap-1.5 px-2 py-0.5 rounded border border-border bg-secondary text-muted-foreground text-[10px] font-mono uppercase tracking-widest">
-                      <Clock className="w-3 h-3" />
-                      In Development
-                    </span>
-                  </div>
-                  <div className="space-y-2">
-                    <h3 className="font-bold text-lg">{feature.name}</h3>
-                    <p className="text-sm text-muted-foreground leading-relaxed">{feature.desc}</p>
-                  </div>
-                </motion.div>
-              );
-            })}
-          </div>
+      <figure className="studio-container app-capture">
+        <img
+          src="/images/software/player.webp"
+          alt={words.app}
+          width="1440"
+          height="1000"
+        />
+        <figcaption>{words.app}</figcaption>
+      </figure>
+      <section className="studio-section studio-container">
+        <div className="section-heading">
+          <h2>{words.title}</h2>
+          <p>{words.body}</p>
         </div>
-      </section>
-
-      {/* Roadmap note */}
-      <section ref={roadmapRef} className="py-24">
-        <div className="container mx-auto px-6 lg:px-12">
-          <motion.div
-            initial={{ opacity: 0, y: 24 }}
-            animate={roadmapInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.6 }}
-            className="max-w-2xl space-y-8"
-          >
-            <div className="space-y-3">
-              <span className="text-sm font-mono uppercase tracking-widest text-primary">Roadmap</span>
-              <h2 className="text-4xl md:text-5xl font-bold">The intelligence layer for your match.</h2>
-            </div>
-
-            <div className="rounded-2xl border border-border bg-card p-6 md:p-8 space-y-4">
-              <p className="text-muted-foreground leading-relaxed">
-                <BrandText text="rosa vision connects scoring and video on court. rosa coach adds AI analysis to that match experience through software." />
-              </p>
-              <div className="flex flex-col sm:flex-row items-start sm:items-center gap-3 pt-2">
-                <div className="flex items-center gap-2">
-                  <div className="w-8 h-8 rounded-lg bg-yellow-400/10 border border-yellow-400/30 flex items-center justify-center">
-                    <span className="w-2 h-2 rounded-full bg-yellow-400" />
-                  </div>
-                  <span className="text-sm font-medium"><BrandText text="rosa vision" /></span>
-                </div>
-                <ChevronRight className="w-4 h-4 text-muted-foreground hidden sm:block" />
-                <div className="flex items-center gap-2">
-                  <div className="w-8 h-8 rounded-lg bg-secondary border border-border flex items-center justify-center">
-                    <span className="w-2 h-2 rounded-full bg-muted-foreground/40" />
-                  </div>
-                  <span className="text-sm font-medium text-muted-foreground"><BrandText text="rosa coach" /></span>
+        <div className="feature-rows">
+          {words.names.map((name, index) => {
+            const Icon = icons[index];
+            return (
+              <div key={name}>
+                <Icon size={22} aria-hidden="true" />
+                <div>
+                  <h3>{name}</h3>
+                  <p>{words.descriptions[index]}</p>
                 </div>
               </div>
-            </div>
-
-            <a
-              href="/products/vision"
-              className="inline-flex items-center gap-2 text-sm font-medium text-primary hover:opacity-80 transition-opacity"
-            >
-              Learn about <BrandText text="rosa vision" /> <ChevronRight className="w-4 h-4" />
-            </a>
-          </motion.div>
+            );
+          })}
         </div>
       </section>
-
-      {/* Waitlist CTA */}
-      <section ref={ctaRef} id="contact" className="py-24 bg-card/50">
-        <div className="container mx-auto px-6 lg:px-12">
-          <motion.div
-            initial={{ opacity: 0, y: 24 }}
-            animate={ctaInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.6 }}
-            className="max-w-2xl space-y-6"
-          >
-            <span className="text-sm font-mono uppercase tracking-widest text-primary">Waitlist</span>
-            <h2 className="text-4xl md:text-5xl font-bold"><BrandText text="Be the first to get rosa coach." /></h2>
-            <p className="text-muted-foreground text-lg">
-              <BrandText text="Join the waitlist and we'll notify you as soon as rosa coach is ready. Early access for Vision pilot clubs." />
-            </p>
-            <a
-              href="mailto:rodrigo@rosapadel.com"
-              className="bg-primary text-primary-foreground hover:opacity-90 transition-opacity rounded-xl px-8 py-3 font-semibold inline-flex items-center gap-2"
-            >
-              Join the Waitlist
-            </a>
-          </motion.div>
-        </div>
-      </section>
-
+      <ContactCTA />
       <Footer />
     </main>
   );

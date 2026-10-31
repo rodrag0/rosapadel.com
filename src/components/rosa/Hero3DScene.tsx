@@ -1,5 +1,5 @@
-import { useRef, useMemo, useEffect } from "react";
-import { Canvas, useFrame, useLoader } from "@react-three/fiber";
+import { useRef, useMemo, useEffect, useState } from "react";
+import { Canvas, useFrame, useLoader, useThree } from "@react-three/fiber";
 import { Float } from "@react-three/drei";
 import * as THREE from "three";
 import rosaIconWhite from "@/assets/rosa-icon-white.png";
@@ -16,9 +16,9 @@ interface ThemeColors {
 }
 
 const DARK_THEME: ThemeColors = {
-  floor: new THREE.Color("#1a1a22"),
-  darker: new THREE.Color("#2a2a35"),
-  fog: "#0d0d14",
+  floor: new THREE.Color("#4b4b54"),
+  darker: new THREE.Color("#303036"),
+  fog: "#0b0b0d",
   net: new THREE.Color("#555566"),
   glass: new THREE.Color("#aabbcc"),
   glassOpacity: 0.25,
@@ -613,14 +613,35 @@ function CourtGrid() {
   );
 }
 
+function ResponsiveCamera() {
+  const { camera, size, invalidate } = useThree();
+  useEffect(() => {
+    if (!(camera instanceof THREE.PerspectiveCamera)) return;
+    const aspect = size.width / size.height;
+    camera.fov = aspect < 1.35 ? 64 : aspect < 1.9 ? 54 : 38;
+    camera.updateProjectionMatrix();
+    invalidate();
+  }, [camera, size.width, size.height, invalidate]);
+  return null;
+}
+
 export default function Hero3DScene({ theme }: { theme: "dark" | "light" }) {
   const colors = theme === "light" ? LIGHT_THEME : DARK_THEME;
+  const [reducedMotion, setReducedMotion] = useState(false);
+  useEffect(() => {
+    const preference = window.matchMedia("(prefers-reduced-motion: reduce)");
+    const update = () => setReducedMotion(preference.matches);
+    update();
+    preference.addEventListener("change", update);
+    return () => preference.removeEventListener("change", update);
+  }, []);
 
   return (
     <div className="absolute inset-0">
-      <Canvas camera={{ position: [3.5, 2, 4.5], fov: 45 }} dpr={[1, 1.5]} gl={{ antialias: true, logarithmicDepthBuffer: true }} frameloop="always">
+      <Canvas camera={{ position: [3.5, 2, 4.5], fov: 38 }} dpr={[1, 1.5]} gl={{ antialias: true, logarithmicDepthBuffer: true }} frameloop={reducedMotion ? "demand" : "always"}>
+        <ResponsiveCamera />
         <fog attach="fog" args={[colors.fog, 6, 16]} />
-        <ambientLight intensity={theme === "light" ? 1.2 : 0.6} />
+        <ambientLight intensity={1.2} />
         <pointLight position={[5, 5, 5]} intensity={theme === "light" ? 0.8 : 1.2} color="#E4007C" />
         <pointLight position={[-5, 3, 3]} intensity={theme === "light" ? 1.0 : 0.6} color="#ffffff" />
         <pointLight position={[0, 4, 0]} intensity={theme === "light" ? 0.8 : 0.4} color="#ffffff" />

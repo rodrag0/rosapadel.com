@@ -22,7 +22,7 @@ const referralFields = [
 ] as const;
 
 export default function ContactCTA() {
-  const { copy } = useLanguage();
+  const { copy, language } = useLanguage();
   const contact = copy.contact;
   const referral = contact.referral;
   const [mode, setMode] = useState<ContactMode>("referral");
@@ -121,8 +121,13 @@ export default function ContactCTA() {
   const tabClassName = "min-h-12 min-w-0 flex-1 whitespace-normal rounded-none border-b-2 border-transparent px-2 py-3 leading-snug data-[state=active]:border-primary data-[state=active]:bg-transparent data-[state=active]:shadow-none";
 
   return (
-    <section className="py-24 md:py-32">
-      <div className="container mx-auto max-w-2xl px-6 lg:px-12">
+    <section className="studio-section studio-contact">
+      <div className="studio-container contact-layout">
+        <div className="contact-intro">
+          <h2>{{ en: "Let's talk padel.", es: "Hablemos de pádel.", de: "Sprechen wir über Padel." }[language]}</h2>
+          <p>{{ en: "Tell us about your club. We'll help you find the right ROSA setup for your courts and community.", es: "Cuéntanos sobre tu club. Te ayudamos a encontrar la configuración ROSA para tus canchas y tu comunidad.", de: "Erzähl uns von deinem Club. Gemeinsam finden wir die passende ROSA-Konfiguration für deine Courts und deine Community." }[language]}</p>
+          <a href="mailto:info@rosapadel.com" className="studio-link">info@rosapadel.com</a>
+        </div>
         <Tabs id="contact" value={mode} onValueChange={changeMode} className="scroll-mt-24">
           <TabsList aria-label={contact.modeLabel} className="mb-8 flex h-auto w-full rounded-none border-b border-border bg-transparent p-0">
             <TabsTrigger value="referral" disabled={submitting} className={tabClassName}>{referral.tab}</TabsTrigger>

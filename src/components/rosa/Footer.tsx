@@ -18,7 +18,7 @@ export default function Footer() {
 
   return (
     <footer className="border-t border-border py-12">
-      <div className="container mx-auto px-6 lg:px-12">
+      <div className="studio-container">
         <div className="grid md:grid-cols-5 gap-8">
           <div className="space-y-3 md:col-span-2">
             <img src={logo} alt="rosa padel" className="h-8" />
