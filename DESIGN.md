@@ -4,15 +4,15 @@ Proposed redesign, awaiting Rodrigo's review. This is not a rebrand or a product
 
 ## Direction
 
-A product studio for the connected padel court. The original rotating court occupies an unframed, full-width stage beneath the principal product name. The story moves from court to real match proof, hardware choice, actual software and the club conversation. Large quiet fields and fine rules replace floating card stacks.
+A product studio for the connected padel court. After Rodrigo found the first pass too bland, the homepage leads with the approved full-bleed court image beneath an oversized product name on black. The original rotating court remains as the Vision product exploration, not a substitute for product photography. Hardware alternates composition; actual software lives on a dark stage; a single solid ROSA-pink club invitation is the scroll's color peak. Generous space is balanced by meaningful contrast and stronger typographic hierarchy, not repeating quiet white sections.
 
 ## Typography
 
-Self-hosted Pretendard Variable remains the brand type. Display72/48, section48/34, subhead24/22, body18/16, secondary14. Use breakpoint steps, never viewport-scaled type. Letter spacing0. Text measure68ch, bold500-650 with700 reserved for principal headings. No mono costume or decorative uppercase kickers.
+Self-hosted Pretendard Variable remains the brand type. Display96/72/44, section60/46/36, club statement80/56/48, subhead24/22, body18/16, secondary14. Use breakpoint steps, never viewport-scaled type. Letter spacing0. Text measure68ch, bold500-650 with700 reserved for principal headings. No mono costume or decorative uppercase kickers.
 
 ## Colors
 
-Light: background#fafafa, foreground#161618, secondary#56565d, rule#dedee2. Dark: background#0b0b0d, foreground#f5f5f7, secondary#a4a4ad, rule#303035. Brand primary#cc0072; accessible foreground white. Green is availability/pre-sale only. A dark match-proof band provides contrast in either theme. Pink is an accent, not a wash across every surface.
+Light: background#fafafa, foreground#161618, secondary#56565d, rule#dedee2. Dark: background#0b0b0d, foreground#f5f5f7, secondary#a4a4ad, rule#303035. Brand primary#cc0072; accessible foreground white. Green is availability/pre-sale only. Black hero, match-proof and actual software bands provide deliberate contrast in either theme. Pink is a decisive club invitation band and selective accent, not a wash across every surface. Bright product photography stays unobscured; no gradient, glow or dimming filter.
 
 ## Layout
 

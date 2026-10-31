@@ -3,6 +3,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { useLanguage } from "./LanguageProvider";
 import { getHardwareProducts } from "@/lib/productCatalog";
 import BrandText from "./BrandText";
+import CourtExperience from "./CourtExperience";
 
 export const MATCH_PREVIEW_URL =
   "https://cloud.rosapadel.com/media/tolito-mati-expo-20261018/preview-63527cc14d19.mp4";
@@ -25,7 +26,10 @@ export function HardwareCollection() {
       </div>
       <div className="hardware-collection">
         {products.map((product, index) => (
-          <article key={product.href} className="hardware-row">
+          <article
+            key={product.href}
+            className={`hardware-row hardware-${index === 0 ? "vision" : "portable"}`}
+          >
             <div className="hardware-description">
               <div className="hardware-title">
                 <h3>
@@ -44,19 +48,23 @@ export function HardwareCollection() {
                 <ArrowUpRight size={17} aria-hidden="true" />
               </a>
             </div>
-            <a
-              href={product.href}
-              className="hardware-image"
-              aria-label={product.name}
-            >
-              <img
-                src={`/images/products/rosa-${index === 0 ? "vision-court" : "portable"}.webp`}
-                alt={product.name}
-                width={index === 0 ? 1600 : 1672}
-                height={index === 0 ? 900 : 941}
-                loading="lazy"
-              />
-            </a>
+            {index === 0 ? (
+              <CourtExperience />
+            ) : (
+              <a
+                href={product.href}
+                className="hardware-image"
+                aria-label={product.name}
+              >
+                <img
+                  src="/images/products/rosa-portable.webp"
+                  alt={product.name}
+                  width="1672"
+                  height="941"
+                  loading="lazy"
+                />
+              </a>
+            )}
           </article>
         ))}
       </div>
@@ -288,7 +296,19 @@ export function EventsShowcase({
     >
       <div className="studio-container">
         <div className="section-heading">
-          {standalone ? <h1>{{ en: "Padel tournaments & events", es: "Torneos y eventos de pádel", de: "Padel-Turniere und Events" }[language]}</h1> : <h2>{words.title}</h2>}
+          {standalone ? (
+            <h1>
+              {
+                {
+                  en: "Padel tournaments & events",
+                  es: "Torneos y eventos de pádel",
+                  de: "Padel-Turniere und Events",
+                }[language]
+              }
+            </h1>
+          ) : (
+            <h2>{words.title}</h2>
+          )}
           <p>{words.body}</p>
         </div>
         <Tabs defaultValue="tournaments" className="software-tabs">

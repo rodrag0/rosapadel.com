@@ -1,8 +1,13 @@
 import { cleanup, fireEvent, render, screen } from "@testing-library/react";
-import { afterEach, beforeEach, describe, expect, it } from "vitest";
+import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import { LanguageProvider } from "./LanguageProvider";
 import { EventsShowcase, HardwareCollection } from "./StudioSections";
 import ROICalculator from "./ROICalculator";
+import HeroSection from "./HeroSection";
+
+vi.mock("./CourtExperience", () => ({
+  default: () => <div data-testid="original-court" />,
+}));
 
 beforeEach(() => localStorage.setItem("rosa-language", "en"));
 afterEach(cleanup);
@@ -22,6 +27,26 @@ describe("ROSA studio redesign", () => {
       "In development",
     );
     expect(container.querySelectorAll(".hardware-row")).toHaveLength(2);
+    expect(screen.getByTestId("original-court")).toBeInTheDocument();
+  });
+
+  it("leads with the approved court image, product name and real match action", () => {
+    const { container } = render(
+      <LanguageProvider>
+        <HeroSection />
+      </LanguageProvider>,
+    );
+    expect(screen.getByRole("heading", { level: 1 })).toHaveTextContent(
+      "vision",
+    );
+    expect(container.querySelector(".hero-court-image")).toHaveAttribute(
+      "src",
+      "/images/products/rosa-vision-court.webp",
+    );
+    expect(
+      screen.getByRole("link", { name: "See a real match" }),
+    ).toHaveAttribute("href", "#real-match");
+    expect(screen.getByText("Pre-sale")).toBeVisible();
   });
 
   it("switches between actual software captures and the corresponding working demo links", () => {
