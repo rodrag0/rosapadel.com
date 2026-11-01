@@ -173,35 +173,32 @@ describe("automatic feature rotation", () => {
     tick();
     expect(active()).toHaveAttribute("href", "/products/vision#vision-stream");
   });
-  it("pauses on hover and grants a fresh interval on leaving", () => {
+  it("keeps its seven-second deadline while the pointer rests over the image", () => {
     const { container } = gallery();
-    vi.spyOn(
-      container.querySelector(".vision-gallery")!,
-      "matches",
-    ).mockReturnValue(true);
     tick(6000);
-    fireEvent.pointerEnter(container.querySelector(".vision-gallery")!, {
+    fireEvent.pointerEnter(container.querySelector(".vision-media-stage")!, {
       pointerType: "mouse",
     });
-    tick(30000);
-    expect(active()).toHaveAttribute("href", "/products/vision#vision-scoring");
-    fireEvent.pointerLeave(container.querySelector(".vision-gallery")!);
-    tick(6999);
+    tick(999);
     expect(active()).toHaveAttribute("href", "/products/vision#vision-scoring");
     tick(1);
     expect(active()).toHaveAttribute("href", "/products/vision#vision-stream");
   });
-  it("ignores a stale pointer-enter after the rotation button swaps its icon", () => {
+  it("does not stop or reset rotation when moving across the gallery", () => {
     const { container } = gallery();
-    vi.spyOn(
-      container.querySelector(".vision-gallery")!,
-      "matches",
-    ).mockReturnValue(false);
     fireEvent.pointerEnter(container.querySelector(".vision-gallery")!, {
       pointerType: "mouse",
     });
-    tick();
+    tick(3000);
+    fireEvent.pointerEnter(screen.getByRole("tablist"), {
+      pointerType: "mouse",
+    });
+    tick(3000);
+    fireEvent.pointerLeave(container.querySelector(".vision-gallery")!);
+    tick(1000);
     expect(active()).toHaveAttribute("href", "/products/vision#vision-stream");
+    tick();
+    expect(active()).toHaveAttribute("href", "/products/vision#vision-replay");
   });
   it("pauses for keyboard focus without moving it during rotation", () => {
     gallery();
