@@ -153,6 +153,7 @@ describe("automatic feature rotation", () => {
   });
   it("pauses on hover and grants a fresh interval on leaving", () => {
     const { container } = gallery();
+    vi.spyOn(container.querySelector(".vision-gallery")!, "matches").mockReturnValue(true);
     tick(6000);
     fireEvent.pointerEnter(container.querySelector(".vision-gallery")!, {
       pointerType: "mouse",
@@ -163,6 +164,13 @@ describe("automatic feature rotation", () => {
     tick(6999);
     expect(active()).toHaveAttribute("href", "/products/vision#vision-scoring");
     tick(1);
+    expect(active()).toHaveAttribute("href", "/products/vision#vision-stream");
+  });
+  it("ignores a stale pointer-enter after the rotation button swaps its icon", () => {
+    const { container } = gallery();
+    vi.spyOn(container.querySelector(".vision-gallery")!, "matches").mockReturnValue(false);
+    fireEvent.pointerEnter(container.querySelector(".vision-gallery")!, { pointerType: "mouse" });
+    tick();
     expect(active()).toHaveAttribute("href", "/products/vision#vision-stream");
   });
   it("pauses for keyboard focus without moving it during rotation", () => {

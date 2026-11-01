@@ -333,7 +333,8 @@ export default function VisionFeatureGallery() {
       data-rotation={rotationEnabled ? "automatic" : "paused"}
       data-rotating={rotating}
       onPointerEnter={(event) => {
-        if (event.pointerType !== "touch") setHovered(true);
+        if (event.pointerType !== "touch")
+          setHovered(event.currentTarget.matches(":hover"));
       }}
       onPointerLeave={() => setHovered(false)}
       onFocusCapture={(event) =>
