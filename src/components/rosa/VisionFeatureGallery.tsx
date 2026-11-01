@@ -242,16 +242,35 @@ export default function VisionFeatureGallery() {
   const [videoPlaying, setVideoPlaying] = useState(false);
   const [interaction, setInteraction] = useState(0);
   const mobile = useIsMobile();
+  const gallery = useRef<HTMLElement>(null);
   const list = useRef<HTMLDivElement>(null);
   const display = useRef<HTMLDivElement>(null);
   const touch = useRef<{ x: number; y: number } | null>(null);
   const index = vision.features.findIndex((feature) => feature.id === active);
   useEffect(() => setEnhanced(true), []);
   useEffect(() => {
+    const element = gallery.current;
+    if (!element) return;
+    const enter = (event: globalThis.PointerEvent) => {
+      if (event.pointerType !== "touch") setHovered(element.matches(":hover"));
+    };
+    const leave = () => setHovered(false);
+    // Track the gallery boundary, not bubbling child transitions.
+    element.addEventListener("pointerenter", enter);
+    element.addEventListener("pointerleave", leave);
+    return () => {
+      element.removeEventListener("pointerenter", enter);
+      element.removeEventListener("pointerleave", leave);
+    };
+  }, []);
+  useEffect(() => {
     if (!display.current || typeof IntersectionObserver === "undefined") return;
     const observer = new IntersectionObserver(
-      ([entry]) =>
-        setInView(entry.isIntersecting && entry.intersectionRatio >= 0.35),
+      (entries) => {
+        const entry = entries[entries.length - 1];
+        if (entry)
+          setInView(entry.isIntersecting && entry.intersectionRatio >= 0.35);
+      },
       { threshold: [0, 0.35] },
     );
     observer.observe(display.current);
@@ -329,14 +348,27 @@ export default function VisionFeatureGallery() {
   };
   return (
     <article
+      ref={gallery}
       className="hardware-row hardware-vision vision-gallery"
       data-rotation={rotationEnabled ? "automatic" : "paused"}
       data-rotating={rotating}
-      onPointerEnter={(event) => {
-        if (event.pointerType !== "touch")
-          setHovered(event.currentTarget.matches(":hover"));
-      }}
-      onPointerLeave={() => setHovered(false)}
+      data-rotation-blocked={
+        !enhanced
+          ? "initializing"
+          : !rotationEnabled
+            ? "paused"
+            : !inView
+              ? "offscreen"
+              : !documentVisible
+                ? "hidden"
+                : hovered
+                  ? "hover"
+                  : keyboardFocused
+                    ? "focus"
+                    : videoPlaying
+                      ? "video"
+                      : ""
+      }
       onFocusCapture={(event) =>
         setKeyboardFocused(event.target.matches(":focus-visible"))
       }
@@ -453,9 +485,17 @@ export default function VisionFeatureGallery() {
                   title={rotationEnabled ? words.pause : words.resume}
                 >
                   {rotationEnabled ? (
-                    <Pause size={18} aria-hidden="true" />
+                    <Pause
+                      className="pointer-events-none"
+                      size={18}
+                      aria-hidden="true"
+                    />
                   ) : (
-                    <Play size={18} aria-hidden="true" />
+                    <Play
+                      className="pointer-events-none"
+                      size={18}
+                      aria-hidden="true"
+                    />
                   )}
                 </button>
                 <button

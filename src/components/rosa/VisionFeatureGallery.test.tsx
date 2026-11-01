@@ -90,6 +90,7 @@ describe("Vision feature gallery", () => {
 
 describe("automatic feature rotation", () => {
   let visibility: (ratio: number) => void;
+  let visibilityBatch: (ratios: number[]) => void;
   const tick = (ms = 7000) =>
     act(() => {
       vi.advanceTimersByTime(ms);
@@ -105,16 +106,18 @@ describe("automatic feature rotation", () => {
       "IntersectionObserver",
       class {
         constructor(callback: IntersectionObserverCallback) {
-          visibility = (ratio) =>
+          visibilityBatch = (ratios) =>
             callback(
-              [
-                {
-                  isIntersecting: ratio > 0,
-                  intersectionRatio: ratio,
-                } as IntersectionObserverEntry,
-              ],
+              ratios.map(
+                (ratio) =>
+                  ({
+                    isIntersecting: ratio > 0,
+                    intersectionRatio: ratio,
+                  }) as IntersectionObserverEntry,
+              ),
               this as unknown as IntersectionObserver,
             );
+          visibility = (ratio) => visibilityBatch([ratio]);
         }
         observe() {
           visibility(1);
@@ -140,20 +143,42 @@ describe("automatic feature rotation", () => {
   });
   it("offers persistent pause and resume controls", () => {
     gallery();
+    expect(
+      screen
+        .getByRole("button", { name: "Pause automatic rotation" })
+        .querySelector("svg"),
+    ).toHaveClass("pointer-events-none");
     fireEvent.click(
       screen.getByRole("button", { name: "Pause automatic rotation" }),
     );
     tick(30000);
     expect(active()).toHaveAttribute("href", "/products/vision#vision-scoring");
+    expect(
+      screen
+        .getByRole("button", { name: "Resume automatic rotation" })
+        .querySelector("svg"),
+    ).toHaveClass("pointer-events-none");
     fireEvent.click(
       screen.getByRole("button", { name: "Resume automatic rotation" }),
     );
     tick();
     expect(active()).toHaveAttribute("href", "/products/vision#vision-stream");
   });
+  it("uses the latest visibility entry when scrolling batches observations", () => {
+    gallery();
+    act(() => visibility(0.2));
+    tick(30000);
+    expect(active()).toHaveAttribute("href", "/products/vision#vision-scoring");
+    act(() => visibilityBatch([0, 0.2, 1]));
+    tick();
+    expect(active()).toHaveAttribute("href", "/products/vision#vision-stream");
+  });
   it("pauses on hover and grants a fresh interval on leaving", () => {
     const { container } = gallery();
-    vi.spyOn(container.querySelector(".vision-gallery")!, "matches").mockReturnValue(true);
+    vi.spyOn(
+      container.querySelector(".vision-gallery")!,
+      "matches",
+    ).mockReturnValue(true);
     tick(6000);
     fireEvent.pointerEnter(container.querySelector(".vision-gallery")!, {
       pointerType: "mouse",
@@ -168,8 +193,13 @@ describe("automatic feature rotation", () => {
   });
   it("ignores a stale pointer-enter after the rotation button swaps its icon", () => {
     const { container } = gallery();
-    vi.spyOn(container.querySelector(".vision-gallery")!, "matches").mockReturnValue(false);
-    fireEvent.pointerEnter(container.querySelector(".vision-gallery")!, { pointerType: "mouse" });
+    vi.spyOn(
+      container.querySelector(".vision-gallery")!,
+      "matches",
+    ).mockReturnValue(false);
+    fireEvent.pointerEnter(container.querySelector(".vision-gallery")!, {
+      pointerType: "mouse",
+    });
     tick();
     expect(active()).toHaveAttribute("href", "/products/vision#vision-stream");
   });
@@ -206,7 +236,9 @@ describe("automatic feature rotation", () => {
     );
     const video = screen.getByRole("tabpanel").querySelector("video")!;
     fireEvent.play(video);
-    fireEvent.click(screen.getByRole("tab", { name: "Match recording & replay" }));
+    fireEvent.click(
+      screen.getByRole("tab", { name: "Match recording & replay" }),
+    );
     tick(30000);
     expect(active()).toHaveAttribute("href", "/products/vision#vision-replay");
     fireEvent.pause(video);
