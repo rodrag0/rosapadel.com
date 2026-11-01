@@ -50,12 +50,8 @@ function IntroWorld({ progress, theme, onReady }: SceneProps) {
     () =>
       [theme === "light" ? "#242426" : "#ededf1", "#e4007c"].map(
         (color) =>
-          new THREE.MeshPhysicalMaterial({
+          new THREE.MeshLambertMaterial({
             color,
-            metalness: 0.15,
-            roughness: 0.28,
-            clearcoat: 0.5,
-            clearcoatRoughness: 0.2,
             transparent: true,
             side: THREE.DoubleSide,
           }),

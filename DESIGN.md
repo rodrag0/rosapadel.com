@@ -12,7 +12,7 @@ Self-hosted Pretendard Variable remains the brand type. Product display68/42, se
 
 ## Colors
 
-Light: background#fafafa, foreground#161618, secondary#56565d, rule#dedee2. Dark: background#0b0b0d, foreground#f5f5f7, secondary#a4a4ad, rule#303035. Exact symbol pink#e4007c; accessible button pink#cc0072 with white foreground. Green is availability/pre-sale only. The opening uses the user's chosen theme as a quiet stage for the3D mark; match/software sections use black and the club invitation uses one solid pink band. Material bevels/light define the3D object, not glow or gradient decoration. Product photographs stay unobscured.
+Light: background#fafafa, foreground#161618, secondary#56565d, rule#dedee2. Dark: background#0b0b0d, foreground#f5f5f7, secondary#a4a4ad, rule#303035. Exact symbol pink#e4007c; accessible button pink#cc0072 with white foreground. Green is availability/pre-sale only. The opening uses the user's chosen theme as a quiet stage for the3D mark; match/software sections use black and the club invitation uses one solid pink band. Both symbol and court use matte diffuse-only Lambert materials: no specular, metal, clearcoat, environment reflections or transmission/refraction. Bevel geometry and diffuse light retain shape, not gloss. Product photographs stay unobscured.
 
 ## Layout
 

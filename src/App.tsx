@@ -12,7 +12,6 @@ import CookiePolicyPage from "./pages/CookiePolicyPage.tsx";
 import NotFound from "./pages/NotFound.tsx";
 import ProductPortable from "./pages/ProductPortable.tsx";
 import ProductVision from "./pages/ProductVision.tsx";
-import ProductCoach from "./pages/ProductCoach.tsx";
 import ForClubs from "./pages/ForClubs.tsx";
 import Investors from "./pages/Investors.tsx";
 import MatchSessionMatchi from "./pages/MatchSessionMatchi.tsx";
@@ -56,7 +55,7 @@ export const SiteRoutes = () => (
               <Route path="/products/vision" element={<ProductVision />} />
               <Route path="/products/core-led" element={<Navigate to="/products/portable" replace />} />
               <Route path="/products/core-hd" element={<Navigate to="/products/vision" replace />} />
-              <Route path="/products/coach" element={<ProductCoach />} />
+              <Route path="/products/coach" element={<Navigate to="/products/vision#analysis" replace />} />
               <Route path="/for-clubs" element={<ForClubs />} />
               <Route path="/investors" element={<Investors />} />
               <Route path="/match-session/matchi-live-score" element={<MatchSessionMatchi />} />

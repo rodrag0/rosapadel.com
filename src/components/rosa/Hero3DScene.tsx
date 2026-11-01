@@ -348,21 +348,18 @@ export function PadelCourt({ colors, rotation }: { colors: ThemeColors; rotation
   const logoTexture = useSvgTexture(rosaIconWhite);
 
   const darkMat = useMemo(
-    () => new THREE.MeshStandardMaterial({ color: colors.darker, metalness: 0.6, roughness: 0.4 }),
+    () => new THREE.MeshLambertMaterial({ color: colors.darker }),
     [colors]
   );
   const floorMat = useMemo(
-    () => new THREE.MeshStandardMaterial({ color: colors.floor, metalness: 0.5, roughness: 0.5 }),
+    () => new THREE.MeshLambertMaterial({ color: colors.floor }),
     [colors]
   );
   const glassMat = useMemo(
-    () => new THREE.MeshPhysicalMaterial({
+    () => new THREE.MeshLambertMaterial({
       color: colors.glass,
-      metalness: 0.1,
-      roughness: 0.05,
       transparent: true,
       opacity: colors.glassOpacity,
-      transmission: 0.85,
       depthWrite: false,
     }),
     [colors]
@@ -376,7 +373,7 @@ export function PadelCourt({ colors, rotation }: { colors: ThemeColors; rotation
     []
   );
   const netMat = useMemo(
-    () => new THREE.MeshStandardMaterial({ color: colors.net, metalness: 0.3, roughness: 0.7, transparent: true, opacity: 0.5, side: THREE.DoubleSide }),
+    () => new THREE.MeshLambertMaterial({ color: colors.net, transparent: true, opacity: 0.5, side: THREE.DoubleSide }),
     [colors]
   );
 
@@ -427,13 +424,10 @@ export function PadelCourt({ colors, rotation }: { colors: ThemeColors; rotation
             position={[0, wallH / 2 + floorThick / 2, side * courtL / 2]}
           >
             <boxGeometry args={[courtW, wallH, 0.04]} />
-            <meshPhysicalMaterial
+            <meshLambertMaterial
               color={new THREE.Color("#aabbcc")}
-              metalness={0.1}
-              roughness={0.05}
               transparent
               opacity={0.28}
-              transmission={0.85}
               depthWrite={false}
             />
           </mesh>
@@ -505,7 +499,7 @@ export function PadelCourt({ colors, rotation }: { colors: ThemeColors; rotation
           {/* Monitor frame */}
           <mesh>
             <boxGeometry args={[1.0, 0.55, 0.04]} />
-            <meshStandardMaterial color={colors.darker} metalness={0.7} roughness={0.3} />
+            <meshLambertMaterial color={colors.darker} />
           </mesh>
           {/* Scoreboard UI */}
           <ScoreboardScreen />
@@ -520,17 +514,17 @@ export function PadelCourt({ colors, rotation }: { colors: ThemeColors; rotation
           {/* Main body */}
           <mesh>
             <boxGeometry args={[0.3, 0.2, 0.25]} />
-            <meshStandardMaterial color={new THREE.Color("#444455")} metalness={0.5} roughness={0.4} />
+            <meshLambertMaterial color={new THREE.Color("#444455")} />
           </mesh>
           {/* Lens cone (front) */}
           <mesh position={[0, 0, 0.18]} rotation={[Math.PI / 2, 0, 0]}>
             <cylinderGeometry args={[0.04, 0.08, 0.12, 16]} />
-            <meshStandardMaterial color={new THREE.Color("#555566")} metalness={0.5} roughness={0.4} />
+            <meshLambertMaterial color={new THREE.Color("#555566")} />
           </mesh>
           {/* Lens glass */}
           <mesh position={[0, 0, 0.25]}>
             <circleGeometry args={[0.04, 16]} />
-            <meshPhysicalMaterial color={new THREE.Color("#336")} metalness={0.9} roughness={0.1} />
+            <meshLambertMaterial color={new THREE.Color("#336")} />
           </mesh>
           {/* Lens ring */}
           <mesh position={[0, 0, 0.24]} material={edgeMat} rotation={[0, 0, 0]}>
@@ -539,7 +533,7 @@ export function PadelCourt({ colors, rotation }: { colors: ThemeColors; rotation
           {/* Viewfinder (side trapezoid-like piece) */}
           <mesh position={[0.2, 0.02, 0]}>
             <boxGeometry args={[0.12, 0.22, 0.18]} />
-            <meshStandardMaterial color={new THREE.Color("#444455")} metalness={0.5} roughness={0.4} />
+            <meshLambertMaterial color={new THREE.Color("#444455")} />
           </mesh>
           {/* Viewfinder front */}
           <mesh position={[0.26, 0.02, 0.06]}>
@@ -549,7 +543,7 @@ export function PadelCourt({ colors, rotation }: { colors: ThemeColors; rotation
           {/* Top handle */}
           <mesh position={[0, 0.14, 0]}>
             <boxGeometry args={[0.18, 0.04, 0.15]} />
-            <meshStandardMaterial color={new THREE.Color("#444455")} metalness={0.5} roughness={0.4} />
+            <meshLambertMaterial color={new THREE.Color("#444455")} />
           </mesh>
           {/* Recording indicator on the rear top-right corner */}
           <RecordingIndicator />

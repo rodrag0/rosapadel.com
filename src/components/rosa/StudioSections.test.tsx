@@ -19,7 +19,7 @@ beforeEach(() => localStorage.setItem("rosa-language", "en"));
 afterEach(cleanup);
 
 describe("ROSA studio redesign", () => {
-  it("keeps vision before portable and coach separate from the two hardware products", () => {
+  it("leads with Vision including streaming, AI and coaching, without a separate Coach product", () => {
     const { container } = render(
       <LanguageProvider>
         <HardwareCollection />
@@ -29,9 +29,14 @@ describe("ROSA studio redesign", () => {
       (node) => node.textContent,
     );
     expect(names).toEqual(["rosa vision", "rosa portable"]);
-    expect(container.querySelector(".coach-line")).toHaveTextContent(
-      "In development",
-    );
+    expect(container.querySelector(".coach-line")).not.toBeInTheDocument();
+    expect(
+      container.querySelectorAll(".hardware-vision .hardware-features li"),
+    ).toHaveLength(8);
+    expect(screen.getByText("Livestream with live score")).toBeVisible();
+    expect(screen.getByText("AI match analysis")).toBeVisible();
+    expect(screen.getByText("Integrated coaching tools")).toBeVisible();
+    expect(screen.queryByText("rosa coach")).not.toBeInTheDocument();
     expect(container.querySelectorAll(".hardware-row")).toHaveLength(2);
     expect(screen.getByText(/our connected-court system/)).toBeInTheDocument();
     expect(screen.getByText(/our connected-court system/)).toHaveTextContent(

@@ -329,6 +329,34 @@ video {
   color: hsl(var(--muted-foreground));
   font-size: 14px;
 }
+.hardware-summary {
+  max-width: 58ch;
+  margin-top: 16px;
+  color: hsl(var(--muted-foreground));
+  font-size: 16px;
+  line-height: 1.65;
+}
+.vision-qualification {
+  max-width: 76ch;
+  margin-block: 28px;
+  color: hsl(var(--muted-foreground));
+  font-size: 15px;
+  line-height: 1.65;
+}
+.vision-analysis-details {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 32px;
+}
+.vision-analysis-details > p {
+  max-width: 68ch;
+  font-size: 14px;
+  line-height: 1.65;
+  color: hsl(var(--muted-foreground));
+}
+@media (max-width: 639px) {
+  .vision-analysis-details { grid-template-columns: minmax(0, 1fr); gap: 24px; }
+}
 .hardware-features li {
   min-width: 0;
   overflow-wrap: anywhere;

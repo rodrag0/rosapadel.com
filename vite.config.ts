@@ -15,8 +15,10 @@ function configureStandaloneRoutes(server: ViteDevServer | PreviewServer) {
     const url = new URL(request.url || "/", "http://localhost");
     const redirect = routing.redirects.find((entry: { source: string }) => entry.source === url.pathname.replace(/\/$/, ""));
     if (redirect) {
+      const destination = new URL(redirect.destination, "http://localhost");
+      url.searchParams.forEach((value, key) => destination.searchParams.append(key, value));
       _response.statusCode = 308;
-      _response.setHeader("Location", redirect.destination + url.search);
+      _response.setHeader("Location", destination.pathname + destination.search + destination.hash);
       _response.end();
       return;
     }

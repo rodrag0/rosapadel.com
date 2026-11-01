@@ -17,7 +17,7 @@ describe("metadata across client navigation", () => {
     await waitFor(() => expect(document.querySelector('link[rel="canonical"]')).toHaveAttribute("href", "https://www.rosapadel.com/products/vision"));
     expect(document.querySelector('meta[name="robots"]')).toHaveAttribute("content", "index, follow");
     expect(document.querySelectorAll('meta[name="robots"]')).toHaveLength(1);
-    expect(document.title).toContain("Scoring, Video and Replay");
+    expect(document.title).toContain("Livestream, Scoring and AI Analysis");
     expect(document.querySelector('meta[property="og:url"]')).toHaveAttribute("content", "https://www.rosapadel.com/products/vision");
   });
   it("removes a stale canonical for an unknown route", async () => {

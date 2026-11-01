@@ -2,10 +2,24 @@ import { siteCopy, type Language } from "./siteCopy";
 import { comparisonGuides, reviewGuidePaths, sourceCheckDate } from "./comparisonGuides";
 
 export const siteOrigin = "https://www.rosapadel.com";
-export const publicPagePaths = ["/", "/products/vision", "/products/portable", "/products/coach", "/for-clubs", "/tournament-management", "/investors", "/privacy-policy", "/cookie-policy", "/imprint"] as const;
+export const publicPagePaths = [
+  "/",
+  "/products/vision",
+  "/products/portable",
+  "/for-clubs",
+  "/tournament-management",
+  "/investors",
+  "/privacy-policy",
+  "/cookie-policy",
+  "/imprint",
+] as const;
 export const routeAliases: Record<string, string> = {
-  "/products/core-led": "/products/portable", "/products/core-hd": "/products/vision",
-  "/new-tab": "/tournament-management", "/tournamen-managment": "/tournament-management", "/tournament-managment": "/tournament-management",
+  "/products/core-led": "/products/portable",
+  "/products/core-hd": "/products/vision",
+  "/products/coach": "/products/vision",
+  "/new-tab": "/tournament-management",
+  "/tournamen-managment": "/tournament-management",
+  "/tournament-managment": "/tournament-management",
 };
 export const extraPagePaths = ["/match-session/matchi-live-score", ...reviewGuidePaths];
 export type PageMetadata = { title: string; description: string; canonical: string | null; robots: "index, follow" | "noindex, nofollow" };
@@ -15,7 +29,10 @@ export function normalizePagePath(url: string) {
   return routeAliases[pathname] ?? pathname;
 }
 
-export function getPageMetadata(url: string, language: Language = "en"): PageMetadata {
+export function getPageMetadata(
+  url: string,
+  language: Language = "en",
+): PageMetadata {
   const pathname = normalizePagePath(url);
   const guide = comparisonGuides.find(guide => guide.path === pathname);
   if (guide) return { title: `${guide.title}: ${guide.subtitle} | rosa padel`, description: guide.description, canonical: siteOrigin + pathname, robots: "noindex, nofollow" };
@@ -24,8 +41,11 @@ export function getPageMetadata(url: string, language: Language = "en"): PageMet
   const pages: Record<string, { title: string; description: string }> = {
     "/": { title: copy.meta.homeTitle, description: copy.meta.homeDescription },
     "/products/portable": { title: "rosa portable | Padel LED Scoreboard", description: "Portable LED scoring for padel with wireless touchpads and offline operation. Explore rosa portable and discuss your court setup." },
-    "/products/vision": { title: "rosa vision | Padel Scoring, Video and Replay", description: "Connect padel scoring, HD display, replay and video review with rosa vision. Explore the court workflow and discuss your club's setup." },
-    "/products/coach": { title: "rosa coach | Padel AI Analysis in Development", description: "Explore rosa coach, the AI analysis layer in development for padel. See the planned video, tactical review and player insight workflows." },
+    "/products/vision": {
+      title: "rosa vision | Padel Livestream, Scoring and AI Analysis",
+      description:
+        "Live scoring, livestreams with score overlays, match recording, replay, VAR and AI analysis with integrated coaching. Explore rosa vision for your club.",
+    },
     "/for-clubs": { title: "Padel Scoring and Connected Courts for Clubs | rosa padel", description: "Explore court scoring, video, replay and event workflows for padel clubs. Compare rosa portable and rosa vision for your venue." },
     "/investors": { title: "Investor Overview | rosa padel", description: "Learn about rosa padel's connected-court product family, hardware and software approach, and investor contact options." },
     "/privacy-policy": { title: copy.meta.privacyTitle, description: "How rosa padel handles personal data and website enquiries, with information about your privacy rights and contact options." },

@@ -1,5 +1,5 @@
 import { cleanup, render, screen } from "@testing-library/react";
-import { afterEach, describe, expect, it, vi } from "vitest";
+import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import ProductVision from "./ProductVision";
 import { LanguageProvider } from "@/components/rosa/LanguageProvider";
 
@@ -8,6 +8,7 @@ vi.mock("@/components/rosa/Footer", () => ({ default: () => null }));
 vi.mock("@/components/rosa/ContactCTA", () => ({ default: () => null }));
 
 afterEach(cleanup);
+beforeEach(() => localStorage.setItem("rosa-language", "en"));
 
 const renderVision = () =>
   render(
@@ -17,6 +18,30 @@ const renderVision = () =>
   );
 
 describe("rosa vision match sample", () => {
+  it.each(["en", "es", "de"])(
+    "includes streaming, AI and coaching inside Vision in %s",
+    (language) => {
+      localStorage.setItem("rosa-language", language);
+      const { container } = renderVision();
+      expect(container.querySelectorAll("[data-vision-feature]")).toHaveLength(
+        8,
+      );
+      expect(
+        container.querySelector('[data-vision-feature="stream"]'),
+      ).toBeVisible();
+      expect(
+        container.querySelector('[data-vision-feature="analysis"]'),
+      ).toBeVisible();
+      expect(
+        container.querySelector('[data-vision-feature="coaching"]'),
+      ).toBeVisible();
+      expect(container.querySelector("#analysis")).toBeVisible();
+      expect(
+        container.querySelector('a[href="/products/coach"]'),
+      ).not.toBeInTheDocument();
+      expect(container).not.toHaveTextContent("rosa coach");
+    },
+  );
   it("uses the retained Final Expo preview and poster without signed playback URLs", () => {
     renderVision();
     const video = screen.getByLabelText(

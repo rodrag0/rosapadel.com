@@ -122,7 +122,7 @@ export default function HeroSection() {
   const words = {
     en: {
       intro: "The connected padel court.",
-      body: "Live scoring. Replay. VAR.",
+      body: "Live scoring. Livestream. Replay. AI.",
       status: "Pre-sale",
       explore: "Explore vision",
       match: "See a real match",
@@ -131,7 +131,7 @@ export default function HeroSection() {
     },
     es: {
       intro: "La cancha de pádel conectada.",
-      body: "Marcador en vivo. Replay. VAR.",
+      body: "Marcador. Livestream. Replay. IA.",
       status: "Preventa",
       explore: "Conoce vision",
       match: "Ver un partido real",
@@ -141,7 +141,7 @@ export default function HeroSection() {
     },
     de: {
       intro: "Der vernetzte Padel-Court.",
-      body: "Live-Spielstand. Replay. VAR.",
+      body: "Live-Spielstand. Livestream. Replay. KI.",
       status: "Vorverkauf",
       explore: "vision entdecken",
       match: "Ein echtes Match ansehen",

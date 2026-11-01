@@ -1,14 +1,14 @@
 # Current system scope for website copy
 
-31October2026. Rodrigo explicitly requested coordination with ROSA CEO or MAIN cloud migration and clarified that **Vision is the main product; Portable is an alternative**. MAIN cloud migration supplied a source-grounded catalog through31October, without fresh infrastructure probes. This is a copy boundary, not a production readiness certification or commercial approval. Existing pre-sale/development labels remain; no new prices or entitlements are published.
+31October2026. Rodrigo clarified that **Vision is the main product and includes livestream with live score, AI analysis and integrated coaching; Portable is an alternative**. His latest correction supersedes the first narrow interpretation and standalone Coach positioning. MAIN cloud migration and the commercial chat in rosa CEO corroborated it, without fresh probes. Vision remains pre-sale; no new prices, subscription entitlements or readiness certification are published.
 
 ## Public descriptions and limits
 
 | System | Safe description | Boundary |
 | --- | --- | --- |
-| ROSA Vision | Main connected-court system: scoring, TV display, camera recording, replay, livestreaming and connected match experience. | Deployed pilot workflows, not universal camera/install readiness. Primary architecture is local Ethernet camera/local recorder; internet-hosted RTSP is an additional installation path with reliability work still awaiting deployment/testing. |
+| ROSA Vision | Flagship connected-court experience: scoring/TV/pads/referee access, livestream with score and sponsors, recording/replay/VAR, AI analysis and integrated coaching, player clips/reports and club branding. | Deployed pilot workflows, not universal camera/install readiness. Streaming needs connectivity/configured publishing. Analysis needs completed processing/calibration/identity/data. Primary recording architecture is local Ethernet; internet RTSP reliability work still awaits deployment/testing. |
 | ROSA Portable | Alternative portable LED scoring setup. | Do not imply Vision recording, analysis or Cloud entitlements are included. Local hardware scoring is not proof of full offline phone/Cloud continuity. |
-| ROSA Coach | Coaching/AI direction in the player experience, in development. | Current taxonomy places Padel Chess Engine in ROSA Player; generally available standalone or autonomous coaching is not established. Preserve Rodrigo's public name without implying release. |
+| Integrated AI/coaching | Within Vision: heatmaps, movement/positioning, shot-related statistics, suggested highlights and video/statistics review to improve decisions. | Not a separate Coach product. No guarantee of autonomous training plans, tactical prescriptions, AI conversations, accuracy or turnaround. Score-derived statistics/momentum are distinct from video analysis. |
 | Player experience | Review scores, recordings, match summaries, enabled statistics/heatmaps, clips and shareable reports. | Pilot capability; analysis needs suitable recording, calibration and player identification. Registered-player search/direct addition/self-removal remains an unpublished candidate. |
 | Club management | Manage clubs/courts, prepare matches, scoped referee access, branding, camera installation previews. | New per-court TV sponsor overrides, account-player additions and manager updater are unpublished candidates. |
 | Cloud | Shared sign-in across Cloud, Leagues and Tournaments with separate permissions; protected media and public sharing. | Deployed. No unlimited storage/viewers/capacity or perpetual links for every match. |
@@ -27,6 +27,8 @@ Rodrigo explicitly requested AUTOMATICAMENTE / SIN MESA DE CONTROL positioning. 
 The shared heading is "Menos mesa de control. Más tiempo en pista." with specific automation/reporting copy per tool. MAIN approved replacing old standalone Tournament/Americano/League captures with hosted Horizon official6-4, Orbit standings and Skyline venue captures. Source, role, sample-data labels and exact dimensions are documented in public/images/software/README.md. Player remains clearly demo-labelled until a suitable current public analysis capture is verified. Camera previews found in the records are simulations and are not used as production marketing evidence.
 
 ## Evidence supplied by MAIN
+
+Latest correction: MAIN response01a1947a-1c91-7bf3-a594-83ae9de7a1a8, chat01a10e61-1906-7653-9fa9-e8d986f10da3. Commercial/flyer cross-check: response01a19480-766b-7a72-9d94-ee5301728ecc in Find customer info flyers, rosa CEO project, chat01a15ab8-39b2-77d3-8942-ad58edb1d7c0. Players are primary customers/content audience; preserve livestream/live score, Live VAR, replay, AI highlights, sharing and sponsor visibility without inventing commercial promises. Inspected current Spanish flyer: MARKETING/Collateral/Flyers/ROSA Product Flyer/Spanish/rosa-padel-product-flyer-es.html. No new verified production AI-panel screenshot was supplied; existing demo label remains honest.
 
 - C:/Home/OneDrive/rosa/HOME/Rosa KB/rosa Padel LLM Wiki/wiki/product/Product Line And Subscription Architecture.md (August taxonomy baseline; hierarchy superseded by Rodrigo's31October clarification).
 - C:/Home/OneDrive/rosa/ROSA_TECH_STATUS.md (dated deployed-source history).

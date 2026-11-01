@@ -41,7 +41,7 @@ export default function Investors() {
       pillars: ["Court hardware", "Software services", "Club events"],
       descriptions: [
         "rosa portable for LED scoring. rosa vision for the connected court.",
-        "Match access, replay and review, with rosa coach as the AI layer in development.",
+        "Vision brings together livestreams with live score, recording, replay, AI analysis and integrated coaching.",
         "Tournament, Americano and league workflows, connected to the club experience.",
       ],
     },
@@ -62,7 +62,7 @@ export default function Investors() {
       ],
       descriptions: [
         "rosa portable para marcador LED. rosa vision para la cancha conectada.",
-        "Acceso a partidos, replay y revisión, con rosa coach como capa de IA en desarrollo.",
+        "Vision reúne livestream con marcador, grabación, replay, análisis con IA y coaching integrado.",
         "Torneos, Americanos y ligas, conectados con la experiencia del club.",
       ],
     },
@@ -79,7 +79,7 @@ export default function Investors() {
       pillars: ["Court-Hardware", "Software-Dienste", "Club-Events"],
       descriptions: [
         "rosa portable für den LED-Spielstand. rosa vision für den vernetzten Court.",
-        "Match-Zugang, Replay und Review sowie rosa coach als KI-Ebene in Entwicklung.",
+        "Vision verbindet Livestream mit Spielstand, Aufzeichnung, Replay, KI-Analyse und integriertes Coaching.",
         "Turnier-, Americano- und Liga-Workflows im Club-Erlebnis.",
       ],
     },

@@ -14,6 +14,10 @@ describe("public search metadata", () => {
   it("consolidates legacy product URLs into their current destination", () => {
     expect(getPageMetadata("/products/core-led").canonical).toBe(siteOrigin + "/products/portable");
     expect(getPageMetadata("/products/core-hd").canonical).toBe(siteOrigin + "/products/vision");
+    expect(getPageMetadata("/products/coach").canonical).toBe(
+      siteOrigin + "/products/vision",
+    );
+    expect(publicPagePaths).not.toContain("/products/coach");
   });
   it("keeps shared match pages private from indexing and missing pages out of the homepage canonical", () => {
     expect(getPageMetadata("/match-session/matchi-live-score").robots).toBe("noindex, nofollow");

@@ -1,11 +1,13 @@
 import {
   ArrowUpRight,
+  BrainCircuit,
   Camera,
   Monitor,
   Palette,
-  Shield,
-  Tablet,
-  Trophy,
+  Radio,
+  ScanEye,
+  TrendingUp,
+  Users,
 } from "lucide-react";
 import Navbar from "@/components/rosa/Navbar";
 import Footer from "@/components/rosa/Footer";
@@ -14,42 +16,22 @@ import ContactCTA from "@/components/rosa/ContactCTA";
 import { RealMatch } from "@/components/rosa/StudioSections";
 import { useLanguage } from "@/components/rosa/LanguageProvider";
 import BrandText from "@/components/rosa/BrandText";
+import { visionContent } from "@/lib/visionContent";
 
-const features = [
-  {
-    icon: Monitor,
-    name: "HD scoring",
-    body: "Follow points, games and sets on the court display, alongside the match information.",
-  },
-  {
-    icon: Tablet,
-    name: "Pads through the glass",
-    body: "Players update the score by touching the rosa pads through the glass. No phone is needed during play.",
-  },
-  {
-    icon: Camera,
-    name: "Replay & VAR",
-    body: "Revisit a rally or review a disputed play with video. Players or a referee make the call.",
-  },
-  {
-    icon: Shield,
-    name: "Match setup & referee control",
-    body: "Set up the match with QR or web access and give a referee control of the score when needed.",
-  },
-  {
-    icon: Trophy,
-    name: "Event management",
-    body: "Explore connected tournament, league and Americano workflows for your club.",
-  },
-  {
-    icon: Palette,
-    name: "Your club on screen",
-    body: "Bring your club identity, sponsors and event visuals to the scoring display.",
-  },
-];
+const featureIcons = {
+  scoring: Monitor,
+  stream: Radio,
+  replay: Camera,
+  var: ScanEye,
+  analysis: BrainCircuit,
+  coaching: TrendingUp,
+  players: Users,
+  club: Palette,
+};
 
 export default function ProductVision() {
   const { copy, language } = useLanguage();
+  const vision = visionContent[language];
   return (
     <main className="bg-background text-foreground">
       <Navbar />
@@ -61,8 +43,7 @@ export default function ProductVision() {
           </span>
         </div>
         <p className="product-intro">
-          <BrandText text={copy.products.items[1].description} />{" "}
-          {copy.productFamily.items[0].tagline}
+          <BrandText text={vision.intro} />
         </p>
         <div className="studio-actions">
           <a href="#contact" className="studio-button">
@@ -104,18 +85,22 @@ export default function ProductVision() {
           <p>{copy.productFamily.items[0].tagline}</p>
         </div>
         <div className="feature-rows">
-          {features.map(({ icon: Icon, name, body }) => (
-            <div key={name}>
-              <Icon size={22} aria-hidden="true" />
-              <div>
-                <h3>{name}</h3>
-                <p>
-                  <BrandText text={body} />
-                </p>
+          {vision.features.map(({ id, name, body }) => {
+            const Icon = featureIcons[id as keyof typeof featureIcons];
+            return (
+              <div key={id} data-vision-feature={id}>
+                <Icon size={22} aria-hidden="true" />
+                <div>
+                  <h3>{name}</h3>
+                  <p>
+                    <BrandText text={body} />
+                  </p>
+                </div>
               </div>
-            </div>
-          ))}
+            );
+          })}
         </div>
+        <p className="vision-qualification">{vision.competition}</p>
         <a href="/tournament-management" className="studio-link">
           {copy.nav.newTab}
           <ArrowUpRight size={16} aria-hidden="true" />
@@ -123,23 +108,22 @@ export default function ProductVision() {
       </section>
       <RealMatch id="match-preview" productPage />
       <section
+        id="analysis"
         className="studio-section studio-container"
         data-product-layer="ai"
       >
-        <div className="coach-line">
+        <div className="section-heading">
+          <h2>{vision.analysisTitle}</h2>
+          <p>{vision.analysisBody}</p>
+        </div>
+        <div className="vision-analysis-details">
           <div>
-            <h2 className="text-3xl font-semibold">
-              <BrandText text="rosa coach" />
-            </h2>
-            <p>{copy.productFamily.aiLayer.body}</p>
-          </div>
-          <div>
-            <span>{copy.productFamily.aiLayer.status}</span>
-            <a href="/products/coach" className="studio-link">
-              {copy.productFamily.aiLayer.cta}
+            <a href="/rosa-app#page=club" className="studio-link">
+              {vision.app}
               <ArrowUpRight size={16} aria-hidden="true" />
             </a>
           </div>
+          <p>{vision.analysisNote}</p>
         </div>
       </section>
       <ContactCTA />

@@ -6,11 +6,11 @@ web
 
 ## Users and purpose
 
-Club owners evaluate court technology and request a qualified demonstration. Players discover scoring/replay. Organizers explore tournament, Americano and league tools. Investors have a distinct contact flow.
+Players are primary customers and a primary content audience: compete, review disputed points, improve, watch and share rallies. Club owners/operators evaluate court technology; coaches and organizers explore player insights and competition tools. Investors have a distinct contact flow.
 
 ## Confirmed product truth
 
-rosa vision is the principal connected-court hardware product, currently pre-sale. rosa portable is the alternative portable LED scoring product, not an equally weighted flagship. rosa coach is an AI software direction in development within the player experience, not a third hardware product or generally available autonomous coach. Club/player services are scoped separately. No public price is approved. Latest hierarchy is Rodrigo's31October clarification; source-grounded system reach was corroborated with MAIN cloud migration on31October2026, see docs/SYSTEM-SCOPE-20261031.md.
+rosa vision is the principal connected-court product, currently pre-sale: live scoring, livestreams with live score/sponsors, recording, replay/VAR, AI analysis and integrated coaching in the player/club experience. rosa portable is the simpler portable LED-scoring alternative. Do not market rosa coach as a separate product or an AI add-on outside Vision. This does not invent autonomous coaching, automatic officiating or subscription entitlements. No public price is approved. Rodrigo's latest31October correction supersedes the earlier hardware-only/Coach interpretation; MAIN cloud migration and the commercial chat in rosa CEO corroborated it. See docs/SYSTEM-SCOPE-20261031.md.
 
 ## Evidence and constraints
 

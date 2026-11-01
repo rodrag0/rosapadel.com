@@ -4,6 +4,7 @@ import { useLanguage } from "./LanguageProvider";
 import { getHardwareProducts } from "@/lib/productCatalog";
 import BrandText from "./BrandText";
 import ScrollDepth from "./ScrollDepth";
+import { visionContent } from "@/lib/visionContent";
 
 export const MATCH_PREVIEW_URL =
   "https://cloud.rosapadel.com/media/tolito-mati-expo-20261018/preview-63527cc14d19.mp4";
@@ -52,6 +53,11 @@ export function HardwareCollection() {
                 <span className="product-availability">{product.status}</span>
               </div>
               <p className="hardware-tagline">{product.tagline}</p>
+              {index === 0 && (
+                <p className="hardware-summary">
+                  {visionContent[language].intro}
+                </p>
+              )}
               <ul className="hardware-features">
                 {product.features.map((feature) => (
                   <li key={feature}>{feature}</li>
@@ -86,21 +92,6 @@ export function HardwareCollection() {
             </ScrollDepth>
           </article>
         ))}
-      </div>
-      <div className="coach-line">
-        <div>
-          <h3>
-            <BrandText text="rosa coach" />
-          </h3>
-          <p>{copy.productFamily.aiLayer.body}</p>
-        </div>
-        <div>
-          <span>{copy.productFamily.aiLayer.status}</span>
-          <a className="studio-link" href="/products/coach">
-            {copy.productFamily.aiLayer.cta}
-            <ArrowUpRight size={16} aria-hidden="true" />
-          </a>
-        </div>
       </div>
     </section>
   );

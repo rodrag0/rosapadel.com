@@ -1,12 +1,12 @@
 import { siteCopy, type Language } from "./siteCopy";
 
-// Hardware stays separate from the coach software layer in every navigation surface.
+// Vision includes the intelligence layer; Portable is the scoring alternative.
 export function getHardwareProducts(language: Language) {
   return siteCopy[language].productFamily.items;
 }
 
 export function getProductLinks(language: Language) {
-  return [...getHardwareProducts(language), siteCopy[language].productFamily.aiLayer];
+  return getHardwareProducts(language);
 }
 
 export function getProductStatusClass(statusType: string) {
