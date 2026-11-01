@@ -5,8 +5,14 @@ import { EventsShowcase, HardwareCollection } from "./StudioSections";
 import ROICalculator from "./ROICalculator";
 import HeroSection from "./HeroSection";
 
-vi.mock("./CourtExperience", () => ({
-  default: () => <div data-testid="original-court" />,
+vi.mock("./ScrollDepth", () => ({
+  default: ({
+    children,
+    className,
+  }: {
+    children: React.ReactNode;
+    className?: string;
+  }) => <figure className={className}>{children}</figure>,
 }));
 
 beforeEach(() => localStorage.setItem("rosa-language", "en"));
@@ -27,10 +33,20 @@ describe("ROSA studio redesign", () => {
       "In development",
     );
     expect(container.querySelectorAll(".hardware-row")).toHaveLength(2);
-    expect(screen.getByTestId("original-court")).toBeInTheDocument();
+    expect(screen.getByText(/our connected-court system/)).toBeInTheDocument();
+    expect(screen.getByText(/our connected-court system/)).toHaveTextContent(
+      "alternative",
+    );
+    expect(
+      screen.queryByText("Automated Tournament Management"),
+    ).not.toBeInTheDocument();
+    expect(container.querySelector(".hardware-vision img")).toHaveAttribute(
+      "src",
+      "/images/products/rosa-vision-court.webp",
+    );
   });
 
-  it("leads with the approved court image, product name and real match action", () => {
+  it("retains a static product and match path when WebGL is unavailable", () => {
     const { container } = render(
       <LanguageProvider>
         <HeroSection />
@@ -39,7 +55,11 @@ describe("ROSA studio redesign", () => {
     expect(screen.getByRole("heading", { level: 1 })).toHaveTextContent(
       "vision",
     );
-    expect(container.querySelector(".hero-court-image")).toHaveAttribute(
+    expect(container.querySelector(".cinematic-intro")).toHaveAttribute(
+      "data-motion",
+      "static",
+    );
+    expect(container.querySelector(".intro-static-court")).toHaveAttribute(
       "src",
       "/images/products/rosa-vision-court.webp",
     );
@@ -70,6 +90,10 @@ describe("ROSA studio redesign", () => {
     expect(
       container.querySelector('[role="tabpanel"][data-state="active"] img'),
     ).toHaveAttribute("src", "/images/software/americanoss.webp");
+    expect(screen.getByText(/organizer records the scores/)).toBeVisible();
+    expect(
+      screen.queryByText(/control desk entering every score/),
+    ).not.toBeInTheDocument();
     fireEvent.mouseDown(screen.getByRole("tab", { name: "Leagues" }), {
       button: 0,
       ctrlKey: false,
@@ -78,6 +102,9 @@ describe("ROSA studio redesign", () => {
       "href",
       "/league-tool",
     );
+    expect(
+      screen.getByText(/provisional phone scores do not change/),
+    ).toBeVisible();
   });
 
   it("calculates user-selected court revenue without assuming a percentage uplift or a ROSA sale price", () => {

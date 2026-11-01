@@ -102,7 +102,7 @@ export const siteCopy = {
           num: "03",
           title: "Review & Improve",
           description:
-            "Review replays, heatmaps, shot analytics, and match summaries.",
+            "Review replays and match summaries, with statistics and heatmaps where enabled.",
         },
       ],
     },
@@ -399,7 +399,7 @@ export const siteCopy = {
     productFamily: {
       label: "The rosa Ecosystem",
       title: "One system. Every court.",
-      subtitle: "Two hardware products. Portable scoring or a connected court, with rosa coach as the AI layer.",
+      subtitle: "Built around rosa vision, our connected-court system. rosa portable is the alternative for portable scoring; rosa coach is an AI direction in development.",
       carouselHint: "Swipe products",
       viewProduct: "View product",
       items: [
@@ -411,7 +411,7 @@ export const siteCopy = {
           status: "Pre-sale",
           statusType: "presale",
           href: "/products/vision",
-          features: ["HD Scoring", "Pads Through the Glass", "Replay & VAR", "Automated Tournament Management"],
+          features: ["HD Scoring", "Pads Through the Glass", "Replay & VAR", "Competition Tools"],
         },
         {
           num: "02",
@@ -624,7 +624,7 @@ export const siteCopy = {
           num: "03",
           title: "Revisa y mejora",
           description:
-            "Accede a replay instantáneo, mapas de calor, analítica de golpes y resúmenes de partido. Comparte highlights con clasificacion de golpes al instante.",
+            "Revisa replay y resúmenes de partido, con estadísticas y mapas de calor cuando estén habilitados.",
         },
       ],
     },
@@ -921,7 +921,7 @@ export const siteCopy = {
     productFamily: {
       label: "El ecosistema rosa",
       title: "Un sistema. Cada pista.",
-      subtitle: "Dos productos de hardware: marcador portátil o pista conectada, con rosa coach como capa de inteligencia artificial.",
+      subtitle: "ROSA vision es nuestro sistema principal para la cancha conectada. rosa portable es la alternativa de marcador portátil; rosa coach es una dirección de IA en desarrollo.",
       carouselHint: "Desliza productos",
       viewProduct: "Ver producto",
       items: [
@@ -933,7 +933,7 @@ export const siteCopy = {
           status: "Preventa",
           statusType: "presale",
           href: "/products/vision",
-          features: ["Marcador HD", "Pads a través del cristal", "Replay y VAR", "Gestión automática de torneos"],
+          features: ["Marcador HD", "Pads a través del cristal", "Replay y VAR", "Herramientas de competición"],
         },
         {
           num: "02",
@@ -1146,7 +1146,7 @@ export const siteCopy = {
           num: "03",
           title: "Auswerten und verbessern",
           description:
-            "Greife auf Instant Replay, Heatmaps, Schlaganalysen und Match-Zusammenfassungen zu. Teile Highlights mit Schlagklassifizierung direkt.",
+            "Prüfe Replays und Match-Zusammenfassungen, mit Statistiken und Heatmaps, wenn diese aktiviert sind.",
         },
       ],
     },
@@ -1443,7 +1443,7 @@ export const siteCopy = {
     productFamily: {
       label: "Das rosa-Ökosystem",
       title: "Ein System. Jeder Court.",
-      subtitle: "Zwei Hardware-Produkte: mobiles Scoring oder der vernetzte Court. rosa coach ergänzt die KI-Ebene.",
+      subtitle: "ROSA vision ist unser Hauptsystem für den vernetzten Court. rosa portable ist die mobile Scoring-Alternative; rosa coach ist eine KI-Richtung in Entwicklung.",
       carouselHint: "Produkte wischen",
       viewProduct: "Produkt ansehen",
       items: [
@@ -1455,7 +1455,7 @@ export const siteCopy = {
           status: "Vorverkauf",
           statusType: "presale",
           href: "/products/vision",
-          features: ["HD-Scoring", "Pads durch das Glas", "Replay & VAR", "Automatisches Turniermanagement"],
+          features: ["HD-Scoring", "Pads durch das Glas", "Replay & VAR", "Wettbewerbs-Tools"],
         },
         {
           num: "02",

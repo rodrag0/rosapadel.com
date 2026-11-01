@@ -18,7 +18,7 @@ export default function SectionNavigation() {
       if (!cancelled) document.getElementById(id)?.scrollIntoView({ block: "start", behavior: "instant" });
     };
 
-    // The initial HTML has no sections; resolve deep links after React and fonts are ready.
+    // Resolve deep links after React and fonts are ready.
     const frame = requestAnimationFrame(scrollToSection);
     void document.fonts.ready.then(scrollToSection);
     window.addEventListener("load", scrollToSection, { once: true });

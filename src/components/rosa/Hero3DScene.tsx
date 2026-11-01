@@ -6,7 +6,7 @@ import rosaIconWhite from "@/assets/rosa-icon-white.png";
 
 const rosa = new THREE.Color("#E4007C");
 
-interface ThemeColors {
+export interface ThemeColors {
   floor: THREE.Color;
   darker: THREE.Color;
   fog: string;
@@ -343,7 +343,7 @@ function heatColor(v: number): [number, number, number] {
   }
 }
 
-function PadelCourt({ colors }: { colors: ThemeColors }) {
+export function PadelCourt({ colors, rotation }: { colors: ThemeColors; rotation?: number }) {
   const groupRef = useRef<THREE.Group>(null);
   const logoTexture = useSvgTexture(rosaIconWhite);
 
@@ -382,8 +382,8 @@ function PadelCourt({ colors }: { colors: ThemeColors }) {
 
   useFrame((state) => {
     if (groupRef.current) {
-      groupRef.current.rotation.y = state.clock.elapsedTime * 0.15;
-      groupRef.current.position.y = Math.sin(state.clock.elapsedTime * 0.5) * 0.08;
+      groupRef.current.rotation.y = rotation ?? state.clock.elapsedTime * 0.15;
+      groupRef.current.position.y = rotation === undefined ? Math.sin(state.clock.elapsedTime * 0.5) * 0.08 : 0;
     }
   });
 
@@ -394,7 +394,7 @@ function PadelCourt({ colors }: { colors: ThemeColors }) {
   const floorThick = 0.05;
 
   return (
-    <Float speed={0.8} rotationIntensity={0.15} floatIntensity={0.3}>
+    <Float speed={0.8} rotationIntensity={rotation === undefined ? 0.15 : 0} floatIntensity={rotation === undefined ? 0.3 : 0}>
       <group ref={groupRef}>
         {/* Floor */}
         <mesh material={floorMat} position={[0, 0, 0]}>

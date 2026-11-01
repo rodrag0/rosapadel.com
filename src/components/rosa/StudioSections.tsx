@@ -3,7 +3,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { useLanguage } from "./LanguageProvider";
 import { getHardwareProducts } from "@/lib/productCatalog";
 import BrandText from "./BrandText";
-import CourtExperience from "./CourtExperience";
+import ScrollDepth from "./ScrollDepth";
 
 export const MATCH_PREVIEW_URL =
   "https://cloud.rosapadel.com/media/tolito-mati-expo-20261018/preview-63527cc14d19.mp4";
@@ -15,14 +15,28 @@ export const MATCH_SHARE_URL =
 export function HardwareCollection() {
   const { copy, language } = useLanguage();
   const products = getHardwareProducts(language);
+  const hierarchy = {
+    en: {
+      title: "The ROSA ecosystem.",
+      body: "Built around rosa vision, our connected-court system. Choose rosa portable as the alternative for portable LED scoring.",
+    },
+    es: {
+      title: "El ecosistema ROSA.",
+      body: "ROSA vision es nuestro sistema principal para la cancha conectada. ROSA portable es la alternativa para un marcador LED portátil.",
+    },
+    de: {
+      title: "Das ROSA-Ökosystem.",
+      body: "ROSA vision ist unser Hauptsystem für den vernetzten Court. ROSA portable ist die Alternative für einen mobilen LED-Spielstand.",
+    },
+  }[language];
   return (
     <section
       id="products"
       className="studio-section studio-container scroll-mt-24"
     >
       <div className="section-heading">
-        <h2>{copy.products.title}</h2>
-        <p>{copy.products.subtitle}</p>
+        <h2>{hierarchy.title}</h2>
+        <p>{hierarchy.body}</p>
       </div>
       <div className="hardware-collection">
         {products.map((product, index) => (
@@ -48,23 +62,28 @@ export function HardwareCollection() {
                 <ArrowUpRight size={17} aria-hidden="true" />
               </a>
             </div>
-            {index === 0 ? (
-              <CourtExperience />
-            ) : (
+            <ScrollDepth
+              className="hardware-visual"
+              strength={index === 0 ? 1 : 0.6}
+            >
               <a
                 href={product.href}
                 className="hardware-image"
                 aria-label={product.name}
               >
                 <img
-                  src="/images/products/rosa-portable.webp"
+                  src={
+                    index === 0
+                      ? "/images/products/rosa-vision-court.webp"
+                      : "/images/products/rosa-portable.webp"
+                  }
                   alt={product.name}
-                  width="1672"
-                  height="941"
+                  width={index === 0 ? 1600 : 1672}
+                  height={index === 0 ? 900 : 941}
                   loading="lazy"
                 />
               </a>
-            )}
+            </ScrollDepth>
           </article>
         ))}
       </div>
@@ -214,7 +233,7 @@ export function MatchWorkflow() {
             <ArrowUpRight size={17} aria-hidden="true" />
           </a>
         </div>
-        <figure className="app-capture">
+        <ScrollDepth className="app-capture">
           <img
             src="/images/software/player.webp"
             alt={words.alt}
@@ -232,7 +251,7 @@ export function MatchWorkflow() {
               }[language]
             }
           </figcaption>
-        </figure>
+        </ScrollDepth>
       </div>
     </section>
   );
@@ -246,49 +265,49 @@ export function EventsShowcase({
   const { language } = useLanguage();
   const words = {
     en: {
-      title: "More play. Less organizing.",
-      body: "Tournaments, Americanos and leagues. Give the competition a place of its own in your club.",
+      title: "Less control desk. More court time.",
+      body: "Automate draws, schedules, rotations and standings. In tournaments and leagues, players can report their results by QR.",
       action: "Open demo",
-      demo: "ROSA demonstration",
+      demo: "ROSA Expo showcase · Sample players",
       link: "Explore events & tournaments",
       names: ["Tournaments", "Americanos", "Leagues"],
       descriptions: [
-        "Organize categories, pairs and the draw. Keep each court and round in view.",
-        "Bring players together, generate rounds and follow the standings.",
-        "Keep teams, fixtures and the league table together across the season.",
+        "Generate draws and schedules automatically. Players report by QR, without a control desk entering every score. Results require opponent confirmation, the configured deadline or organizer review.",
+        "Generate rotations and calculate individual standings automatically. The organizer records the scores and supervises the event.",
+        "Update standings and generate the next round automatically after official results are complete. Players report and confirm by QR; provisional phone scores do not change the official table.",
       ],
     },
     es: {
-      title: "Más juego. Menos organización.",
-      body: "Torneos, Americanos y ligas. Dale a la competición su propio espacio en tu club.",
+      title: "Menos mesa de control. Más tiempo en pista.",
+      body: "Automatiza cuadros, calendarios, rotaciones y clasificaciones. En torneos y ligas, los jugadores pueden reportar sus resultados por QR.",
       action: "Abrir demo",
-      demo: "Demostración ROSA",
+      demo: "ROSA Expo · Jugadores de muestra",
       link: "Conoce eventos y torneos",
       names: ["Torneos", "Americanos", "Ligas"],
       descriptions: [
-        "Organiza categorías, parejas y cuadros. Mantén a la vista cada cancha y ronda.",
-        "Reúne jugadores, genera rondas y sigue la clasificación.",
-        "Equipos, jornadas y clasificación, juntos durante toda la temporada.",
+        "Genera cuadros y calendarios automáticamente. Los jugadores reportan por QR, sin una mesa de control capturando cada marcador. Los resultados siguen la confirmación del rival, el plazo configurado o la revisión del organizador.",
+        "Genera las rotaciones y calcula la clasificación individual automáticamente. El organizador registra los resultados y supervisa el evento.",
+        "Actualiza clasificaciones y genera la siguiente ronda automáticamente al completar los resultados oficiales. Los jugadores reportan y confirman por QR; los marcadores provisionales no cambian la tabla oficial.",
       ],
     },
     de: {
-      title: "Mehr spielen. Weniger organisieren.",
-      body: "Turniere, Americanos und Ligen. Gib dem Wettbewerb einen eigenen Platz in deinem Club.",
+      title: "Weniger Verwaltung. Mehr Zeit auf dem Court.",
+      body: "Auslosungen, Spielpläne, Rotationen und Tabellen automatisieren. Bei Turnieren und Ligen können Spieler Ergebnisse per QR melden.",
       action: "Demo öffnen",
-      demo: "ROSA-Demonstration",
+      demo: "ROSA Expo · Beispielspieler",
       link: "Events und Turniere entdecken",
       names: ["Turniere", "Americanos", "Ligen"],
       descriptions: [
-        "Kategorien, Paare und Spielplan organisieren. Courts und Runden im Blick behalten.",
-        "Spieler zusammenbringen, Runden erstellen und die Tabelle verfolgen.",
-        "Teams, Spieltage und Tabelle über die Saison zusammenhalten.",
+        "Auslosungen und Spielpläne automatisch erstellen. Spieler melden per QR, ohne zentrale manuelle Erfassung jedes Ergebnisses. Gegnerbestätigung, die konfigurierte Frist oder die Organisation bestätigen Ergebnisse.",
+        "Rotationen und individuelle Tabellen automatisch berechnen. Die Organisation erfasst Ergebnisse und betreut das Event.",
+        "Tabellen und die nächste Runde nach vollständigen offiziellen Ergebnissen automatisch aktualisieren. Spieler melden und bestätigen per QR; vorläufige Spielstände ändern die offizielle Tabelle nicht.",
       ],
     },
   }[language];
   const tools = [
-    { id: "tournaments", href: "/tournament-tool" },
-    { id: "americanoss", href: "/americano-tool" },
-    { id: "leagues", href: "/league-tool" },
+    { id: "tournaments", href: "/tournament-tool", imageHeight: 679 },
+    { id: "americanoss", href: "/americano-tool", imageHeight: 712 },
+    { id: "leagues", href: "/league-tool", imageHeight: 679 },
   ];
   return (
     <section
@@ -336,18 +355,18 @@ export function EventsShowcase({
                   <ArrowUpRight size={16} aria-hidden="true" />
                 </a>
               </div>
-              <figure className="app-capture">
+              <ScrollDepth className="app-capture" strength={0.7}>
                 <img
                   src={`/images/software/${tool.id}.webp`}
                   alt={`${words.demo}: ${words.names[index]}`}
                   width="1440"
-                  height="1000"
+                  height={tool.imageHeight}
                   loading="lazy"
                 />
                 <figcaption>
                   {words.demo} · {words.names[index]}
                 </figcaption>
-              </figure>
+              </ScrollDepth>
             </TabsContent>
           ))}
         </Tabs>

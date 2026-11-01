@@ -10,7 +10,7 @@ Club owners evaluate court technology and request a qualified demonstration. Pla
 
 ## Confirmed product truth
 
-rosa vision is the principal connected-court hardware product, currently pre-sale. rosa portable is the portable LED scoring product. rosa coach is a separate AI software layer in development, not a third hardware product. Club/player services are scoped separately. No public price is approved.
+rosa vision is the principal connected-court hardware product, currently pre-sale. rosa portable is the alternative portable LED scoring product, not an equally weighted flagship. rosa coach is an AI software direction in development within the player experience, not a third hardware product or generally available autonomous coach. Club/player services are scoped separately. No public price is approved. Latest hierarchy is Rodrigo's31October clarification; source-grounded system reach was corroborated with MAIN cloud migration on31October2026, see docs/SYSTEM-SCOPE-20261031.md.
 
 ## Evidence and constraints
 
@@ -25,3 +25,5 @@ Requested31 October2026. Base3e25573 includes the unmerged SEO/comparison review
 ## Existing design brief
 
 Premium, professional and product-led, with Apple's level of restraint and finish. Retain ROSA identity. No AI-looking gradients, emoji icons, decorative glow, fake dashboard artwork or card-based page scaffolding. Use existing approved imagery and actual app captures; do not generate replacements.
+
+Rodrigo rejected both static proposals as too bland and explicitly chose an immersive logo-to-court sequence: a clean screen with the ROSA symbol; scroll-driven3D assembly into the official wordmark; then a moving camera and original connected-court model. The approved direction is Experience plus Persuade, not a quiet editorial landing page. Extend depth/motion to actual product/app media without changing system capabilities or gating normal navigation. Preserve reduced-motion, no-WebGL, no-JS and direct-contact paths.

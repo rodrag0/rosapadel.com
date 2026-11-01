@@ -19,7 +19,7 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 
-export default function Navbar() {
+export default function Navbar({ immersive = false }: { immersive?: boolean }) {
   const [open, setOpen] = useState(false);
   const [productsOpen, setProductsOpen] = useState(false);
   const menuToggle = useRef<HTMLButtonElement>(null);
@@ -32,6 +32,17 @@ export default function Navbar() {
   const icon = theme === "dark" ? rosaIconDark : rosaIconLight;
   const howItWorksHref = getSectionHref(location.pathname, "how-it-works");
   const contactHref = getSectionHref(location.pathname, "contact");
+  const [introHidden, setIntroHidden] = useState(false);
+  useEffect(() => {
+    if (!immersive || window.location.hash || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    const intro = document.querySelector(".cinematic-intro");
+    const update = () => setIntroHidden(intro?.getAttribute("data-motion") === "scroll" && window.scrollY < 48);
+    update();
+    const observer = typeof MutationObserver !== "undefined" ? new MutationObserver(update) : null;
+    if (intro) observer?.observe(intro, { attributes: true, attributeFilter: ["data-motion"] });
+    window.addEventListener("scroll", update, { passive: true });
+    return () => { observer?.disconnect(); window.removeEventListener("scroll", update); };
+  }, [immersive]);
   useEffect(() => {
     if (!open) return;
     const close = (event: KeyboardEvent) => {
@@ -44,7 +55,7 @@ export default function Navbar() {
   }, [open]);
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 studio-nav" aria-label={{ en: "Main navigation", es: "Navegación principal", de: "Hauptnavigation" }[language]}>
+    <nav data-intro-hidden={introHidden} className="fixed top-0 left-0 right-0 z-50 studio-nav" aria-label={{ en: "Main navigation", es: "Navegación principal", de: "Hauptnavigation" }[language]}>
       <div className="studio-container nav-content flex items-center justify-between">
         <a href="/">
           <img src={logo} alt="rosa padel" className="h-8 hidden sm:block" />

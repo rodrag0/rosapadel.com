@@ -14,7 +14,7 @@ import {
 export default function Index() {
   return (
     <main className="rosa-studio min-h-screen bg-background text-foreground">
-      <Navbar />
+      <Navbar immersive />
       <HeroSection />
       <HardwareCollection />
       <RealMatch />

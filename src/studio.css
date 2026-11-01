@@ -323,13 +323,16 @@ video {
 }
 .hardware-features {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
   column-gap: 24px;
   margin-block: 24px;
   color: hsl(var(--muted-foreground));
   font-size: 14px;
 }
 .hardware-features li {
+  min-width: 0;
+  overflow-wrap: anywhere;
+  hyphens: auto;
   padding-block: 12px;
   border-bottom: 1px solid hsl(var(--border));
 }
@@ -441,7 +444,7 @@ video {
 }
 .app-capture img {
   display: block;
-  aspect-ratio: 1.44;
+  aspect-ratio: auto;
   object-fit: contain;
   width: 100%;
   height: auto;
@@ -999,7 +1002,7 @@ video {
     margin-top: 10px;
   }
   .hardware-features {
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
     margin-block: 18px;
     font-size: 13px;
   }
