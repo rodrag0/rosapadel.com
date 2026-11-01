@@ -1,5 +1,12 @@
 import { useEffect, useRef, useState, type PointerEvent } from "react";
-import { ArrowLeft, ArrowRight, ArrowUpRight, Expand } from "lucide-react";
+import {
+  ArrowLeft,
+  ArrowRight,
+  ArrowUpRight,
+  Expand,
+  Pause,
+  Play,
+} from "lucide-react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { useIsMobile } from "@/hooks/use-mobile";
 import { visionContent } from "@/lib/visionContent";
@@ -8,6 +15,7 @@ import { useLanguage } from "./LanguageProvider";
 import BrandText from "./BrandText";
 
 const court = "/images/products/rosa-vision-court.webp";
+const ROTATION_DELAY = 7000;
 const media = {
   scoring: { src: court, width: 1600, height: 900, caption: "court" },
   stream: {
@@ -65,6 +73,8 @@ const galleryCopy = {
     expand: "View full image",
     previous: "Previous feature",
     next: "Next feature",
+    pause: "Pause automatic rotation",
+    resume: "Resume automatic rotation",
     short: [
       "Scoring",
       "Livestream",
@@ -90,6 +100,8 @@ const galleryCopy = {
     expand: "Ver imagen completa",
     previous: "Función anterior",
     next: "Siguiente función",
+    pause: "Pausar rotación automática",
+    resume: "Reanudar rotación automática",
     short: [
       "Marcador",
       "Livestream",
@@ -115,6 +127,8 @@ const galleryCopy = {
     expand: "Bild vollständig ansehen",
     previous: "Vorherige Funktion",
     next: "Nächste Funktion",
+    pause: "Automatischen Wechsel pausieren",
+    resume: "Automatischen Wechsel fortsetzen",
     short: [
       "Spielstand",
       "Livestream",
@@ -142,10 +156,12 @@ function FeatureMedia({
   id,
   caption,
   name,
+  onPlaybackChange,
 }: {
   id: keyof typeof media;
   caption: string;
   name: string;
+  onPlaybackChange: (playing: boolean) => void;
 }) {
   const [failed, setFailed] = useState(false);
   const { language } = useLanguage();
@@ -163,7 +179,13 @@ function FeatureMedia({
             width={selected.width}
             height={selected.height}
             aria-label={name}
-            onError={() => setFailed(true)}
+            onPlay={() => onPlaybackChange(true)}
+            onPause={() => onPlaybackChange(false)}
+            onEnded={() => onPlaybackChange(false)}
+            onError={() => {
+              setFailed(true);
+              onPlaybackChange(false);
+            }}
           >
             <source src={selected.src} type="video/mp4" />
           </video>
@@ -205,11 +227,66 @@ export default function VisionFeatureGallery() {
   const words = galleryCopy[language];
   const [active, setActive] = useState("scoring");
   const [enhanced, setEnhanced] = useState(false);
+  const [rotationEnabled, setRotationEnabled] = useState(
+    () =>
+      typeof window !== "undefined" &&
+      !window.matchMedia("(prefers-reduced-motion: reduce)").matches,
+  );
+  const [inView, setInView] = useState(false);
+  const [documentVisible, setDocumentVisible] = useState(
+    () =>
+      typeof document === "undefined" || document.visibilityState !== "hidden",
+  );
+  const [hovered, setHovered] = useState(false);
+  const [keyboardFocused, setKeyboardFocused] = useState(false);
+  const [videoPlaying, setVideoPlaying] = useState(false);
+  const [interaction, setInteraction] = useState(0);
   const mobile = useIsMobile();
   const list = useRef<HTMLDivElement>(null);
+  const display = useRef<HTMLDivElement>(null);
   const touch = useRef<{ x: number; y: number } | null>(null);
   const index = vision.features.findIndex((feature) => feature.id === active);
   useEffect(() => setEnhanced(true), []);
+  useEffect(() => {
+    if (!display.current || typeof IntersectionObserver === "undefined") return;
+    const observer = new IntersectionObserver(
+      ([entry]) =>
+        setInView(entry.isIntersecting && entry.intersectionRatio >= 0.35),
+      { threshold: [0, 0.35] },
+    );
+    observer.observe(display.current);
+    return () => observer.disconnect();
+  }, []);
+  useEffect(() => {
+    const update = () =>
+      setDocumentVisible(document.visibilityState !== "hidden");
+    document.addEventListener("visibilitychange", update);
+    const preference = window.matchMedia("(prefers-reduced-motion: reduce)");
+    const reduce = () => {
+      if (preference.matches) setRotationEnabled(false);
+    };
+    preference.addEventListener("change", reduce);
+    return () => {
+      document.removeEventListener("visibilitychange", update);
+      preference.removeEventListener("change", reduce);
+    };
+  }, []);
+  const rotating =
+    enhanced &&
+    rotationEnabled &&
+    inView &&
+    documentVisible &&
+    !hovered &&
+    !keyboardFocused &&
+    !videoPlaying;
+  useEffect(() => {
+    if (!rotating) return;
+    const timer = window.setTimeout(
+      () => setActive(vision.features[(index + 1) % vision.features.length].id),
+      ROTATION_DELAY,
+    );
+    return () => window.clearTimeout(timer);
+  }, [rotating, index, vision.features, interaction]);
   useEffect(() => {
     if (!mobile || !list.current) return;
     const tab = list.current.querySelector<HTMLElement>(
@@ -223,8 +300,13 @@ export default function VisionFeatureGallery() {
           : "smooth",
       });
   }, [active, mobile]);
+  const select = (id: string) => {
+    setActive(id);
+    if (id !== active) setVideoPlaying(false);
+    setInteraction((value) => value + 1);
+  };
   const move = (direction: number) =>
-    setActive(
+    select(
       vision.features[
         (index + direction + vision.features.length) % vision.features.length
       ].id,
@@ -246,7 +328,22 @@ export default function VisionFeatureGallery() {
       move(x < 0 ? 1 : -1);
   };
   return (
-    <article className="hardware-row hardware-vision vision-gallery">
+    <article
+      className="hardware-row hardware-vision vision-gallery"
+      data-rotation={rotationEnabled ? "automatic" : "paused"}
+      data-rotating={rotating}
+      onPointerEnter={(event) => {
+        if (event.pointerType !== "touch") setHovered(true);
+      }}
+      onPointerLeave={() => setHovered(false)}
+      onFocusCapture={(event) =>
+        setKeyboardFocused(event.target.matches(":focus-visible"))
+      }
+      onBlurCapture={(event) => {
+        if (!event.currentTarget.contains(event.relatedTarget))
+          setKeyboardFocused(false);
+      }}
+    >
       <header className="vision-gallery-heading">
         <div>
           <div className="hardware-title">
@@ -261,7 +358,7 @@ export default function VisionFeatureGallery() {
       </header>
       <Tabs
         value={active}
-        onValueChange={setActive}
+        onValueChange={select}
         orientation={mobile ? "horizontal" : "vertical"}
         className="vision-gallery-layout"
       >
@@ -290,7 +387,7 @@ export default function VisionFeatureGallery() {
                       event.button === 0
                     ) {
                       event.preventDefault();
-                      setActive(feature.id);
+                      select(feature.id);
                     }
                   }}
                 >
@@ -305,6 +402,7 @@ export default function VisionFeatureGallery() {
           </TabsList>
         </div>
         <div
+          ref={display}
           className="vision-feature-display"
           onPointerDown={startTouch}
           onPointerUp={finishTouch}
@@ -327,6 +425,7 @@ export default function VisionFeatureGallery() {
                   id={feature.id as keyof typeof media}
                   name={feature.name}
                   caption={caption}
+                  onPlaybackChange={setVideoPlaying}
                 />
                 <div className="vision-feature-copy">
                   <h4>{feature.name}</h4>
@@ -337,11 +436,27 @@ export default function VisionFeatureGallery() {
           })}
           {enhanced && (
             <div className="vision-gallery-controls">
-              <span aria-live="polite" aria-atomic="true">
+              <span aria-live={rotating ? "off" : "polite"} aria-atomic="true">
                 {String(index + 1).padStart(2, "0")}{" "}
                 <span aria-hidden="true">/</span> <span>08</span>
               </span>
               <div>
+                <button
+                  type="button"
+                  onClick={() => {
+                    setRotationEnabled((value) => !value);
+                    setKeyboardFocused(false);
+                  }}
+                  aria-pressed={!rotationEnabled}
+                  aria-label={rotationEnabled ? words.pause : words.resume}
+                  title={rotationEnabled ? words.pause : words.resume}
+                >
+                  {rotationEnabled ? (
+                    <Pause size={18} aria-hidden="true" />
+                  ) : (
+                    <Play size={18} aria-hidden="true" />
+                  )}
+                </button>
                 <button
                   type="button"
                   onClick={() => move(-1)}

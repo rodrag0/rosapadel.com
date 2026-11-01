@@ -1,5 +1,11 @@
-import { cleanup, fireEvent, render, screen } from "@testing-library/react";
-import { afterEach, beforeEach, describe, expect, it } from "vitest";
+import {
+  act,
+  cleanup,
+  fireEvent,
+  render,
+  screen,
+} from "@testing-library/react";
+import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import { LanguageProvider } from "./LanguageProvider";
 import VisionFeatureGallery from "./VisionFeatureGallery";
 
@@ -80,4 +86,149 @@ describe("Vision feature gallery", () => {
       expect(screen.getByRole("tabpanel")).toBeVisible();
     },
   );
+});
+
+describe("automatic feature rotation", () => {
+  let visibility: (ratio: number) => void;
+  const tick = (ms = 7000) =>
+    act(() => {
+      vi.advanceTimersByTime(ms);
+    });
+  const active = () =>
+    screen
+      .getAllByRole("tab")
+      .find((tab) => tab.getAttribute("aria-selected") === "true");
+  beforeEach(() => {
+    vi.useFakeTimers();
+    vi.spyOn(document, "visibilityState", "get").mockReturnValue("visible");
+    vi.stubGlobal(
+      "IntersectionObserver",
+      class {
+        constructor(callback: IntersectionObserverCallback) {
+          visibility = (ratio) =>
+            callback(
+              [
+                {
+                  isIntersecting: ratio > 0,
+                  intersectionRatio: ratio,
+                } as IntersectionObserverEntry,
+              ],
+              this as unknown as IntersectionObserver,
+            );
+        }
+        observe() {
+          visibility(1);
+        }
+        disconnect() {}
+      },
+    );
+  });
+  afterEach(() => {
+    vi.useRealTimers();
+    vi.restoreAllMocks();
+    vi.unstubAllGlobals();
+  });
+  it("advances every seven seconds and wraps through all eight features", () => {
+    gallery();
+    expect(active()).toHaveAttribute("href", "/products/vision#vision-scoring");
+    tick(6999);
+    expect(active()).toHaveAttribute("href", "/products/vision#vision-scoring");
+    tick(1);
+    expect(active()).toHaveAttribute("href", "/products/vision#vision-stream");
+    for (let index = 0; index < 7; index++) tick();
+    expect(active()).toHaveAttribute("href", "/products/vision#vision-scoring");
+  });
+  it("offers persistent pause and resume controls", () => {
+    gallery();
+    fireEvent.click(
+      screen.getByRole("button", { name: "Pause automatic rotation" }),
+    );
+    tick(30000);
+    expect(active()).toHaveAttribute("href", "/products/vision#vision-scoring");
+    fireEvent.click(
+      screen.getByRole("button", { name: "Resume automatic rotation" }),
+    );
+    tick();
+    expect(active()).toHaveAttribute("href", "/products/vision#vision-stream");
+  });
+  it("pauses on hover and grants a fresh interval on leaving", () => {
+    const { container } = gallery();
+    tick(6000);
+    fireEvent.pointerEnter(container.querySelector(".vision-gallery")!, {
+      pointerType: "mouse",
+    });
+    tick(30000);
+    expect(active()).toHaveAttribute("href", "/products/vision#vision-scoring");
+    fireEvent.pointerLeave(container.querySelector(".vision-gallery")!);
+    tick(6999);
+    expect(active()).toHaveAttribute("href", "/products/vision#vision-scoring");
+    tick(1);
+    expect(active()).toHaveAttribute("href", "/products/vision#vision-stream");
+  });
+  it("pauses for keyboard focus without moving it during rotation", () => {
+    gallery();
+    const tab = screen.getAllByRole("tab")[0];
+    act(() => tab.focus());
+    tick(30000);
+    expect(active()).toBe(tab);
+    expect(tab).toHaveFocus();
+    fireEvent.blur(tab, { relatedTarget: document.body });
+    tick();
+    expect(active()).toHaveAttribute("href", "/products/vision#vision-stream");
+  });
+  it("stops offscreen or hidden and resumes without catching up", () => {
+    gallery();
+    act(() => visibility(0));
+    tick(30000);
+    expect(active()).toHaveAttribute("href", "/products/vision#vision-scoring");
+    act(() => visibility(1));
+    vi.spyOn(document, "visibilityState", "get").mockReturnValue("hidden");
+    fireEvent(document, new Event("visibilitychange"));
+    tick(30000);
+    expect(active()).toHaveAttribute("href", "/products/vision#vision-scoring");
+    vi.spyOn(document, "visibilityState", "get").mockReturnValue("visible");
+    fireEvent(document, new Event("visibilitychange"));
+    tick();
+    expect(active()).toHaveAttribute("href", "/products/vision#vision-stream");
+  });
+  it("does not advance while the replay is playing", () => {
+    gallery();
+    fireEvent.click(
+      screen.getByRole("tab", { name: "Match recording & replay" }),
+    );
+    const video = screen.getByRole("tabpanel").querySelector("video")!;
+    fireEvent.play(video);
+    fireEvent.click(screen.getByRole("tab", { name: "Match recording & replay" }));
+    tick(30000);
+    expect(active()).toHaveAttribute("href", "/products/vision#vision-replay");
+    fireEvent.pause(video);
+    tick();
+    expect(active()).toHaveAttribute("href", "/products/vision#vision-var");
+  });
+  it("resets the interval after manual selection, even for the same feature", () => {
+    gallery();
+    tick(6000);
+    fireEvent.click(
+      screen.getByRole("tab", { name: "Live scoring & court controls" }),
+    );
+    tick(6999);
+    expect(active()).toHaveAttribute("href", "/products/vision#vision-scoring");
+    tick(1);
+    expect(active()).toHaveAttribute("href", "/products/vision#vision-stream");
+  });
+  it("starts paused for reduced motion but permits explicit opt-in", () => {
+    const original = window.matchMedia;
+    vi.spyOn(window, "matchMedia").mockImplementation((query) => ({
+      ...original(query),
+      matches: query.includes("prefers-reduced-motion"),
+    }));
+    gallery();
+    tick(30000);
+    expect(active()).toHaveAttribute("href", "/products/vision#vision-scoring");
+    fireEvent.click(
+      screen.getByRole("button", { name: "Resume automatic rotation" }),
+    );
+    tick();
+    expect(active()).toHaveAttribute("href", "/products/vision#vision-stream");
+  });
 });
