@@ -88,7 +88,7 @@ export default function ProductVision() {
           {vision.features.map(({ id, name, body }) => {
             const Icon = featureIcons[id as keyof typeof featureIcons];
             return (
-              <div key={id} data-vision-feature={id}>
+              <div key={id} id={`vision-${id}`} className="scroll-mt-24" data-vision-feature={id}>
                 <Icon size={22} aria-hidden="true" />
                 <div>
                   <h3>{name}</h3>

@@ -4,14 +4,17 @@ import { useLanguage } from "./LanguageProvider";
 import { getHardwareProducts } from "@/lib/productCatalog";
 import BrandText from "./BrandText";
 import ScrollDepth from "./ScrollDepth";
-import { visionContent } from "@/lib/visionContent";
-
-export const MATCH_PREVIEW_URL =
-  "https://cloud.rosapadel.com/media/tolito-mati-expo-20261018/preview-63527cc14d19.mp4";
-export const MATCH_POSTER_URL =
-  "https://cloud.rosapadel.com/media/tolito-mati-expo-20261018/poster-4e7582d7a08e.webp";
-export const MATCH_SHARE_URL =
-  "https://cloud.rosapadel.com/watch?grant=f4cab714-f796-4a31-9e41-7dcd05a5e384";
+import VisionFeatureGallery from "./VisionFeatureGallery";
+import {
+  MATCH_PREVIEW_URL,
+  MATCH_POSTER_URL,
+  MATCH_SHARE_URL,
+} from "@/lib/matchMedia";
+export {
+  MATCH_PREVIEW_URL,
+  MATCH_POSTER_URL,
+  MATCH_SHARE_URL,
+} from "@/lib/matchMedia";
 
 export function HardwareCollection() {
   const { copy, language } = useLanguage();
@@ -40,58 +43,57 @@ export function HardwareCollection() {
         <p>{hierarchy.body}</p>
       </div>
       <div className="hardware-collection">
-        {products.map((product, index) => (
-          <article
-            key={product.href}
-            className={`hardware-row hardware-${index === 0 ? "vision" : "portable"}`}
-          >
-            <div className="hardware-description">
-              <div className="hardware-title">
-                <h3>
-                  <BrandText text={product.name} />
-                </h3>
-                <span className="product-availability">{product.status}</span>
-              </div>
-              <p className="hardware-tagline">{product.tagline}</p>
-              {index === 0 && (
-                <p className="hardware-summary">
-                  {visionContent[language].intro}
-                </p>
-              )}
-              <ul className="hardware-features">
-                {product.features.map((feature) => (
-                  <li key={feature}>{feature}</li>
-                ))}
-              </ul>
-              <a href={product.href} className="studio-link">
-                {copy.productFamily.viewProduct}
-                <ArrowUpRight size={17} aria-hidden="true" />
-              </a>
-            </div>
-            <ScrollDepth
-              className="hardware-visual"
-              strength={index === 0 ? 1 : 0.6}
+        {products.map((product, index) =>
+          index === 0 ? (
+            <VisionFeatureGallery key={product.href} />
+          ) : (
+            <article
+              key={product.href}
+              className={`hardware-row hardware-${index === 0 ? "vision" : "portable"}`}
             >
-              <a
-                href={product.href}
-                className="hardware-image"
-                aria-label={product.name}
+              <div className="hardware-description">
+                <div className="hardware-title">
+                  <h3>
+                    <BrandText text={product.name} />
+                  </h3>
+                  <span className="product-availability">{product.status}</span>
+                </div>
+                <p className="hardware-tagline">{product.tagline}</p>
+                <ul className="hardware-features">
+                  {product.features.map((feature) => (
+                    <li key={feature}>{feature}</li>
+                  ))}
+                </ul>
+                <a href={product.href} className="studio-link">
+                  {copy.productFamily.viewProduct}
+                  <ArrowUpRight size={17} aria-hidden="true" />
+                </a>
+              </div>
+              <ScrollDepth
+                className="hardware-visual"
+                strength={index === 0 ? 1 : 0.6}
               >
-                <img
-                  src={
-                    index === 0
-                      ? "/images/products/rosa-vision-court.webp"
-                      : "/images/products/rosa-portable.webp"
-                  }
-                  alt={product.name}
-                  width={index === 0 ? 1600 : 1672}
-                  height={index === 0 ? 900 : 941}
-                  loading="lazy"
-                />
-              </a>
-            </ScrollDepth>
-          </article>
-        ))}
+                <a
+                  href={product.href}
+                  className="hardware-image"
+                  aria-label={product.name}
+                >
+                  <img
+                    src={
+                      index === 0
+                        ? "/images/products/rosa-vision-court.webp"
+                        : "/images/products/rosa-portable.webp"
+                    }
+                    alt={product.name}
+                    width={index === 0 ? 1600 : 1672}
+                    height={index === 0 ? 900 : 941}
+                    loading="lazy"
+                  />
+                </a>
+              </ScrollDepth>
+            </article>
+          ),
+        )}
       </div>
     </section>
   );

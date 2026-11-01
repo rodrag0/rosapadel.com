@@ -31,11 +31,17 @@ describe("ROSA studio redesign", () => {
     expect(names).toEqual(["rosa vision", "rosa portable"]);
     expect(container.querySelector(".coach-line")).not.toBeInTheDocument();
     expect(
-      container.querySelectorAll(".hardware-vision .hardware-features li"),
+      container.querySelectorAll('.hardware-vision [role="tab"]'),
     ).toHaveLength(8);
-    expect(screen.getByText("Livestream with live score")).toBeVisible();
-    expect(screen.getByText("AI match analysis")).toBeVisible();
-    expect(screen.getByText("Integrated coaching tools")).toBeVisible();
+    expect(
+      screen.getByRole("tab", { name: "Livestream with live score" }),
+    ).toBeVisible();
+    expect(
+      screen.getByRole("tab", { name: "AI match analysis" }),
+    ).toBeVisible();
+    expect(
+      screen.getByRole("tab", { name: "Integrated coaching tools" }),
+    ).toBeVisible();
     expect(screen.queryByText("rosa coach")).not.toBeInTheDocument();
     expect(container.querySelectorAll(".hardware-row")).toHaveLength(2);
     expect(screen.getByText(/our connected-court system/)).toBeInTheDocument();
