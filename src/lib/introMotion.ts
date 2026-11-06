@@ -1,3 +1,21 @@
+export const INTRO_SEQUENCE_SECONDS = 4;
+
+export function advanceIntroProgress(
+  current: number,
+  target: number,
+  elapsedMs: number,
+) {
+  const from = Number.isFinite(current) ? Math.min(1, Math.max(0, current)) : 0;
+  const to = Number.isFinite(target) ? Math.min(1, Math.max(0, target)) : from;
+  // A stalled/background frame must not fast-forward the sequence on return.
+  const elapsed = Number.isFinite(elapsedMs)
+    ? Math.min(64, Math.max(0, elapsedMs))
+    : 0;
+  const step = elapsed / (INTRO_SEQUENCE_SECONDS * 1000);
+  const distance = to - from;
+  return Math.abs(distance) <= step ? to : from + Math.sign(distance) * step;
+}
+
 export function transitionAt(start: number, end: number, progress: number) {
   const value = Math.min(1, Math.max(0, (progress - start) / (end - start)));
   return value * value * (3 - 2 * value);
