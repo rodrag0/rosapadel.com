@@ -19,6 +19,7 @@ import { ArrowDown, ArrowUpRight, Pause, Play } from "lucide-react";
 import { useLanguage } from "./LanguageProvider";
 import { useTheme } from "./ThemeProvider";
 import { getIntroFrame } from "@/lib/introMotion";
+import { useIntroProgress } from "@/hooks/useIntroProgress";
 import logoDark from "@/assets/rosa-logo-dark.png";
 import logoLight from "@/assets/rosa-logo-light.png";
 import iconDark from "@/assets/rosa-icon-dark.svg";
@@ -89,25 +90,33 @@ export default function HeroSection() {
     target,
     offset: ["start start", "end end"],
   });
-  const wordmarkOpacity = useTransform(
+  const progress = useIntroProgress(
     scrollYProgress,
+    animated && sceneReady && inView && documentVisible && !paused,
+  );
+  const wordmarkOpacity = useTransform(
+    progress,
     (value) => getIntroFrame(value).wordmarkOpacity,
   );
   const wordmarkScale = useTransform(
-    scrollYProgress,
+    progress,
     (value) => getIntroFrame(value).wordmarkScale,
   );
   const wordmarkY = useTransform(
-    scrollYProgress,
+    progress,
     (value) => getIntroFrame(value).wordmarkY,
   );
   const copyOpacity = useTransform(
-    scrollYProgress,
+    progress,
     (value) => getIntroFrame(value).copyOpacity,
   );
   const copyY = useTransform(copyOpacity, [0, 1], [24, 0]);
   const [phase, setPhase] = useState("symbol");
   useMotionValueEvent(scrollYProgress, "change", (value) => {
+    if (target.current)
+      target.current.dataset.scrollProgress = value.toFixed(3);
+  });
+  useMotionValueEvent(progress, "change", (value) => {
     if (target.current) target.current.dataset.progress = value.toFixed(3);
     setPhase(value < 0.3 ? "symbol" : value < 0.61 ? "wordmark" : "court");
   });
@@ -165,7 +174,7 @@ export default function HeroSection() {
             <SceneBoundary onFail={fail}>
               <Suspense fallback={null}>
                 <IntroScene
-                  progress={scrollYProgress}
+                  progress={progress}
                   theme={theme}
                   onReady={ready}
                   active={inView && documentVisible}
