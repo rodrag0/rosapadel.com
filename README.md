@@ -25,6 +25,14 @@ npm test
 
 `npm run preview` serves a local production build. Vitest covers referral/demo submissions and investor inquiries with mocked requests. A passing suite does not verify live email delivery, page layouts, translations or the 3D scene; check those separately in the browser.
 
+### Search foundations
+
+`npm run build` builds the client, a temporary server renderer in `dist-ssr`, and pre-rendered HTML for the existing marketing routes. It renders the same React components as the browser. Content and per-page metadata are available without JavaScript; the normal interactive app mounts afterwards with stored language/theme preferences. The 3D canvas remains client-only. `npm run check:seo` validates the generated HTML and metadata after a build.
+
+Route metadata lives in `src/lib/seo.ts` and updates after browser navigation through `PageMetadata`. Public pages self-canonicalize. The recorded-match showcase remains `noindex, nofollow`; missing pages return 404 and do not canonicalize to home. Vercel serves the generated `404.html` through its native static 404 behavior, without a wildcard SPA rewrite. Explicit rewrites preserve standalone tools, and permanent redirects retain old product/tournament links and query parameters. Local `npm run preview` mirrors these route/status behaviors. `npm run dev` retains Vite's development fallback.
+
+Apex-domain DNS/certificate coverage is a separate hosting configuration; website code cannot correct an invalid certificate before TLS establishes the request.
+
 At this handoff, lint has three existing errors in `src/components/ui/command.tsx`, `src/components/ui/textarea.tsx`, and `tailwind.config.ts`. Do not assume a new change caused those errors; still check for any additional lint findings.
 
 ## Where to change things

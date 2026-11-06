@@ -250,7 +250,7 @@ export default function PlayerExperience() {
               <div className="rounded-xl border border-primary/20 bg-primary/5 p-4 space-y-2">
                 <p className="text-xs text-muted-foreground">{copy.playerExperience.demoCtaHint}</p>
                 <Button asChild size="sm" className="font-mono">
-                  <a href={copy.productFamily.aiLayer.href}>
+                  <a href="/products/vision#analysis">
                     <BrandText text={copy.playerExperience.demoCtaLabel} />
                     <ArrowUpRight className="h-4 w-4" />
                   </a>

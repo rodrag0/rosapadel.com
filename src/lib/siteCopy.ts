@@ -1,4 +1,5 @@
 // Keep keys in this shared copy map aligned across all three languages; detail pages also contain local copy.
+import { visionContent } from "./visionContent";
 export type Language = "en" | "es" | "de";
 
 export const languageOptions: { code: Language; label: string }[] = [
@@ -41,6 +42,7 @@ export const siteCopy = {
       secondaryCta: "See Products",
       badges: ["Live Scoring", "Instant Replay", "Match Analytics"],
       origin: { technology: "German technology.", heart: "Mexican heart." },
+      sceneAlt: "rosa vision connected padel court",
     },
     problemSolution: {
       gapLabel: "The Gap",
@@ -60,7 +62,8 @@ export const siteCopy = {
     products: {
       label: "Modular Products",
       title: "Two products. One ecosystem.",
-      subtitle: "Choose rosa portable for LED scoring or rosa vision for the connected court. rosa coach is the AI software layer.",
+      subtitle:
+        "rosa vision connects scoring, livestreaming, replay and AI analysis, with coaching built in. rosa portable is the LED-scoring alternative.",
       popular: "Popular",
       items: [
         {
@@ -74,10 +77,9 @@ export const siteCopy = {
           tier: "Connected court",
           name: "rosa vision",
           status: "Pre-sale",
-          description:
-            "HD scoring, pads and video in one connected court system.",
-          features: ["HD Scoring", "Pads Through the Glass", "Replay & VAR", "Tournament Management"],
-          note: "rosa coach adds the AI layer to the match experience.",
+          description: visionContent.en.intro,
+          features: visionContent.en.features.map((feature) => feature.name),
+          note: "AI analysis and coaching are part of rosa vision.",
         },
       ],
     },
@@ -101,7 +103,7 @@ export const siteCopy = {
           num: "03",
           title: "Review & Improve",
           description:
-            "Review replays, heatmaps, shot analytics, and match summaries.",
+            "Review replays and match summaries, with statistics and heatmaps where enabled.",
         },
       ],
     },
@@ -111,10 +113,9 @@ export const siteCopy = {
       accent: "rosa",
       titleSuffix: " captures it.",
       status: "Match experience + AI layer",
-      demoCtaLabel: "Explore rosa coach",
+      demoCtaLabel: "Explore Vision analysis",
       demoCtaHint: "Discover the AI layer for shot analysis and tactical insights.",
-      body:
-        "rosa vision connects scoring, replay and review. rosa coach adds the AI layer for deeper match analysis.",
+      body: "rosa vision connects scoring, livestreams, replay, AI analysis and integrated coaching in one match experience.",
       features: [
         { label: "Instant Replay", desc: "Review key points from the match" },
         { label: "Match Flow", desc: "Review momentum and key swings" },
@@ -398,7 +399,8 @@ export const siteCopy = {
     productFamily: {
       label: "The rosa Ecosystem",
       title: "One system. Every court.",
-      subtitle: "Two hardware products. Portable scoring or a connected court, with rosa coach as the AI layer.",
+      subtitle:
+        "Built around rosa vision: live scoring, livestreams, replay, AI analysis and integrated coaching. rosa portable is the portable-scoring alternative.",
       carouselHint: "Swipe products",
       viewProduct: "View product",
       items: [
@@ -406,11 +408,11 @@ export const siteCopy = {
           num: "01",
           tier: "Connected court",
           name: "rosa vision",
-          tagline: "Score. Replay. Connect.",
+          tagline: visionContent.en.tagline,
           status: "Pre-sale",
           statusType: "presale",
           href: "/products/vision",
-          features: ["HD Scoring", "Pads Through the Glass", "Replay & VAR", "Automated Tournament Management"],
+          features: visionContent.en.features.map((feature) => feature.name),
         },
         {
           num: "02",
@@ -423,15 +425,6 @@ export const siteCopy = {
           features: ["LED Scoreboard", "Touchpad Control", "Offline Mode", "Plug & Play"],
         },
       ],
-      aiLayer: {
-        name: "rosa coach",
-        tier: "AI layer",
-        body: "The AI layer for rosa vision: shot analysis, tactical insights and progress tracking, built on your match footage.",
-        status: "In development",
-        statusType: "coming",
-        href: "/products/coach",
-        cta: "Explore rosa coach",
-      },
     },
     audiencePortals: {
       label: "Built for your game",
@@ -562,6 +555,7 @@ export const siteCopy = {
       secondaryCta: "Ver productos",
       badges: ["Marcador en vivo", "Repetición instantánea", "Analítica de partido"],
       origin: { technology: "Tecnología alemana.", heart: "Corazón mexicano." },
+      sceneAlt: "Pista de pádel conectada con rosa vision",
     },
     problemSolution: {
       gapLabel: "La brecha",
@@ -581,7 +575,8 @@ export const siteCopy = {
     products: {
       label: "Productos modulares",
       title: "Dos productos. Un ecosistema.",
-      subtitle: "rosa portable para el marcador LED y rosa vision para la pista conectada. rosa coach es la capa de software con IA.",
+      subtitle:
+        "rosa vision conecta marcador, livestream, replay y análisis con IA, con coaching integrado. rosa portable es la alternativa de marcador LED.",
       popular: "Popular",
       items: [
         {
@@ -595,10 +590,9 @@ export const siteCopy = {
           tier: "Pista conectada",
           name: "rosa vision",
           status: "Preventa",
-          description:
-            "Marcador HD, pads y vídeo en un mismo sistema de pista conectada.",
-          features: ["Marcador HD", "Pads a través del cristal", "Replay y VAR", "Gestión de torneos"],
-          note: "rosa coach añade la capa de inteligencia artificial al partido.",
+          description: visionContent.es.intro,
+          features: visionContent.es.features.map((feature) => feature.name),
+          note: "El análisis con IA y el coaching forman parte de rosa vision.",
         },
       ],
     },
@@ -622,7 +616,7 @@ export const siteCopy = {
           num: "03",
           title: "Revisa y mejora",
           description:
-            "Accede a replay instantáneo, mapas de calor, analítica de golpes y resúmenes de partido. Comparte highlights con clasificacion de golpes al instante.",
+            "Revisa replay y resúmenes de partido, con estadísticas y mapas de calor cuando estén habilitados.",
         },
       ],
     },
@@ -632,10 +626,9 @@ export const siteCopy = {
       accent: "rosa",
       titleSuffix: " la captura.",
       status: "Experiencia de partido + capa de IA",
-      demoCtaLabel: "Conocer rosa coach",
+      demoCtaLabel: "Conoce el análisis de Vision",
       demoCtaHint: "Descubre la capa de IA para análisis de golpes y lectura táctica.",
-      body:
-        "rosa vision conecta marcador, replay y revisión. rosa coach añade la capa de inteligencia artificial para profundizar en el análisis del partido.",
+      body: "rosa vision reúne marcador, livestream, replay, análisis con IA y coaching integrado en la experiencia del partido.",
       features: [
         { label: "Repetición instantánea", desc: "Vuelve a los puntos que cambiaron el partido" },
         { label: "Flujo del partido", desc: "Revisa contexto de marcador, momentum y momentos clave" },
@@ -919,7 +912,8 @@ export const siteCopy = {
     productFamily: {
       label: "El ecosistema rosa",
       title: "Un sistema. Cada pista.",
-      subtitle: "Dos productos de hardware: marcador portátil o pista conectada, con rosa coach como capa de inteligencia artificial.",
+      subtitle:
+        "ROSA vision es nuestro sistema principal: marcador, livestream, replay, análisis con IA y coaching integrado. rosa portable es la alternativa de marcador portátil.",
       carouselHint: "Desliza productos",
       viewProduct: "Ver producto",
       items: [
@@ -927,11 +921,11 @@ export const siteCopy = {
           num: "01",
           tier: "Pista conectada",
           name: "rosa vision",
-          tagline: "Marcador. Replay. Conexión.",
+          tagline: visionContent.es.tagline,
           status: "Preventa",
           statusType: "presale",
           href: "/products/vision",
-          features: ["Marcador HD", "Pads a través del cristal", "Replay y VAR", "Gestión automática de torneos"],
+          features: visionContent.es.features.map((feature) => feature.name),
         },
         {
           num: "02",
@@ -944,15 +938,6 @@ export const siteCopy = {
           features: ["Marcador LED", "Control touchpad", "Modo offline", "Plug & Play"],
         },
       ],
-      aiLayer: {
-        name: "rosa coach",
-        tier: "Capa de IA",
-        body: "La capa de inteligencia de rosa vision: análisis de golpes, lectura táctica y seguimiento de progreso. Software que amplía la experiencia del partido.",
-        status: "En desarrollo",
-        statusType: "coming",
-        href: "/products/coach",
-        cta: "Conocer rosa coach",
-      },
     },
     audiencePortals: {
       label: "Hecho para tu juego",
@@ -1083,6 +1068,7 @@ export const siteCopy = {
       secondaryCta: "Produkte ansehen",
       badges: ["Live-Scoring", "Instant Replay", "Match-Analyse"],
       origin: { technology: "Deutsche Technologie.", heart: "Mexikanisches Herz." },
+      sceneAlt: "Vernetzter Padel-Court mit rosa vision",
     },
     problemSolution: {
       gapLabel: "Die Luecke",
@@ -1102,7 +1088,8 @@ export const siteCopy = {
     products: {
       label: "Modulare Produkte",
       title: "Zwei Produkte. Ein Ökosystem.",
-      subtitle: "rosa portable für LED-Scoring und rosa vision für den vernetzten Court. rosa coach ist die KI-Software-Ebene.",
+      subtitle:
+        "rosa vision verbindet Spielstand, Livestream, Replay und KI-Analyse mit integriertem Coaching. rosa portable ist die LED-Scoring-Alternative.",
       popular: "Beliebt",
       items: [
         {
@@ -1116,10 +1103,9 @@ export const siteCopy = {
           tier: "Vernetzter Court",
           name: "rosa vision",
           status: "Vorverkauf",
-          description:
-            "HD-Scoring, Pads und Video in einem vernetzten Court-System.",
-          features: ["HD-Scoring", "Pads durch das Glas", "Replay & VAR", "Turniermanagement"],
-          note: "rosa coach ergänzt das Matcherlebnis um die KI-Ebene.",
+          description: visionContent.de.intro,
+          features: visionContent.de.features.map((feature) => feature.name),
+          note: "KI-Analyse und Coaching sind Teil von rosa vision.",
         },
       ],
     },
@@ -1143,7 +1129,7 @@ export const siteCopy = {
           num: "03",
           title: "Auswerten und verbessern",
           description:
-            "Greife auf Instant Replay, Heatmaps, Schlaganalysen und Match-Zusammenfassungen zu. Teile Highlights mit Schlagklassifizierung direkt.",
+            "Prüfe Replays und Match-Zusammenfassungen, mit Statistiken und Heatmaps, wenn diese aktiviert sind.",
         },
       ],
     },
@@ -1153,7 +1139,7 @@ export const siteCopy = {
       accent: "rosa",
       titleSuffix: " haelt sie fest.",
       status: "Matcherlebnis + KI-Ebene",
-      demoCtaLabel: "rosa coach entdecken",
+      demoCtaLabel: "Vision-Analyse entdecken",
       demoCtaHint: "Entdecke die KI-Ebene für Schlaganalyse und taktische Einblicke.",
       body:
         "Spieler gehen von Live-Tracking zu Replay, Review und teilbaren Momenten ueber. rosa vision ist darauf ausgelegt, jedes Match zu etwas zu machen, das man spaeter erneut ansehen, verstehen und weitergeben kann.",
@@ -1440,7 +1426,8 @@ export const siteCopy = {
     productFamily: {
       label: "Das rosa-Ökosystem",
       title: "Ein System. Jeder Court.",
-      subtitle: "Zwei Hardware-Produkte: mobiles Scoring oder der vernetzte Court. rosa coach ergänzt die KI-Ebene.",
+      subtitle:
+        "ROSA vision verbindet Live-Spielstand, Livestream, Replay, KI-Analyse und integriertes Coaching. rosa portable ist die mobile Scoring-Alternative.",
       carouselHint: "Produkte wischen",
       viewProduct: "Produkt ansehen",
       items: [
@@ -1448,11 +1435,11 @@ export const siteCopy = {
           num: "01",
           tier: "Vernetzter Court",
           name: "rosa vision",
-          tagline: "Scoring. Replay. Vernetzung.",
+          tagline: visionContent.de.tagline,
           status: "Vorverkauf",
           statusType: "presale",
           href: "/products/vision",
-          features: ["HD-Scoring", "Pads durch das Glas", "Replay & VAR", "Automatisches Turniermanagement"],
+          features: visionContent.de.features.map((feature) => feature.name),
         },
         {
           num: "02",
@@ -1465,15 +1452,6 @@ export const siteCopy = {
           features: ["LED-Scoreboard", "Touchpad-Steuerung", "Offline-Modus", "Plug & Play"],
         },
       ],
-      aiLayer: {
-        name: "rosa coach",
-        tier: "KI-Ebene",
-        body: "Die Intelligenz-Ebene für rosa vision: Schlaganalyse, taktische Einblicke und Fortschrittsverfolgung als Software-Erweiterung des Matcherlebnisses.",
-        status: "In Entwicklung",
-        statusType: "coming",
-        href: "/products/coach",
-        cta: "rosa coach entdecken",
-      },
     },
     audiencePortals: {
       label: "Für dein Spiel gemacht",

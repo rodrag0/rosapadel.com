@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Menu, X, Sun, Moon, ChevronDown } from "lucide-react";
 import { useLocation } from "react-router-dom";
@@ -19,9 +19,10 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 
-export default function Navbar() {
+export default function Navbar({ immersive = false }: { immersive?: boolean }) {
   const [open, setOpen] = useState(false);
   const [productsOpen, setProductsOpen] = useState(false);
+  const menuToggle = useRef<HTMLButtonElement>(null);
   const { theme, toggleTheme } = useTheme();
   const { copy, language } = useLanguage();
   const productLinks = getProductLinks(language);
@@ -31,17 +32,38 @@ export default function Navbar() {
   const icon = theme === "dark" ? rosaIconDark : rosaIconLight;
   const howItWorksHref = getSectionHref(location.pathname, "how-it-works");
   const contactHref = getSectionHref(location.pathname, "contact");
+  const [introHidden, setIntroHidden] = useState(false);
+  useEffect(() => {
+    if (!immersive || window.location.hash || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    const intro = document.querySelector(".cinematic-intro");
+    const update = () => setIntroHidden(intro?.getAttribute("data-motion") === "scroll" && window.scrollY < 48);
+    update();
+    const observer = typeof MutationObserver !== "undefined" ? new MutationObserver(update) : null;
+    if (intro) observer?.observe(intro, { attributes: true, attributeFilter: ["data-motion"] });
+    window.addEventListener("scroll", update, { passive: true });
+    return () => { observer?.disconnect(); window.removeEventListener("scroll", update); };
+  }, [immersive]);
+  useEffect(() => {
+    if (!open) return;
+    const close = (event: KeyboardEvent) => {
+      if (event.key !== "Escape") return;
+      setOpen(false);
+      menuToggle.current?.focus();
+    };
+    window.addEventListener("keydown", close);
+    return () => window.removeEventListener("keydown", close);
+  }, [open]);
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 glass">
-      <div className="container mx-auto px-6 lg:px-12 flex items-center justify-between h-16">
+    <nav data-intro-hidden={introHidden} className="fixed top-0 left-0 right-0 z-50 studio-nav" aria-label={{ en: "Main navigation", es: "Navegación principal", de: "Hauptnavigation" }[language]}>
+      <div className="studio-container nav-content flex items-center justify-between">
         <a href="/">
           <img src={logo} alt="rosa padel" className="h-8 hidden sm:block" />
           <img src={icon} alt="rosa padel" className="h-8 sm:hidden" />
         </a>
 
         {/* Desktop */}
-        <div className="hidden md:flex items-center gap-6">
+        <div className="hidden lg:flex items-center gap-6">
           {/* Products dropdown */}
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
@@ -78,7 +100,7 @@ export default function Navbar() {
           <a href={howItWorksHref} className="text-sm text-muted-foreground hover:text-foreground transition-colors">
             {copy.nav.howItWorks}
           </a>
-          <a href="/for-clubs" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
+          <a href="/for-clubs" aria-current={location.pathname === "/for-clubs" ? "page" : undefined} className="text-sm text-muted-foreground hover:text-foreground transition-colors">
             {copy.nav.forClubs}
           </a>
           <a href="/investors" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
@@ -91,27 +113,30 @@ export default function Navbar() {
           <LanguageSwitcher />
           <button
             onClick={toggleTheme}
-            className="p-2 rounded-md text-muted-foreground hover:text-foreground transition-colors"
+            className="nav-tool text-muted-foreground hover:text-foreground transition-colors"
             aria-label={copy.nav.toggleTheme}
           >
             {theme === "dark" ? <Sun className="w-4 h-4" /> : <Moon className="w-4 h-4" />}
           </button>
-          <Button asChild size="sm" className="bg-primary text-primary-foreground hover:bg-primary/90 box-glow">
+          <Button asChild size="sm" className="nav-command bg-primary text-primary-foreground hover:bg-primary/90">
             <a href={contactHref}>{copy.nav.bookDemo}</a>
           </Button>
         </div>
 
         {/* Mobile toggle */}
-        <div className="md:hidden flex items-center gap-2">
+        <div className="lg:hidden flex items-center gap-2">
           <button
             onClick={toggleTheme}
-            className="p-2 rounded-md text-muted-foreground hover:text-foreground transition-colors"
+            className="nav-tool text-muted-foreground hover:text-foreground transition-colors"
             aria-label={copy.nav.toggleTheme}
           >
             {theme === "dark" ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
           </button>
           <button
-            className="text-foreground"
+            className="nav-tool text-foreground"
+            ref={menuToggle}
+            aria-expanded={open}
+            aria-controls="mobile-navigation"
             onClick={() => setOpen(!open)}
             aria-label={open ? copy.nav.closeMenu : copy.nav.openMenu}
           >
@@ -122,7 +147,7 @@ export default function Navbar() {
 
       {/* Mobile menu */}
       {open && (
-        <div className="md:hidden glass border-t border-border px-6 py-4 space-y-4">
+        <div id="mobile-navigation" className="lg:hidden bg-background border-t border-border px-6 py-4 space-y-4 max-h-[calc(100svh-72px)] overflow-y-auto">
           <LanguageSwitcher compact />
 
           {/* Products section in mobile */}

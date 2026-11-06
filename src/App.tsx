@@ -12,26 +12,41 @@ import CookiePolicyPage from "./pages/CookiePolicyPage.tsx";
 import NotFound from "./pages/NotFound.tsx";
 import ProductPortable from "./pages/ProductPortable.tsx";
 import ProductVision from "./pages/ProductVision.tsx";
-import ProductCoach from "./pages/ProductCoach.tsx";
 import ForClubs from "./pages/ForClubs.tsx";
 import Investors from "./pages/Investors.tsx";
 import MatchSessionMatchi from "./pages/MatchSessionMatchi.tsx";
 import NewTab from "./pages/NewTab.tsx";
+import Learn from "./pages/Learn";
+import ComparisonGuide from "./pages/ComparisonGuide";
+import { comparisonGuides } from "@/lib/comparisonGuides";
 import { tournamentManagementHref } from "@/lib/siteLinks";
 import SectionNavigation from "@/components/rosa/SectionNavigation";
+import PageMetadata from "@/components/rosa/PageMetadata";
+import { useEffect, type ReactNode } from "react";
 
 const queryClient = new QueryClient();
 
-const App = () => (
+export const AppProviders = ({ children }: { children: ReactNode }) => (
   <QueryClientProvider client={queryClient}>
     <ThemeProvider>
       <LanguageProvider>
         <TooltipProvider>
           <Toaster />
           <Sonner />
-          <BrowserRouter>
+          {children}
+        </TooltipProvider>
+      </LanguageProvider>
+    </ThemeProvider>
+  </QueryClientProvider>
+);
+
+export const SiteRoutes = () => (
+  <>
             <SectionNavigation />
+            <PageMetadata />
             <Routes>
+              <Route path="/learn" element={<Learn />} />
+              {comparisonGuides.map(guide => <Route key={guide.path} path={guide.path} element={<ComparisonGuide guide={guide} />} />)}
               <Route path="/" element={<Index />} />
               <Route path="/imprint" element={<ImprintPage />} />
               <Route path="/privacy-policy" element={<PrivacyPolicyPage />} />
@@ -40,7 +55,7 @@ const App = () => (
               <Route path="/products/vision" element={<ProductVision />} />
               <Route path="/products/core-led" element={<Navigate to="/products/portable" replace />} />
               <Route path="/products/core-hd" element={<Navigate to="/products/vision" replace />} />
-              <Route path="/products/coach" element={<ProductCoach />} />
+              <Route path="/products/coach" element={<Navigate to="/products/vision#analysis" replace />} />
               <Route path="/for-clubs" element={<ForClubs />} />
               <Route path="/investors" element={<Investors />} />
               <Route path="/match-session/matchi-live-score" element={<MatchSessionMatchi />} />
@@ -50,11 +65,15 @@ const App = () => (
               <Route path="/tournament-managment" element={<Navigate to={tournamentManagementHref} replace />} />
               <Route path="*" element={<NotFound />} />
             </Routes>
-          </BrowserRouter>
-        </TooltipProvider>
-      </LanguageProvider>
-    </ThemeProvider>
-  </QueryClientProvider>
+  </>
 );
+
+const App = () => {
+  useEffect(() => {
+    const frame = requestAnimationFrame(() => document.getElementById("root")?.removeAttribute("data-prerendered"));
+    return () => cancelAnimationFrame(frame);
+  }, []);
+  return <AppProviders><BrowserRouter><SiteRoutes /></BrowserRouter></AppProviders>;
+};
 
 export default App;

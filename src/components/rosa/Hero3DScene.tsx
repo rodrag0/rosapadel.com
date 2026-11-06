@@ -1,12 +1,12 @@
-import { useRef, useMemo, useEffect } from "react";
-import { Canvas, useFrame, useLoader } from "@react-three/fiber";
+import { useRef, useMemo, useEffect, useState } from "react";
+import { Canvas, useFrame, useLoader, useThree } from "@react-three/fiber";
 import { Float } from "@react-three/drei";
 import * as THREE from "three";
 import rosaIconWhite from "@/assets/rosa-icon-white.png";
 
 const rosa = new THREE.Color("#E4007C");
 
-interface ThemeColors {
+export interface ThemeColors {
   floor: THREE.Color;
   darker: THREE.Color;
   fog: string;
@@ -16,9 +16,9 @@ interface ThemeColors {
 }
 
 const DARK_THEME: ThemeColors = {
-  floor: new THREE.Color("#1a1a22"),
-  darker: new THREE.Color("#2a2a35"),
-  fog: "#0d0d14",
+  floor: new THREE.Color("#4b4b54"),
+  darker: new THREE.Color("#303036"),
+  fog: "#0b0b0d",
   net: new THREE.Color("#555566"),
   glass: new THREE.Color("#aabbcc"),
   glassOpacity: 0.25,
@@ -343,26 +343,23 @@ function heatColor(v: number): [number, number, number] {
   }
 }
 
-function PadelCourt({ colors }: { colors: ThemeColors }) {
+export function PadelCourt({ colors, rotation }: { colors: ThemeColors; rotation?: number }) {
   const groupRef = useRef<THREE.Group>(null);
   const logoTexture = useSvgTexture(rosaIconWhite);
 
   const darkMat = useMemo(
-    () => new THREE.MeshStandardMaterial({ color: colors.darker, metalness: 0.6, roughness: 0.4 }),
+    () => new THREE.MeshLambertMaterial({ color: colors.darker }),
     [colors]
   );
   const floorMat = useMemo(
-    () => new THREE.MeshStandardMaterial({ color: colors.floor, metalness: 0.5, roughness: 0.5 }),
+    () => new THREE.MeshLambertMaterial({ color: colors.floor }),
     [colors]
   );
   const glassMat = useMemo(
-    () => new THREE.MeshPhysicalMaterial({
+    () => new THREE.MeshLambertMaterial({
       color: colors.glass,
-      metalness: 0.1,
-      roughness: 0.05,
       transparent: true,
       opacity: colors.glassOpacity,
-      transmission: 0.85,
       depthWrite: false,
     }),
     [colors]
@@ -376,14 +373,14 @@ function PadelCourt({ colors }: { colors: ThemeColors }) {
     []
   );
   const netMat = useMemo(
-    () => new THREE.MeshStandardMaterial({ color: colors.net, metalness: 0.3, roughness: 0.7, transparent: true, opacity: 0.5, side: THREE.DoubleSide }),
+    () => new THREE.MeshLambertMaterial({ color: colors.net, transparent: true, opacity: 0.5, side: THREE.DoubleSide }),
     [colors]
   );
 
   useFrame((state) => {
     if (groupRef.current) {
-      groupRef.current.rotation.y = state.clock.elapsedTime * 0.15;
-      groupRef.current.position.y = Math.sin(state.clock.elapsedTime * 0.5) * 0.08;
+      groupRef.current.rotation.y = rotation ?? state.clock.elapsedTime * 0.15;
+      groupRef.current.position.y = rotation === undefined ? Math.sin(state.clock.elapsedTime * 0.5) * 0.08 : 0;
     }
   });
 
@@ -394,7 +391,7 @@ function PadelCourt({ colors }: { colors: ThemeColors }) {
   const floorThick = 0.05;
 
   return (
-    <Float speed={0.8} rotationIntensity={0.15} floatIntensity={0.3}>
+    <Float speed={0.8} rotationIntensity={rotation === undefined ? 0.15 : 0} floatIntensity={rotation === undefined ? 0.3 : 0}>
       <group ref={groupRef}>
         {/* Floor */}
         <mesh material={floorMat} position={[0, 0, 0]}>
@@ -427,13 +424,10 @@ function PadelCourt({ colors }: { colors: ThemeColors }) {
             position={[0, wallH / 2 + floorThick / 2, side * courtL / 2]}
           >
             <boxGeometry args={[courtW, wallH, 0.04]} />
-            <meshPhysicalMaterial
+            <meshLambertMaterial
               color={new THREE.Color("#aabbcc")}
-              metalness={0.1}
-              roughness={0.05}
               transparent
               opacity={0.28}
-              transmission={0.85}
               depthWrite={false}
             />
           </mesh>
@@ -505,7 +499,7 @@ function PadelCourt({ colors }: { colors: ThemeColors }) {
           {/* Monitor frame */}
           <mesh>
             <boxGeometry args={[1.0, 0.55, 0.04]} />
-            <meshStandardMaterial color={colors.darker} metalness={0.7} roughness={0.3} />
+            <meshLambertMaterial color={colors.darker} />
           </mesh>
           {/* Scoreboard UI */}
           <ScoreboardScreen />
@@ -520,17 +514,17 @@ function PadelCourt({ colors }: { colors: ThemeColors }) {
           {/* Main body */}
           <mesh>
             <boxGeometry args={[0.3, 0.2, 0.25]} />
-            <meshStandardMaterial color={new THREE.Color("#444455")} metalness={0.5} roughness={0.4} />
+            <meshLambertMaterial color={new THREE.Color("#444455")} />
           </mesh>
           {/* Lens cone (front) */}
           <mesh position={[0, 0, 0.18]} rotation={[Math.PI / 2, 0, 0]}>
             <cylinderGeometry args={[0.04, 0.08, 0.12, 16]} />
-            <meshStandardMaterial color={new THREE.Color("#555566")} metalness={0.5} roughness={0.4} />
+            <meshLambertMaterial color={new THREE.Color("#555566")} />
           </mesh>
           {/* Lens glass */}
           <mesh position={[0, 0, 0.25]}>
             <circleGeometry args={[0.04, 16]} />
-            <meshPhysicalMaterial color={new THREE.Color("#336")} metalness={0.9} roughness={0.1} />
+            <meshLambertMaterial color={new THREE.Color("#336")} />
           </mesh>
           {/* Lens ring */}
           <mesh position={[0, 0, 0.24]} material={edgeMat} rotation={[0, 0, 0]}>
@@ -539,7 +533,7 @@ function PadelCourt({ colors }: { colors: ThemeColors }) {
           {/* Viewfinder (side trapezoid-like piece) */}
           <mesh position={[0.2, 0.02, 0]}>
             <boxGeometry args={[0.12, 0.22, 0.18]} />
-            <meshStandardMaterial color={new THREE.Color("#444455")} metalness={0.5} roughness={0.4} />
+            <meshLambertMaterial color={new THREE.Color("#444455")} />
           </mesh>
           {/* Viewfinder front */}
           <mesh position={[0.26, 0.02, 0.06]}>
@@ -549,7 +543,7 @@ function PadelCourt({ colors }: { colors: ThemeColors }) {
           {/* Top handle */}
           <mesh position={[0, 0.14, 0]}>
             <boxGeometry args={[0.18, 0.04, 0.15]} />
-            <meshStandardMaterial color={new THREE.Color("#444455")} metalness={0.5} roughness={0.4} />
+            <meshLambertMaterial color={new THREE.Color("#444455")} />
           </mesh>
           {/* Recording indicator on the rear top-right corner */}
           <RecordingIndicator />
@@ -613,14 +607,35 @@ function CourtGrid() {
   );
 }
 
+function ResponsiveCamera() {
+  const { camera, size, invalidate } = useThree();
+  useEffect(() => {
+    if (!(camera instanceof THREE.PerspectiveCamera)) return;
+    const aspect = size.width / size.height;
+    camera.fov = aspect < 1.35 ? 64 : aspect < 1.9 ? 54 : 38;
+    camera.updateProjectionMatrix();
+    invalidate();
+  }, [camera, size.width, size.height, invalidate]);
+  return null;
+}
+
 export default function Hero3DScene({ theme }: { theme: "dark" | "light" }) {
   const colors = theme === "light" ? LIGHT_THEME : DARK_THEME;
+  const [reducedMotion, setReducedMotion] = useState(false);
+  useEffect(() => {
+    const preference = window.matchMedia("(prefers-reduced-motion: reduce)");
+    const update = () => setReducedMotion(preference.matches);
+    update();
+    preference.addEventListener("change", update);
+    return () => preference.removeEventListener("change", update);
+  }, []);
 
   return (
     <div className="absolute inset-0">
-      <Canvas camera={{ position: [3.5, 2, 4.5], fov: 45 }} dpr={[1, 1.5]} gl={{ antialias: true, logarithmicDepthBuffer: true }} frameloop="always">
+      <Canvas camera={{ position: [3.5, 2, 4.5], fov: 38 }} dpr={[1, 1.5]} gl={{ antialias: true, logarithmicDepthBuffer: true }} frameloop={reducedMotion ? "demand" : "always"}>
+        <ResponsiveCamera />
         <fog attach="fog" args={[colors.fog, 6, 16]} />
-        <ambientLight intensity={theme === "light" ? 1.2 : 0.6} />
+        <ambientLight intensity={1.2} />
         <pointLight position={[5, 5, 5]} intensity={theme === "light" ? 0.8 : 1.2} color="#E4007C" />
         <pointLight position={[-5, 3, 3]} intensity={theme === "light" ? 1.0 : 0.6} color="#ffffff" />
         <pointLight position={[0, 4, 0]} intensity={theme === "light" ? 0.8 : 0.4} color="#ffffff" />
