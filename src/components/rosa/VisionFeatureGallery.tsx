@@ -12,7 +12,7 @@ import { useIsMobile } from "@/hooks/use-mobile";
 import { visionContent } from "@/lib/visionContent";
 import { MATCH_POSTER_URL, MATCH_PREVIEW_URL } from "@/lib/matchMedia";
 import { useLanguage } from "./LanguageProvider";
-import BrandText from "./BrandText";
+import { RosaWordmark } from "./ProductTitle";
 
 const court = "/images/products/rosa-vision-court.webp";
 const ROTATION_DELAY = 7000;
@@ -31,7 +31,14 @@ const media = {
     caption: "recording",
     video: true,
   },
-  var: { src: MATCH_POSTER_URL, width: 1280, height: 720, caption: "review" },
+  var: {
+    src: "/images/courtside/var-controls.mp4",
+    poster: "/images/courtside/var-controls.webp",
+    width: 1280,
+    height: 800,
+    caption: "review",
+    video: true,
+  },
   analysis: {
     src: "/images/software/vision-shots.webp",
     width: 996,
@@ -45,10 +52,10 @@ const media = {
     caption: "movement",
   },
   players: {
-    src: "/images/software/player.webp",
-    width: 1440,
-    height: 1000,
-    caption: "demo",
+    src: "/images/courtside/player-app-current.webp",
+    width: 1080,
+    height: 800,
+    caption: "app",
   },
   club: {
     src: MATCH_POSTER_URL,
@@ -64,6 +71,7 @@ const media = {
     height: number;
     caption: string;
     video?: boolean;
+    poster?: string;
   }
 >;
 
@@ -88,10 +96,10 @@ const galleryCopy = {
     captions: {
       court: "ROSA Vision · Court installation",
       recording: "Final Expo 2026 · Recorded footage with score",
-      review: "Real match footage · Video review context",
+      review: "ROSA VAR · Court controls demo",
       shots: "Final Expo 2026 · Saved shot classifications",
       movement: "Real match analysis · Estimated positions and metrics",
-      demo: "ROSA player app · Demo environment",
+      app: "ROSA player app · My matches with demo data",
       sponsors: "Final Expo 2026 · Score and sponsor presentation",
     },
   },
@@ -115,10 +123,10 @@ const galleryCopy = {
     captions: {
       court: "ROSA Vision · Instalación en cancha",
       recording: "Final Expo 2026 · Grabación con marcador",
-      review: "Video de un partido real · Contexto de revisión",
+      review: "VAR de ROSA · Demostración de controles en cancha",
       shots: "Final Expo 2026 · Clasificaciones de golpes guardadas",
       movement: "Análisis de un partido real · Posiciones y métricas estimadas",
-      demo: "App ROSA para jugadores · Entorno de demostración",
+      app: "App ROSA para jugadores · Mis partidos con datos de demostración",
       sponsors: "Final Expo 2026 · Marcador y patrocinadores",
     },
   },
@@ -142,11 +150,11 @@ const galleryCopy = {
     captions: {
       court: "ROSA Vision · Court-Installation",
       recording: "Final Expo 2026 · Aufzeichnung mit Spielstand",
-      review: "Echtes Matchvideo · Kontext für Videoreview",
+      review: "ROSA VAR · Demo der Court-Steuerung",
       shots: "Final Expo 2026 · Gespeicherte Schlagklassifikationen",
       movement:
         "Analyse eines echten Matches · Geschätzte Positionen und Metriken",
-      demo: "ROSA-Spieler-App · Demo-Umgebung",
+      app: "ROSA-Spieler-App · Meine Matches mit Demodaten",
       sponsors: "Final Expo 2026 · Spielstand und Sponsoren",
     },
   },
@@ -175,7 +183,7 @@ function FeatureMedia({
             controls
             playsInline
             preload="none"
-            poster={MATCH_POSTER_URL}
+            poster={"poster" in selected ? selected.poster : MATCH_POSTER_URL}
             width={selected.width}
             height={selected.height}
             aria-label={name}
@@ -192,6 +200,7 @@ function FeatureMedia({
         ) : (
           <img
             src={failed ? court : selected.src}
+            data-court-preview={selected.src === court || failed ? true : undefined}
             alt={failed ? fallbackCaption : caption}
             width={failed ? 1600 : selected.width}
             height={failed ? 900 : selected.height}
@@ -359,8 +368,9 @@ export default function VisionFeatureGallery() {
       <header className="vision-gallery-heading">
         <div>
           <div className="hardware-title">
-            <h3>
-              <BrandText text={product.name} />
+            <h3 className="hardware-product-name">
+              <RosaWordmark className="hardware-wordmark" />
+              <span>vision</span>
             </h3>
             <span className="product-availability">{product.status}</span>
           </div>

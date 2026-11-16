@@ -1,10 +1,22 @@
-import { lazy, Suspense } from "react";
+import { Component, lazy, Suspense, type ReactNode } from "react";
 import { useTheme } from "./ThemeProvider";
 import { useLanguage } from "./LanguageProvider";
 
 const Hero3DScene = lazy(() => import("./Hero3DScene"));
 
-export default function CourtExperience() {
+class CourtSceneBoundary extends Component<{ fallback: ReactNode; children: ReactNode }> {
+  state = { failed: false };
+
+  static getDerivedStateFromError() {
+    return { failed: true };
+  }
+
+  render() {
+    return this.state.failed ? this.props.fallback : this.props.children;
+  }
+}
+
+export default function CourtExperience({ paused = false }: { paused?: boolean }) {
   const { theme } = useTheme();
   const { copy } = useLanguage();
   const fallback = (
@@ -19,13 +31,15 @@ export default function CourtExperience() {
   );
   return (
     <div className="court-stage" role="img" aria-label={copy.hero.sceneAlt}>
-      <Suspense fallback={fallback}>
-        {typeof window !== "undefined" ? (
-          <Hero3DScene theme={theme} />
-        ) : (
-          fallback
-        )}
-      </Suspense>
+      <CourtSceneBoundary fallback={fallback}>
+        <Suspense fallback={fallback}>
+          {typeof window !== "undefined" && window.WebGLRenderingContext ? (
+            <Hero3DScene theme={theme} paused={paused} />
+          ) : (
+            fallback
+          )}
+        </Suspense>
+      </CourtSceneBoundary>
     </div>
   );
 }

@@ -611,15 +611,21 @@ function ResponsiveCamera() {
   const { camera, size, invalidate } = useThree();
   useEffect(() => {
     if (!(camera instanceof THREE.PerspectiveCamera)) return;
+    if (!size.width || !size.height) return;
     const aspect = size.width / size.height;
-    camera.fov = aspect < 1.35 ? 64 : aspect < 1.9 ? 54 : 38;
+    const baseFov = aspect < 1.35 ? 64 : aspect < 1.9 ? 54 : 38;
+    // Leave enough horizontal room for the court to turn in portrait view.
+    const fit = Math.max(1, 0.96 / aspect);
+    camera.fov = THREE.MathUtils.radToDeg(
+      2 * Math.atan(Math.tan(THREE.MathUtils.degToRad(baseFov / 2)) * fit),
+    );
     camera.updateProjectionMatrix();
     invalidate();
   }, [camera, size.width, size.height, invalidate]);
   return null;
 }
 
-export default function Hero3DScene({ theme }: { theme: "dark" | "light" }) {
+export default function Hero3DScene({ theme, paused = false }: { theme: "dark" | "light"; paused?: boolean }) {
   const colors = theme === "light" ? LIGHT_THEME : DARK_THEME;
   const [reducedMotion, setReducedMotion] = useState(false);
   useEffect(() => {
@@ -632,7 +638,7 @@ export default function Hero3DScene({ theme }: { theme: "dark" | "light" }) {
 
   return (
     <div className="absolute inset-0">
-      <Canvas camera={{ position: [3.5, 2, 4.5], fov: 38 }} dpr={[1, 1.5]} gl={{ antialias: true, logarithmicDepthBuffer: true }} frameloop={reducedMotion ? "demand" : "always"}>
+      <Canvas camera={{ position: [3.5, 2, 4.5], fov: 38 }} dpr={[1, 1.5]} gl={{ antialias: true, logarithmicDepthBuffer: true }} frameloop={paused || reducedMotion ? "demand" : "always"}>
         <ResponsiveCamera />
         <fog attach="fog" args={[colors.fog, 6, 16]} />
         <ambientLight intensity={1.2} />

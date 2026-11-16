@@ -25,10 +25,10 @@ describe("ROSA studio redesign", () => {
         <HardwareCollection />
       </LanguageProvider>,
     );
-    const names = [...container.querySelectorAll(".hardware-row h3")].map(
-      (node) => node.textContent,
-    );
-    expect(names).toEqual(["rosa vision", "rosa portable"]);
+    const names = container.querySelectorAll(".hardware-row h3");
+    expect(names[0]).toHaveAccessibleName("rosa vision");
+    expect(names[1]).toHaveAccessibleName("rosa portable");
+    expect(container.querySelectorAll(".hardware-wordmark[alt='rosa']")).toHaveLength(2);
     expect(container.querySelector(".coach-line")).not.toBeInTheDocument();
     expect(
       container.querySelectorAll('.hardware-vision [role="tab"]'),
@@ -51,9 +51,31 @@ describe("ROSA studio redesign", () => {
     expect(
       screen.queryByText("Automated Tournament Management"),
     ).not.toBeInTheDocument();
-    expect(container.querySelector(".hardware-vision img")).toHaveAttribute(
+    expect(container.querySelector(".vision-media-stage img")).toHaveAttribute(
       "src",
       "/images/products/rosa-vision-court.webp",
+    );
+  });
+
+  it("shows the VAR control demo and the current player app in their feature tabs", () => {
+    const { container } = render(
+      <LanguageProvider>
+        <HardwareCollection />
+      </LanguageProvider>,
+    );
+    fireEvent.click(screen.getByRole("tab", { name: "Video review & VAR" }));
+    const review = container.querySelector('[data-media="var"] video');
+    expect(review).toHaveAttribute("poster", "/images/courtside/var-controls.webp");
+    expect(review?.querySelector("source")).toHaveAttribute(
+      "src",
+      "/images/courtside/var-controls.mp4",
+    );
+    expect(screen.getByText(/where gesture detection is enabled/i)).toBeVisible();
+
+    fireEvent.click(screen.getByRole("tab", { name: "Player app, clips & reports" }));
+    expect(container.querySelector('[data-media="players"] img')).toHaveAttribute(
+      "src",
+      "/images/courtside/player-app-current.webp",
     );
   });
 
@@ -131,5 +153,28 @@ describe("ROSA studio redesign", () => {
     expect(container.querySelector("output")).toHaveTextContent("4,333");
     expect(screen.getByText(/not a ROSA price or a forecast/)).toBeVisible();
     expect(screen.queryByText(/25%/)).not.toBeInTheDocument();
+  });
+
+  it("keeps separate hourly rates for MXN, EUR and USD and excludes sponsorship income", () => {
+    const { container } = render(
+      <LanguageProvider>
+        <ROICalculator />
+      </LanguageProvider>,
+    );
+    const monthly = container.querySelector("output");
+    expect(screen.getByRole("radio", { name: "MXN" })).toBeChecked();
+    fireEvent.click(screen.getByRole("radio", { name: "EUR" }));
+    expect(monthly).toHaveTextContent("€108");
+    fireEvent.change(screen.getByRole("slider", { name: /Court-hour revenue \(EUR\)/ }), {
+      target: { value: "60" },
+    });
+    expect(monthly).toHaveTextContent("€260");
+    fireEvent.click(screen.getByRole("radio", { name: "USD" }));
+    expect(monthly).toHaveTextContent("$130");
+    fireEvent.click(screen.getByRole("radio", { name: "MXN" }));
+    expect(monthly).toHaveTextContent("MX$2,167");
+    fireEvent.click(screen.getByRole("radio", { name: "EUR" }));
+    expect(monthly).toHaveTextContent("€260");
+    expect(screen.getByText("Sponsorship income is not included.")).toBeVisible();
   });
 });

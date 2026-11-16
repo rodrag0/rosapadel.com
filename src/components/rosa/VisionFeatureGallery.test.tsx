@@ -56,6 +56,9 @@ describe("Vision feature gallery", () => {
     expect(video).not.toHaveAttribute("autoplay");
     expect(video).toHaveAttribute("preload", "none");
     fireEvent.click(screen.getByRole("button", { name: "Next feature" }));
+    expect(video).not.toBeInTheDocument();
+    expect(container.querySelector("video")).toHaveAttribute("aria-label", "Video review & VAR");
+    fireEvent.click(screen.getByRole("button", { name: "Next feature" }));
     expect(container.querySelector("video")).not.toBeInTheDocument();
   });
   it("uses a labelled court fallback if media fails", () => {

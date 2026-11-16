@@ -1,47 +1,67 @@
 import { useId, useState } from "react";
 import { useLanguage } from "./LanguageProvider";
 
+const currencySettings = {
+  MXN: { rate: 500, max: 2000, step: 50 },
+  EUR: { rate: 25, max: 200, step: 5 },
+  USD: { rate: 30, max: 200, step: 5 },
+} as const;
+type Currency = keyof typeof currencySettings;
+const currencies: Currency[] = ["MXN", "EUR", "USD"];
+
 export default function ROICalculator() {
   const { language } = useLanguage();
   const id = useId();
   const [courts, setCourts] = useState(1);
   const [hours, setHours] = useState(1);
-  const [rate, setRate] = useState(500);
+  const [currency, setCurrency] = useState<Currency>("MXN");
+  const [rates, setRates] = useState<Record<Currency, number>>({
+    MXN: currencySettings.MXN.rate,
+    EUR: currencySettings.EUR.rate,
+    USD: currencySettings.USD.rate,
+  });
+  const rate = rates[currency];
   const words = {
     en: {
       title: "What could an extra court hour mean?",
       body: "Explore your own booking scenario. This is additional court revenue, not a ROSA price or a forecast.",
       courts: "Number of courts",
       hours: "Extra paid hours / court / week",
-      rate: "Court-hour revenue (MXN)",
+      currency: "Currency",
+      rate: "Court-hour revenue",
       monthly: "Illustrative monthly revenue",
       annual: "Annual equivalent",
-      note: "Based on52 weeks divided by12 months. Before operating costs, taxes and any hardware or service investment. Additional bookings are an assumption, not a guaranteed effect of ROSA.",
+      excludesSponsorship: "Sponsorship income is not included.",
+      note: "Based on 52 weeks divided by 12 months. Before operating costs, taxes and any hardware or service investment. Additional bookings are an assumption, not a guaranteed effect of ROSA.",
     },
     es: {
       title: "¿Qué podría representar una hora extra?",
       body: "Explora tu propio escenario de reservas. Son ingresos adicionales de cancha, no un precio de ROSA ni un pronóstico.",
       courts: "Número de canchas",
       hours: "Horas pagadas extra / cancha / semana",
-      rate: "Ingreso por hora de cancha (MXN)",
+      currency: "Moneda",
+      rate: "Ingreso por hora de cancha",
       monthly: "Ingreso mensual ilustrativo",
       annual: "Equivalente anual",
-      note: "Calculado con52 semanas divididas entre12 meses. Antes de costos operativos, impuestos e inversión en hardware o servicios. Las reservas adicionales son un supuesto, no un efecto garantizado de ROSA.",
+      excludesSponsorship: "No incluye ingresos por patrocinios.",
+      note: "Calculado con 52 semanas divididas entre 12 meses. Antes de costos operativos, impuestos e inversión en hardware o servicios. Las reservas adicionales son un supuesto, no un efecto garantizado de ROSA.",
     },
     de: {
       title: "Was könnte eine zusätzliche Court-Stunde bedeuten?",
       body: "Erkunde dein eigenes Buchungsszenario. Zusätzlicher Court-Umsatz, kein ROSA-Preis und keine Prognose.",
       courts: "Anzahl Courts",
       hours: "Zusätzliche bezahlte Stunden / Court / Woche",
-      rate: "Umsatz pro Court-Stunde (MXN)",
+      currency: "Währung",
+      rate: "Umsatz pro Court-Stunde",
       monthly: "Illustrativer Monatsumsatz",
       annual: "Jahresäquivalent",
-      note: "Berechnet mit52 Wochen geteilt durch12 Monate. Vor Betriebskosten, Steuern und Hardware- oder Servicekosten. Zusätzliche Buchungen sind eine Annahme, kein garantierter ROSA-Effekt.",
+      excludesSponsorship: "Sponsoring-Einnahmen sind nicht enthalten.",
+      note: "Berechnet mit 52 Wochen geteilt durch 12 Monate. Vor Betriebskosten, Steuern und Hardware- oder Servicekosten. Zusätzliche Buchungen sind eine Annahme, kein garantierter ROSA-Effekt.",
     },
   }[language];
   const format = new Intl.NumberFormat(
     { en: "en-US", es: "es-MX", de: "de-DE" }[language],
-    { style: "currency", currency: "MXN", maximumFractionDigits: 0 },
+    { style: "currency", currency, maximumFractionDigits: 0 },
   );
   const annual = courts * hours * rate * 52;
   const inputs = [
@@ -65,26 +85,44 @@ export default function ROICalculator() {
     },
     {
       key: "rate",
-      label: words.rate,
+      label: `${words.rate} (${currency})`,
       value: rate,
       min: 0,
-      max: 2000,
-      step: 50,
-      set: setRate,
+      max: currencySettings[currency].max,
+      step: currencySettings[currency].step,
+      set: (value: number) => setRates((current) => ({ ...current, [currency]: value })),
     },
   ];
   return (
-    <section className="roi-tool">
+    <section id="court-revenue" className="roi-tool scroll-mt-24" aria-labelledby={`${id}-title`}>
       <div className="studio-container roi-layout">
         <div>
-          <h2>{words.title}</h2>
+          <h2 id={`${id}-title`}>{words.title}</h2>
           <p className="mt-5">{words.body}</p>
+          <fieldset className="roi-currency">
+            <legend>{words.currency}</legend>
+            <div className="roi-currency-options">
+              {currencies.map((option) => (
+                <label key={option}>
+                  <input
+                    className="sr-only"
+                    type="radio"
+                    name={`${id}-currency`}
+                    value={option}
+                    checked={option === currency}
+                    onChange={() => setCurrency(option)}
+                  />
+                  {option}
+                </label>
+              ))}
+            </div>
+          </fieldset>
           <div className="roi-inputs">
             {inputs.map((input) => (
               <div key={input.key}>
                 <label htmlFor={`${id}-${input.key}`}>
                   <span>{input.label}</span>
-                  <span className="tabular-nums">{input.value}</span>
+                  <span className="tabular-nums">{input.key === "rate" ? format.format(input.value) : input.value}</span>
                 </label>
                 <input
                   id={`${id}-${input.key}`}
@@ -105,6 +143,7 @@ export default function ROICalculator() {
           <p>
             {words.annual}: {format.format(annual)}
           </p>
+          <p className="roi-sponsorship-exclusion">{words.excludesSponsorship}</p>
           <small>{words.note}</small>
         </div>
       </div>

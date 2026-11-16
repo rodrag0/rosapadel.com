@@ -283,6 +283,9 @@
     font-size: 15px;
     white-space: nowrap;
   }
+  .hardware-portable {
+    grid-template-columns: minmax(0, 1fr);
+  }
   .hardware-portable .hardware-visual {
     grid-column: auto;
     grid-row: auto;

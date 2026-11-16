@@ -317,6 +317,15 @@ video {
   font-weight: 550;
   line-height: 1.2;
 }
+.hardware-product-name {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.23em;
+}
+.hardware-wordmark {
+  width: auto;
+  height: 0.68em;
+}
 .hardware-tagline {
   margin-top: 14px;
   font-size: 21px;
@@ -779,7 +788,7 @@ video {
 }
 .roi-layout {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 96px;
 }
 .roi-layout h2 {
@@ -790,10 +799,46 @@ video {
 .roi-layout p {
   color: hsl(var(--muted-foreground));
 }
+.roi-currency {
+  min-inline-size: 0;
+  margin-top: 28px;
+}
+.roi-currency legend {
+  margin-bottom: 9px;
+  font-size: 15px;
+  font-weight: 560;
+}
+.roi-currency-options {
+  display: inline-grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  width: min(100%, 288px);
+  border: 1px solid hsl(var(--border));
+  border-radius: 5px;
+}
+.roi-currency-options label {
+  display: grid;
+  min-height: 44px;
+  place-items: center;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 650;
+}
+.roi-currency-options label + label {
+  border-inline-start: 1px solid hsl(var(--border));
+}
+.roi-currency-options label:has(input:checked) {
+  background: hsl(var(--primary) / 0.08);
+  color: hsl(var(--primary));
+  box-shadow: inset 0 -2px 0 hsl(var(--primary));
+}
+.roi-currency-options label:has(input:focus-visible) {
+  outline: 2px solid hsl(var(--primary));
+  outline-offset: -3px;
+}
 .roi-inputs {
   display: grid;
   gap: 28px;
-  margin-top: 40px;
+  margin-top: 28px;
 }
 .roi-inputs label {
   display: flex;
@@ -817,13 +862,22 @@ video {
   line-height: 1.25;
   margin-block: 12px 24px;
   font-variant-numeric: tabular-nums;
+  overflow-wrap: anywhere;
+}
+.roi-result .roi-sponsorship-exclusion {
+  border-top: 1px solid hsl(var(--border));
+  margin-top: 22px;
+  padding-top: 14px;
+  color: hsl(var(--foreground));
+  font-size: 17px;
+  font-weight: 700;
 }
 .roi-result small {
   display: block;
   max-width: 430px;
   font-size: 13px;
   color: hsl(var(--muted-foreground));
-  margin-top: 24px;
+  margin-top: 10px;
 }
 .club-estimate {
   border-top: 1px solid hsl(var(--border));

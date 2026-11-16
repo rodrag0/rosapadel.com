@@ -3,6 +3,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { useLanguage } from "./LanguageProvider";
 import { getHardwareProducts } from "@/lib/productCatalog";
 import BrandText from "./BrandText";
+import { RosaWordmark } from "./ProductTitle";
 import ScrollDepth from "./ScrollDepth";
 import VisionFeatureGallery from "./VisionFeatureGallery";
 import {
@@ -53,8 +54,9 @@ export function HardwareCollection() {
             >
               <div className="hardware-description">
                 <div className="hardware-title">
-                  <h3>
-                    <BrandText text={product.name} />
+                  <h3 className="hardware-product-name">
+                    <RosaWordmark className="hardware-wordmark" />
+                    <span>portable</span>
                   </h3>
                   <span className="product-availability">{product.status}</span>
                 </div>

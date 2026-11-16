@@ -25,7 +25,7 @@ export const visionContent = {
       {
         id: "var",
         name: "Video review & VAR",
-        body: "Review recent footage, zoom into the play and use slow motion to see it again. Players or the referee make the decision.",
+        body: "Trim the replay, zoom and reposition the image, or slow down the key moment. Where gesture detection is enabled, hold both arms up for three seconds to request VAR. Players or the referee make the decision.",
       },
       {
         id: "analysis",
@@ -80,7 +80,7 @@ export const visionContent = {
       {
         id: "var",
         name: "Revisión de video y VAR",
-        body: "Revisa las jugadas recientes, amplía la imagen y usa cámara lenta para volver a ver el punto. La decisión la toman los jugadores o el árbitro.",
+        body: "Recorta la repetición, amplía y reencuadra la imagen o revisa la jugada en cámara lenta. Si la detección de gestos está habilitada, levanta ambos brazos durante tres segundos para solicitar el VAR. La decisión la toman los jugadores o el árbitro.",
       },
       {
         id: "analysis",
@@ -135,7 +135,7 @@ export const visionContent = {
       {
         id: "var",
         name: "Videoreview und VAR",
-        body: "Aktuelle Spielszenen erneut ansehen, vergrößern und in Zeitlupe prüfen. Spieler oder Schiedsrichter treffen die Entscheidung.",
+        body: "Replay zuschneiden, den Bildausschnitt vergrößern und verschieben oder die Szene in Zeitlupe prüfen. Bei aktivierter Gestenerkennung drei Sekunden lang beide Arme heben, um VAR anzufordern. Spieler oder Schiedsrichter treffen die Entscheidung.",
       },
       {
         id: "analysis",
