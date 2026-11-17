@@ -4,7 +4,7 @@ import Footer from "@/components/rosa/Footer";
 import { comparisonGuides } from "@/lib/comparisonGuides";
 
 export default function Learn() {
-  return <main className="min-h-screen bg-background text-foreground" lang="en">
+  return <main className="courtside-reading min-h-screen" lang="en">
     <Navbar />
     <header className="container mx-auto px-6 pb-12 pt-36 lg:px-12">
       <p className="mb-5 text-sm text-muted-foreground">Review drafts · ROSA product team</p>

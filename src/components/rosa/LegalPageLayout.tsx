@@ -1,5 +1,5 @@
 import { ReactNode, useEffect } from "react";
-import { Button } from "@/components/ui/button";
+import { ArrowLeft } from "lucide-react";
 import Navbar from "./Navbar";
 import Footer from "./Footer";
 import { useLanguage } from "./LanguageProvider";
@@ -20,8 +20,8 @@ export function LegalSection({
   children: ReactNode;
 }) {
   return (
-    <section className="rounded-2xl border border-border bg-card/80 p-8 inner-glow space-y-4">
-      <h2 className="text-2xl font-bold">{title}</h2>
+    <section className="reading-section">
+      <h2>{title}</h2>
       <div className="space-y-4 text-sm leading-7 text-muted-foreground">{children}</div>
     </section>
   );
@@ -35,7 +35,7 @@ export function LegalDataTable({
   rows: readonly (readonly string[])[];
 }) {
   return (
-    <div className="overflow-x-auto rounded-xl border border-border">
+    <div className="overflow-x-auto border-y border-border">
       <table className="w-full min-w-[520px] border-collapse text-left text-sm">
         <thead className="bg-secondary/60 text-foreground">
           <tr>
@@ -75,30 +75,20 @@ export default function LegalPageLayout({
   }, [documentTitle]);
 
   return (
-    <main className="min-h-screen bg-background text-foreground overflow-x-hidden">
+    <main className="courtside-reading min-h-screen">
       <Navbar />
 
-      <section className="relative overflow-hidden pt-32 pb-12">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,_hsl(var(--primary)/0.18),_transparent_48%)]" />
-        <div className="relative container mx-auto max-w-5xl px-6 lg:px-12">
-          <div className="rounded-[2rem] border border-border bg-card/60 p-8 md:p-12 glass space-y-4">
-            <div className="flex flex-wrap items-center justify-between gap-4">
-              <p className="text-sm font-mono uppercase tracking-widest text-primary">{copy.footer.legalTitle}</p>
-              <Button asChild variant="outline" size="sm" className="border-border bg-background/40">
-                <a href="/">{copy.legal.backHome}</a>
-              </Button>
-            </div>
-            <h1 className="text-4xl md:text-6xl font-bold tracking-tight"><BrandText text={title} /></h1>
-            <p className="max-w-3xl text-lg text-muted-foreground"><BrandText text={description} /></p>
-            <p className="max-w-3xl text-sm text-muted-foreground">
+      <header className="reading-header studio-container">
+            <h1><BrandText text={title} /></h1>
+            <p><BrandText text={description} /></p>
+            <p>
               {copy.legal.lastUpdatedPrefix}: 2026-03-19. {copy.legal.introNote}
             </p>
-          </div>
-        </div>
-      </section>
+            <a href="/" className="studio-link"><ArrowLeft size={16} aria-hidden="true" />{copy.legal.backHome}</a>
+      </header>
 
       <section className="pb-24">
-        <div className="container mx-auto max-w-5xl px-6 lg:px-12 space-y-8">{children}</div>
+        <div className="reading-document studio-container">{children}</div>
       </section>
 
       <Footer />

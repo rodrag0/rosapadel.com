@@ -1,10 +1,9 @@
 import { ArrowUpRight, WifiOff, Plug, Monitor, Tablet } from "lucide-react";
-import Navbar from "@/components/rosa/Navbar";
-import Footer from "@/components/rosa/Footer";
-import ProductTitle from "@/components/rosa/ProductTitle";
+import CourtsidePage, { DetailHero, DetailIntro, DetailLink, DetailMedia } from "@/components/rosa/CourtsidePage";
 import ContactCTA from "@/components/rosa/ContactCTA";
 import { useLanguage } from "@/components/rosa/LanguageProvider";
 import BrandText from "@/components/rosa/BrandText";
+import { visionContent } from "@/lib/visionContent";
 
 export default function ProductPortable() {
   const { copy, language } = useLanguage();
@@ -48,38 +47,22 @@ export default function ProductPortable() {
     },
   ];
   return (
-    <main className="bg-background text-foreground">
-      <Navbar />
-      <section className="product-page-hero studio-container">
-        <div className="product-heading-line">
-          <ProductTitle name="portable" />
-          <span className="product-availability">{product.status}</span>
-        </div>
-        <p className="product-intro">
-          {product.tagline} {copy.products.items[0].description}
-        </p>
-        <div className="studio-actions">
+    <CourtsidePage className="detail-portable-page">
+      <DetailHero title="rosa portable" product="portable" variant="portable" image="/images/products/rosa-portable.webp"
+        alt="rosa portable LED scoreboard with two wireless touchpads" credit="ROSA Portable" status={product.status} />
+      <DetailIntro title={product.tagline} actions={
+        <>
           <a href="#contact" className="studio-button">
             {copy.hero.primaryCta}
             <ArrowUpRight size={16} aria-hidden="true" />
           </a>
-          <a href="/products/vision" className="studio-link">
-            <BrandText text="rosa vision" />
-            <ArrowUpRight size={16} aria-hidden="true" />
-          </a>
-        </div>
-      </section>
-      <figure className="studio-container">
-        <img
-          src="/images/products/rosa-portable.webp"
-          alt="rosa portable LED scoreboard with two wireless touchpads"
-          width="1672"
-          height="941"
-          className="product-photo"
-        />
-      </figure>
-      <section className="studio-section studio-container">
-        <div className="section-heading">
+          <DetailLink href="/products/vision"><BrandText text="rosa vision" /></DetailLink>
+        </>
+      }>
+        <p>{copy.products.items[0].description}</p>
+      </DetailIntro>
+      <section className="detail-section studio-container">
+        <div className="detail-section-heading">
           <h2>
             {
               {
@@ -99,20 +82,27 @@ export default function ProductPortable() {
             }
           </p>
         </div>
-        <div className="feature-rows">
+        <div className="detail-capabilities">
           {features.map(({ icon: Icon, title, body }) => (
-            <div key={title}>
+            <article key={title}>
               <Icon size={22} aria-hidden="true" />
-              <div>
                 <h3>{title}</h3>
                 <p>{body}</p>
-              </div>
-            </div>
+            </article>
           ))}
         </div>
       </section>
+      <section className="detail-alternative">
+        <div className="studio-container">
+          <div>
+            <h2>{copy.productFamily.items[0].tagline}</h2>
+            <p>{visionContent[language].intro}</p>
+            <DetailLink href="/products/vision"><BrandText text="rosa vision" /></DetailLink>
+          </div>
+          <DetailMedia src="/images/products/rosa-vision-court.webp" alt={copy.hero.sceneAlt} caption="ROSA Vision" width={1600} height={900} />
+        </div>
+      </section>
       <ContactCTA />
-      <Footer />
-    </main>
+    </CourtsidePage>
   );
 }

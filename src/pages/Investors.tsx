@@ -1,11 +1,10 @@
-import { ArrowUpRight, Monitor, Layers, Trophy } from "lucide-react";
-import Navbar from "@/components/rosa/Navbar";
-import Footer from "@/components/rosa/Footer";
+import { ArrowUpRight } from "lucide-react";
+import CourtsidePage, { DetailHero, DetailIntro } from "@/components/rosa/CourtsidePage";
 import InvestorContactDialog from "@/components/rosa/InvestorContactDialog";
 import Partners from "@/components/rosa/Partners";
-import { HardwareCollection } from "@/components/rosa/StudioSections";
 import { useLanguage } from "@/components/rosa/LanguageProvider";
 import BrandText from "@/components/rosa/BrandText";
+import { courtsideCopy } from "@/lib/courtsideCopy";
 
 const team = [
   {
@@ -40,7 +39,7 @@ export default function Investors() {
         "We're open to conversations with investors, partners and distributors who believe in the padel opportunity.",
       pillars: ["Court hardware", "Software services", "Club events"],
       descriptions: [
-        "rosa portable for LED scoring. rosa vision for the connected court.",
+        "rosa vision for the connected court. rosa portable as the LED scoring alternative.",
         "Vision brings together livestreams with live score, recording, replay, AI analysis and integrated coaching.",
         "Tournament, Americano and league workflows, connected to the club experience.",
       ],
@@ -61,7 +60,7 @@ export default function Investors() {
         "Eventos del club",
       ],
       descriptions: [
-        "rosa portable para marcador LED. rosa vision para la cancha conectada.",
+        "rosa vision para la cancha conectada. rosa portable como alternativa de marcador LED.",
         "Vision reúne livestream con marcador, grabación, replay, análisis con IA y coaching integrado.",
         "Torneos, Americanos y ligas, conectados con la experiencia del club.",
       ],
@@ -78,61 +77,53 @@ export default function Investors() {
         "Wir sprechen mit Investoren, Partnern und Vertriebspartnern, die an die Padel-Chance glauben.",
       pillars: ["Court-Hardware", "Software-Dienste", "Club-Events"],
       descriptions: [
-        "rosa portable für den LED-Spielstand. rosa vision für den vernetzten Court.",
+        "rosa vision für den vernetzten Court. rosa portable als Alternative für den LED-Spielstand.",
         "Vision verbindet Livestream mit Spielstand, Aufzeichnung, Replay, KI-Analyse und integriertes Coaching.",
         "Turnier-, Americano- und Liga-Workflows im Club-Erlebnis.",
       ],
     },
   }[language];
-  const icons = [Monitor, Layers, Trophy];
   return (
-    <main className="bg-background text-foreground">
-      <Navbar />
-      <section className="studio-section studio-container detail-intro">
-        <h1>{words.title}</h1>
-        <p>{words.body}</p>
-        <div className="studio-actions">
+    <CourtsidePage className="detail-investors-page">
+      <DetailHero title={words.title} variant="investors" image="/images/courtside/invicto-court.webp"
+        alt={courtsideCopy[language].hero.alt} credit="Invicto Pádel · ROSA Vision" />
+      <DetailIntro title={words.model} actions={
+        <>
           <InvestorContactDialog />
           <a href="/#products" className="studio-link">
             <BrandText text="rosa vision & rosa portable" />
             <ArrowUpRight size={16} aria-hidden="true" />
           </a>
-        </div>
-      </section>
-      <figure className="studio-container">
-        <img
-          src="/images/products/rosa-vision-court.webp"
-          alt="rosa vision connected padel court"
-          width="1600"
-          height="900"
-          className="product-photo"
-        />
-      </figure>
-      <section className="studio-section studio-container">
-        <div className="section-heading">
-          <h2>{words.model}</h2>
-          <p>{words.modelBody}</p>
-        </div>
-        <div className="feature-rows">
+        </>
+      }>
+        <p>{words.body}</p>
+      </DetailIntro>
+      <section className="detail-section studio-container">
+        <p className="detail-qualification">{words.modelBody}</p>
+        <div className="detail-pillars">
           {words.pillars.map((title, index) => {
-            const Icon = icons[index];
             return (
-              <div key={title}>
-                <Icon size={22} aria-hidden="true" />
-                <div>
+              <article key={title}>
                   <h3>{title}</h3>
                   <p>
                     <BrandText text={words.descriptions[index]} />
                   </p>
-                </div>
-              </div>
+              </article>
             );
           })}
         </div>
       </section>
-      <HardwareCollection />
-      <section className="studio-section studio-container">
-        <div className="section-heading">
+      <section className="detail-section studio-container detail-investor-products" aria-label={words.pillars[0]}>
+        {["vision", "portable"].map((name) => (
+          <a key={name} href={`/products/${name}`}>
+            <img src={`/images/products/rosa-${name === "vision" ? "vision-court" : "portable"}.webp`}
+              alt={`rosa ${name}`} width="1600" height="900" loading="lazy" />
+            <h3 className="studio-link"><BrandText text={`rosa ${name}`} /><ArrowUpRight size={19} aria-hidden="true" /></h3>
+          </a>
+        ))}
+      </section>
+      <section className="detail-section studio-container">
+        <div className="detail-section-heading">
           <h2>{words.team}</h2>
         </div>
         <div className="team-grid">
@@ -152,15 +143,15 @@ export default function Investors() {
         </div>
       </section>
       <Partners />
-      <section className="studio-section studio-contact">
+      <section className="detail-investor-contact">
         <div className="studio-container">
-          <h2 className="text-4xl font-semibold">
+          <h2>
             <BrandText text={words.contact} />
           </h2>
-          <p className="mt-6 max-w-2xl text-lg text-muted-foreground">
+          <p>
             {words.contactBody}
           </p>
-          <div className="studio-actions !justify-start mt-8">
+          <div className="studio-actions">
             <InvestorContactDialog />
             <a href="mailto:rodrigo@rosapadel.com" className="studio-link">
               rodrigo@rosapadel.com
@@ -168,7 +159,6 @@ export default function Investors() {
           </div>
         </div>
       </section>
-      <Footer />
-    </main>
+    </CourtsidePage>
   );
 }

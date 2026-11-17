@@ -254,8 +254,10 @@ export function MatchWorkflow() {
 
 export function EventsShowcase({
   standalone = false,
+  showMore = true,
 }: {
   standalone?: boolean;
+  showMore?: boolean;
 }) {
   const { language } = useLanguage();
   const words = {
@@ -365,7 +367,7 @@ export function EventsShowcase({
             </TabsContent>
           ))}
         </Tabs>
-        {!standalone && (
+        {!standalone && showMore && (
           <a href="/tournament-management" className="studio-link events-more">
             {words.link}
             <ArrowUpRight size={16} aria-hidden="true" />

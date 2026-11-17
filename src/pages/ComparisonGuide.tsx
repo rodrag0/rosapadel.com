@@ -4,7 +4,7 @@ import Footer from "@/components/rosa/Footer";
 import { comparisonGuides, sourceCheckDate, type ComparisonGuide as Guide } from "@/lib/comparisonGuides";
 
 export default function ComparisonGuide({ guide }: { guide: Guide }) {
-  return <main className="min-h-screen bg-background text-foreground" lang="en">
+  return <main className="courtside-reading min-h-screen" lang="en">
     <Navbar />
     <article className="container mx-auto px-6 pb-24 pt-32 lg:px-12">
       <header className="max-w-3xl">

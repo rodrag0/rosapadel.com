@@ -4,6 +4,10 @@ Proposed redesign, awaiting Rodrigo's review. This is not a rebrand or a product
 
 ## Direction
 
+The published homepage as of 16 November 2026 is the current visual reference: real court photography, oversized split-ink product type, exact Marketing wordmarks, paper/ink surfaces and Rosa Mexicano. The original logo-to-court experiment below is retained history, not the first screen of the approved Courtside version.
+
+The 17 November detail-page preview extends that world to Vision, Portable, Clubs, Investors and Tournaments: full-width photographic headers, ruled unboxed information, native video and actual app captures. The pages keep their product-specific reading order and controls. Legal and comparison documents remain reading surfaces, not campaigns. The homepage and production are unchanged by this preview.
+
 An immersive sports-technology experience, explicitly selected by Rodrigo after rejecting two static proposals. A clean first viewport contains the actual ROSA symbol as a beveled3D object. Native scrolling separates and rotates its two original vector shapes, resolves into the official wordmark, then moves the camera into the original connected-court model. This is authored brand motion, not a loading screen or feature demonstration. Vision is the main product. Portable is a secondary scoring alternative, not an equal flagship. Actual product photography and software captures follow, with restrained spatial depth that continues the visual language. No gradients, particle wallpaper, emoji, fake dashboards or decorative card scaffolding.
 
 ## Typography

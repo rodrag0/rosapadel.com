@@ -1,11 +1,11 @@
 import { ArrowUpRight, Camera, Trophy, Monitor, Users } from "lucide-react";
-import Navbar from "@/components/rosa/Navbar";
-import Footer from "@/components/rosa/Footer";
+import CourtsidePage, { DetailHero, DetailIntro, DetailMedia } from "@/components/rosa/CourtsidePage";
 import ROICalculator from "@/components/rosa/ROICalculator";
 import ContactCTA from "@/components/rosa/ContactCTA";
 import { EventsShowcase } from "@/components/rosa/StudioSections";
 import { useLanguage } from "@/components/rosa/LanguageProvider";
 import BrandText from "@/components/rosa/BrandText";
+import { courtsideCopy } from "@/lib/courtsideCopy";
 
 export default function ForClubs() {
   const { copy, language } = useLanguage();
@@ -88,12 +88,11 @@ export default function ForClubs() {
   }[language];
   const icons = [Monitor, Camera, Trophy, Users];
   return (
-    <main className="bg-background text-foreground">
-      <Navbar />
-      <section className="studio-container studio-section detail-intro">
-        <h1>{words.title}</h1>
-        <p>{words.body}</p>
-        <div className="studio-actions">
+    <CourtsidePage className="detail-clubs-page">
+      <DetailHero title={words.title} variant="clubs" image="/images/courtside/invicto-check-in.webp"
+        alt={courtsideCopy[language].workflow.steps[0].alt} credit="Invicto Pádel · ROSA" />
+      <DetailIntro title={words.system} actions={
+        <>
           <a href="#contact" className="studio-button">
             {copy.hero.primaryCta}
             <ArrowUpRight size={16} aria-hidden="true" />
@@ -102,51 +101,41 @@ export default function ForClubs() {
             {copy.hero.secondaryCta}
             <ArrowUpRight size={16} aria-hidden="true" />
           </a>
-        </div>
-        <aside aria-label="Club hardware payback" className="club-estimate">
-          <p className="!text-base !text-foreground !mt-0 font-medium">
-            <BrandText text={words.roi} />
-          </p>
-          <details>
-            <summary>{words.assumptions}</summary>
-            <p>{words.assumptionsBody}</p>
-            <p>{words.exclusions}</p>
-          </details>
-        </aside>
-      </section>
-      <figure className="studio-container">
-        <img
-          src="/images/products/rosa-vision-court.webp"
-          alt={copy.hero.sceneAlt}
-          width="1600"
-          height="900"
-          className="product-photo"
-        />
-      </figure>
-      <section className="studio-section studio-container">
-        <div className="section-heading">
-          <h2>{words.system}</h2>
+        </>
+      }>
+        <p>{words.body}</p>
+      </DetailIntro>
+      <section className="detail-section studio-container">
+        <div className="detail-section-heading">
+          <h2>{words.reasons[3]}</h2>
           <p>{words.systemBody}</p>
         </div>
-        <div className="feature-rows">
+        <DetailMedia src="/images/products/rosa-vision-court.webp" alt={copy.hero.sceneAlt}
+          caption="ROSA Vision" width={1600} height={900} />
+        <div className="detail-capabilities">
           {words.reasons.map((reason, index) => {
             const Icon = icons[index];
             return (
-              <div key={reason}>
+              <article key={reason}>
                 <Icon size={22} aria-hidden="true" />
-                <div>
                   <h3>{reason}</h3>
                   <p>{words.descriptions[index]}</p>
-                </div>
-              </div>
+              </article>
             );
           })}
         </div>
       </section>
+      <aside aria-label="Club hardware payback" className="detail-payback studio-container">
+        <p><BrandText text={words.roi} /></p>
+        <details>
+          <summary>{words.assumptions}</summary>
+          <p>{words.assumptionsBody}</p>
+          <p>{words.exclusions}</p>
+        </details>
+      </aside>
       <ROICalculator />
       <EventsShowcase />
       <ContactCTA />
-      <Footer />
-    </main>
+    </CourtsidePage>
   );
 }

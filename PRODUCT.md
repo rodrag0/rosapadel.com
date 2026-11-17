@@ -20,6 +20,8 @@ No invented customers, athlete endorsements, benchmarks, commercial capacity, au
 
 ## Preview status
 
+17 November 2026: the approved Courtside homepage is live at production commit `75f2e49`. Rodrigo requested the same treatment for the other website tabs, preview first. Work is isolated on `codex/courtside-pages-preview-20261117`. Vision, Portable, Clubs, Investors, Tournaments and the legal reading surfaces are in scope. Preserve existing content, forms and demo behavior; do not update the homepage or promote to production without a separate approval.
+
 Requested31 October2026. Base3e25573 includes the unmerged SEO/comparison reviews; production remains9dd44049 at branch creation. New branch codex/impeccable-preview-20261031 only. Existing previews stay intact. No main merge, production promotion, DNS, Cloud or Pi change without Rodrigo's further approval.
 
 ## Existing design brief
